@@ -71,7 +71,6 @@ public class PanelPago extends JPanel {
 		add(btnCancelar);
 		
 		btnSiguiente.setName("btnSiguientePago");
-		btnSiguiente.setEnabled(false);
 		btnSiguiente.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 248, 220), new Color(255, 248, 220), null, null));
 		btnSiguiente.setBackground(new Color(248, 248, 255));
 		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));

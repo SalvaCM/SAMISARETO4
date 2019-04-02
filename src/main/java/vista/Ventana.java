@@ -18,12 +18,15 @@ public class Ventana extends JFrame {
 
 	//Instancias de todos los paneles de la aplicacion
 	public PanelPago pago;
+	public PanelResumen resumen;
+	public PanelDevolucion devolucion;
 	
 	/**
 	 * Create the frame.
 	 */
 	public Ventana() { 
-		setTitle("Gestion de Compra de Billetes");
+		
+		setTitle("Gestion de Compra de Alojamientos");
 		setResizable(false); 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
@@ -39,6 +42,13 @@ public class Ventana extends JFrame {
 		contentPane.add(pago);
 		pago.setLayout(null);
 		
+		resumen = new PanelResumen();
+		contentPane.add(resumen);
+		resumen.setLayout(null);
+		
+		devolucion = new PanelDevolucion();
+		contentPane.add(devolucion);
+		devolucion.setLayout(null);
 
 		
 	}

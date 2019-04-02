@@ -3,7 +3,6 @@ package controlador;
 import modelo.Modelo;
 import vista.Ventana;
 
-
 /** 
  * Clase principal. Contiene el metodo main e instancia el Controlador, la Vista y el Modelo
  *
@@ -19,7 +18,7 @@ public class Principal {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// Declaración e inicialización de variables
+		// Declaracion e inicializacion de variables
 		Principal miPrincipal = new Principal();
 		
 		//Inicio del programa
@@ -34,6 +33,12 @@ public class Principal {
 	public void iniciar() {
 		// Instanciar clases
 		miVentana = new Ventana();
+		miModelo = new Modelo();
+		miControlador = new Controlador(miVentana, miModelo);
+		
+		
+		//Iniciar la ventana
+		miVentana.setVisible(true);
 		
 		
 	}

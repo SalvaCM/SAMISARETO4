@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import modelo.Modelo;
 import vista.Ventana;
 
-public class ControladorResumen implements ActionListener {
+public class ControladorHotel implements ActionListener {
 			
 			//private Controlador miControlador;
 			private Ventana miVentana;
@@ -20,12 +20,11 @@ public class ControladorResumen implements ActionListener {
 			 * @param miVentana instancia de la ventna principal
 			 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
 			 */
-			public ControladorResumen(Ventana miVentana, Modelo miModelo) {
+			public ControladorHotel(Ventana miVentana, Modelo miModelo) {
 				
 				this.miVentana = miVentana;
 				
-				miVentana.resumen.btnSiguiente.addActionListener(this);
-				miVentana.resumen.btnCancelar.addActionListener(this);
+				miVentana.hotel.btnSiguiente.addActionListener(this);
 			}
 			
 			/**
@@ -36,11 +35,10 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);  
+				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);  
 						break;
 						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel);  
-				break;
+		
 		
 				}
 			}	

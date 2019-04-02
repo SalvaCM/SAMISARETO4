@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.UIManager;
 
 /** 
  * Clase del panel de pago
@@ -19,7 +20,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
  */
 public class PanelPago extends JPanel {
 	
-	private static final long serialVersionUID = 8L;
+	private static final long serialVersionUID = 4L;
 	
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
@@ -57,7 +58,7 @@ public class PanelPago extends JPanel {
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(204, 51, 51));
+		lblNewJgoodiesLabel.setForeground(Color.BLUE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
@@ -111,6 +112,7 @@ public class PanelPago extends JPanel {
 		total.setBounds(819, 210, 162, 35);
 		add(total);
 		
+
 
 		btn5 = new JButton("");
 		btn5.setName("5");

@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -11,13 +13,16 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JList;
 
 public class PanelResumen extends JPanel {
 
-private static final long serialVersionUID = 8L;
+private static final long serialVersionUID = 3L;
 	
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
+	public DefaultListModel<String> mostrarResumen = new DefaultListModel<String>();	
+	public JList<String> resumen = new JList<String>();
 		
 
 	/**
@@ -30,7 +35,7 @@ private static final long serialVersionUID = 8L;
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("RESUMEN");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(204, 51, 51));
+		lblNewJgoodiesLabel.setForeground(Color.BLUE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
@@ -50,8 +55,15 @@ private static final long serialVersionUID = 8L;
 		btnSiguiente.setBounds(837, 551, 195, 70);
 		add(btnSiguiente);
 		
+		mostrarResumen=new DefaultListModel<String>();
+		resumen = new JList<String>(mostrarResumen);
+		resumen.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY));
+		resumen.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		resumen.setBackground(new Color(255, 255, 255));
+		resumen.setBounds(195, 134, 696, 385);
+		add(resumen);
+		
+		
 	
 	}
-		
-
 }

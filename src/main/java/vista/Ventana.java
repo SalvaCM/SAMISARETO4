@@ -20,6 +20,8 @@ public class Ventana extends JFrame {
 	public PanelPago pago;
 	public PanelResumen resumen;
 	public PanelDevolucion devolucion;
+	public PanelHotel hotel;
+	
 	
 	/**
 	 * Create the frame.
@@ -36,19 +38,23 @@ public class Ventana extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
-		
-		
-		pago = new PanelPago();
-		contentPane.add(pago);
-		pago.setLayout(null);
+		hotel = new PanelHotel();
+		contentPane.add(hotel);
+		hotel.setLayout(null);
 		
 		resumen = new PanelResumen();
 		contentPane.add(resumen);
 		resumen.setLayout(null);
 		
+		pago = new PanelPago();
+		contentPane.add(pago);
+		pago.setLayout(null);
+		
 		devolucion = new PanelDevolucion();
 		contentPane.add(devolucion);
 		devolucion.setLayout(null);
+		
+		
 
 		
 	}

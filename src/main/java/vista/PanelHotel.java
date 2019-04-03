@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -11,6 +12,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelHotel extends JPanel {
 
@@ -19,6 +24,9 @@ public class PanelHotel extends JPanel {
 
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
+	public JList<String> list_hoteles=new JList<String>(); 
+	public DefaultListModel<String> modelo = new DefaultListModel<String>();
+	public JButton btnBuscar = new JButton("Buscar");
 	/**
 	 * Create the panel.
 	 */
@@ -48,6 +56,17 @@ public class PanelHotel extends JPanel {
 		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnSiguiente.setBounds(837, 551, 195, 70);
 		add(btnSiguiente);
+		
+		modelo=new DefaultListModel<String>();
+		list_hoteles=new JList<String>(modelo);
+		list_hoteles.setModel(modelo);
+		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		list_hoteles.setBounds(394, 207, 362, 273);
+		add(list_hoteles);
+		
+		btnBuscar.setName("BuscarHoteles");
+		btnBuscar.setBounds(535, 148, 89, 23);
+		add(btnBuscar);
 		
 
 	}

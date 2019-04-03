@@ -2,9 +2,11 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import modelo.Alojamiento;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -12,6 +14,7 @@ public class ControladorHotel implements ActionListener {
 			
 			//private Controlador miControlador;
 			private Ventana miVentana;
+			private Modelo miModelo;
 			
 			FuncionesControlador funciones = new FuncionesControlador();
 			
@@ -23,8 +26,10 @@ public class ControladorHotel implements ActionListener {
 			public ControladorHotel(Ventana miVentana, Modelo miModelo) {
 				
 				this.miVentana = miVentana;
+				this.miModelo = miModelo;
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
+				miVentana.hotel.btnBuscar.addActionListener(this);
 			}
 			
 			/**
@@ -38,10 +43,20 @@ public class ControladorHotel implements ActionListener {
 				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);  
 						break;
 						
-		
-		
+				case "BuscarHoteles": mostrarAlojamientos(miModelo.alojamientos);
 				}
-			}	
+			}
+			
+			public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
+		        for(int i = 0; i< alojamientos.size(); i++) {
+		        	miVentana.hotel.modelo.addElement(alojamientos.get(i).toString());
+		        	//se invoca el método toString de la clase
+		        }
+		        
+			}
+			
+			
+	
 	
 			
 		

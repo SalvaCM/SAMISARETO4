@@ -1,18 +1,25 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Alojamiento {
 	protected int codAlojamiento;
 	protected int habDisponibles;
 	protected int habTotales;
 	protected String nombre;
 	protected String ubicacion;
+	protected float tarifa;
 		
-	public Alojamiento(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion) {
+	public Alojamiento(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion,float tarifa) {
 		this.codAlojamiento = codAlojamiento;
 		this.habDisponibles = habDisponibles;
 		this.habTotales = habTotales;
 		this.nombre = nombre;
 		this.ubicacion = ubicacion;
+		this.tarifa = tarifa;
+	}
+	public Alojamiento() {
+		// TODO Auto-generated constructor stub
 	}
 	public int getCodAlojamiento() {
 		return codAlojamiento;
@@ -44,6 +51,10 @@ public class Alojamiento {
 	public void setUbicacion(String ubicacion) {
 		this.ubicacion = ubicacion;
 	}
-	
-	
+	public float getTarifa() {
+		return tarifa;
+	}
+	public void setTarifa(float tarifa) {
+		this.tarifa = tarifa;
+	}
 }

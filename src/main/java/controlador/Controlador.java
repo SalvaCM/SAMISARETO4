@@ -34,7 +34,6 @@ public class Controlador {
 			this.miControladorResumen = new ControladorResumen(miVentana, miModelo);
 			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo);
 			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
-			
 		}
 
 		

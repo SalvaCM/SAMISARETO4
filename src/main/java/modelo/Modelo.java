@@ -1,26 +1,35 @@
 package modelo;
 
-import java.util.ArrayList;
-
-import javax.swing.DefaultListModel;
+import controlador.Controlador;
 
 public class Modelo {
-		public ArrayList<Alojamiento> alojamientos;
-		public Alojamiento alojamiento=new Alojamiento();
+	
+
+	// Declaración e inicialización de variables
+	private Controlador miControlador;
+	public FuncionesHotel misFuncionesHotel;
+	
 		
+		
+	/**
+	 * Constructor de la clase
+	 */
 	public Modelo() {
-		
-		alojamientos=new ArrayList<Alojamiento>();
-		Hotel pezEspada = new Hotel(1,50,100, "Hotel Pez Espada", "Málaga",50,5);
-		alojamientos.add(pezEspada);
-		Hotel triton = new Hotel(1,50,100, "Hotel Tritón", "Málaga",50,5);
-		alojamientos.add(triton);
-		Hotel tropicana = new Hotel(1,50,100, "Hotel Tropicana", "Málaga",50,5);
-		alojamientos.add(tropicana);
-		
+			
+		//Instacias de todas las clases de las funciones de cada panel
+		this.misFuncionesHotel = new FuncionesHotel();
+			
 	}
 	
+	public Controlador getControlador() {
+		return miControlador;
+	}
+
+	public void setControlador(Controlador miControlador) {
+		this.miControlador = miControlador;
+	} 
 	
+
 	
 
 }

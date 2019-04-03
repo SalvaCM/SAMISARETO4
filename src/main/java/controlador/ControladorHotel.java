@@ -43,7 +43,8 @@ public class ControladorHotel implements ActionListener {
 				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);  
 						break;
 						
-				case "BuscarHoteles": mostrarAlojamientos(miModelo.alojamientos);
+				case "BuscarHoteles": mostrarAlojamientos(miModelo.misFuncionesHotel.alojamientos);
+						break;
 				}
 			}
 			
@@ -52,7 +53,6 @@ public class ControladorHotel implements ActionListener {
 		        	miVentana.hotel.modelo.addElement(alojamientos.get(i).toString());
 		        	//se invoca el método toString de la clase
 		        }
-		        
 			}
 			
 			

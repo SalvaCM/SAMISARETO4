@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 import modelo.Alojamiento;
@@ -35,6 +37,7 @@ public class ControladorHotel implements ActionListener {
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
+				
 			}
 			
 			/**
@@ -47,25 +50,33 @@ public class ControladorHotel implements ActionListener {
 					    
 				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();
 						break;
-						
-				case "BuscarHoteles": try {
-						ArrayList<Hotel> hoteles = miModelo.misFuncionesHotel.leerHoteles();
-					for(int i=0;i<hoteles.size();i++) {
-						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(), hoteles.get(i).getTarifa()}; 
-						miVentana.hotel.tableModel.addRow(hoteles1);
+							
+				case "btnBuscarHoteles": 
+					
+					ArrayList<Hotel> hoteles;
+					try {
+						hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
+						 for(int i=0;i<hoteles.size();i++) {
+								Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(), hoteles.get(i).getTarifa()}; 
+								miVentana.hotel.tableModel.addRow(hoteles1);
+						 }
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				
+						//ArrayList<Hotel> hoteles = miModelo.misFuncionesHotel.buscarUbicacion((String)miVentana.hotel.comboBox.getSelectedItem());
+					   
 					
 						//Ir ala BBDD y leer los hoteles
 						//Rellenar la lista con lo que le devuelve el metodo del modelo
 						
-					}
-						
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} 
-						break;
+					
+					}	
 				}
-			}
+						
+				
+			
 			
 	/*		public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
 		        for(int i = 0; i< alojamientos.size(); i++) {

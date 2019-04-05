@@ -19,6 +19,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class PanelHotel extends JPanel {
 
@@ -32,6 +34,8 @@ public class PanelHotel extends JPanel {
 	public JButton btnBuscar = new JButton("Buscar");
 	public JTable tablaResultados;
 	public DefaultTableModel tableModel;
+	private final JScrollPane scrollPane_1 = new JScrollPane();
+	public final JComboBox comboBox = new JComboBox();
 	/**
 	 * Create the panel.
 	 */
@@ -63,13 +67,15 @@ public class PanelHotel extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
+		scrollPane_1.setBounds(299, 207, 547, 70);
+		
+		add(scrollPane_1);
 		list_hoteles=new JList<String>(modelo);
+		scrollPane_1.setViewportView(list_hoteles);
 		list_hoteles.setModel(modelo);
 		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list_hoteles.setBounds(299, 207, 547, 70);
-		add(list_hoteles);
 		
-		btnBuscar.setName("BuscarHoteles");
+		btnBuscar.setName("btnBuscarHoteles");
 		btnBuscar.setBounds(535, 148, 89, 23);
 		add(btnBuscar);
 		
@@ -84,6 +90,10 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setShowVerticalLines(true);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablaResultados.setAutoCreateRowSorter(true);
+		
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
+		comboBox.setBounds(355, 149, 138, 22);
+		add(comboBox);
 			
 
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);

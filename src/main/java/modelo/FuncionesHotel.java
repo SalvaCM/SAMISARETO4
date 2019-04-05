@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 import vista.Ventana;
@@ -30,31 +33,21 @@ public class FuncionesHotel {
 	/**
 	 * Metodo para mostrar los alojamientos disponibles en el JTABLE
 	 */
+	ConexionBD miConexion = new ConexionBD();
+	ConsultaBD miConsulta = new ConsultaBD();
+	Connection con = miConexion.ConectarBD();
     
 	public ArrayList<Hotel> leerHoteles() throws SQLException{ 
-    	
-    	//Lee todos los hoteles de la BBDD
-    	//Pasa el ResultSet a un Array de hoteles 
-    	//Devuelve el array de hoteles
-    	
     	//Declaracion e incializacion de variables
-		ConexionBD miConexion = new ConexionBD();
-		ConsultaBD miConsulta = new ConsultaBD();
-		Connection con = miConexion.ConectarBD();
-		
-	
-
 		
 		String nombre="";
 		String ubicacion="";
 		float precio=0;
+		
 		 ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
-		
 		String query="select nombre, ubicacion, precionoche from hotel;";
-		
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-	
-			while(rs.next()) {
+		while(rs.next()) {
 				
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
@@ -72,6 +65,31 @@ public class FuncionesHotel {
 	}
 
 
+	public ArrayList<Hotel> buscarUbicacion(String ubicacion) throws SQLException{
+		String nombre="";
+		float precio=0;
+		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
+		
+		String query="select*from hotel where ubicacion='"+ubicacion+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		
+		while(rs.next()) {
+			nombre = rs.getString("nombre");
+			ubicacion = rs.getString("ubicacion");
+			precio = rs.getFloat("precionoche");
+			Hotel hotel=new Hotel();
+			hotel.setNombre(nombre);
+			hotel.setUbicacion(ubicacion);
+			hotel.setTarifa(precio);
+			hoteles.add(hotel);
+		}
+		
+		
+	return hoteles;
+		
+		
 	
 
+	
+	}
 }

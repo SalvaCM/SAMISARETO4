@@ -7,12 +7,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 import modelo.Alojamiento;
+import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -46,38 +45,37 @@ public class ControladorHotel implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);OpcionElegida();  
+				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();
 						break;
 						
-				case "BuscarHoteles": mostrarAlojamientosTable(miModelo.misFuncionesHotel.alojamientos); buscar();
+				case "BuscarHoteles": try {
+						ArrayList<Hotel> hoteles = miModelo.misFuncionesHotel.leerHoteles();
+					for(int i=0;i<hoteles.size();i++) {
+						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(), hoteles.get(i).getTarifa()}; 
+						miVentana.hotel.tableModel.addRow(hoteles1);
+					
+						//Ir ala BBDD y leer los hoteles
+						//Rellenar la lista con lo que le devuelve el metodo del modelo
+						
+					}
+						
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
 						break;
 				}
 			}
 			
-			public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
+	/*		public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
 		        for(int i = 0; i< alojamientos.size(); i++) {
 		        	miVentana.hotel.modelo.addElement(alojamientos.get(i).toString());
 		        	//se invoca el m�todo toString de la clase
 		        }
-			}
+			}*/
 
-			/**
-			 * Metodo para mostrar los alojamientos disponibles en el JTABLE
-			 */
-		    public void mostrarAlojamientosTable(ArrayList<Alojamiento> alojamientos){      
-			    for(int i = 0; i< alojamientos.size(); i++) {
-			       
-			        /*String classnombre=alojamientos.get(i).getClass().getName();
-			        System.out.println(classnombre);*/
-			        String nombreHotel=alojamientos.get(i).getNombre();
-			        String ubicacion=alojamientos.get(i).getUbicacion();
-			        int estrellas=alojamientos.get(i).getHabDisponibles();
-			        int habDisp=alojamientos.get(i).getHabTotales();
-			        float precio=alojamientos.get(i).getTarifa();
-			        Object[] linea= {nombreHotel,ubicacion,estrellas,habDisp,precio};
-			        miVentana.hotel.tableModel.addRow(linea);
-			    }   
-			}
+		
+		    
 		    public void OpcionElegida()
 		    {
 		    	Object vector=miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
@@ -86,53 +84,8 @@ public class ControladorHotel implements ActionListener {
 		    	
 		    }
 		    
-		    public void buscar() {
-		    	ConexionBD miConexion = new ConexionBD();
-		    	ConsultaBD miConsulta = new ConsultaBD();
-				Connection conexion = miConexion.ConectarBD();  
-				ResultSet rs = miConsulta.hacerConsultaBD(conexion, "select * from cliente where nombre = 'pepe';");
-			
-				String nombre = null;
-				String edad = null ; 
-				
-				
-				
-				try {
-					while(rs.next()) {
-						
-						nombre = rs.getString("nombre");
-						edad = rs.getString("edad");
-						
-
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				miVentana.hotel.modelo.addElement(nombre);
-				miVentana.hotel.modelo.addElement(edad);
-				
-			}
-		    /*
-		     * for (int i = 0; i < originalLeagueList.size(); i++){
-   int position = originalLeagueList.get(i).getPosition();
-   String name = originalLeagueList.get(i).getName();
-   int points = originalLeagueList.get(i).getPoinst();
-   int wins = originalLeagueList.get(i).getWins();
-   int defeats = originalLeagueList.get(i).getDefeats();
-   int draws = originalLeagueList.get(i).getDraws();
-   int totalMatches = originalLeagueList.get(i).getTotalMathces();
-   int goalF = originalLeagueList.get(i).getGoalF();
-   int goalA = originalLeagueList.get(i).getGoalA();
-   in ttgoalD = originalLeagueList.get(i).getTtgoalD();
-
-   Object[] data = {position, name, points, wins, defeats, draws, 
-                               totalMatches, goalF, goalA, ttgoalD};
-
-   tableModel.add(data);
-		     */
-			
+		   
+		
 			
 	
 	

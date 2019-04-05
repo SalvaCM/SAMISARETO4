@@ -4,7 +4,6 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.SystemColor;
-
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -78,7 +77,7 @@ public class PanelHotel extends JPanel {
 		scrollPane.setBounds(196, 307, 635, 235);
 		add(scrollPane);
 		
-		String col[] = {"Nombre","Ubicacion","Estrellas", "Habitacion", "Precio"};
+		String col[] = {"Nombre","Ubicacion","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		scrollPane.setViewportView(tablaResultados);

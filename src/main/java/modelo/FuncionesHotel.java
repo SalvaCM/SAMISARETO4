@@ -1,21 +1,74 @@
 package modelo;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import conexion.ConexionBD;
+import conexion.ConsultaBD;
+import vista.Ventana;
 
 public class FuncionesHotel {
-
+	
 	public ArrayList<Alojamiento> alojamientos;
 	public Alojamiento alojamiento=new Alojamiento();
+	
 	
 	public FuncionesHotel() { 
 		
 		alojamientos=new ArrayList<Alojamiento>();
-		Hotel pezEspada = new Hotel(1,50,100, "Hotel Pez Espada", "Málaga",50,5);
+		Hotel pezEspada = new Hotel(1,50,100, "Hotel Pez Espada", "Mï¿½laga",50,5);
 		alojamientos.add(pezEspada);
-		Hotel triton = new Hotel(1,50,100, "Hotel Tritón", "Málaga",50,5);
+		Hotel triton = new Hotel(1,50,100, "Hotel Tritï¿½n", "Mï¿½laga",50,5);
 		alojamientos.add(triton);
-		Hotel tropicana = new Hotel(1,50,100, "Hotel Tropicana", "Málaga",50,5);
+		Hotel tropicana = new Hotel(1,50,100, "Hotel Tropicana", "Mï¿½laga",50,5);
 		alojamientos.add(tropicana);
+	}
+	
+	
+	
+	/**
+	 * Metodo para mostrar los alojamientos disponibles en el JTABLE
+	 */
+    
+	public ArrayList<Hotel> leerHoteles() throws SQLException{ 
+    	
+    	//Lee todos los hoteles de la BBDD
+    	//Pasa el ResultSet a un Array de hoteles 
+    	//Devuelve el array de hoteles
+    	
+    	//Declaracion e incializacion de variables
+		ConexionBD miConexion = new ConexionBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		Connection con = miConexion.ConectarBD();
+		
+	
+
+		
+		String nombre="";
+		String ubicacion="";
+		float precio=0;
+		 ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
+		
+		String query="select nombre, ubicacion, precionoche from hotel;";
+		
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+	
+			while(rs.next()) {
+				
+				nombre = rs.getString("nombre");
+				ubicacion = rs.getString("ubicacion");
+				precio = rs.getFloat("precionoche");
+				Hotel hotel=new Hotel();
+				hotel.setNombre(nombre);
+				hotel.setUbicacion(ubicacion);
+				hotel.setTarifa(precio);
+				System.out.println(hotel.getNombre());
+				hoteles.add(hotel);
+			}
+			
+		return hoteles;
+
 	}
 
 

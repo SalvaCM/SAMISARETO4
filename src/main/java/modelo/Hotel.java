@@ -7,6 +7,10 @@ public class Hotel extends Alojamiento{
 		super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion,tarifa);
 		this.nEstrellas=nEstrellas;
 	}
+	
+	public Hotel() {
+		
+	}
 
 	public int getnEstrellas() {
 		return nEstrellas;

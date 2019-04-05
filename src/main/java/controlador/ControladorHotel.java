@@ -3,23 +3,16 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-
-import conexion.ConexionBD;
-import conexion.ConsultaBD;
-import modelo.Alojamiento;
 import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
 			
-			//private Controlador miControlador;
+			
 			private Ventana miVentana;
 			private Modelo miModelo;
 			
@@ -64,27 +57,10 @@ public class ControladorHotel implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-				
-						//ArrayList<Hotel> hoteles = miModelo.misFuncionesHotel.buscarUbicacion((String)miVentana.hotel.comboBox.getSelectedItem());
-					   
-					
-						//Ir ala BBDD y leer los hoteles
-						//Rellenar la lista con lo que le devuelve el metodo del modelo
 						
-					
-					}	
-				}
+				}	
+			}
 						
-				
-			
-			
-	/*		public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
-		        for(int i = 0; i< alojamientos.size(); i++) {
-		        	miVentana.hotel.modelo.addElement(alojamientos.get(i).toString());
-		        	//se invoca el m�todo toString de la clase
-		        }
-			}*/
-
 		
 		    
 		    public void OpcionElegida()

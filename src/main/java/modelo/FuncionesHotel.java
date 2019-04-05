@@ -4,12 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
-import vista.Ventana;
+
 
 public class FuncionesHotel {
 	

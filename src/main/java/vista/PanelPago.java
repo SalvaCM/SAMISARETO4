@@ -2,7 +2,6 @@ package vista;
 
 import javax.swing.JPanel;
 import java.awt.Color;
-
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
@@ -12,7 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import javax.swing.UIManager;
+
 
 /** 
  * Clase del panel de pago

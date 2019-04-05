@@ -2,14 +2,6 @@ package modelo;
 
 public class FuncionesDevolucion {
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * Metodo para realizar los cambios en las menores monedas y billetes posibles.	
 	 * @param dinero cantidad a devolver para calcular las monedas y billetes de la devolucion

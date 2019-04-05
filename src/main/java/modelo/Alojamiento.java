@@ -18,7 +18,7 @@ public class Alojamiento {
 		this.tarifa = tarifa;
 	}
 	public Alojamiento() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public int getCodAlojamiento() {
 		return codAlojamiento;

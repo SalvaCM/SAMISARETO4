@@ -5,7 +5,7 @@ import controlador.Controlador;
 public class Modelo {
 	
 
-	// Declaraci�n e inicializaci�n de variables
+	// Declaracion e inicializacion de variables
 	private Controlador miControlador;
 	public FuncionesHotel misFuncionesHotel;
 	

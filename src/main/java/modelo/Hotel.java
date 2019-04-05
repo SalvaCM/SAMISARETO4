@@ -20,7 +20,7 @@ public class Hotel extends Alojamiento{
 		this.nEstrellas = nEstrellas;
 	}
 
-	@Override
+/*	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Hotel [nEstrellas=");
@@ -39,6 +39,6 @@ public class Hotel extends Alojamiento{
 		builder.append(tarifa);
 		builder.append("]");
 		return builder.toString();
-	}
+	}*/
 	
 }

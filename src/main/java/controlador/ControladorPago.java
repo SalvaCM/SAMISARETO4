@@ -10,8 +10,6 @@ import vista.Ventana;
 
 public class ControladorPago implements ActionListener {
 
-		
-		//private Controlador miControlador;
 		private Ventana miVentana;
 		
 		FuncionesControlador funciones = new FuncionesControlador();

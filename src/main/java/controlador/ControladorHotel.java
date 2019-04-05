@@ -1,3 +1,4 @@
+
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -22,8 +23,6 @@ public class ControladorHotel implements ActionListener {
 			private Modelo miModelo;
 			
 			FuncionesControlador funciones = new FuncionesControlador();
-			ConexionBD miConexion = new ConexionBD();
-			ConsultaBD miConsulta = new ConsultaBD();
 			
 			/**
 			 * Constructor de la clase
@@ -47,10 +46,10 @@ public class ControladorHotel implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);  
+				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);OpcionElegida();  
 						break;
 						
-				case "btnBuscarHoteles": mostrarAlojamientos(miModelo.misFuncionesHotel.alojamientos); buscar();
+				case "BuscarHoteles": mostrarAlojamientosTable(miModelo.misFuncionesHotel.alojamientos); buscar();
 						break;
 				}
 			}
@@ -61,8 +60,35 @@ public class ControladorHotel implements ActionListener {
 		        	//se invoca el m�todo toString de la clase
 		        }
 			}
-			
-			public void buscar() {
+
+			/**
+			 * Metodo para mostrar los alojamientos disponibles en el JTABLE
+			 */
+		    public void mostrarAlojamientosTable(ArrayList<Alojamiento> alojamientos){      
+			    for(int i = 0; i< alojamientos.size(); i++) {
+			       
+			        /*String classnombre=alojamientos.get(i).getClass().getName();
+			        System.out.println(classnombre);*/
+			        String nombreHotel=alojamientos.get(i).getNombre();
+			        String ubicacion=alojamientos.get(i).getUbicacion();
+			        int estrellas=alojamientos.get(i).getHabDisponibles();
+			        int habDisp=alojamientos.get(i).getHabTotales();
+			        float precio=alojamientos.get(i).getTarifa();
+			        Object[] linea= {nombreHotel,ubicacion,estrellas,habDisp,precio};
+			        miVentana.hotel.tableModel.addRow(linea);
+			    }   
+			}
+		    public void OpcionElegida()
+		    {
+		    	Object vector=miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
+		    	System.out.println(vector);
+		    	miVentana.resumen.mostrarResumen.addElement(vector.toString());
+		    	
+		    }
+		    
+		    public void buscar() {
+		    	ConexionBD miConexion = new ConexionBD();
+		    	ConsultaBD miConsulta = new ConsultaBD();
 				Connection conexion = miConexion.ConectarBD();  
 				ResultSet rs = miConsulta.hacerConsultaBD(conexion, "select * from cliente where nombre = 'pepe';");
 			
@@ -88,9 +114,30 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.modelo.addElement(edad);
 				
 			}
+		    /*
+		     * for (int i = 0; i < originalLeagueList.size(); i++){
+   int position = originalLeagueList.get(i).getPosition();
+   String name = originalLeagueList.get(i).getName();
+   int points = originalLeagueList.get(i).getPoinst();
+   int wins = originalLeagueList.get(i).getWins();
+   int defeats = originalLeagueList.get(i).getDefeats();
+   int draws = originalLeagueList.get(i).getDraws();
+   int totalMatches = originalLeagueList.get(i).getTotalMathces();
+   int goalF = originalLeagueList.get(i).getGoalF();
+   int goalA = originalLeagueList.get(i).getGoalA();
+   in ttgoalD = originalLeagueList.get(i).getTtgoalD();
+
+   Object[] data = {position, name, points, wins, defeats, draws, 
+                               totalMatches, goalF, goalA, ttgoalD};
+
+   tableModel.add(data);
+		     */
+			
+			
 	
 	
 			
 		
 
 }
+

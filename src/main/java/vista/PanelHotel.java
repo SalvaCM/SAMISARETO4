@@ -1,3 +1,4 @@
+
 package vista;
 
 import java.awt.Color;
@@ -16,6 +17,9 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class PanelHotel extends JPanel {
 
@@ -27,6 +31,8 @@ public class PanelHotel extends JPanel {
 	public JList<String> list_hoteles=new JList<String>(); 
 	public DefaultListModel<String> modelo = new DefaultListModel<String>();
 	public JButton btnBuscar = new JButton("Buscar");
+	public JTable tablaResultados;
+	public DefaultTableModel tableModel;
 	/**
 	 * Create the panel.
 	 */
@@ -61,13 +67,30 @@ public class PanelHotel extends JPanel {
 		list_hoteles=new JList<String>(modelo);
 		list_hoteles.setModel(modelo);
 		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list_hoteles.setBounds(297, 207, 563, 273);
+		list_hoteles.setBounds(299, 207, 547, 70);
 		add(list_hoteles);
 		
-		btnBuscar.setName("btnBuscarHoteles");
+		btnBuscar.setName("BuscarHoteles");
 		btnBuscar.setBounds(535, 148, 89, 23);
 		add(btnBuscar);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(196, 307, 635, 235);
+		add(scrollPane);
+		
+		String col[] = {"Nombre","Ubicacion","Estrellas", "Habitacion", "Precio"};
+		tableModel = new DefaultTableModel(col, 0);
+		tablaResultados = new JTable(tableModel);
+		scrollPane.setViewportView(tablaResultados);
+		tablaResultados.setShowVerticalLines(true);
+		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tablaResultados.setAutoCreateRowSorter(true);
+			
+
+		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
+		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
 		
 
 	}
 }
+

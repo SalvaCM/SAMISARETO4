@@ -2,10 +2,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import conexion.ConexionBD;
+import conexion.ConsultaBD;
 import modelo.Alojamiento;
 import modelo.Modelo;
 import vista.Ventana;
@@ -17,6 +22,8 @@ public class ControladorHotel implements ActionListener {
 			private Modelo miModelo;
 			
 			FuncionesControlador funciones = new FuncionesControlador();
+			ConexionBD miConexion = new ConexionBD();
+			ConsultaBD miConsulta = new ConsultaBD();
 			
 			/**
 			 * Constructor de la clase
@@ -43,7 +50,7 @@ public class ControladorHotel implements ActionListener {
 				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen);  
 						break;
 						
-				case "BuscarHoteles": mostrarAlojamientos(miModelo.misFuncionesHotel.alojamientos);
+				case "btnBuscarHoteles": mostrarAlojamientos(miModelo.misFuncionesHotel.alojamientos); buscar();
 						break;
 				}
 			}
@@ -51,11 +58,36 @@ public class ControladorHotel implements ActionListener {
 			public void mostrarAlojamientos(ArrayList<Alojamiento> alojamientos){      
 		        for(int i = 0; i< alojamientos.size(); i++) {
 		        	miVentana.hotel.modelo.addElement(alojamientos.get(i).toString());
-		        	//se invoca el método toString de la clase
+		        	//se invoca el mï¿½todo toString de la clase
 		        }
 			}
 			
+			public void buscar() {
+				Connection conexion = miConexion.ConectarBD();  
+				ResultSet rs = miConsulta.hacerConsultaBD(conexion, "select * from cliente where nombre = 'pepe';");
 			
+				String nombre = null;
+				String edad = null ; 
+				
+				
+				
+				try {
+					while(rs.next()) {
+						
+						nombre = rs.getString("nombre");
+						edad = rs.getString("edad");
+						
+
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				miVentana.hotel.modelo.addElement(nombre);
+				miVentana.hotel.modelo.addElement(edad);
+				
+			}
 	
 	
 			

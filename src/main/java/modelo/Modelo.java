@@ -5,7 +5,7 @@ import controlador.Controlador;
 public class Modelo {
 	
 
-	// Declaración e inicialización de variables
+	// Declaraciï¿½n e inicializaciï¿½n de variables
 	private Controlador miControlador;
 	public FuncionesHotel misFuncionesHotel;
 	
@@ -28,6 +28,7 @@ public class Modelo {
 	public void setControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	} 
+	
 	
 
 	

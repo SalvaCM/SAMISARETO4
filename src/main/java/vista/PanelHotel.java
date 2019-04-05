@@ -61,10 +61,10 @@ public class PanelHotel extends JPanel {
 		list_hoteles=new JList<String>(modelo);
 		list_hoteles.setModel(modelo);
 		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		list_hoteles.setBounds(394, 207, 362, 273);
+		list_hoteles.setBounds(297, 207, 563, 273);
 		add(list_hoteles);
 		
-		btnBuscar.setName("BuscarHoteles");
+		btnBuscar.setName("btnBuscarHoteles");
 		btnBuscar.setBounds(535, 148, 89, 23);
 		add(btnBuscar);
 		

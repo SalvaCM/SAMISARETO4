@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Dimension;
 
 
 /** 
@@ -51,64 +52,63 @@ public class PanelPago extends JPanel {
 	 * Create the panel. 
 	 */
 	public PanelPago() {
+		setMaximumSize(new Dimension(800, 600));
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		setBackground(SystemColor.controlHighlight);
+		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
+		lblNewJgoodiesLabel.setBackground(new Color(70, 130, 180));
+		lblNewJgoodiesLabel.setForeground(new Color(70, 130, 180));
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
+		lblNewJgoodiesLabel.setBounds(-207, 72, 1065, 48);
 		add(lblNewJgoodiesLabel);
 		
 		btnCancelar.setName("btnCancelarPago");
-		btnCancelar.setBackground(new Color(248, 248, 255));
-		btnCancelar.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCancelar.setBounds(48, 551, 195, 70);
+
+		btnCancelar.setBounds(58, 528, 123, 43);
 		add(btnCancelar);
 		
 		btnSiguiente.setName("btnSiguientePago");
-		btnSiguiente.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 248, 220), new Color(255, 248, 220), null, null));
-		btnSiguiente.setBackground(new Color(248, 248, 255));
-		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSiguiente.setBounds(837, 551, 195, 70);
+		btnSiguiente.setBounds(637, 528, 123, 43);
 		add(btnSiguiente);
 		
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("TOTAL:");
+		lblNewJgoodiesLabel_1.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_1.setBounds(690, 210, 115, 35);
+		lblNewJgoodiesLabel_1.setBounds(511, 212, 178, 35);
 		add(lblNewJgoodiesLabel_1);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("PAGADO:");
+		lblNewJgoodiesLabel_2.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_2.setBounds(659, 303, 145, 30);
+		lblNewJgoodiesLabel_2.setBounds(511, 291, 178, 30);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("RESTANTE:");
+		lblNewJgoodiesLabel_3.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_3.setBounds(629, 390, 185, 35);
+		lblNewJgoodiesLabel_3.setBounds(511, 378, 178, 35);
 		add(lblNewJgoodiesLabel_3);		
 		
 		
 		restante.setHorizontalAlignment(SwingConstants.RIGHT);
 		restante.setFont(new Font("Tahoma", Font.PLAIN, 30));	
-	    restante.setBounds(819, 390, 162, 35);
+	    restante.setBounds(521, 415, 162, 35);
 		add(restante);
 		
 		
 		pagado.setHorizontalAlignment(SwingConstants.RIGHT);
 		pagado.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		pagado.setBounds(819, 303, 162, 35);
+		pagado.setBounds(521, 321, 135, 35);
 		add(pagado);
 		
 		
 		total.setHorizontalAlignment(SwingConstants.RIGHT);
 		total.setToolTipText("");
 		total.setFont(new Font("Tahoma", Font.PLAIN, 30));	
-		total.setBounds(819, 210, 162, 35);
+		total.setBounds(521, 244, 162, 35);
 		add(total);
 		
 
@@ -119,7 +119,7 @@ public class PanelPago extends JPanel {
 		btn5.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn5.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
-		btn5.setBounds(100, 321, 123, 54);
+		btn5.setBounds(58, 321, 123, 54);
 		add(btn5);
 
 		btn2 = new JButton("");
@@ -128,7 +128,7 @@ public class PanelPago extends JPanel {
 		btn2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn2.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn2.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2euros.png")));
-		btn2.setBounds(260, 321, 123, 54);
+		btn2.setBounds(218, 321, 123, 54);
 		add(btn2);
 
 		btn10 = new JButton("");
@@ -137,7 +137,7 @@ public class PanelPago extends JPanel {
 		btn10.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn10.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn10.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10euros.jpg")));
-		btn10.setBounds(420, 257, 123, 54);
+		btn10.setBounds(378, 257, 123, 54);
 		add(btn10);
 
 		btn200 = new JButton("");
@@ -146,7 +146,7 @@ public class PanelPago extends JPanel {
 		btn200.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn200.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn200.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/200euros.jpg")));
-		btn200.setBounds(260, 193, 123, 54);
+		btn200.setBounds(218, 193, 123, 54);
 		add(btn200);
 
 		btn20 = new JButton("");
@@ -155,7 +155,7 @@ public class PanelPago extends JPanel {
 		btn20.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn20.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn20.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20euros.jpg")));
-		btn20.setBounds(260, 257, 123, 54);
+		btn20.setBounds(218, 257, 123, 54);
 		add(btn20);
 
 		btn500 = new JButton("");
@@ -164,7 +164,7 @@ public class PanelPago extends JPanel {
 		btn500.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn500.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn500.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/500euros.jpg")));
-		btn500.setBounds(100, 193, 123, 54);
+		btn500.setBounds(58, 193, 123, 54);
 		add(btn500);
 		
 		btn100 = new JButton("");
@@ -173,7 +173,7 @@ public class PanelPago extends JPanel {
 		btn100.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn100.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn100.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/100euros.jpg")));
-		btn100.setBounds(420, 193, 123, 54);
+		btn100.setBounds(378, 193, 123, 54);
 		add(btn100);
 
 		btn50 = new JButton("");
@@ -182,7 +182,7 @@ public class PanelPago extends JPanel {
 		btn50.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn50.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn50.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50euros.jpg")));
-		btn50.setBounds(100, 257, 123, 54);
+		btn50.setBounds(58, 257, 123, 54);
 		add(btn50);
 
 		btn1 = new JButton("");
@@ -191,7 +191,7 @@ public class PanelPago extends JPanel {
 		btn1.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn1.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn1.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1euro.png")));
-		btn1.setBounds(420, 321, 123, 54);
+		btn1.setBounds(378, 321, 123, 54);
 		add(btn1);
 
 		btn050 = new JButton("");
@@ -200,7 +200,7 @@ public class PanelPago extends JPanel {
 		btn050.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn050.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
-		btn050.setBounds(100, 383, 123, 54);
+		btn050.setBounds(58, 383, 123, 54);
 		add(btn050);
 
 		btn020 = new JButton("");
@@ -209,7 +209,7 @@ public class PanelPago extends JPanel {
 		btn020.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn020.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
-		btn020.setBounds(260, 383, 123, 54);
+		btn020.setBounds(218, 383, 123, 54);
 		add(btn020);
 
 		btn010 = new JButton("");
@@ -218,7 +218,7 @@ public class PanelPago extends JPanel {
 		btn010.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn010.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
-		btn010.setBounds(420, 383, 123, 54);
+		btn010.setBounds(378, 383, 123, 54);
 		add(btn010);
 
 		btn005 = new JButton("");
@@ -227,7 +227,7 @@ public class PanelPago extends JPanel {
 		btn005.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn005.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
-		btn005.setBounds(100, 448, 123, 54);
+		btn005.setBounds(58, 448, 123, 54);
 		add(btn005);
 
 		btn002 = new JButton("");
@@ -236,7 +236,7 @@ public class PanelPago extends JPanel {
 		btn002.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn002.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
-		btn002.setBounds(260, 448, 123, 54);
+		btn002.setBounds(218, 448, 123, 54);
 		add(btn002);
 
 		btn001 = new JButton("");
@@ -245,7 +245,7 @@ public class PanelPago extends JPanel {
 		btn001.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn001.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
-		btn001.setBounds(420, 448, 123, 54);
+		btn001.setBounds(378, 448, 123, 54);
 		add(btn001);
 		
 		arrayBtn[0]=btn500;
@@ -267,7 +267,7 @@ public class PanelPago extends JPanel {
 		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Haz clic en los billetes o monedas para introducir el dinero");
 		lblNewJgoodiesLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel_4.setBounds(20, 131, 1065, 26);
+		lblNewJgoodiesLabel_4.setBounds(-133, 132, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
 	
 	

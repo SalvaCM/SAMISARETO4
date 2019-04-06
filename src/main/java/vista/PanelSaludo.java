@@ -13,6 +13,7 @@ import java.awt.SystemColor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import java.awt.Dimension;
 
 public class PanelSaludo extends JPanel {
 
@@ -27,15 +28,16 @@ public class PanelSaludo extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelSaludo() {
+		setMaximumSize(new Dimension(800, 600));
 		
 		setForeground(Color.WHITE);
 		setBorder(new LineBorder(Color.BLACK, 4));
-		setBackground(SystemColor.controlHighlight);
+		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("BIENVENIDO");
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
+		lblNewJgoodiesLabel.setBackground(new Color(245, 245, 245));
+		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 11, 1065, 628);

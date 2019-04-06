@@ -5,6 +5,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.Dimension;
 
 /**
  * Clase de la ventana principal de la aplicacion
@@ -28,7 +29,8 @@ public class Ventana extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ventana() { 
+	public Ventana() {
+		setMaximumSize(new Dimension(800, 600)); 
 		
 		setTitle("Gestion de Compra de Alojamientos");
 		setResizable(false); 

@@ -1,5 +1,8 @@
 package controlador;
 
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
+
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -20,6 +23,16 @@ public class Principal {
 	public static void main(String[] args) {
 		// Declaracion e inicializacion de variables
 		Principal miPrincipal = new Principal();
+		try {
+		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+		        if ("Nimbus".equals(info.getName())) {
+		            UIManager.setLookAndFeel(info.getClassName());
+		            break;
+		        }
+		    }
+		} catch (Exception e) {
+		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		}
 		
 		//Inicio del programa
 		miPrincipal.iniciar();

@@ -24,12 +24,12 @@ public class PanelDespedida extends JPanel {
 	public PanelDespedida() {
 		
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		setBackground(SystemColor.controlHighlight); 
+		setBackground(new Color(245, 245, 245)); 
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("GRACIAS POR SU COMPRA");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
+		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 11, 1065, 628);

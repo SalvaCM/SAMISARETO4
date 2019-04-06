@@ -13,6 +13,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Dimension;
 
 /**
  * Clase del panel de devolucion de cambios
@@ -32,24 +33,22 @@ public class PanelDevolucion extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelDevolucion() {
+		setMaximumSize(new Dimension(800, 600));
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		setBackground(SystemColor.controlHighlight); 
+		setBackground(new Color(245, 245, 245)); 
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("DEVOLUCIÓN");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setFont(new Font("Vijaya", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
+		lblNewJgoodiesLabel.setBounds(-123, 73, 1065, 48);
 		add(lblNewJgoodiesLabel); 
 		
 		
 		btnSiguiente.setName("btnSiguienteDevolucion");	
-		btnSiguiente.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 248, 220), new Color(255, 248, 220), null, null));
-		btnSiguiente.setBackground(new Color(248, 248, 255));
-		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSiguiente.setBounds(837, 551, 195, 70);
+		btnSiguiente.setBounds(328, 435, 158, 48);
 		add(btnSiguiente);
 		
 		cambios=new DefaultListModel<String>();
@@ -57,7 +56,7 @@ public class PanelDevolucion extends JPanel {
 		devolucion.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY));
 		devolucion.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		devolucion.setBackground(new Color(255, 255, 255));
-		devolucion.setBounds(195, 134, 696, 385);
+		devolucion.setBounds(181, 160, 481, 264);
 		add(devolucion);
 		
 

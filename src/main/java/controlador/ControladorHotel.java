@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import modelo.Hotel;
 import modelo.Modelo;
+import modelo.estanciaHotel;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
@@ -30,18 +31,22 @@ public class ControladorHotel implements ActionListener {
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
+				miVentana.hotel.btnVer.addActionListener(this);
 				
 			}
 			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
+			public ArrayList<estanciaHotel> estancias;
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();
+				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); 
+				 OpcionElegida();
 						break;
 							
 				case "btnBuscarHoteles": 
@@ -50,24 +55,52 @@ public class ControladorHotel implements ActionListener {
 					try {
 						hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 						 for(int i=0;i<hoteles.size();i++) {
-								Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(), hoteles.get(i).getTarifa()}; 
+								Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion()}; 
 								miVentana.hotel.tableModel.addRow(hoteles1);
 						 }
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-						
+					break;
+					
+				case "ver":
+					
+					try {
+						estancias = miModelo.misFuncionesHotel.leerEstancias(001);
+						 for(int i=0;i<estancias.size();i++) {
+								miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"€"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
+						 }
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					break;
 				}	
 			}
 						
 		
 		    
-		    public void OpcionElegida()
+		   
+			
+			
+			
+			
+			
+			
+			
+			
+	
+			
+			
+			
+			public void OpcionElegida()
 		    {
 		    	Object vector=miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	System.out.println(vector);
 		    	miVentana.resumen.mostrarResumen.addElement(vector.toString());
+		    	
+		    	
 		    	
 		    }
 		    

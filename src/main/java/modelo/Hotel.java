@@ -1,44 +1,58 @@
 package modelo;
 
-public class Hotel extends Alojamiento{
+public class Hotel {
+	private int cod_hotel;
 	private int nEstrellas;
+	private String ubicacion;
+	private String nombre;
 	
-	public Hotel(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion,int nEstrellas,float tarifa) {
-		super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion,tarifa);
-		this.nEstrellas=nEstrellas;
-	}
+	
 	
 	public Hotel() {
 		
 	}
 
 	public int getnEstrellas() {
-		return nEstrellas;
+		return this.nEstrellas;
 	}
 
 	public void setnEstrellas(int nEstrellas) {
 		this.nEstrellas = nEstrellas;
 	}
 
-/*	@Override
+	public String getUbicacion() {
+		return this.ubicacion;
+	}
+
+	public void setUbicacion(String ubicacion) {
+		this.ubicacion = ubicacion;
+	}
+
+	public int getCod_hotel() {
+		return cod_hotel;
+	}
+
+	public void setCod_hotel(int cod_hotel) {
+		this.cod_hotel = cod_hotel;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Hotel [nEstrellas=");
-		builder.append(nEstrellas);
-		builder.append(", codAlojamiento=");
-		builder.append(codAlojamiento);
-		builder.append(", habDisponibles=");
-		builder.append(habDisponibles);
-		builder.append(", habTotales=");
-		builder.append(habTotales);
-		builder.append(", nombre=");
+		builder.append("[nombre=");
 		builder.append(nombre);
 		builder.append(", ubicacion=");
 		builder.append(ubicacion);
-		builder.append(", tarifa=");
-		builder.append(tarifa);
 		builder.append("]");
 		return builder.toString();
-	}*/
+	}
 	
 }

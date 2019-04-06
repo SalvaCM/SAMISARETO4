@@ -19,12 +19,18 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextArea;
+import javax.swing.JSpinner;
+import java.awt.Rectangle;
+import javax.swing.border.MatteBorder;
+import java.awt.Component;
 
 public class PanelHotel extends JPanel {
 
 
 	private static final long serialVersionUID = 2L;
-
+	public JTextArea textArea = new JTextArea();
+	public JButton btnVer = new JButton("Estancias");
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public JList<String> list_hoteles=new JList<String>(); 
@@ -43,38 +49,38 @@ public class PanelHotel extends JPanel {
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL HOTEL");
+		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(Color.BLUE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		add(lblNewJgoodiesLabel);
+		btnCancelar.setBounds(48, 551, 195, 70);
 		
 		btnCancelar.setName("btnCancelarHotel");
 		btnCancelar.setBackground(new Color(248, 248, 255));
 		btnCancelar.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
 		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCancelar.setBounds(48, 551, 195, 70);
 		add(btnCancelar);
+		btnSiguiente.setBounds(837, 551, 195, 70);
 		
 		btnSiguiente.setName("btnSiguienteHotel");
 		btnSiguiente.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 248, 220), new Color(255, 248, 220), null, null));
 		btnSiguiente.setBackground(new Color(248, 248, 255));
 		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnSiguiente.setBounds(837, 551, 195, 70);
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		scrollPane_1.setBounds(299, 207, 547, 70);
+		scrollPane_1.setBounds(516, 214, 379, 70);
 		
 		add(scrollPane_1);
 		list_hoteles=new JList<String>(modelo);
-		scrollPane_1.setViewportView(list_hoteles);
+		scrollPane_1.setColumnHeaderView(list_hoteles);
 		list_hoteles.setModel(modelo);
 		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		btnBuscar.setBounds(535, 148, 89, 23);
 		
 		btnBuscar.setName("btnBuscarHoteles");
-		btnBuscar.setBounds(535, 148, 89, 23);
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -88,14 +94,25 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setShowVerticalLines(true);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablaResultados.setAutoCreateRowSorter(true);
+		comboBox.setBounds(355, 149, 138, 22);
 		
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
-		comboBox.setBounds(355, 149, 138, 22);
 		add(comboBox);
+		textArea.setBounds(10, 190, 483, 80);
+		add(textArea);
+		btnVer.setBounds(48, 277, 107, 23);
+		
+		
+		btnVer.setName("ver");
+		add(btnVer);
 			
 
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
 		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
+		    
+	       
+	       
+	       
 		
 
 	}

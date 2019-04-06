@@ -13,17 +13,9 @@ public class FuncionesHotel {
 	public ArrayList<Alojamiento> alojamientos;
 	public Alojamiento alojamiento=new Alojamiento();
 	
-	
-	public FuncionesHotel() { 
-		
-		alojamientos=new ArrayList<Alojamiento>();
-		Hotel pezEspada = new Hotel(1,50,100, "Hotel Pez Espada", "M�laga",50,5);
-		alojamientos.add(pezEspada);
-		Hotel triton = new Hotel(1,50,100, "Hotel Trit�n", "M�laga",50,5);
-		alojamientos.add(triton);
-		Hotel tropicana = new Hotel(1,50,100, "Hotel Tropicana", "M�laga",50,5);
-		alojamientos.add(tropicana);
-	}
+	public int codhotel;
+	public Hotel hotel;
+	public estanciaHotel estancia;
 	
 	
 	
@@ -34,7 +26,7 @@ public class FuncionesHotel {
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
     
-	public ArrayList<Hotel> leerHoteles() throws SQLException{ 
+	/*public ArrayList<Hotel> leerHoteles() throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
 		String nombre="";
@@ -52,41 +44,55 @@ public class FuncionesHotel {
 				Hotel hotel=new Hotel();
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
-				hotel.setTarifa(precio);
 				System.out.println(hotel.getNombre());
 				hoteles.add(hotel);
 			}
 			
 		return hoteles;
 
-	}
-
+	}*/
+	
 
 	public ArrayList<Hotel> buscarUbicacion(String ubicacion) throws SQLException{
 		String nombre="";
-		float precio=0;
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
 		
-		String query="select*from hotel where ubicacion='"+ubicacion+"';";
+		String query="select cod_hotel,nombre,ubicacion from hotel where ubicacion='"+ubicacion+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		System.out.println(ubicacion);
+		while(rs.next()) {
+				codhotel=rs.getInt("cod_hotel");
+				nombre = rs.getString("nombre");
+				ubicacion = rs.getString("ubicacion");
+				 hotel=new Hotel();
+				hotel.setCod_hotel(codhotel);
+				hotel.setNombre(nombre);
+				hotel.setUbicacion(ubicacion);
+				hoteles.add(hotel);
+		}
+		return hoteles;
+	}
+	public ArrayList<estanciaHotel> leerEstancias(int codhotel) throws SQLException{
+		String categoria="";
+		float precio=0;
+		int existencia;
+		ArrayList<estanciaHotel> estancias =new ArrayList<estanciaHotel>();
+		
+		String query="select categoria,existencias,tarifa from estanciaHotel where cod_hotel='"+codhotel+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			nombre = rs.getString("nombre");
-			ubicacion = rs.getString("ubicacion");
-			precio = rs.getFloat("precionoche");
-			Hotel hotel=new Hotel();
-			hotel.setNombre(nombre);
-			hotel.setUbicacion(ubicacion);
-			hotel.setTarifa(precio);
-			hoteles.add(hotel);
+			categoria = rs.getString("categoria");
+			precio = rs.getFloat("tarifa");
+			existencia=rs.getInt("existencias");
+			 estancia=new estanciaHotel();
+			estancia.setCategoria(categoria);
+			estancia.setExistencias(existencia);
+			estancia.setTarifa(precio);
+			estancias.add(estancia);
 		}
-		
-		
-	return hoteles;
-		
-		
-	
-
-	
+		return estancias;
 	}
+	
+	
 }

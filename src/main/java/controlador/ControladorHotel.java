@@ -11,8 +11,7 @@ import modelo.Modelo;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
-			
-			
+						
 			private Ventana miVentana;
 			private Modelo miModelo;
 			
@@ -30,7 +29,7 @@ public class ControladorHotel implements ActionListener {
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
-				
+		
 			}
 			
 			/**
@@ -41,8 +40,9 @@ public class ControladorHotel implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();
-						break;
+				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();					
+					break;
+						
 							
 				case "btnBuscarHoteles": 
 					
@@ -57,17 +57,15 @@ public class ControladorHotel implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-						
+					break;
+					
 				}	
 			}
-						
-		
-		    
+					    
 		    public void OpcionElegida()
 		    {
-		    	Object vector=miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	System.out.println(vector);
-		    	miVentana.resumen.mostrarResumen.addElement(vector.toString());
+		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
+		    	miVentana.resumen.mostrarResumen.addElement(hotelSelecionado.toString());
 		    	
 		    }
 		    

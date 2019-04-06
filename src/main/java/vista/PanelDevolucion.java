@@ -23,7 +23,6 @@ public class PanelDevolucion extends JPanel {
 	private static final long serialVersionUID = 5L;
 	
 	public JButton btnSiguiente = new JButton("Siguiente");
-	public JButton btnCancelar = new JButton("Cancelar");
 	public DefaultListModel<String> cambios = new DefaultListModel<String>();	
 	public JList<String> devolucion = new JList<String>();
 		
@@ -52,14 +51,6 @@ public class PanelDevolucion extends JPanel {
 		btnSiguiente.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnSiguiente.setBounds(837, 551, 195, 70);
 		add(btnSiguiente);
-		
-
-		btnCancelar.setName("btnCancelarDevolucion");
-		btnCancelar.setBackground(new Color(248, 248, 255));
-		btnCancelar.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));
-		btnCancelar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCancelar.setBounds(48, 551, 195, 70);
-		add(btnCancelar);
 		
 		cambios=new DefaultListModel<String>();
 		devolucion = new JList<String>(cambios);

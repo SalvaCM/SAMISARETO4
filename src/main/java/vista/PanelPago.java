@@ -168,7 +168,7 @@ public class PanelPago extends JPanel {
 		add(btn500);
 		
 		btn100 = new JButton("");
-		btn100.setName("btn100");
+		btn100.setName("100");
 		btn100.setBackground(SystemColor.controlShadow);
 		btn100.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btn100.setBorder(new BevelBorder(BevelBorder.RAISED, new Color(255, 239, 213), new Color(255, 239, 213), null, null));

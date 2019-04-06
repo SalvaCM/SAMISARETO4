@@ -27,6 +27,14 @@ public class ControladorResumen implements ActionListener {
 				miVentana.resumen.btnCancelar.addActionListener(this);
 			}
 			
+			
+			/**
+			 * Metodo para resetear los valores de la ventana pago	
+			 */
+			public void resetear() {
+				miVentana.resumen.mostrarResumen.clear();
+			}
+			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
@@ -38,8 +46,8 @@ public class ControladorResumen implements ActionListener {
 				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);  
 						break;
 						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel); 
-						miVentana.resumen.mostrarResumen.clear();
+				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel); resetear();
+						
 				break;
 		
 				}

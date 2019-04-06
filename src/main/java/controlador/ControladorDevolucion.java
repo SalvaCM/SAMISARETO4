@@ -21,7 +21,7 @@ public class ControladorDevolucion implements ActionListener {
 				
 				this.miVentana = miVentana;
 				
-				miVentana.devolucion.btnCancelar.addActionListener(this);
+				miVentana.devolucion.btnSiguiente.addActionListener(this);
 			}
 			
 			/**
@@ -32,8 +32,7 @@ public class ControladorDevolucion implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 						
-				case "btnCancelarDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.pago);  
-				break;
+			//	case "btnSiguiente": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
 		
 				}
 			}	

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Clase de la ventana principarl de la aplicacion
+ * Clase de la ventana principal de la aplicacion
  *
  */
 public class Ventana extends JFrame { 
@@ -21,6 +21,8 @@ public class Ventana extends JFrame {
 	public PanelResumen resumen;
 	public PanelDevolucion devolucion;
 	public PanelHotel hotel;
+	public PanelDespedida despedida;
+	public PanelSaludo saludo;
 	
 	
 	/**
@@ -38,6 +40,10 @@ public class Ventana extends JFrame {
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new CardLayout(0, 0));
 		
+		saludo = new PanelSaludo();
+		contentPane.add(saludo);
+		saludo.setLayout(null);
+		
 		hotel = new PanelHotel();
 		contentPane.add(hotel);
 		hotel.setLayout(null);
@@ -53,6 +59,10 @@ public class Ventana extends JFrame {
 		devolucion = new PanelDevolucion();
 		contentPane.add(devolucion);
 		devolucion.setLayout(null);
+		
+		despedida = new PanelDespedida();
+		contentPane.add(despedida);
+		despedida.setLayout(null);
 		
 		
 

@@ -11,6 +11,7 @@ public class ControladorDevolucion implements ActionListener {
 			private Ventana miVentana;
 			
 			FuncionesControlador funciones = new FuncionesControlador();
+
 			
 			/**
 			 * Constructor de la clase
@@ -25,6 +26,14 @@ public class ControladorDevolucion implements ActionListener {
 			}
 			
 			/**
+			 * Metodo para resetear los valores de la ventana devolucion	
+			 */ 
+			public void  resetear() {		
+				miVentana.devolucion.cambios.removeAllElements();
+			
+			}
+			
+			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
 			@Override
@@ -32,7 +41,9 @@ public class ControladorDevolucion implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 						
-			//	case "btnSiguiente": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
+				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
+				resetear();
+				break;
 		
 				}
 			}	

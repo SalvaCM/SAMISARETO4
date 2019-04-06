@@ -23,6 +23,7 @@ public class Controlador {
 	public ControladorResumen miControladorResumen;
 	public ControladorDevolucion miControladorDevolucion;
 	public ControladorHotel miControladorHotel;
+	public ControladorSaludo miControladorSaludo;
 	
 	//Constructor
 	
@@ -34,6 +35,7 @@ public class Controlador {
 			this.miControladorResumen = new ControladorResumen(miVentana, miModelo);
 			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo);
 			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
+			this.miControladorSaludo = new ControladorSaludo(miVentana, miModelo);
 		}
 
 		

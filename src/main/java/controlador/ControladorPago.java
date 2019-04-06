@@ -88,7 +88,7 @@ public class ControladorPago implements ActionListener {
 				resetear();
 				break;
 			
-			default: 
+				default: 
 				pagado = miModelo.misFuncionesPago.sumarDineroPago(((JButton) e.getSource()).getName(), pagado);
 		}
 		

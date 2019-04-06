@@ -29,6 +29,7 @@ public class ControladorHotel implements ActionListener {
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
+				miVentana.hotel.btnCancelar.addActionListener(this);
 		
 			}
 			
@@ -39,6 +40,9 @@ public class ControladorHotel implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				
 				switch (((JButton) e.getSource()).getName()) {
+				
+				case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo); 					
+				break;
 					    
 				case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();					
 					break;

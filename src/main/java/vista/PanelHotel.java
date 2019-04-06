@@ -39,7 +39,10 @@ public class PanelHotel extends JPanel {
 	public JTable tablaResultados;
 	public DefaultTableModel tableModel;
 	private final JScrollPane scrollPane_1 = new JScrollPane();
-	public final JComboBox comboBox = new JComboBox();
+	
+	public JComboBox<String> comboBox = new JComboBox<String>();
+
+	
 	/**
 	 * Create the panel.
 	 */
@@ -96,7 +99,9 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setAutoCreateRowSorter(true);
 		comboBox.setBounds(355, 149, 138, 22);
 		
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
+comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
+		comboBox.setBounds(355, 149, 138, 22);
+
 		add(comboBox);
 		textArea.setBounds(10, 190, 483, 80);
 		add(textArea);

@@ -18,6 +18,8 @@ public class FuncionesControlador {
 		mostrar.setVisible(true); 
 	}
 	
+	
+	
 
 	
 	

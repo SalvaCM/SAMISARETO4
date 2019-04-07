@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.ArrayList;
+
 import controlador.Controlador;
 
 public class Modelo {
@@ -10,7 +12,8 @@ public class Modelo {
 	public FuncionesHotel misFuncionesHotel;
 	public FuncionesDevolucion misFuncionesDevolucion;
 	public FuncionesPago misFuncionesPago;
-	
+	public ArrayList<Hotel> listaHoteles;
+	public int pagar=0;
 		
 		
 	/**
@@ -22,7 +25,8 @@ public class Modelo {
 		this.misFuncionesHotel = new FuncionesHotel();
 		this.misFuncionesDevolucion = new FuncionesDevolucion();
 		this.misFuncionesPago = new FuncionesPago();
-			
+		this.listaHoteles  = new ArrayList<Hotel>();
+		int pagar=0;	
 	}
 	
 	public Controlador getControlador() {

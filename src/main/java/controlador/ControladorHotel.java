@@ -54,7 +54,7 @@ public class ControladorHotel implements ActionListener {
 					break;
 						
 
-					case "btnBuscarHoteles": buscarHoteles();
+					case "btnBuscarHoteles": filtrarPorUbicacion();
 					break;
 					
 					case "ver": verEstancias();
@@ -65,7 +65,8 @@ public class ControladorHotel implements ActionListener {
 				
 			private void verEstancias() {
 				try {
-					estancias = miModelo.misFuncionesHotel.leerEstancias(001);
+					miVentana.hotel.textArea.setText("");
+					estancias = miModelo.misFuncionesHotel.leerEstancias(miVentana.hotel.tablaResultados.getSelectedRow()+1);
 					for(int i=0;i<estancias.size();i++) {
 						miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"€"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
 					}
@@ -76,7 +77,7 @@ public class ControladorHotel implements ActionListener {
 				
 			}
 
-			public void buscarHoteles() {
+			public void filtrarPorUbicacion() {
 				ArrayList<Hotel> hoteles;
 				int rows=miVentana.hotel.tableModel.getRowCount();
 				for (int i = rows; i > 0; i--) {
@@ -85,7 +86,7 @@ public class ControladorHotel implements ActionListener {
 				try {
 					hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 					for(int i=0;i<hoteles.size();i++) {
-						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion()}; 
+						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(),hoteles.get(i).getPrecioNoche()}; 
 						miVentana.hotel.tableModel.addRow(hoteles1);
 					}
 				} catch (SQLException e1) {

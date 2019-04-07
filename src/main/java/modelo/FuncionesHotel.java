@@ -16,7 +16,7 @@ public class FuncionesHotel {
 	public int codhotel;
 	public Hotel hotel;
 	public estanciaHotel estancia;
-	
+
 	
 	
 	/**
@@ -32,7 +32,7 @@ public class FuncionesHotel {
 		String nombre="";
 		String ubicacion="";
 		float precio=0;
-		 ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
+		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
 		String query="select nombre, ubicacion, precionoche from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
@@ -43,6 +43,7 @@ public class FuncionesHotel {
 				Hotel hotel=new Hotel();
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
+				hotel.setPrecioNoche(precio);
 				System.out.println(hotel.getNombre());
 				hoteles.add(hotel);
 			}
@@ -56,17 +57,19 @@ public class FuncionesHotel {
 		String nombre="";
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
 		
-		String query="select cod_hotel,nombre,ubicacion from hotel where ubicacion='"+ubicacion+"';";
+		String query="select cod_hotel,nombre,ubicacion,precionoche from hotel where ubicacion='"+ubicacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		System.out.println(ubicacion);
 		while(rs.next()) {
 				codhotel=rs.getInt("cod_hotel");
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
-				 hotel=new Hotel();
+				float precio = rs.getFloat("precionoche");
+				hotel=new Hotel();
 				hotel.setCod_hotel(codhotel);
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
+				hotel.setPrecioNoche(precio);
 				hoteles.add(hotel);
 		}
 		return hoteles;
@@ -91,6 +94,35 @@ public class FuncionesHotel {
 			estancias.add(estancia);
 		}
 		return estancias;
+	}
+	
+	////////////////
+	
+	public ArrayList<Hotel> leerHoteles2(ArrayList<Hotel> listaHoteles) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+		
+		String nombre="";
+		String ubicacion="";
+		float precio=0;
+
+		String query="select nombre, ubicacion, precionoche from hotel;";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		while(rs.next()) {
+				
+				nombre = rs.getString("nombre");
+				ubicacion = rs.getString("ubicacion");
+				precio = rs.getFloat("precionoche");
+				Hotel hotel=new Hotel();
+				hotel.setNombre(nombre);
+				hotel.setUbicacion(ubicacion);
+				hotel.setPrecioNoche(precio);
+				
+				System.out.println(hotel.getNombre());
+				listaHoteles.add(hotel);
+			}
+			
+		return listaHoteles;
+
 	}
 	
 	

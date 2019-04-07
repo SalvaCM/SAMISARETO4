@@ -8,6 +8,8 @@ public class Alojamiento {
 	protected String nombre;
 	protected String ubicacion;
 	protected float tarifa;
+	protected Habitacion habitacion;
+	
 		
 	public Alojamiento(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion,float tarifa) {
 		this.codAlojamiento = codAlojamiento;

@@ -11,6 +11,7 @@ import vista.Ventana;
 public class ControladorResumen implements ActionListener {
 			
 			private Ventana miVentana;
+			private Modelo miModelo;
 			
 			FuncionesControlador funciones = new FuncionesControlador();
 			
@@ -22,7 +23,7 @@ public class ControladorResumen implements ActionListener {
 			public ControladorResumen(Ventana miVentana, Modelo miModelo) {
 				
 				this.miVentana = miVentana;
-				
+				this.miModelo = miModelo;
 				miVentana.resumen.btnSiguiente.addActionListener(this);
 				miVentana.resumen.btnCancelar.addActionListener(this);
 			}
@@ -43,7 +44,7 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);  
+				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago); 
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel); resetear();

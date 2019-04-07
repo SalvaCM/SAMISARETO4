@@ -85,21 +85,21 @@ public class PanelHotel extends JPanel {
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBackground(new Color(245, 222, 179));
+		scrollPane.setBackground(new Color(230, 230, 250));
 		scrollPane.setBounds(197, 271, 635, 235);
 		add(scrollPane);
 		
 		String col[] = {"Nombre","Ubicacion","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
-		tablaResultados.setBackground(new Color(245, 222, 179));
+		tablaResultados.setShowHorizontalLines(true);
+		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
-		tablaResultados.setShowVerticalLines(true);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablaResultados.setAutoCreateRowSorter(true);
 		comboBox.setBounds(305, 149, 138, 22);
 		
-comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
 		comboBox.setBounds(355, 149, 138, 22);
 
 		add(comboBox);

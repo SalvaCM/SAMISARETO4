@@ -54,70 +54,48 @@ public class ControladorHotel implements ActionListener {
 					break;
 						
 
-					case "btnBuscarHoteles": 
+					case "btnBuscarHoteles": buscarHoteles();
+					break;
 					
-						ArrayList<Hotel> hoteles;
-						try {
-							hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
-							for(int i=0;i<hoteles.size();i++) {
-								Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion()}; 
-								miVentana.hotel.tableModel.addRow(hoteles1);
-							}
-						} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-						}
-						break;
-					
-
-						case "ver":
-							try {
-								estancias = miModelo.misFuncionesHotel.leerEstancias(001);
-								for(int i=0;i<estancias.size();i++) {
-									miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"€"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
-								}
-							}catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					case "ver": verEstancias();
 					break;
 				}
+
 			}
 				
-					
-		
-		    
-		   
-			
-			
-			
-			
-			
-			
-			
-			
-	
-			
-			
-		
-					    
-		    public void OpcionElegida()
+			private void verEstancias() {
+				try {
+					estancias = miModelo.misFuncionesHotel.leerEstancias(001);
+					for(int i=0;i<estancias.size();i++) {
+						miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"€"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
+					}
+				}catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+				
+			}
+
+			public void buscarHoteles() {
+				ArrayList<Hotel> hoteles;
+				try {
+					hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
+					for(int i=0;i<hoteles.size();i++) {
+						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion()}; 
+						miVentana.hotel.tableModel.addRow(hoteles1);
+					}
+				} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();}
+			}
+
+			public void OpcionElegida()
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	miVentana.resumen.mostrarResumen.addElement(hotelSelecionado.toString());
-		    	
-		    	
-		    	
+
 		    }
-		    
-		   
-		
-			
-	
-	
-			
-		
 
 }
 

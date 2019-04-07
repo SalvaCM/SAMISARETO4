@@ -8,9 +8,6 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.SystemColor;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Dimension;

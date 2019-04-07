@@ -2,21 +2,26 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 
+import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
 
 public class ControladorSaludo implements ActionListener{
 
 	private Ventana miVentana;
+	private Modelo miModelo;
 	
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	public ControladorSaludo(Ventana miVentana, Modelo miModelo) {
 		
 		this.miVentana = miVentana;
+		this.miModelo =miModelo;
 		
 		miVentana.saludo.btnSaludo.addActionListener(this);
 		
@@ -30,12 +35,25 @@ public class ControladorSaludo implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);  
+		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);todosLosHoteles();
 				break;
-				
-			
-
 		}
+	}
+
+	private void todosLosHoteles() {
+		 try {
+			 ArrayList<Hotel> hoteles =new ArrayList<Hotel>();	
+			hoteles=miModelo.misFuncionesHotel.leerHoteles();
+			for(int i=0;i<hoteles.size();i++) {
+				Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion()}; 
+				miVentana.hotel.tableModel.addRow(hoteles1);
+			}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+		
 	}	
+	
 
 }

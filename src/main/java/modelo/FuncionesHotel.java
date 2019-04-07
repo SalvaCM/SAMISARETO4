@@ -26,13 +26,12 @@ public class FuncionesHotel {
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
     
-	/*public ArrayList<Hotel> leerHoteles() throws SQLException{ 
+	public ArrayList<Hotel> leerHoteles() throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
 		String nombre="";
 		String ubicacion="";
 		float precio=0;
-		
 		 ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
 		String query="select nombre, ubicacion, precionoche from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
@@ -50,7 +49,7 @@ public class FuncionesHotel {
 			
 		return hoteles;
 
-	}*/
+	}
 	
 
 	public ArrayList<Hotel> buscarUbicacion(String ubicacion) throws SQLException{

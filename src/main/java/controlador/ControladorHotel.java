@@ -78,6 +78,10 @@ public class ControladorHotel implements ActionListener {
 
 			public void buscarHoteles() {
 				ArrayList<Hotel> hoteles;
+				int rows=miVentana.hotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.hotel.tableModel.removeRow(i-1);
+				}
 				try {
 					hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 					for(int i=0;i<hoteles.size();i++) {

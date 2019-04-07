@@ -30,7 +30,7 @@ public class PanelDespedida extends JPanel {
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("GRACIAS POR SU COMPRA");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 60));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 11, 1065, 628);
 		add(lblNewJgoodiesLabel); 

@@ -38,13 +38,14 @@ public class PanelDevolucion extends JPanel {
 		setBackground(new Color(245, 245, 245)); 
 		setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("DEVOLUCIÓN");
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("CAMBIO");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
-		lblNewJgoodiesLabel.setFont(new Font("Vijaya", Font.BOLD, 40));
+		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.PLAIN, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(-123, 73, 1065, 48);
 		add(lblNewJgoodiesLabel); 
+		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		
 		btnSiguiente.setName("btnSiguienteDevolucion");	

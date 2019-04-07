@@ -36,14 +36,16 @@ private static final long serialVersionUID = 3L;
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("RESUMEN");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(-200, 38, 1065, 48);
 		add(lblNewJgoodiesLabel);
+		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		btnCancelar.setName("btnCancelarResumen");
 		btnCancelar.setBounds(91, 527, 151, 48);
 		add(btnCancelar);
+		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		btnSiguiente.setName("btnSiguienteResumen");
 		btnSiguiente.setBounds(575, 527, 156, 48);
@@ -51,9 +53,6 @@ private static final long serialVersionUID = 3L;
 		
 		mostrarResumen=new DefaultListModel<String>();
 		resumen = new JList<String>(mostrarResumen);
-		resumen.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY));
-		resumen.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		resumen.setBackground(new Color(255, 255, 255));
 		resumen.setBounds(91, 116, 571, 382);
 		add(resumen);
 		

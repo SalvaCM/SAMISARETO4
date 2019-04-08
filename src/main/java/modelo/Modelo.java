@@ -25,7 +25,6 @@ public class Modelo {
 		this.misFuncionesDevolucion = new FuncionesDevolucion();
 		this.misFuncionesPago = new FuncionesPago();
 		this.listaHoteles  = new ArrayList<Hotel>();
-		int pagar=0;	
 	}
 	
 	public Controlador getControlador() {

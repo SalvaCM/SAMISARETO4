@@ -54,7 +54,7 @@ public class ControladorHotel implements ActionListener {
 					break;
 						
 
-					case "btnBuscarHoteles": filtrarPorUbicacion();
+					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles);
 					break;
 					
 					case "ver": verEstancias();
@@ -95,9 +95,7 @@ public class ControladorHotel implements ActionListener {
 				e1.printStackTrace();
 				}
 			}
-
-			public void filtrarPorUbicacion() {
-				ArrayList<Hotel> hoteles;
+			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
 				int rows=miVentana.hotel.tableModel.getRowCount();
 				for (int i = rows; i > 0; i--) {
 					miVentana.hotel.tableModel.removeRow(i-1);
@@ -105,13 +103,14 @@ public class ControladorHotel implements ActionListener {
 				try {
 					hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 					for(int i=0;i<hoteles.size();i++) {
-						Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(),hoteles.get(i).getPrecioNoche()}; 
-						miVentana.hotel.tableModel.addRow(hoteles1);
+						Object[] hotel = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(),hoteles.get(i),hoteles.get(i).getnEstrellas()}; 
+						miVentana.hotel.tableModel.addRow(hotel);
 					}
 				} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();}
 			}
+
 
 			public void OpcionElegida()
 

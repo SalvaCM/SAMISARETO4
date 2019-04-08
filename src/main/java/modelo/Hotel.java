@@ -6,7 +6,6 @@ public class Hotel {
 	private String ubicacion;
 	private String nombre;
 	private Habitacion habitacion;
-	private float precioNoche;
 	
 	
 	public Hotel() {
@@ -43,14 +42,6 @@ public class Hotel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public float getPrecioNoche() {
-		return precioNoche;
-	}
-	
-	public void setPrecioNoche(float precio) {
-		this.precioNoche = precio;
-	}
 @Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -58,7 +49,6 @@ public class Hotel {
 		builder.append(nombre);
 		builder.append(", ubicacion=");
 		builder.append(ubicacion);
-		builder.append("precio x noche ="+precioNoche);
 		builder.append("]");
 		return builder.toString();
 	}

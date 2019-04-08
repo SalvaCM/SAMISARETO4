@@ -109,16 +109,16 @@ public class FuncionesHotel {
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				
-				nombre = rs.getString("nombre");
+				/*nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
-				precio = rs.getFloat("precionoche");
+				nEstrellas = rs.getInt("nEstrellas");
 				Hotel hotel=new Hotel();
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
-				hotel.setPrecioNoche(precio);
+				hotel.setnEstrellas(nEstrellas);
 				
 				System.out.println(hotel.getNombre());
-				listaHoteles.add(hotel);
+				listaHoteles.add(hotel)*/
 			}
 			
 		return listaHoteles;

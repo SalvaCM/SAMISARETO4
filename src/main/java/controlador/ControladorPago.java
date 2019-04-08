@@ -16,7 +16,7 @@ public class ControladorPago implements ActionListener {
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	private int[] arrayCambios=null;
-	public double total = 100;
+	public double total = 75;
 	public double pagado = 0;
 	
 	
@@ -74,7 +74,7 @@ public class ControladorPago implements ActionListener {
 		switch (((JButton) e.getSource()).getName()) {
 	
 			case "btnCancelarPago": funciones.cambiarDePanel(miVentana.pago, miVentana.resumen);
-		     	JOptionPane.showMessageDialog(miVentana, "Devolución de dinero introducido", "¡Atencion!", JOptionPane.WARNING_MESSAGE);
+		     	JOptionPane.showMessageDialog(miVentana, "Devolucion de dinero introducido", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				resetear();
 				break;
 								 
@@ -193,7 +193,7 @@ public class ControladorPago implements ActionListener {
 						case 14 :  mensajeCambios= "Monedas de " + (formatoMoneda.format(0.01)) + ": " ; break;
 					
 					}
-					//Añadimos la linea al modelo de la lista
+					//Aï¿½adimos la linea al modelo de la lista
 					miVentana.devolucion.cambios.addElement(mensajeCambios + cambios[z]);
 				}
 			}

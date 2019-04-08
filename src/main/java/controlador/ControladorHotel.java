@@ -33,7 +33,7 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.btnVer.addActionListener(this);
 				miVentana.hotel.btnCancelar.addActionListener(this);
 		
-
+				
 			}
 			
 			/**

@@ -13,7 +13,6 @@ public class Modelo {
 	public FuncionesDevolucion misFuncionesDevolucion;
 	public FuncionesPago misFuncionesPago;
 	public ArrayList<Hotel> listaHoteles;
-	public int pagar=0;
 		
 		
 	/**

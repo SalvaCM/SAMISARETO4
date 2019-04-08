@@ -31,19 +31,19 @@ public class FuncionesHotel {
 		
 		String nombre="";
 		String ubicacion="";
-		float precio=0;
+		int nEstrellas=0;
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
-		String query="select nombre, ubicacion, precionoche from hotel;";
+		String query="select nombre, ubicacion, nestrellas from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
-				precio = rs.getFloat("precionoche");
+				nEstrellas = rs.getInt("nestrellas");
 				Hotel hotel=new Hotel();
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
-				hotel.setPrecioNoche(precio);
+				hotel.setnEstrellas(nEstrellas);
 				System.out.println(hotel.getNombre());
 				hoteles.add(hotel);
 			}
@@ -57,19 +57,19 @@ public class FuncionesHotel {
 		String nombre="";
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
 		
-		String query="select cod_hotel,nombre,ubicacion,precionoche from hotel where ubicacion='"+ubicacion+"';";
+		String query="select cod_hotel,nombre,ubicacion,nestrellas from hotel where ubicacion='"+ubicacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		System.out.println(ubicacion);
 		while(rs.next()) {
 				codhotel=rs.getInt("cod_hotel");
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
-				float precio = rs.getFloat("precionoche");
+				int nEstrellas = rs.getInt("nestrellas");
 				hotel=new Hotel();
 				hotel.setCod_hotel(codhotel);
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
-				hotel.setPrecioNoche(precio);
+				hotel.setnEstrellas(nEstrellas);
 				hoteles.add(hotel);
 		}
 		return hoteles;

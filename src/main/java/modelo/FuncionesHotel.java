@@ -64,7 +64,7 @@ public class FuncionesHotel {
 		
 		String query="select cod_hotel,nombre,ubicacion,nestrellas from hotel where ubicacion='"+ubicacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
-		System.out.println(ubicacion);
+
 		while(rs.next()) {
 				codhotel=rs.getInt("cod_hotel");
 				nombre = rs.getString("nombre");
@@ -75,7 +75,6 @@ public class FuncionesHotel {
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
 				hotel.setnEstrellas(nEstrellas);
-				System.out.println(nEstrellas);
 				hoteles.add(hotel);
 		}
 		return hoteles;

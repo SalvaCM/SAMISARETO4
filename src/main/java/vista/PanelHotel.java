@@ -3,12 +3,10 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.SystemColor;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -19,11 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextArea;
-import javax.swing.JSpinner;
-import java.awt.Rectangle;
-import javax.swing.border.MatteBorder;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Cursor;
 

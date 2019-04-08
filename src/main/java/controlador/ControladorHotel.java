@@ -15,6 +15,7 @@ public class ControladorHotel implements ActionListener {
 						
 			private Ventana miVentana;
 			private Modelo miModelo;
+	
 			
 			FuncionesControlador funciones = new FuncionesControlador();
 			
@@ -35,6 +36,14 @@ public class ControladorHotel implements ActionListener {
 				
 			}
 			
+			public void resetear() {
+				int rows=miVentana.hotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.hotel.tableModel.removeRow(i-1);
+				}
+				
+			}
+			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
@@ -45,10 +54,12 @@ public class ControladorHotel implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 				
+
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);limpiarTabla();					
 					break;
 
 					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();			
+
 					break;
 						
 
@@ -96,11 +107,14 @@ public class ControladorHotel implements ActionListener {
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
+<<<<<<< HEAD
 		    	int numero= miVentana.hotel.tablaResultados.getSelectedRow();
 		    	System.out.println("numero"+numero);
 		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
 		    	System.out.println("hotel selecc"+hotelSelecionado.toString());
+=======
+>>>>>>> 81c5e95c13f8114e1379706e71d3a2b2969caa9c
 		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
 		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel()+" "+" ");
 		    

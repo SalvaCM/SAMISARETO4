@@ -13,7 +13,7 @@ import vista.Ventana;
 public class ControladorResumen implements ActionListener {
 			
 			private Ventana miVentana;
-			private Modelo miModelo;
+		
 			
 			NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 			
@@ -27,7 +27,7 @@ public class ControladorResumen implements ActionListener {
 			public ControladorResumen(Ventana miVentana, Modelo miModelo) {
 				
 				this.miVentana = miVentana;
-				this.miModelo = miModelo;
+			
 				miVentana.resumen.btnSiguiente.addActionListener(this);
 				miVentana.resumen.btnCancelar.addActionListener(this);
 			}
@@ -51,6 +51,8 @@ public class ControladorResumen implements ActionListener {
 				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
 											miVentana.pago.total.setText(formatoMoneda.format(75));
+											funciones.desBotones(miVentana.pago.btnSiguiente);
+											
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();

@@ -3,11 +3,8 @@ package vista;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.SystemColor;
-
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 

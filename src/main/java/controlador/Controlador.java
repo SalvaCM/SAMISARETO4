@@ -39,7 +39,7 @@ public class Controlador {
 			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
 			this.miControladorSaludo = new ControladorSaludo(miVentana, miModelo);
 			this.miControladorEstanciasHotel = new ControladorEstanciasHotel(miVentana, miModelo);
-			this.miControladorDespedida = new ControladorDespedida(miVentana, miModelo);
+			this.miControladorDespedida = new ControladorDespedida(miVentana);
 		}
 
 		

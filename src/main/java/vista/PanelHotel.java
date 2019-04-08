@@ -81,7 +81,7 @@ public class PanelHotel extends JPanel {
 		scrollPane.setBounds(197, 183, 635, 323);
 		add(scrollPane);
 		
-		String col[] = {"Nombre","Ubicacion","Precio"};
+		String col[] = {"Nombre","Ubicacion","Estrellas"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setShowHorizontalLines(true);

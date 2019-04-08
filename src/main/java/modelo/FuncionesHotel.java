@@ -70,6 +70,7 @@ public class FuncionesHotel {
 				hotel.setNombre(nombre);
 				hotel.setUbicacion(ubicacion);
 				hotel.setnEstrellas(nEstrellas);
+				System.out.println(nEstrellas);
 				hoteles.add(hotel);
 		}
 		return hoteles;
@@ -95,35 +96,7 @@ public class FuncionesHotel {
 		}
 		return estancias;
 	}
-	
-	////////////////
-	
-	public ArrayList<Hotel> leerHoteles2(ArrayList<Hotel> listaHoteles) throws SQLException{ 
-    	//Declaracion e incializacion de variables
-		
-		String nombre="";
-		String ubicacion="";
-		float precio=0;
 
-		String query="select nombre, ubicacion, precionoche from hotel;";
-		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-		while(rs.next()) {
-				
-				/*nombre = rs.getString("nombre");
-				ubicacion = rs.getString("ubicacion");
-				nEstrellas = rs.getInt("nEstrellas");
-				Hotel hotel=new Hotel();
-				hotel.setNombre(nombre);
-				hotel.setUbicacion(ubicacion);
-				hotel.setnEstrellas(nEstrellas);
-				
-				System.out.println(hotel.getNombre());
-				listaHoteles.add(hotel)*/
-			}
-			
-		return listaHoteles;
 
-	}
-	
 	
 }

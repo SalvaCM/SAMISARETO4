@@ -101,9 +101,10 @@ public class ControladorHotel implements ActionListener {
 					miVentana.hotel.tableModel.removeRow(i-1);
 				}
 				try {
-					hoteles = miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
-					for(int i=0;i<hoteles.size();i++) {
-						Object[] hotel = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(),hoteles.get(i),hoteles.get(i).getnEstrellas()}; 
+					miModelo.listaHoteles= miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
+					for(int i=0;i<miModelo.listaHoteles.size();i++) {
+						
+						Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 						miVentana.hotel.tableModel.addRow(hotel);
 					}
 				} catch (SQLException e1) {
@@ -111,11 +112,11 @@ public class ControladorHotel implements ActionListener {
 				e1.printStackTrace();}
 			}
 
-
 			public void OpcionElegida()
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
+		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	miVentana.resumen.mostrarResumen.addElement(hotelSelecionado.toString());
 
 		    }

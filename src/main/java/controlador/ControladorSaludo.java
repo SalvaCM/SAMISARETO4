@@ -39,28 +39,13 @@ public class ControladorSaludo implements ActionListener{
 				break;
 		}
 	}
-
+	
 	private void todosLosHoteles() {
-		 try {
-			ArrayList<Hotel> hoteles =new ArrayList<Hotel>();	
-			hoteles=miModelo.misFuncionesHotel.leerHoteles();
-			for(int i=0;i<hoteles.size();i++) {
-		//		Object[] hoteles1 = {hoteles.get(i).getNombre(), hoteles.get(i).getUbicacion(),hoteles.get(i).getPrecioNoche()}; 
-		//		miVentana.hotel.tableModel.addRow(hoteles1);
-			}
-			
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} 
-		
-	}	
-	private void todosLosHoteles2() {
 		 try {
 			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
 			for(int i=0;i<miModelo.listaHoteles.size();i++) {
-		//		Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getPrecioNoche()}; 
-		//		miVentana.hotel.tableModel.addRow(hotel);
+				Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+				miVentana.hotel.tableModel.addRow(hotel);
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

@@ -13,7 +13,7 @@ public class Modelo {
 	public FuncionesDevolucion misFuncionesDevolucion;
 	public FuncionesPago misFuncionesPago;
 	public ArrayList<Hotel> listaHoteles;
-		
+	public Hotel hotel;		
 		
 	/**
 	 * Constructor de la clase
@@ -25,6 +25,7 @@ public class Modelo {
 		this.misFuncionesDevolucion = new FuncionesDevolucion();
 		this.misFuncionesPago = new FuncionesPago();
 		this.listaHoteles  = new ArrayList<Hotel>();
+		this.hotel = new Hotel();
 	}
 	
 	public Controlador getControlador() {

@@ -103,8 +103,10 @@ public class ControladorHotel implements ActionListener {
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	miVentana.resumen.mostrarResumen.addElement(hotelSelecionado.toString());
-
+		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
+		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
+		    	
+		    	//miVentana.resumen.mostrarResumen.addElement(miModelo.lista);
 		    }
 
 }

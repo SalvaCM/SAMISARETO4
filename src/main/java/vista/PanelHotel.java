@@ -39,7 +39,6 @@ public class PanelHotel extends JPanel {
 	public JButton btnBuscar = new JButton("Buscar");
 	public JTable tablaResultados;
 	public DefaultTableModel tableModel;
-	private final JScrollPane scrollPane_1 = new JScrollPane();
 	
 	public JComboBox<String> comboBox = new JComboBox<String>();
 
@@ -72,21 +71,14 @@ public class PanelHotel extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		scrollPane_1.setBounds(197, 191, 635, 68);
 		
-		add(scrollPane_1);
-		list_hoteles=new JList<String>(modelo);
-		scrollPane_1.setColumnHeaderView(list_hoteles);
-		list_hoteles.setModel(modelo);
-		list_hoteles.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		btnBuscar.setBounds(505, 149, 89, 23);
-		
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(197, 271, 635, 235);
+		scrollPane.setBounds(197, 183, 635, 323);
 		add(scrollPane);
 		
 		String col[] = {"Nombre","Ubicacion","Precio"};

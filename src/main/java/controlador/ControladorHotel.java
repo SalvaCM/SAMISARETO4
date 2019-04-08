@@ -50,7 +50,7 @@ public class ControladorHotel implements ActionListener {
 					break;
 					    
 
-					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.resumen); OpcionElegida();					
+					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); OpcionElegida(); Estancias();					
 					break;
 						
 
@@ -63,18 +63,37 @@ public class ControladorHotel implements ActionListener {
 
 			}
 				
-			private void verEstancias() {
+			public void verEstancias() {
 				try {
 					miVentana.hotel.textArea.setText("");
 					estancias = miModelo.misFuncionesHotel.leerEstancias(miVentana.hotel.tablaResultados.getSelectedRow()+1);
 					for(int i=0;i<estancias.size();i++) {
-						miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"€"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
+						miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"ï¿½"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
 					}
 				}catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
+			}
+			
+			public void Estancias() {
+			
+				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.estanciasHotel.tableModel.removeRow(i-1);
+				}
+				try {
+					estancias = miModelo.misFuncionesHotel.leerEstancias(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()+1);
+					for(int i=0;i<estancias.size();i++) {
+						Object[] habitacion = {estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
+						miVentana.estanciasHotel.tableModel.addRow(habitacion);
+					}
+					
+				} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				}
 			}
 
 			public void filtrarPorUbicacion() {

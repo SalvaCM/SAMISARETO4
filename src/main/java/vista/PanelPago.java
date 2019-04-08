@@ -64,14 +64,13 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(-207, 72, 1065, 48);
 		add(lblNewJgoodiesLabel);
-		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 18));
 		
+		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 18));
 		btnCancelar.setName("btnCancelarPago");
-
 		btnCancelar.setBounds(58, 528, 123, 43);
 		add(btnCancelar);
-		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 18));
 		
+		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 18));
 		btnSiguiente.setName("btnSiguientePago");
 		btnSiguiente.setBounds(637, 528, 123, 43);
 		add(btnSiguiente);

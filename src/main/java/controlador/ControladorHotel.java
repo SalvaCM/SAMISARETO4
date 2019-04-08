@@ -38,17 +38,17 @@ public class ControladorHotel implements ActionListener {
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
-			public ArrayList<estanciaHotel> estancias;
+			
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				switch (((JButton) e.getSource()).getName()) {
 				
-					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo); 					
+					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);limpiarTabla();					
 					break;
 
-					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); OpcionElegida(); Estancias();					
+					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();			
 					break;
 						
 
@@ -61,19 +61,15 @@ public class ControladorHotel implements ActionListener {
 				
 			
 			public void Estancias() {
-				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
-				for (int i = rows; i > 0; i--) {
-					miVentana.estanciasHotel.tableModel.removeRow(i-1);
-				}
-				
 				try {
-					int codigo = miVentana.hotel.tablaResultados.getSelectedRow()+1;
+					miModelo.hotel= miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
+					ArrayList<estanciaHotel> estancias = new ArrayList<estanciaHotel>();
+					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
 					estancias = miModelo.misFuncionesHotel.leerEstancias(codigo);
+					System.out.println("Estancias"+estancias.toString());
 					for(int i=0;i<estancias.size();i++) {
-						System.out.println("jfthjfu");
-						Object[] habitacion = {estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
+						Object[] habitacion = {estancias.get(i).getCodAlojamiento(),estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
-						
 					}
 					
 				} catch (SQLException e1) {
@@ -81,33 +77,43 @@ public class ControladorHotel implements ActionListener {
 				e1.printStackTrace();
 				}
 			}
+	
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
-				int rows=miVentana.hotel.tableModel.getRowCount();
-				for (int i = rows; i > 0; i--) {
-					miVentana.hotel.tableModel.removeRow(i-1);
-				}
+				limpiarTabla();
 				try {
 					miModelo.listaHoteles= miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 					for(int i=0;i<miModelo.listaHoteles.size();i++) {
 						
-						Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+						Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 						miVentana.hotel.tableModel.addRow(hotel);
 					}
 				} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();}
 			}
-
+/*
 			public void OpcionElegida()
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
+		    	int numero= miVentana.hotel.tablaResultados.getSelectedRow();
+		    	System.out.println("numero"+numero);
 		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
+		    	System.out.println("hotel selecc"+hotelSelecionado.toString());
 		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
-		    	
+		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel()+" "+" ");
+		    
 		    	//miVentana.resumen.mostrarResumen.addElement(miModelo.lista);
-		    }
+		    }*/
+			public void limpiarTabla()
+			{
+				int rows=miVentana.hotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.hotel.tableModel.removeRow(i-1);
+				}	
+			}
+			
 
 }
 

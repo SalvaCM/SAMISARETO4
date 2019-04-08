@@ -16,7 +16,7 @@ public class ControladorPago implements ActionListener {
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	private int[] arrayCambios=null;
-	public double total = 75;
+	public double total;
 	public double pagado = 0;
 	
 	

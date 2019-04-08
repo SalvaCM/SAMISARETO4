@@ -31,16 +31,17 @@ public class ControladorSaludo implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);todosLosHoteles();
+		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);MostrarHoteles();
 				break;
 		}
 	}
 	
-	private void todosLosHoteles() {
+	private void MostrarHoteles() {
 		 try {
 			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
+			
 			for(int i=0;i<miModelo.listaHoteles.size();i++) {
-				Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+				Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 				miVentana.hotel.tableModel.addRow(hotel);
 				}
 			} catch (SQLException e1) {

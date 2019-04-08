@@ -53,7 +53,7 @@ public class ControladorResumen implements ActionListener {
 											miVentana.pago.total.setText(formatoMoneda.format(75));
 						break;
 						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel); resetear();
+				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();
 						
 				break;
 		

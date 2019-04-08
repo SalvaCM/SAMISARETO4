@@ -25,6 +25,7 @@ import java.awt.Rectangle;
 import javax.swing.border.MatteBorder;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Cursor;
 
 public class PanelHotel extends JPanel {
 
@@ -79,9 +80,13 @@ public class PanelHotel extends JPanel {
 		scrollPane.setBounds(197, 183, 635, 345);
 		add(scrollPane);
 		
-		String col[] = {"Nombre","Ubicacion","Estrellas"};
+		String col[] = {"codhotel","Nombre","Ubicacion","Estrellas"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
+		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		tablaResultados.getColumnModel().getColumn(0).setMaxWidth(0);
+		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
+		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
@@ -89,6 +94,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setAutoCreateRowSorter(true);
 		comboBox.setBounds(305, 149, 138, 22);
 		
+		// añadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
 		comboBox.setBounds(355, 149, 138, 22);
 

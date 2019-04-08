@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
@@ -48,9 +49,14 @@ public class PanelEstanciasHotel extends JPanel {
 		btnSiguiente.setName("btnSiguienteEstancias");
 		add(btnSiguiente);
 		
-		String col[] = {"Categoria","Existencias","Precio"};
+		String col[] = {"cod","Categoria","Existencias","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaHabitaciones = new JTable(tableModel);
+		tablaHabitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		tablaHabitaciones.getColumnModel().getColumn(0).setMaxWidth(0);
+		tablaHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
+		tablaHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
+		tablaHabitaciones.getColumnModel().getColumn(0).setResizable(false);
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

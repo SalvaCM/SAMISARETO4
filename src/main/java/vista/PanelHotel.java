@@ -57,12 +57,12 @@ public class PanelHotel extends JPanel {
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
-		btnCancelar.setBounds(48, 573, 125, 48);
+		btnCancelar.setBounds(197, 573, 125, 48);
 		
 		btnCancelar.setName("btnCancelarHotel");
 
 		add(btnCancelar);
-		btnSiguiente.setBounds(918, 573, 125, 48);
+		btnSiguiente.setBounds(707, 573, 125, 48);
 		
 		btnSiguiente.setName("btnSiguienteHotel");
 	

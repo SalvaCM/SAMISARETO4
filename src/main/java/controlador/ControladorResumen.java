@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import javax.swing.JButton;
 
@@ -12,6 +14,8 @@ public class ControladorResumen implements ActionListener {
 			
 			private Ventana miVentana;
 			private Modelo miModelo;
+			
+			NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 			
 			FuncionesControlador funciones = new FuncionesControlador();
 			
@@ -44,7 +48,9 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago); 
+				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
+											miVentana.pago.pagado.setText(formatoMoneda.format(0));
+											miVentana.pago.total.setText(formatoMoneda.format(75));
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.hotel); resetear();

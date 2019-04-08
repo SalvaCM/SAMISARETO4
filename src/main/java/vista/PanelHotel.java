@@ -30,8 +30,6 @@ public class PanelHotel extends JPanel {
 
 
 	private static final long serialVersionUID = 2L;
-	public JTextArea textArea = new JTextArea();
-	public JButton btnVer = new JButton("Estancias");
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public JList<String> list_hoteles=new JList<String>(); 
@@ -78,7 +76,7 @@ public class PanelHotel extends JPanel {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(197, 183, 635, 323);
+		scrollPane.setBounds(197, 183, 635, 345);
 		add(scrollPane);
 		
 		String col[] = {"Nombre","Ubicacion","Estrellas"};
@@ -95,13 +93,6 @@ public class PanelHotel extends JPanel {
 		comboBox.setBounds(355, 149, 138, 22);
 
 		add(comboBox);
-		textArea.setBounds(316, 517, 516, 81);
-		add(textArea);
-		btnVer.setBounds(197, 518, 107, 23);
-		
-		
-		btnVer.setName("ver");
-		add(btnVer);
 			
 
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);

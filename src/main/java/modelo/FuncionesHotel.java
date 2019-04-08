@@ -88,7 +88,7 @@ public class FuncionesHotel {
 			categoria = rs.getString("categoria");
 			precio = rs.getFloat("tarifa");
 			existencia=rs.getInt("existencias");
-			 estancia=new estanciaHotel();
+			estancia=new estanciaHotel();
 			estancia.setCategoria(categoria);
 			estancia.setExistencias(existencia);
 			estancia.setTarifa(precio);

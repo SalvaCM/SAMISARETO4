@@ -87,7 +87,7 @@ public class FuncionesHotel {
 			categoria = rs.getString("categoria");
 			precio = rs.getFloat("tarifa");
 			existencia=rs.getInt("existencias");
-			 estancia=new estanciaHotel();
+			estancia=new estanciaHotel();
 			estancia.setCategoria(categoria);
 			estancia.setExistencias(existencia);
 			estancia.setTarifa(precio);
@@ -95,8 +95,7 @@ public class FuncionesHotel {
 		}
 		return estancias;
 	}
-	
-	////////////////
+
 	
 	public ArrayList<Hotel> leerHoteles2(ArrayList<Hotel> listaHoteles) throws SQLException{ 
     	//Declaracion e incializacion de variables

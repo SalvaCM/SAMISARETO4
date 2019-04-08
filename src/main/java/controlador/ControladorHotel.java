@@ -30,7 +30,6 @@ public class ControladorHotel implements ActionListener {
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
-				miVentana.hotel.btnVer.addActionListener(this);
 				miVentana.hotel.btnCancelar.addActionListener(this);
 		
 				
@@ -48,7 +47,6 @@ public class ControladorHotel implements ActionListener {
 				
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo); 					
 					break;
-					    
 
 					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); OpcionElegida(); Estancias();					
 					break;
@@ -57,37 +55,25 @@ public class ControladorHotel implements ActionListener {
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles);
 					break;
 					
-					case "ver": verEstancias();
-					break;
 				}
 
 			}
 				
-			public void verEstancias() {
-				try {
-					miVentana.hotel.textArea.setText("");
-					estancias = miModelo.misFuncionesHotel.leerEstancias(miVentana.hotel.tablaResultados.getSelectedRow()+1);
-					for(int i=0;i<estancias.size();i++) {
-						miVentana.hotel.textArea.append("Categoria :"+estancias.get(i).getCategoria()+"    Precio :"+estancias.get(i).getTarifa()+"�"+"     Corre, solo quedan "+estancias.get(i).getExistencias()+"   disponibles!"+"\n");
-					}
-				}catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-			}
 			
 			public void Estancias() {
-			
 				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
 				for (int i = rows; i > 0; i--) {
 					miVentana.estanciasHotel.tableModel.removeRow(i-1);
 				}
+				
 				try {
-					estancias = miModelo.misFuncionesHotel.leerEstancias(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()+1);
+					int codigo = miVentana.hotel.tablaResultados.getSelectedRow()+1;
+					estancias = miModelo.misFuncionesHotel.leerEstancias(codigo);
 					for(int i=0;i<estancias.size();i++) {
+						System.out.println("jfthjfu");
 						Object[] habitacion = {estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
+						
 					}
 					
 				} catch (SQLException e1) {

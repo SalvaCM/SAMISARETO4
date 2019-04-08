@@ -15,6 +15,7 @@ public class ControladorHotel implements ActionListener {
 						
 			private Ventana miVentana;
 			private Modelo miModelo;
+	
 			
 			FuncionesControlador funciones = new FuncionesControlador();
 			
@@ -35,6 +36,14 @@ public class ControladorHotel implements ActionListener {
 				
 			}
 			
+			public void resetear() {
+				int rows=miVentana.hotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.hotel.tableModel.removeRow(i-1);
+				}
+				
+			}
+			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
@@ -45,10 +54,11 @@ public class ControladorHotel implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 				
-					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo); 					
+					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo); resetear();			
 					break;
 
-					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); OpcionElegida(); Estancias();					
+					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); OpcionElegida(); Estancias();
+					
 					break;
 						
 
@@ -70,7 +80,6 @@ public class ControladorHotel implements ActionListener {
 					int codigo = miVentana.hotel.tablaResultados.getSelectedRow()+1;
 					estancias = miModelo.misFuncionesHotel.leerEstancias(codigo);
 					for(int i=0;i<estancias.size();i++) {
-						System.out.println("jfthjfu");
 						Object[] habitacion = {estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 						
@@ -102,8 +111,6 @@ public class ControladorHotel implements ActionListener {
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
 		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
 		    	
 		    	//miVentana.resumen.mostrarResumen.addElement(miModelo.lista);

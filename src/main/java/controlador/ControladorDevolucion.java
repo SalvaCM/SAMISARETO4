@@ -9,10 +9,11 @@ import vista.Ventana;
 public class ControladorDevolucion implements ActionListener {
 			
 			private Ventana miVentana;
-			private Modelo miModelo;
+			private Controlador miControlador;
+
 			
 			FuncionesControlador funciones = new FuncionesControlador();
-			ControladorDespedida controladorDespedida = new ControladorDespedida(miVentana, miModelo);
+
 
 			
 			/**
@@ -43,7 +44,8 @@ public class ControladorDevolucion implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 						
-				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida); controladorDespedida.PasarDeDespedidaASaludo();
+				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida); 
+			//	miControlador.miControladorDespedida.PasarDeDespedidaASaludo();
 				resetear();
 				break;
 		

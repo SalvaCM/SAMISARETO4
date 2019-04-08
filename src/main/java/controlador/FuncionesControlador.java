@@ -1,11 +1,8 @@
 package controlador;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
-/**
- * Clase con controla el cambio entre paneles
- *
- */
 public class FuncionesControlador {
 	
     /**
@@ -16,6 +13,24 @@ public class FuncionesControlador {
 	public void cambiarDePanel(JPanel ocultar, JPanel mostrar) { 
 		ocultar.setVisible(false);
 		mostrar.setVisible(true); 
+	}
+	
+	/**
+	 * Metodo que activa el boton que se desee de las ventanas
+	 * @param boton a activar
+	 */
+	public void actBotones(JButton boton) {   
+			boton.setEnabled(true);
+		 
+	}
+	
+	/**
+	 * Metodo que desactiva el boton que se desee de las ventanas
+	 * @param boton a desactivar
+	 */
+	public void desBotones(JButton boton) {   
+		boton.setEnabled(false);
+	
 	}
 	
 	

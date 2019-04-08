@@ -32,11 +32,10 @@ public class ControladorSaludo implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 			    
 		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);todosLosHoteles();
-				break;
 		}
 	}
 	
-	private void todosLosHoteles() {
+	public void todosLosHoteles() {
 		 try {
 			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
 			for(int i=0;i<miModelo.listaHoteles.size();i++) {

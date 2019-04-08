@@ -90,18 +90,20 @@ public class ControladorPago implements ActionListener {
 			
 				default: 
 				pagado = miModelo.misFuncionesPago.sumarDineroPago(((JButton) e.getSource()).getName(), pagado);
+				
 		}
 		
 		if (pagado >= total) {
 			miVentana.pago.restante.setText(formatoMoneda.format(0));
 			miVentana.pago.pagado.setText(formatoMoneda.format(pagado));
 			desBotones(miVentana.pago.arrayBtn);
-			actBotones(miVentana.pago.btnSiguiente);
-			desBotones(miVentana.pago.btnCancelar);
+			funciones.actBotones(miVentana.pago.btnSiguiente);
+			funciones.desBotones(miVentana.pago.btnCancelar);
 			
 		} else {
 			miVentana.pago.restante.setText(formatoMoneda.format(total - pagado));
 			miVentana.pago.pagado.setText(formatoMoneda.format(pagado));
+			
 		}
 		
 	}
@@ -126,23 +128,7 @@ public class ControladorPago implements ActionListener {
 		}
 	}
 	
-	/**
-	 * Metodo que activa el boton que se desee de las ventanas
-	 * @param boton a activar
-	 */
-	public void actBotones(JButton boton) {   
-			boton.setEnabled(true);
-		 
-	}
 	
-	/**
-	 * Metodo que desactiva el boton que se desee de las ventanas
-	 * @param boton a desactivar
-	 */
-	public void desBotones(JButton boton) {   
-		boton.setEnabled(false);
-	
-	}
 	
 	/**
 	 * Metodo para mostrar los cambios en la ventana de devolucion 

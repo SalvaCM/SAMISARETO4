@@ -2,14 +2,12 @@ package vista;
 
 import javax.swing.JPanel;
 import java.awt.Color;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import java.awt.SystemColor;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Dimension;
 

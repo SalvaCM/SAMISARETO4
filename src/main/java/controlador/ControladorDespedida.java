@@ -2,23 +2,23 @@ package controlador;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-import modelo.Modelo;
 import vista.Ventana;
 
-public class ControladorDespedida {
 
-private Ventana miVentana;
+/**
+ * Clase que controla el panel de despedida de la aplicacion
+ *
+ */
+public class ControladorDespedida {
+	private Ventana miVentana;
 	
+    
 	/**
 	 * Constructor de la clase
-	 * @param miVentana instancia de la ventna principal
-	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+	 * @param miVentana instancia de la ventana principal del programa
 	 */
-	public ControladorDespedida(Ventana miVentana, Modelo miModelo) {
-		
-		this.miVentana = miVentana;
-	
+	public ControladorDespedida(Ventana miVentana) {
+		this.miVentana=miVentana;
 	}
 	
 	/**

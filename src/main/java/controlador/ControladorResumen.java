@@ -62,6 +62,7 @@ public class ControladorResumen implements ActionListener {
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
 											miVentana.pago.total.setText(formatoMoneda.format(miModelo.reserva.getTarifa()));
 											funciones.desBotones(miVentana.pago.btnSiguiente);
+											miVentana.pago.btnSiguiente.setEnabled(false);
 											miControlador.miControladorPago.total = miModelo.reserva.getTarifa();
 						break;
 						

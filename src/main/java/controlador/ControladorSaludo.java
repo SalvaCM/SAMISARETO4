@@ -3,6 +3,8 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import modelo.Modelo;
 import vista.Ventana;
@@ -24,7 +26,8 @@ public class ControladorSaludo implements ActionListener{
 	}
 	
 	/**
-	 * Metodo para las llamadas a los botones de la ventana resumen
+	 * Metodo para las llamadas a los botones de la 
+	 * ventana resumen
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -33,6 +36,17 @@ public class ControladorSaludo implements ActionListener{
 			    
 
 		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);MostrarHoteles();
+		try {
+			ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
+			miVentana.hotel.comboBox.removeAllItems();
+			for(int i=0;i<ubicaciones.size();i++) {
+				//Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+				miVentana.hotel.comboBox.addItem(ubicaciones.get(i));
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
 				break;
 		}
 	}

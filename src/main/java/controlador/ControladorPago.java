@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import ficheros.ManejadorFicherosTexto;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -85,6 +87,8 @@ public class ControladorPago implements ActionListener {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
 			    mostrarCambios(arrayCambios);
+			   ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
+				fichero.archivoTexto(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString()+"\n"+miVentana.estanciasHotel.tableModel.getDataVector().elementAt(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).toString());
 				resetear();
 				break;
 			
@@ -97,6 +101,7 @@ public class ControladorPago implements ActionListener {
 			miVentana.pago.restante.setText(formatoMoneda.format(0));
 			miVentana.pago.pagado.setText(formatoMoneda.format(pagado));
 			desBotones(miVentana.pago.arrayBtn);
+			miVentana.pago.btnSiguiente.setEnabled(true);
 			funciones.actBotones(miVentana.pago.btnSiguiente);
 			funciones.desBotones(miVentana.pago.btnCancelar);
 			

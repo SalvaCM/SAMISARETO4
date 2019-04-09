@@ -88,11 +88,11 @@ public class FuncionesHotel {
 		int codHabitacion;
 		ArrayList<estanciaHotel> estancias =new ArrayList<estanciaHotel>();
 		
-		String query="select cod_habitacion,categoria,existencias,tarifa from estanciaHotel where cod_hotel='"+codhotel+"';";
+		String query="select cod_aloj,categoria,existencias,tarifa from estanciaHotel where cod_hotel='"+codhotel+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("cod_habitacion");
+			codHabitacion = rs.getInt("cod_aloj");
 			categoria = rs.getString("categoria");
 			precio = rs.getFloat("tarifa");
 			existencia=rs.getInt("existencias");
@@ -112,11 +112,11 @@ public class FuncionesHotel {
 		int codHabitacion;
 		
 		
-		String query="select cod_habitacion,categoria,existencias,tarifa from estanciaHotel where cod_habitacion='"+cod_habitacion+"';";
+		String query="select cod_aloj,categoria,existencias,tarifa from estanciaHotel where cod_aloj='"+cod_habitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("cod_habitacion");
+			codHabitacion = rs.getInt("cod_aloj");
 			categoria = rs.getString("categoria");
 			precio = rs.getFloat("tarifa");
 			existencia=rs.getInt("existencias");
@@ -126,6 +126,26 @@ public class FuncionesHotel {
 			estancia.setTarifa(precio);
 		}
 		return estancia;
+	}
+	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
+    	//Declaracion e incializacion de variables
+		
+		String nombre="";
+		String ubicacion="";
+		int nEstrellas=0;
+		ArrayList<String>ubicaciones =new ArrayList<String>();
+		String query="select distinct  ubicacion from hotel;";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		while(rs.next()) {
+				
+				
+				ubicacion = rs.getString("ubicacion");
+				
+				ubicaciones.add(ubicacion);
+			}
+			
+		return ubicaciones;
+
 	}
 
 

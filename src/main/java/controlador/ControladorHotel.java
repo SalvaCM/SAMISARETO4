@@ -74,12 +74,10 @@ public class ControladorHotel implements ActionListener {
 			public void Estancias() {
 				try {
 					miModelo.hotel= miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
-					ArrayList<estanciaHotel> estancias = new ArrayList<estanciaHotel>();
 					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
-					estancias = miModelo.misFuncionesHotel.leerEstancias(codigo);
-					System.out.println("Estancias"+estancias.toString());
-					for(int i=0;i<estancias.size();i++) {
-						Object[] habitacion = {estancias.get(i).getCodAlojamiento(),estancias.get(i).getCategoria(), estancias.get(i).getExistencias(),estancias.get(i).getTarifa()};
+					miModelo.hotel.setEstancias(miModelo.misFuncionesHotel.leerEstancias(codigo));
+					for(int i=0;i<miModelo.hotel.estancias.size();i++) {
+						Object[] habitacion = {miModelo.hotel.estancias.get(i).getCodAlojamiento(),miModelo.hotel.estancias.get(i).getCategoria(), miModelo.hotel.estancias.get(i).getExistencias(),miModelo.hotel.estancias.get(i).getTarifa()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 					}
 					
@@ -107,14 +105,12 @@ public class ControladorHotel implements ActionListener {
 
 		    {
 		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
-<<<<<<< HEAD
 		    	int numero= miVentana.hotel.tablaResultados.getSelectedRow();
 		    	System.out.println("numero"+numero);
 		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
 		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
 		    	System.out.println("hotel selecc"+hotelSelecionado.toString());
-=======
->>>>>>> 81c5e95c13f8114e1379706e71d3a2b2969caa9c
+
 		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
 		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel()+" "+" ");
 		    

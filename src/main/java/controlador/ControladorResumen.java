@@ -13,6 +13,8 @@ import vista.Ventana;
 public class ControladorResumen implements ActionListener {
 			
 			private Ventana miVentana;
+			private Modelo miModelo;
+			private Controlador miControlador;
 		
 			
 			NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
@@ -23,10 +25,14 @@ public class ControladorResumen implements ActionListener {
 			 * Constructor de la clase
 			 * @param miVentana instancia de la ventna principal
 			 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+			 * @param miControlador 
 			 */
-			public ControladorResumen(Ventana miVentana, Modelo miModelo) {
+			public ControladorResumen(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 				
 				this.miVentana = miVentana;
+				this.miModelo = miModelo;
+				this.miControlador=miControlador;
+		
 			
 				miVentana.resumen.btnSiguiente.addActionListener(this);
 				miVentana.resumen.btnCancelar.addActionListener(this);
@@ -50,9 +56,9 @@ public class ControladorResumen implements ActionListener {
 					    
 				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(75));
+											miVentana.pago.total.setText(formatoMoneda.format(miModelo.reserva.getTarifa()));
 											funciones.desBotones(miVentana.pago.btnSiguiente);
-											
+											miControlador.miControladorPago.total = miModelo.reserva.getTarifa();
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();

@@ -15,7 +15,6 @@ public class ControladorEstanciasHotel  implements ActionListener{
 
 	private Ventana miVentana;
 	private Modelo miModelo;
-	private ControladorPago controladorPago;
 	
 	FuncionesControlador funciones = new FuncionesControlador();
 	
@@ -60,16 +59,19 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			} 
 	}
 	private void HabitacionElegida() {
-		int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
+		//int codigoHotel = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
+		int codigoHabitacion = miModelo.hotel.estancias.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodAlojamiento();
+		System.out.println(codigoHabitacion);
 		try {
-			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigo);
+			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
+			System.out.println(miModelo.reserva.getTarifa()+miModelo.reserva.getCategoria());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		miVentana.resumen.mostrarResumen.addElement(miModelo.hotel.toString());
 		miVentana.resumen.mostrarResumen.addElement("Categoria - "+miModelo.reserva.getCategoria()+" Tarifa - "+miModelo.reserva.getTarifa()+"Habitacion - "+miModelo.reserva.getCodAlojamiento());
-		controladorPago.total=miModelo.reserva.getTarifa();
+
 	}
 	public void limpiarTablas()
 	{

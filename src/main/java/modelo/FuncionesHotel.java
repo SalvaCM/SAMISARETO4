@@ -110,9 +110,9 @@ public class FuncionesHotel {
 		float precio=0;
 		int existencia;
 		int codHabitacion;
-
 		
-		String query="select cod_habitacion,categoria,existencias,tarifa from estanciaHotel where cod_hotel='"+cod_habitacion+"';";
+		
+		String query="select cod_habitacion,categoria,existencias,tarifa from estanciaHotel where cod_habitacion='"+cod_habitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {

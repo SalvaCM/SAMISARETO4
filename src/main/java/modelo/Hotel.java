@@ -1,11 +1,13 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class Hotel {
 	private int cod_hotel;
 	private int nEstrellas;
 	private String ubicacion;
 	private String nombre;
-	private Habitacion habitacion;
+	public ArrayList<estanciaHotel> estancias;
 	
 	
 	public Hotel() {
@@ -52,14 +54,15 @@ public class Hotel {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	public Habitacion getHabitacion() {
-		return habitacion;
-	}
-	
-	public void setHabitacion(Habitacion habitacion) {
-		this.habitacion = habitacion;
-	}
 
+public ArrayList<estanciaHotel> getEstancias() {
+	return estancias;
+}
+
+public void setEstancias(ArrayList<estanciaHotel> estancias) {
+	this.estancias = estancias;
+}
+
+	
 	
 }

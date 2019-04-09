@@ -47,11 +47,12 @@ public class Hotel {
 @Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("[nombre=");
+		builder.append("Nombre: ");
 		builder.append(nombre);
-		builder.append(", ubicacion=");
+		builder.append("Ubicacion: ");
 		builder.append(ubicacion);
-		builder.append("]");
+		builder.append("Nº Estrellas: ");
+		builder.append(nEstrellas);
 		return builder.toString();
 	}
 

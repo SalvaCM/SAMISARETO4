@@ -44,6 +44,10 @@ public class ControladorResumen implements ActionListener {
 			 */
 			public void resetear() {
 				miVentana.resumen.mostrarResumen.clear();
+				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
+				for (int i = rows; i > 0; i--) {
+					miVentana.estanciasHotel.tableModel.removeRow(i-1);
+				}	
 			}
 			
 			/**
@@ -61,7 +65,7 @@ public class ControladorResumen implements ActionListener {
 											miControlador.miControladorPago.total = miModelo.reserva.getTarifa();
 						break;
 						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();
+				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();  miControlador.miControladorHotel.Estancias();
 						
 				break;
 		

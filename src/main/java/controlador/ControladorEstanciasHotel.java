@@ -69,8 +69,13 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		miVentana.resumen.mostrarResumen.addElement(miModelo.hotel.toString());
-		miVentana.resumen.mostrarResumen.addElement("Categoria - "+miModelo.reserva.getCategoria()+" Tarifa - "+miModelo.reserva.getTarifa()+"Habitacion - "+miModelo.reserva.getCodAlojamiento());
+		miVentana.resumen.mostrarResumen.addElement("Nombre del Hotel: " + miModelo.hotel.getNombre());
+		miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotel.getUbicacion());
+		miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotel.getnEstrellas());
+		
+		miVentana.resumen.mostrarResumen.addElement("Categoria: "+miModelo.reserva.getCategoria());
+		miVentana.resumen.mostrarResumen.addElement("Tarifa: "+miModelo.reserva.getTarifa());
+		miVentana.resumen.mostrarResumen.addElement("Habitacion: "+miModelo.reserva.getCodAlojamiento());
 
 	}
 	public void limpiarTablas()

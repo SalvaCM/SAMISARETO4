@@ -44,15 +44,18 @@ public class Hotel {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
 @Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Nombre: ");
+
+		builder.append("Hotel : ");
 		builder.append(nombre);
-		builder.append("Ubicacion: ");
+		builder.append("Ubicacion : ");
 		builder.append(ubicacion);
-		builder.append("Nº Estrellas: ");
+		builder.append("Estrellas : ");
 		builder.append(nEstrellas);
+		builder.append("");
 		return builder.toString();
 	}
 

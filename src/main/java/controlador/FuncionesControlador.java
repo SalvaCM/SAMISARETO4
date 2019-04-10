@@ -1,12 +1,17 @@
 package controlador;
 
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+
 public class FuncionesControlador {
+	
+
+
 	
     /**
      * Metodo para cambiar de paneles ,es decir, muestra la que desee y oculta en la que estes
@@ -43,6 +48,7 @@ public class FuncionesControlador {
 		}	
 	}
 	
+
 	
 
 	

@@ -87,8 +87,10 @@ public class ControladorPago implements ActionListener {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
 			    mostrarCambios(arrayCambios);
-			   ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
+			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
 				fichero.archivoTexto(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString()+"\n"+miVentana.estanciasHotel.tableModel.getDataVector().elementAt(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).toString());
+		
+				
 				resetear();
 				break;
 			

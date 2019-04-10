@@ -114,27 +114,9 @@ public class ControladorHotel implements ActionListener {
 						miVentana.hotel.tableModel.addRow(hotel);
 					}
 				} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();}
+					e1.printStackTrace();}
 			}
-/*
-			public void OpcionElegida()
 
-		    {
-		    	Object hotelSelecionado = miVentana.hotel.tableModel.getDataVector().elementAt(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	int numero= miVentana.hotel.tablaResultados.getSelectedRow();
-		    	System.out.println("numero"+numero);
-		    	System.out.println(miVentana.hotel.tablaResultados.getSelectedRow());
-		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
-		    	System.out.println("hotel selecc"+hotelSelecionado.toString());
-
-		    	miVentana.resumen.mostrarResumen.addElement(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).toString());
-		    	System.out.println(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel()+" "+" ");
-		    
-		    	//miVentana.resumen.mostrarResumen.addElement(miModelo.lista);
-		    }*/
-			
-			
 
 }
 

@@ -36,7 +36,10 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 		
-		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);limpiarTablas();todosLosHoteles();
+		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
+		funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+		todosLosHoteles();
 		break;
 		case "btnSiguienteEstancias": 
 		

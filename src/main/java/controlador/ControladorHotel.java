@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import modelo.Hotel;
 import modelo.Modelo;
 import vista.Ventana;
@@ -56,7 +58,8 @@ public class ControladorHotel implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 				
 
-					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);limpiarTabla();					
+					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);
+					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);					
 					break;
 
 					case "btnSiguienteHotel": 	
@@ -104,7 +107,8 @@ public class ControladorHotel implements ActionListener {
 			}
 	
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
-				limpiarTabla();
+				
+				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 				try {
 					miModelo.listaHoteles= miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
 					for(int i=0;i<miModelo.listaHoteles.size();i++) {
@@ -132,13 +136,7 @@ public class ControladorHotel implements ActionListener {
 		    
 		    	//miVentana.resumen.mostrarResumen.addElement(miModelo.lista);
 		    }*/
-			public void limpiarTabla()
-			{
-				int rows=miVentana.hotel.tableModel.getRowCount();
-				for (int i = rows; i > 0; i--) {
-					miVentana.hotel.tableModel.removeRow(i-1);
-				}	
-			}
+			
 			
 
 }

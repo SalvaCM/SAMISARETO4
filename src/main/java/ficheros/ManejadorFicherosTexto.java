@@ -38,7 +38,9 @@ public class ManejadorFicherosTexto {
     public void archivoTexto(String reserva) {
     	int n=(int) (Math.random() * 1000) + 1;
     try {
-        String ruta = "C:\\worspace\\reserva"+n+".txt";
+
+        String ruta = "C:\\SAMISAreservas\\reserva"+n+".txt";
+ 
         //String[] contenido =  {"HOLA","SARA"};
         File file = new File(ruta);
         // Si el archivo no existe es creado
@@ -56,18 +58,5 @@ public class ManejadorFicherosTexto {
         e.printStackTrace();
     }
     }
-/*--------------------------------------------------------------------------------------------------------------------------------*/    
-    /* 
-    public static void main(String[] args) {
-	ManejadorFicheros fich = new ManejadorFicheros();
-	String[] pruebaEscribir = new String[2];
-	pruebaEscribir[0] = "Linea 1";
-	pruebaEscribir[1] = "Linea 2";
-	try {
-	    fich.escribirFichero("prueba.txt", pruebaEscribir);
-	    fich.leerFichero("prueba.txt");
-	} catch (IOException e) {
-	    e.printStackTrace();
-	}
-    }*/
+
 }

@@ -20,8 +20,7 @@ public class FuncionesControlador {
 	 * @param boton a activar
 	 */
 	public void actBotones(JButton boton) {   
-			boton.setEnabled(true);
-		 
+			boton.setEnabled(true);	 
 	}
 	
 	/**

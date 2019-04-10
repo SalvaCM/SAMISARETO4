@@ -35,22 +35,22 @@ private static final long serialVersionUID = 3L;
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(-200, 38, 1065, 48);
+		lblNewJgoodiesLabel.setBounds(10, 35, 1060, 48);
 		add(lblNewJgoodiesLabel);
 		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		btnCancelar.setName("btnCancelarResumen");
-		btnCancelar.setBounds(91, 527, 151, 48);
+		btnCancelar.setBounds(60, 556, 151, 48);
 		add(btnCancelar);
 		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		btnSiguiente.setName("btnSiguienteResumen");
-		btnSiguiente.setBounds(575, 527, 156, 48);
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();
 		resumen = new JList<String>(mostrarResumen);
-		resumen.setBounds(91, 116, 571, 382);
+		resumen.setBounds(224, 104, 632, 419);
 		add(resumen);
 		
 		

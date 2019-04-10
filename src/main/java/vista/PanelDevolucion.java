@@ -42,13 +42,13 @@ public class PanelDevolucion extends JPanel {
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.PLAIN, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(-123, 73, 1065, 48);
+		lblNewJgoodiesLabel.setBounds(10, 68, 1065, 48);
 		add(lblNewJgoodiesLabel); 
 		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 16));
 		
 		
 		btnSiguiente.setName("btnSiguienteDevolucion");	
-		btnSiguiente.setBounds(328, 435, 158, 48);
+		btnSiguiente.setBounds(461, 546, 158, 48);
 		add(btnSiguiente);
 		
 		cambios=new DefaultListModel<String>();
@@ -56,7 +56,7 @@ public class PanelDevolucion extends JPanel {
 		devolucion.setBorder(new BevelBorder(BevelBorder.LOWERED, Color.GRAY, Color.GRAY, Color.GRAY, Color.GRAY));
 		devolucion.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		devolucion.setBackground(new Color(255, 255, 255));
-		devolucion.setBounds(181, 160, 481, 264);
+		devolucion.setBounds(217, 155, 657, 360);
 		add(devolucion);
 		
 

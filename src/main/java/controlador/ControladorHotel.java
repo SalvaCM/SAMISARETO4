@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+
 import modelo.Hotel;
 import modelo.Modelo;
-import modelo.estanciaHotel;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
@@ -58,13 +59,27 @@ public class ControladorHotel implements ActionListener {
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);limpiarTabla();					
 					break;
 
-					case "btnSiguienteHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();			
+					case "btnSiguienteHotel": 	
+					
+					if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
+					{
+						JOptionPane.showMessageDialog(miVentana, "Seleccione un hotel", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				
+					}else {
+						
+						funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
+					}
 
 					break;
 						
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles);
 					break;
+					
+					
+				
+						
+					
 					
 				}
 
@@ -75,6 +90,7 @@ public class ControladorHotel implements ActionListener {
 				try {
 					miModelo.hotel= miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
 					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
+					
 					miModelo.hotel.setEstancias(miModelo.misFuncionesHotel.leerEstancias(codigo));
 					for(int i=0;i<miModelo.hotel.estancias.size();i++) {
 						Object[] habitacion = {miModelo.hotel.estancias.get(i).getCodAlojamiento(),miModelo.hotel.estancias.get(i).getCategoria(), miModelo.hotel.estancias.get(i).getExistencias(),miModelo.hotel.estancias.get(i).getTarifa()};
@@ -82,7 +98,7 @@ public class ControladorHotel implements ActionListener {
 					}
 					
 				} catch (SQLException e1) {
-				// TODO Auto-generated catch block
+				System.out.println("seleccione un hotel");
 				e1.printStackTrace();
 				}
 			}

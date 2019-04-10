@@ -51,26 +51,27 @@ public class PanelHotel extends JPanel {
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
-		btnCancelar.setBounds(197, 573, 125, 48);
+		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
+		btnCancelar.setBounds(60, 556, 151, 48);
 		
 		btnCancelar.setName("btnCancelarHotel");
 
 		add(btnCancelar);
-		btnSiguiente.setBounds(707, 573, 125, 48);
+		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		
 		btnSiguiente.setName("btnSiguienteHotel");
 	
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		
-		btnBuscar.setBounds(505, 149, 89, 23);
+		btnBuscar.setBounds(605, 142, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(197, 183, 700, 353);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(197, 183, 635, 345);
 		add(scrollPane);
 		
 		String col[] = {"codhotel","Nombre","Ubicacion","Estrellas"};
@@ -85,11 +86,10 @@ public class PanelHotel extends JPanel {
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tablaResultados.setAutoCreateRowSorter(true);
-		comboBox.setBounds(305, 149, 138, 22);
+		comboBox.setBounds(371, 142, 209, 26);
 		
-		// añadir funcion para buscar provincias en la base de datos
+		// aï¿½adir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
-		comboBox.setBounds(355, 149, 138, 22);
 
 		add(comboBox);
 			

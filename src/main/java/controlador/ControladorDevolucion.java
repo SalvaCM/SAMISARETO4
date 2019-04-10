@@ -9,11 +9,8 @@ import vista.Ventana;
 public class ControladorDevolucion implements ActionListener {
 			
 			private Ventana miVentana;
-			private Controlador miControlador;
-
-			
+		
 			FuncionesControlador funciones = new FuncionesControlador();
-
 
 			
 			/**

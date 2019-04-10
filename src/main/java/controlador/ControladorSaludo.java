@@ -35,13 +35,15 @@ public class ControladorSaludo implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 			    
 
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);MostrarHoteles();
+		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);MostrarHoteles(); 
+		
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
 			miVentana.hotel.comboBox.removeAllItems();
 			for(int i=0;i<ubicaciones.size();i++) {
 				//Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 				miVentana.hotel.comboBox.addItem(ubicaciones.get(i));
+				
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block

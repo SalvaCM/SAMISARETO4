@@ -3,12 +3,10 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import modelo.Modelo;
-import modelo.estanciaHotel;
 import vista.Ventana;
 
 public class ControladorEstanciasHotel  implements ActionListener{
@@ -40,12 +38,22 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		
 		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);limpiarTablas();todosLosHoteles();
 		break;
-		case "btnSiguienteEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen); HabitacionElegida();
+		case "btnSiguienteEstancias": 
+		
+		if(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
+		{
+			JOptionPane.showMessageDialog(miVentana, "Seleccione una estancia", "Atencion!", JOptionPane.WARNING_MESSAGE);
+	
+		}else {
+			
+			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen); HabitacionElegida();
+		}
+		
 		break;
 		
 		}
 	}
-	private void todosLosHoteles() {
+	public void todosLosHoteles() {
 		 try {
 			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
 			
@@ -58,13 +66,11 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				e1.printStackTrace();
 			} 
 	}
-	private void HabitacionElegida() {
-		//int codigoHotel = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
+	public void HabitacionElegida() {
+
 		int codigoHabitacion = miModelo.hotel.estancias.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodAlojamiento();
-		System.out.println(codigoHabitacion);
 		try {
 			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
-			System.out.println(miModelo.reserva.getTarifa()+miModelo.reserva.getCategoria());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

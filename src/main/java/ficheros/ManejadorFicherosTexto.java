@@ -30,7 +30,7 @@ public class ManejadorFicherosTexto {
     
     /**
      * Metodo que escribe en un fichero de texto
-     * @param rutaFichero - La ruta del fichero que se va a escribir. Si no existe el fichero se creará
+     * @param rutaFichero - La ruta del fichero que se va a escribir. Si no existe el fichero se crearï¿½
      * @param lineas - array de String con las lineas a escribir
      * @throws IOException
      */
@@ -38,7 +38,7 @@ public class ManejadorFicherosTexto {
     public void archivoTexto(String reserva) {
     	int n=(int) (Math.random() * 1000) + 1;
     try {
-        String ruta = "C:\\workReto4\\reserva"+n+".txt";
+        String ruta = "C:\\worspace\\reserva"+n+".txt";
         //String[] contenido =  {"HOLA","SARA"};
         File file = new File(ruta);
         // Si el archivo no existe es creado

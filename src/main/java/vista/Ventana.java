@@ -3,6 +3,7 @@ package vista;
 import java.awt.CardLayout;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Dimension;
@@ -31,6 +32,17 @@ public class Ventana extends JFrame {
 	 * Create the frame.
 	 */
 	public Ventana() {
+			
+	        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+	 
+	        addWindowListener(new java.awt.event.WindowAdapter() {
+	            @Override
+	            public void windowClosing(java.awt.event.WindowEvent evt) {
+	                close();
+	            }
+	        });
+	    
+	 
 		setMaximumSize(new Dimension(800, 600)); 
 		
 		setTitle("Gestion de Compra de Alojamientos");
@@ -75,4 +87,11 @@ public class Ventana extends JFrame {
 
 		
 	}
+	
+	  private void close(){
+	        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea realmente salir del sistema?",
+	                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION)
+	            System.exit(0);
+	    }                
+	 
 }

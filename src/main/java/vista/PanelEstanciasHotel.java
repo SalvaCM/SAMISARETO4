@@ -10,9 +10,12 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
+import javax.swing.JLabel;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class PanelEstanciasHotel extends JPanel {
 	
@@ -38,14 +41,23 @@ public class PanelEstanciasHotel extends JPanel {
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
-		btnCancelar.setBounds(80, 528, 123, 43);
 		
-		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 18));
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE UNA ESTANCIA");
+		lblNewJgoodiesLabel.setBounds(10, 59, 1065, 48);
+		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
+		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
+		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		add(lblNewJgoodiesLabel);
+		
+		btnCancelar.setBounds(60, 556, 151, 48);
+		
+		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setName("btnCancelarEstancias");
 		add(btnCancelar);
-		btnSiguiente.setBounds(662, 528, 123, 43);
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		
-		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 18));
+		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnSiguiente.setName("btnSiguienteEstancias");
 		add(btnSiguiente);
 		
@@ -64,7 +76,7 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(79, 92, 706, 412);
+		scrollPane.setBounds(184, 126, 714, 412);
 		add(scrollPane);
 
 	}

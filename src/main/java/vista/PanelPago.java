@@ -60,54 +60,54 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel.setForeground(new Color(70, 130, 180));
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(-207, 72, 1065, 48);
+		lblNewJgoodiesLabel.setBounds(10, 52, 1065, 48);
 		add(lblNewJgoodiesLabel);
 		
-		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 18));
+		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setName("btnCancelarPago");
-		btnCancelar.setBounds(58, 528, 123, 43);
+		btnCancelar.setBounds(60, 556, 151, 48);
 		add(btnCancelar);
 		
-		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 18));
+		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnSiguiente.setName("btnSiguientePago");
-		btnSiguiente.setBounds(637, 528, 123, 43);
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		add(btnSiguiente);
 		
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("TOTAL:");
 		lblNewJgoodiesLabel_1.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_1.setFont(new Font("Aharoni", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_1.setBounds(511, 212, 178, 35);
+		lblNewJgoodiesLabel_1.setBounds(658, 214, 178, 35);
 		add(lblNewJgoodiesLabel_1);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("PAGADO:");
 		lblNewJgoodiesLabel_2.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_2.setFont(new Font("Aharoni", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_2.setBounds(511, 291, 178, 30);
+		lblNewJgoodiesLabel_2.setBounds(658, 321, 178, 30);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("RESTANTE:");
 		lblNewJgoodiesLabel_3.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_3.setFont(new Font("Aharoni", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_3.setBounds(511, 368, 178, 35);
+		lblNewJgoodiesLabel_3.setBounds(658, 435, 209, 35);
 		add(lblNewJgoodiesLabel_3);		
 		
 		
 		restante.setHorizontalAlignment(SwingConstants.RIGHT);
 		restante.setFont(new Font("Tahoma", Font.PLAIN, 30));	
-	    restante.setBounds(511, 395, 162, 35);
+	    restante.setBounds(888, 435, 135, 35);
 		add(restante);
 		
 		
 		pagado.setHorizontalAlignment(SwingConstants.RIGHT);
 		pagado.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		pagado.setBounds(521, 321, 135, 35);
+		pagado.setBounds(889, 321, 135, 35);
 		add(pagado);
 		
 		
 		total.setHorizontalAlignment(SwingConstants.RIGHT);
 		total.setToolTipText("");
 		total.setFont(new Font("Tahoma", Font.PLAIN, 30));	
-		total.setBounds(521, 244, 162, 35);
+		total.setBounds(888, 214, 135, 35);
 		add(total);
 		
 
@@ -221,7 +221,7 @@ public class PanelPago extends JPanel {
 		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Haz clic en los billetes o monedas para introducir el dinero");
 		lblNewJgoodiesLabel_4.setFont(new Font("Aharoni", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel_4.setBounds(-133, 132, 1065, 26);
+		lblNewJgoodiesLabel_4.setBounds(10, 127, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
 	
 	

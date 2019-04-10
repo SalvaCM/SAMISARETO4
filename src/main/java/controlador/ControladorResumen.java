@@ -60,10 +60,10 @@ public class ControladorResumen implements ActionListener {
 					    
 				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(miModelo.reserva.getTarifa()));
+											miVentana.pago.total.setText(formatoMoneda.format(miModelo.reserva.getPrecio()));
 											funciones.desBotones(miVentana.pago.btnSiguiente);
 											miVentana.pago.btnSiguiente.setEnabled(false);
-											miControlador.miControladorPago.total = miModelo.reserva.getTarifa();
+											miControlador.miControladorPago.total = miModelo.reserva.getPrecio();
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();  miControlador.miControladorHotel.Estancias();

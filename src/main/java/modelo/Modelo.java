@@ -14,7 +14,7 @@ public class Modelo {
 	public FuncionesPago misFuncionesPago;
 	public ArrayList<Hotel> listaHoteles;
 	public Hotel hotel;	
-	public estanciaHotel reserva;
+	public HabitacionHotel reserva;
 		
 	/**
 	 * Constructor de la clase
@@ -27,7 +27,7 @@ public class Modelo {
 		this.misFuncionesPago = new FuncionesPago();
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
-		this.reserva = new estanciaHotel();
+		this.reserva = new HabitacionHotel();
 	}
 	
 	public Controlador getControlador() {

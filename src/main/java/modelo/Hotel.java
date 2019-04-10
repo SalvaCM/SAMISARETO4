@@ -7,7 +7,7 @@ public class Hotel {
 	private int nEstrellas;
 	private String ubicacion;
 	private String nombre;
-	public ArrayList<Habitacion> habitaciones;
+	public ArrayList<HabitacionHotel> habitaciones;
 	public int habDisponibles;
 	
 	public Hotel() {
@@ -54,11 +54,11 @@ public class Hotel {
 		this.habDisponibles = habDisponibles;
 	}
 
-	public ArrayList<Habitacion> getEstancias() {
+	public ArrayList<HabitacionHotel> getHabitaciones() {
 	return habitaciones;
 	}
 
-	public void setEstancias(ArrayList<Habitacion> habitaciones) {
+	public void setHabitaciones(ArrayList<HabitacionHotel> habitaciones) {
 	this.habitaciones = habitaciones;
 	}
 	

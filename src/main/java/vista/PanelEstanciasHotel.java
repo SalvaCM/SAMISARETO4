@@ -61,7 +61,7 @@ public class PanelEstanciasHotel extends JPanel {
 		btnSiguiente.setName("btnSiguienteEstancias");
 		add(btnSiguiente);
 		
-		String col[] = {"cod","Categoria","Existencias","Precio"};
+		String col[] = {"cod","Tipo","Nº Camas","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaHabitaciones = new JTable(tableModel);
 		tablaHabitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

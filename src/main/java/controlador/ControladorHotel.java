@@ -36,14 +36,6 @@ public class ControladorHotel implements ActionListener {
 				
 			}
 			
-			public void resetear() {
-				int rows=miVentana.hotel.tableModel.getRowCount();
-				for (int i = rows; i > 0; i--) {
-					miVentana.hotel.tableModel.removeRow(i-1);
-				}
-				
-			}
-			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
@@ -91,9 +83,9 @@ public class ControladorHotel implements ActionListener {
 					miModelo.hotel= miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
 					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
 					
-					miModelo.hotel.setEstancias(miModelo.misFuncionesHotel.leerEstancias(codigo));
-					for(int i=0;i<miModelo.hotel.estancias.size();i++) {
-						Object[] habitacion = {miModelo.hotel.estancias.get(i).getCodAlojamiento(),miModelo.hotel.estancias.get(i).getCategoria(), miModelo.hotel.estancias.get(i).getExistencias(),miModelo.hotel.estancias.get(i).getTarifa()};
+					miModelo.hotel.setHabitaciones(miModelo.misFuncionesHotel.leerHabitaciones(codigo));
+					for(int i=0;i<miModelo.hotel.habitaciones.size();i++) {
+						Object[] habitacion = {miModelo.hotel.habitaciones.get(i),miModelo.hotel.habitaciones.get(i).getTipo(), miModelo.hotel.habitaciones.get(i).getnCamas(),miModelo.hotel.habitaciones.get(i).getPrecio()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 					}
 					

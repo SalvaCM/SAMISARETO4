@@ -2,10 +2,9 @@ package modelo;
 
 public class Dormitorio extends Habitacion{
 	private int nCamas;
-	
-	
-	public Dormitorio(int tamano, boolean ocupada, int nCamas) {
-		super(tamano, ocupada);
+
+	public Dormitorio(int codHabitacion, int tamano, String tipo, int nCamas) {
+		super(codHabitacion, tamano, tipo);
 		this.nCamas = nCamas;
 	}
 
@@ -16,7 +15,7 @@ public class Dormitorio extends Habitacion{
 	public void setnCamas(int nCamas) {
 		this.nCamas = nCamas;
 	}
-
+	
 	
 	
 	

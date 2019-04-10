@@ -71,7 +71,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 	}
 	public void HabitacionElegida() {
 
-		int codigoHabitacion = miModelo.hotel.estancias.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodAlojamiento();
+		int codigoHabitacion = miModelo.hotel.habitaciones.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
 		try {
 			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
 		} catch (SQLException e) {
@@ -82,9 +82,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotel.getUbicacion());
 		miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotel.getnEstrellas());
 		
-		miVentana.resumen.mostrarResumen.addElement("Categoria: "+miModelo.reserva.getCategoria());
-		miVentana.resumen.mostrarResumen.addElement("Tarifa: "+miModelo.reserva.getTarifa());
-		miVentana.resumen.mostrarResumen.addElement("Habitacion: "+miModelo.reserva.getCodAlojamiento());
+		miVentana.resumen.mostrarResumen.addElement("Categoria: "+miModelo.reserva.getTipo());
+		miVentana.resumen.mostrarResumen.addElement("Tarifa: "+miModelo.reserva.getPrecio());
+		miVentana.resumen.mostrarResumen.addElement("Habitacion: "+miModelo.reserva.getnCamas());
 
 	}
 	public void limpiarTablas()

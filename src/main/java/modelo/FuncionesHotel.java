@@ -10,12 +10,8 @@ import conexion.ConsultaBD;
 
 public class FuncionesHotel {
 	
-	public ArrayList<Alojamiento> alojamientos;
-	public Alojamiento alojamiento=new Alojamiento();
-	
-	public int codhotel;
 	public Hotel hotel;
-	public estanciaHotel estancia;
+	public HabitacionHotel habitacion;
 
 	
 	
@@ -39,7 +35,7 @@ public class FuncionesHotel {
 		String query="select cod_hotel,nombre, ubicacion, nestrellas from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
-				Hotel hotel=new Hotel();
+				hotel=new Hotel();
 				codhotel = rs.getInt("cod_hotel");
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
@@ -59,8 +55,9 @@ public class FuncionesHotel {
 	 */
 
 	public ArrayList<Hotel> buscarUbicacion(String ubicacion) throws SQLException{
-		String nombre="";
+		String nombre=""; int codhotel;int nEstrellas ;
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
+		
 		
 		String query="select cod_hotel,nombre,ubicacion,nestrellas from hotel where ubicacion='"+ubicacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
@@ -69,7 +66,7 @@ public class FuncionesHotel {
 				codhotel=rs.getInt("cod_hotel");
 				nombre = rs.getString("nombre");
 				ubicacion = rs.getString("ubicacion");
-				int nEstrellas = rs.getInt("nestrellas");
+				nEstrellas = rs.getInt("nestrellas");
 				hotel=new Hotel();
 				hotel.setCod_hotel(codhotel);
 				hotel.setNombre(nombre);
@@ -81,57 +78,64 @@ public class FuncionesHotel {
 	}
 
 	
-	public ArrayList<estanciaHotel> leerEstancias(int codhotel) throws SQLException{
-		String categoria="";
+	public ArrayList<HabitacionHotel> leerHabitaciones(int codhotel) throws SQLException{
+		String tipo="";
 		float precio=0;
-		int existencia;
+		int nCamas;
 		int codHabitacion;
-		ArrayList<estanciaHotel> estancias =new ArrayList<estanciaHotel>();
+		int tamano;
+		boolean ocupada;
+		ArrayList<HabitacionHotel> habitaciones =new ArrayList<HabitacionHotel>();
 		
-		String query="select cod_aloj,categoria,existencias,tarifa from estanciaHotel where cod_hotel='"+codhotel+"';";
+		String query="select codhabitacion,tipo,precio,ncamas,tamano,ocupada from habitacionesHotel where cod_hotel='"+codhotel+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("cod_aloj");
-			categoria = rs.getString("categoria");
-			precio = rs.getFloat("tarifa");
-			existencia=rs.getInt("existencias");
-			estancia=new estanciaHotel();
-			estancia.setCodAlojamiento(codHabitacion);
-			estancia.setCategoria(categoria);
-			estancia.setExistencias(existencia);
-			estancia.setTarifa(precio);
-			estancias.add(estancia);
+			codHabitacion = rs.getInt("codhabitacion");
+			tipo = rs.getString("tipo");
+			precio = rs.getFloat("precio");
+			nCamas=rs.getInt("ncamas");
+			tamano=rs.getInt("tamano");
+			ocupada=rs.getBoolean("ocupada");
+			habitacion =new HabitacionHotel();
+			habitacion.setCodHabitacion(codHabitacion);
+			habitacion.setTipo(tipo);
+			habitacion.setnCamas(nCamas);
+			habitacion.setPrecio(precio);
+			habitacion.setOcupada(ocupada);
+			habitaciones.add(habitacion);
 		}
-		return estancias;
+		return habitaciones;
 	}
-	public estanciaHotel reservarHabitacion(int cod_habitacion) throws SQLException{
-		String categoria="";
+	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
+		String tipo=""; int tamano;boolean ocupada;
 		float precio=0;
-		int existencia;
+		int nCamas;
 		int codHabitacion;
-		
-		
-		String query="select cod_aloj,categoria,existencias,tarifa from estanciaHotel where cod_aloj='"+cod_habitacion+"';";
+		habitacion =new HabitacionHotel();
+		String query="select codhabitacion,tipo,precio,ncamas from habitacionesHotel where cod_habitacion='"+cod_habitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("cod_aloj");
-			categoria = rs.getString("categoria");
-			precio = rs.getFloat("tarifa");
-			existencia=rs.getInt("existencias");
-			estancia.setCodAlojamiento(codHabitacion);
-			estancia.setCategoria(categoria);
-			estancia.setExistencias(existencia);
-			estancia.setTarifa(precio);
+			codHabitacion = rs.getInt("codhabitacion");
+			tipo = rs.getString("tipo");
+			precio = rs.getFloat("precio");
+			nCamas=rs.getInt("ncamas");
+			tamano=rs.getInt("tamano");
+			ocupada=rs.getBoolean("ocupada");
+			habitacion.setCodHabitacion(codHabitacion);
+			habitacion.setTipo(tipo);
+			habitacion.setnCamas(nCamas);
+			habitacion.setPrecio(precio);
+			habitacion.setOcupada(ocupada);
 		}
-		return estancia;
+		return habitacion;
 	}
 	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
 		String ubicacion="";
-		ArrayList<String>ubicaciones =new ArrayList<String>();
+		ArrayList<String> ubicaciones =new ArrayList<String>();
 		String query="select distinct  ubicacion from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {

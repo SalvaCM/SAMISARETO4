@@ -2,6 +2,9 @@ package controlador;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class FuncionesControlador {
 	
@@ -32,7 +35,14 @@ public class FuncionesControlador {
 		boton.setEnabled(false);
 	
 	}
-	
+
+	public void limpiarTabla(JTable table,TableModel tableModel)
+	{
+		int rows=tableModel.getRowCount();
+		for (int i = rows; i > 0; i--) {
+			((DefaultTableModel) tableModel).removeRow(i-1);
+		}	
+	}
 	
 	
 

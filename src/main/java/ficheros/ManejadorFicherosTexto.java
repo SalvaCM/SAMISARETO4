@@ -38,7 +38,7 @@ public class ManejadorFicherosTexto {
     public void archivoTexto(String reserva) {
     	int n=(int) (Math.random() * 1000) + 1;
     try {
-        String ruta = "C:\\workReto4\\reserva"+n+".txt";
+        String ruta = "C:\\SAMISAreservas\\reserva"+n+".txt";
         //String[] contenido =  {"HOLA","SARA"};
         File file = new File(ruta);
         // Si el archivo no existe es creado

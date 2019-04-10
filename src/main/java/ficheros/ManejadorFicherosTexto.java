@@ -1,21 +1,14 @@
 package ficheros;
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+
 
 public class ManejadorFicherosTexto {
     
-    // Atributos
-    private File fichero;    
-    private FileReader fileReader;
-    private BufferedReader bufferedReader;
-    private FileWriter fileWriter;
-    private BufferedWriter bufferedWriter;
     
     // Constructor por defecto
     /**

@@ -130,9 +130,7 @@ public class FuncionesHotel {
 	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
-		String nombre="";
 		String ubicacion="";
-		int nEstrellas=0;
 		ArrayList<String>ubicaciones =new ArrayList<String>();
 		String query="select distinct  ubicacion from hotel;";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	

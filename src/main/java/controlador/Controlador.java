@@ -1,9 +1,6 @@
 
 package controlador;
 
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 import modelo.Modelo;
 import vista.Ventana;

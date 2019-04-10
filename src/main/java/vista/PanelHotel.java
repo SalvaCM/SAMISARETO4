@@ -85,7 +85,6 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tablaResultados.setAutoCreateRowSorter(true);
 		comboBox.setBounds(371, 142, 209, 26);
 		
 		// a�adir funcion para buscar provincias en la base de datos

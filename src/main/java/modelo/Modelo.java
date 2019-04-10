@@ -15,6 +15,7 @@ public class Modelo {
 	public ArrayList<Hotel> listaHoteles;
 	public Hotel hotel;	
 	public HabitacionHotel reserva;
+	public ArrayList<HabitacionHotel> habitaciones;
 		
 	/**
 	 * Constructor de la clase
@@ -25,6 +26,7 @@ public class Modelo {
 		this.misFuncionesHotel = new FuncionesHotel();
 		this.misFuncionesDevolucion = new FuncionesDevolucion();
 		this.misFuncionesPago = new FuncionesPago();
+		this.habitaciones = new ArrayList<HabitacionHotel>();
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
 		this.reserva = new HabitacionHotel();

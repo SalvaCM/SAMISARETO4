@@ -7,7 +7,7 @@ public class Hotel {
 	private int nEstrellas;
 	private String ubicacion;
 	private String nombre;
-	public ArrayList<HabitacionHotel> habitaciones;
+	public ArrayList<HabitacionHotel> habitaciones= new ArrayList<HabitacionHotel>();
 	public int habDisponibles;
 	
 	public Hotel() {

@@ -104,6 +104,7 @@ public class FuncionesHotel {
 			habitacion.setPrecio(precio);
 			habitacion.setOcupada(ocupada);
 			habitaciones.add(habitacion);
+			System.out.println(habitacion.toString());
 		}
 		return habitaciones;
 	}
@@ -113,7 +114,7 @@ public class FuncionesHotel {
 		int nCamas;
 		int codHabitacion;
 		habitacion =new HabitacionHotel();
-		String query="select codhabitacion,tipo,precio,ncamas from habitacionesHotel where cod_habitacion='"+cod_habitacion+"';";
+		String query="select codhabitacion,tipo,precio,tamano,ncamas,ocupada from habitacionesHotel where codhabitacion='"+cod_habitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
@@ -125,6 +126,7 @@ public class FuncionesHotel {
 			ocupada=rs.getBoolean("ocupada");
 			habitacion.setCodHabitacion(codHabitacion);
 			habitacion.setTipo(tipo);
+			habitacion.setTamano(tamano);
 			habitacion.setnCamas(nCamas);
 			habitacion.setPrecio(precio);
 			habitacion.setOcupada(ocupada);

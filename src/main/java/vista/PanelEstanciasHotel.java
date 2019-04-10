@@ -72,12 +72,10 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tablaHabitaciones.setAutoCreateRowSorter(true);
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		scrollPane.setBounds(184, 126, 714, 412);
 		add(scrollPane);
-
 	}
 }

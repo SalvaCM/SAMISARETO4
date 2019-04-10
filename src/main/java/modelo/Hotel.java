@@ -7,8 +7,8 @@ public class Hotel {
 	private int nEstrellas;
 	private String ubicacion;
 	private String nombre;
-	public ArrayList<estanciaHotel> estancias;
-	
+	public ArrayList<Habitacion> habitaciones;
+	public int habDisponibles;
 	
 	public Hotel() {
 	}
@@ -45,27 +45,23 @@ public class Hotel {
 		this.nombre = nombre;
 	}
 	
-@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-
-		builder.append("Hotel : ");
-		builder.append(nombre);
-		builder.append("Ubicacion : ");
-		builder.append(ubicacion);
-		builder.append("Estrellas : ");
-		builder.append(nEstrellas);
-		builder.append("");
-		return builder.toString();
+	
+	public int getHabDisponibles() {
+		return habDisponibles;
 	}
 
-public ArrayList<estanciaHotel> getEstancias() {
-	return estancias;
-}
+	public void setHabDisponibles(int habDisponibles) {
+		this.habDisponibles = habDisponibles;
+	}
 
-public void setEstancias(ArrayList<estanciaHotel> estancias) {
-	this.estancias = estancias;
-}
+	public ArrayList<Habitacion> getEstancias() {
+	return habitaciones;
+	}
+
+	public void setEstancias(ArrayList<Habitacion> habitaciones) {
+	this.habitaciones = habitaciones;
+	}
+	
 
 	
 	

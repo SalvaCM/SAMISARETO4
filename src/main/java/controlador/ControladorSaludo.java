@@ -35,7 +35,7 @@ public class ControladorSaludo implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 			    
 
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.hotel);MostrarHoteles(); 
+		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.login);MostrarHoteles(); 
 		
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();

@@ -26,6 +26,7 @@ public class Ventana extends JFrame {
 	public PanelDespedida despedida;
 	public PanelSaludo saludo;
 	public PanelEstanciasHotel estanciasHotel;
+	public PanelLogin login;
 	
 	
 	/**
@@ -58,6 +59,10 @@ public class Ventana extends JFrame {
 		saludo = new PanelSaludo();
 		contentPane.add(saludo);
 		saludo.setLayout(null);
+		
+		login = new PanelLogin();
+		contentPane.add(login);
+		login.setLayout(null);
 		
 		hotel = new PanelHotel();
 		contentPane.add(hotel);

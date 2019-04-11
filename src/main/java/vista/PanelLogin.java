@@ -64,7 +64,7 @@ public class PanelLogin extends JPanel {
 		lblNewJgoodiesLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JLabel lblNewJgoodiesLabel2 = DefaultComponentFactory.getInstance().createLabel("CONTRASEÑA:");
+		JLabel lblNewJgoodiesLabel2 = DefaultComponentFactory.getInstance().createLabel("PASSWORD:");
 		lblNewJgoodiesLabel2.setBounds(322, 281, 440, 33);
 		add(lblNewJgoodiesLabel2);
 		lblNewJgoodiesLabel2.setFont(new Font("Tahoma", Font.PLAIN, 20));

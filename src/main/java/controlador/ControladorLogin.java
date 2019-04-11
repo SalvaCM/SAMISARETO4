@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -12,6 +13,7 @@ public class ControladorLogin  implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
+
 
 
 	
@@ -33,8 +35,17 @@ public class ControladorLogin  implements ActionListener{
 	
 		miVentana.login.btnCancelar.addActionListener(this);
 		miVentana.login.btnRegistrarse.addActionListener(this);
+		miVentana.login.btnLogin.addActionListener(this);
 	}
 	
+	/** 
+	 * Metodo para resetear los valores de la ventana login 	
+	 */
+	public void resetear() {
+		miVentana.login.TextDni.setText(""); 
+		miVentana.login.passwordField.setText("");
+	}
+
 	
 	
 	/**
@@ -45,8 +56,23 @@ public class ControladorLogin  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); 
+		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();		
+		break;
+		
+		case "btnLogin": 	
+			try {
+				miModelo.cliente = null;
+				miModelo.cliente = miModelo.misFuncionesLogin.comprobarDNIyContrasena(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());	
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+			if(miModelo.cliente != null) {
 				
+				funciones.cambiarDePanel(miVentana.login, miVentana.hotel);  resetear();
+			}
+		
 		break;
 
 		}

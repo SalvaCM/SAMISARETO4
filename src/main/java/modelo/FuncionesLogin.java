@@ -2,15 +2,20 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+
+import javax.swing.JOptionPane;
+
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
+import vista.Ventana;
 
 
 public class FuncionesLogin {
 	
-	public Cliente cliente;
+	private Cliente cliente;
+	private Ventana miVentana;
 
-	public Cliente comprobarDNIyContrase√±a (String DNI, String contrasena) throws Exception {
+	public Cliente comprobarDNIyContrasena (String DNI, char[] contrasena) throws Exception {
 		
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -34,12 +39,10 @@ public class FuncionesLogin {
 				cliente.setNombre(nombre);
 				cliente.setApellido(apellido);
 				cliente.setFechaNacimiento(fechaNacimiento);
-				
-				
-				
+					
 			}else {
 				
-				System.out.println("Error contrase√±a incorrecta");
+				JOptionPane.showMessageDialog(miVentana, "Contrasena incorrecta", "°AtenciÛn!", JOptionPane.WARNING_MESSAGE);
 			}
 			
 		}
@@ -47,7 +50,8 @@ public class FuncionesLogin {
 		return cliente; 
 	} 
 	
-	public boolean comprobarContrasena (String DNI, String contrasena) throws Exception {
+
+	public boolean comprobarContrasena (String DNI, char[] contrasena) throws Exception {
 		
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -55,6 +59,7 @@ public class FuncionesLogin {
 		Connection con = miConexion.ConectarBD();
 		
 		String contrasenia = "";
+		char[] cadena = null;
 		
 		//Inicio del programa
 		ResultSet rs = miConsulta.hacerConsultaBD(con, "select contrasena from cliente where DNI = '" + DNI + "';");
@@ -63,7 +68,11 @@ public class FuncionesLogin {
 			contrasenia = rs.getString("contrasena");
 		}
 		
-		if(contrasena.equals(contrasenia)) 
+		for(int i=0; i<contrasenia.length();i++) {
+		 cadena = contrasenia.toCharArray();
+		}
+		
+		if(cadena == contrasena)
 			return true;
 		else
 			return false;

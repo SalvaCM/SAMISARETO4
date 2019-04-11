@@ -17,6 +17,7 @@ public class Modelo {
 	public Hotel hotel;	
 	public HabitacionHotel reserva;
 	public ArrayList<HabitacionHotel> habitaciones;
+	public Object cliente;
 		
 	/**
 	 * Constructor de la clase

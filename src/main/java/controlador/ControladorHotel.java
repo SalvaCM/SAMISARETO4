@@ -89,7 +89,6 @@ public class ControladorHotel implements ActionListener {
 					}
 					
 				} catch (SQLException e1) {
-				System.out.println("seleccione un hotel");
 				e1.printStackTrace();
 				}
 			}

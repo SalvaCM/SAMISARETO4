@@ -69,6 +69,7 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setResizable(false);
+		tablaHabitaciones.setDefaultEditor(Object.class, null);
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

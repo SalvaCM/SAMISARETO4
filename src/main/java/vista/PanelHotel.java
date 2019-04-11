@@ -74,14 +74,16 @@ public class PanelHotel extends JPanel {
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"codhotel","Nombre","Ubicacion","Estrellas"};
+		String col[] = {"cod","Nombre","Ubicacion","Estrellas"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		tablaResultados.getColumnModel().getColumn(0).setMaxWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
+		tablaResultados.getColumnModel().getColumn(0).setResizable(false);
 		tablaResultados.setShowHorizontalLines(true);
+		tablaResultados.setDefaultEditor(Object.class, null);
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -76,6 +75,8 @@ public class ControladorLogin  implements ActionListener{
 			}
 		
 		break;
+		
+		case "btnRegistrarseLogin": funciones.cambiarDePanel(miVentana.login, miVentana.registro);
 
 		}
 	}	

@@ -17,7 +17,7 @@ public class FuncionesLogin {
 	private Ventana miVentana;
 	private Cliente cliente;
 
-	public Cliente comprobarDNIyContrasena (String DNI, char[] contrasena) throws Exception {
+	public Cliente LogearUser (String DNI) throws Exception {
 		
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -29,26 +29,18 @@ public class FuncionesLogin {
 		Date fechaNacimiento;
 		
     	//Inicio del programa
-		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from cliente where DNI = '" + DNI + "';");
+		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from clientes where DNI = '" + DNI + "';");
 		
 		while(rs.next()) {
-
-			if(comprobarContrasena(DNI, contrasena)) {
 				
 				cliente = new Cliente();
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");
+				cliente.setDni(DNI);
 				cliente.setNombre(nombre);
 				cliente.setApellido(apellido);
 				cliente.setFechaNacimiento(fechaNacimiento);
-				cliente.setContrasena(contrasena);
-					
-			}else {
-				
-				JOptionPane.showMessageDialog(miVentana, "Contrasena incorrecta", "ATENCION", JOptionPane.WARNING_MESSAGE);
-			}
-			
 		}
 		return cliente;
 	} 
@@ -61,33 +53,37 @@ public class FuncionesLogin {
 		ConsultaBD miConsulta = new ConsultaBD();
 		Connection con = miConexion.ConectarBD();
 		
-		String contrasenia = "";
+		String password = "";
 		char[] cadena = null;
 		boolean devuelve = false;
 		
 		//Inicio del programa
-		ResultSet rs = miConsulta.hacerConsultaBD(con, "select contrasena from cliente where DNI = '" + DNI + "';");
+		ResultSet rs = miConsulta.hacerConsultaBD(con, "select contrasena from clientes where DNI = '" + DNI + "';");
 		
 		while(rs.next()) {
-			contrasenia = rs.getString("contrasena");
+			password = rs.getString("contrasena");
 		}
 		
-		for(int i=0; i<contrasenia.length();i++) {
+		for(int i=0; i<password.length();i++) {
 
-		 cadena = contrasenia.toCharArray();
-		 if(contrasenia.length() == contrasena.length) {
+		 cadena = password.toCharArray();
+		 if(cadena.length == contrasena.length) {
 			if(cadena[i] == contrasena[i]) {
-				devuelve= true;		
+				devuelve= true;	
+				System.out.println("contraseña correcta");
+				JOptionPane.showMessageDialog(miVentana, "Contrasena correcta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 			}
 			else {
 				devuelve= false;
+				System.out.println("contraseña incorrecta");
 			}
 		 }else {
 			 devuelve=false;
+			 System.out.println("Contraseña no es del mismo tamaño");
 		 }
 		}
 		if(devuelve == true) {
-			JOptionPane.showMessageDialog(miVentana, "Contrasena correcta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+			
 		}
 		return devuelve;
 	}

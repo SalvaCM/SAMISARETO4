@@ -6,6 +6,9 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import modelo.Cliente;
+import modelo.FuncionesLogin;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -61,20 +64,25 @@ public class ControladorLogin  implements ActionListener{
 		
 		case "btnLogin": 	
 			try {
-				
-				miModelo.cliente=null;
-				miModelo.cliente = miModelo.misFuncionesLogin.comprobarDNIyContrasena(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
-				
+				boolean valido;
+				valido = miModelo.misFuncionesLogin.comprobarContrasena(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
+				if (valido==true)
+				{
+					miModelo.cliente = new Cliente();
+					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText());
+					funciones.cambiarDePanel(miVentana.login, miVentana.hotel);
+					resetear();
+				}
+				else
+				{
+					JOptionPane.showMessageDialog(miVentana, "Usuario/Contraseña Incorrectos", "ATENCION", JOptionPane.WARNING_MESSAGE);
+				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			System.out.println(miModelo.cliente.getContrasena());
-			if(miModelo.cliente.getContrasena() != null) {
-				
-				funciones.cambiarDePanel(miVentana.login, miVentana.hotel);  resetear();
-			}
-		
+			
+	
 		break;
 
 		}

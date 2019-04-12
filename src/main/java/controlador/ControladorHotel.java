@@ -48,9 +48,9 @@ public class ControladorHotel implements ActionListener {
 				
 
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);
-					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);						
+					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+					System.out.println("contraseña ="+miModelo.cliente.getContrasena().toString());
 					break;
-
 					case "btnSiguienteHotel": 	
 					
 					if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
@@ -92,7 +92,6 @@ public class ControladorHotel implements ActionListener {
 				e1.printStackTrace();
 				}
 			}
-	
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
 				
 				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);

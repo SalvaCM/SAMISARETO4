@@ -33,7 +33,6 @@ public class Modelo {
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
 		this.reserva = new HabitacionHotel();
-		this.cliente = new Cliente();
 	}
 	
 	public Controlador getControlador() {
@@ -43,9 +42,4 @@ public class Modelo {
 	public void setControlador(Controlador miControlador) {
 		this.miControlador = miControlador;
 	} 
-	
-	
-
-	
-
 }

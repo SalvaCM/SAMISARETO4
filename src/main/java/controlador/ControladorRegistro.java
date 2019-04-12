@@ -2,6 +2,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.text.ParseException;
+
 import javax.swing.JButton;
 import modelo.Modelo;
 import vista.Ventana;
@@ -26,6 +29,8 @@ public class ControladorRegistro implements ActionListener {
 		this.miModelo = miModelo;
 
 		miVentana.registro.btnCancelar.addActionListener(this);
+		miVentana.registro.btnRegistrarse.addActionListener(this);
+	
 	}
 	
 	/**
@@ -36,7 +41,16 @@ public class ControladorRegistro implements ActionListener {
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnRegistro": 
+		case "btnRegistro": try {
+				miModelo.misFuncionesRegistro.registrarNuevoCliente(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.dateChooser.getDate(),miVentana.registro.passwordField.getPassword());
+				System.out.println("entra");
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 				break;
 				
 		case "btnCancelarRegistro": funciones.cambiarDePanel(miVentana.registro, miVentana.login);		

@@ -13,6 +13,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 
 public class PanelRegistro extends JPanel {
@@ -28,8 +30,8 @@ public class PanelRegistro extends JPanel {
 	public JTextField textFieldNombre;
 	public JTextField textFieldDni;
 	public JComboBox<String> comboBoxGenero = new JComboBox<String>();
-	public JPasswordField passwordField2;
 	public JPasswordField passwordField;
+	public JDateChooser dateChooser = new JDateChooser();
 
 	/**
 	 * Create the panel.
@@ -83,14 +85,8 @@ public class PanelRegistro extends JPanel {
 		JLabel lblContrasea = DefaultComponentFactory.getInstance().createLabel("CONTRASE\u00D1A:");
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblContrasea.setBounds(110, 397, 351, 25);
+		lblContrasea.setBounds(110, 362, 351, 25);
 		add(lblContrasea);
-		
-		JLabel lblContrasea2 = DefaultComponentFactory.getInstance().createLabel("CONFIRMAR CONTRASE\u00D1A:");
-		lblContrasea2.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblContrasea2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblContrasea2.setBounds(110, 450, 351, 25);
-		add(lblContrasea2);
 		
 		textFieldDni = new JTextField();
 		textFieldDni.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -112,28 +108,19 @@ public class PanelRegistro extends JPanel {
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField.setBounds(468, 396, 277, 26);
+		passwordField.setBounds(468, 363, 277, 26);
 		add(passwordField);
-		
-		passwordField2 = new JPasswordField();
-		passwordField2.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField2.setBounds(468, 451, 277, 26);
-		add(passwordField2);
 		
 		JLabel lblFechaDeNacimiento = DefaultComponentFactory.getInstance().createLabel("FECHA DE NACIMIENTO:");
 		lblFechaDeNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFechaDeNacimiento.setBounds(242, 319, 219, 30);
+		lblFechaDeNacimiento.setBounds(242, 321, 219, 30);
 		add(lblFechaDeNacimiento);
 		
-		JLabel lblNewJgoodiesLabel_11 = DefaultComponentFactory.getInstance().createLabel("");
-		lblNewJgoodiesLabel_11.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lblNewJgoodiesLabel_11.setForeground(Color.CYAN);
-		lblNewJgoodiesLabel_11.setBackground(Color.CYAN); 
-		lblNewJgoodiesLabel_11.setBounds(189, 142, 715, 360);
-		add(lblNewJgoodiesLabel_11);
+		dateChooser.setBounds(468, 322, 219, 29);
+		dateChooser.setDateFormatString("yyyy-MM-dd");
+		add(dateChooser);
 		
 
 		
 	}
-
 }

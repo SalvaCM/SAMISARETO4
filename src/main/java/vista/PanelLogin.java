@@ -11,7 +11,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
-
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class PanelLogin extends JPanel {
@@ -26,6 +25,8 @@ public class PanelLogin extends JPanel {
 	public JButton btnLogin;
 	public JTextField TextDni; 
 	public JPasswordField passwordField;
+
+	
 
 	/**
 	 * Create the panel.

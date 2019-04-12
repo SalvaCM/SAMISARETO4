@@ -6,7 +6,6 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import modelo.Cliente;
 import modelo.FuncionesLogin;
 import modelo.Modelo;
@@ -84,6 +83,8 @@ public class ControladorLogin  implements ActionListener{
 			
 	
 		break;
+		
+		case "btnRegistrarseLogin": funciones.cambiarDePanel(miVentana.login, miVentana.registro);
 
 		}
 	}	

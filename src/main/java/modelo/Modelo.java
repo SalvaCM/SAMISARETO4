@@ -17,7 +17,7 @@ public class Modelo {
 	public Hotel hotel;	
 	public HabitacionHotel reserva;
 	public ArrayList<HabitacionHotel> habitaciones;
-	public Object cliente;
+	public Cliente cliente;
 		
 	/**
 	 * Constructor de la clase
@@ -33,6 +33,7 @@ public class Modelo {
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
 		this.reserva = new HabitacionHotel();
+		this.cliente = new Cliente();
 	}
 	
 	public Controlador getControlador() {

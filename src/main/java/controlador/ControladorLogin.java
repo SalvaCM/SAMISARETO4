@@ -56,19 +56,21 @@ public class ControladorLogin  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();		
+		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();
 		break;
 		
 		case "btnLogin": 	
 			try {
-				miModelo.cliente = null;
-				miModelo.cliente = miModelo.misFuncionesLogin.comprobarDNIyContrasena(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());	
+				
+				miModelo.cliente=null;
+				miModelo.cliente = miModelo.misFuncionesLogin.comprobarDNIyContrasena(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			
-			if(miModelo.cliente != null) {
+			System.out.println(miModelo.cliente.getContrasena());
+			if(miModelo.cliente.getContrasena() != null) {
 				
 				funciones.cambiarDePanel(miVentana.login, miVentana.hotel);  resetear();
 			}

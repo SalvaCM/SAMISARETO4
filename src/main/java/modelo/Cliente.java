@@ -1,14 +1,16 @@
 package modelo;
 
+import java.util.Date;
+
 public class Cliente {
 	
 	private String dni;
 	private String nombre;
 	private String apellido;
-	private String fechaNacimiento;
-	private String contrasena;
+	private Date fechaNacimiento;
+	private char[] contrasena;
 	
-	public Cliente(String dni,String nombre, String apellidos, String fechaNacimiento, String contrasena) {
+	public Cliente(String dni,String nombre, String apellidos, Date fechaNacimiento, char[] contrasena) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellidos;
@@ -16,6 +18,10 @@ public class Cliente {
 		this.contrasena = contrasena;	
 	}
 	
+	public Cliente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getDni() {
 		return dni;
 	}
@@ -34,16 +40,16 @@ public class Cliente {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public String getContrasena() {
+	public char[] getContrasena() {
 		return contrasena;
 	}
-	public void setContrasena(String contrasena) {
+	public void setContrasena(char[] contrasena) {
 		this.contrasena = contrasena;
 	}
 	

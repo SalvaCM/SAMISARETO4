@@ -48,7 +48,7 @@ public class ControladorHotel implements ActionListener {
 				
 
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);
-					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);					
+					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);						
 					break;
 
 					case "btnSiguienteHotel": 	

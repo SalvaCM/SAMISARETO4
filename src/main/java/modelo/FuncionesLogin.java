@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -12,8 +13,9 @@ import vista.Ventana;
 
 public class FuncionesLogin {
 	
-	private Cliente cliente;
+
 	private Ventana miVentana;
+	private Cliente cliente;
 
 	public Cliente comprobarDNIyContrasena (String DNI, char[] contrasena) throws Exception {
 		
@@ -24,7 +26,7 @@ public class FuncionesLogin {
 		
 		String nombre;
 		String apellido;
-		String fechaNacimiento;
+		Date fechaNacimiento;
 		
     	//Inicio del programa
 		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from cliente where DNI = '" + DNI + "';");
@@ -33,21 +35,22 @@ public class FuncionesLogin {
 
 			if(comprobarContrasena(DNI, contrasena)) {
 				
+				cliente = new Cliente();
 				nombre = rs.getString("Nombre");
-				apellido = rs.getString("Apellidos");
-				fechaNacimiento = rs.getString("Fecha_nacimiento");
+				apellido = rs.getString("Apellido");
+				fechaNacimiento = rs.getDate("Fecha_nacimiento");
 				cliente.setNombre(nombre);
 				cliente.setApellido(apellido);
 				cliente.setFechaNacimiento(fechaNacimiento);
+				cliente.setContrasena(contrasena);
 					
 			}else {
 				
-				JOptionPane.showMessageDialog(miVentana, "Contrasena incorrecta", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(miVentana, "Contrasena incorrecta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 			}
 			
 		}
-		
-		return cliente; 
+		return cliente;
 	} 
 	
 
@@ -60,6 +63,7 @@ public class FuncionesLogin {
 		
 		String contrasenia = "";
 		char[] cadena = null;
+		boolean devuelve = false;
 		
 		//Inicio del programa
 		ResultSet rs = miConsulta.hacerConsultaBD(con, "select contrasena from cliente where DNI = '" + DNI + "';");
@@ -69,13 +73,23 @@ public class FuncionesLogin {
 		}
 		
 		for(int i=0; i<contrasenia.length();i++) {
+
 		 cadena = contrasenia.toCharArray();
+		 if(contrasenia.length() == contrasena.length) {
+			if(cadena[i] == contrasena[i]) {
+				devuelve= true;		
+			}
+			else {
+				devuelve= false;
+			}
+		 }else {
+			 devuelve=false;
+		 }
 		}
-		
-		if(cadena == contrasena)
-			return true;
-		else
-			return false;
+		if(devuelve == true) {
+			JOptionPane.showMessageDialog(miVentana, "Contrasena correcta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+		}
+		return devuelve;
 	}
 
 }

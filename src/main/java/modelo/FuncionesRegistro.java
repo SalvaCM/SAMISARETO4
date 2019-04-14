@@ -25,9 +25,10 @@ public class FuncionesRegistro {
 		
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String dateN=dateFormat.format(date2);
 		
 		
-		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + date2 + "', '" + contrasena + "');";
+		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + String.valueOf(contrasena) + "');";
 		
 				
 		//Comprobar que la insercion de los datos en la BD es correcta

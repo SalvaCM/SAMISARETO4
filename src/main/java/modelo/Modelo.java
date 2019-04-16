@@ -18,6 +18,7 @@ public class Modelo {
 	public Hotel hotel;	
 	public HabitacionHotel reserva;
 	public ArrayList<HabitacionHotel> habitaciones;
+	public ArrayList<HabitacionHotel>reservas;
 	public Cliente cliente;
 		
 	/**
@@ -35,6 +36,7 @@ public class Modelo {
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
 		this.reserva = new HabitacionHotel();
+		this.reservas=new  ArrayList<HabitacionHotel>(); 
 	}
 	
 	public Controlador getControlador() {

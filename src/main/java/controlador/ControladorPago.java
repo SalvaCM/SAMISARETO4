@@ -3,11 +3,13 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import ficheros.ManejadorFicherosTexto;
+import modelo.HabitacionHotel;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -18,7 +20,7 @@ public class ControladorPago implements ActionListener {
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	private int[] arrayCambios=null;
-	public double total;
+	public double total=0;
 	public double pagado = 0;
 	
 	
@@ -31,6 +33,7 @@ public class ControladorPago implements ActionListener {
 	 */
 	public ControladorPago (Ventana miVentana, Modelo miModelo) { 
 		
+	
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
 		
@@ -59,10 +62,12 @@ public class ControladorPago implements ActionListener {
 	 * Metodo para resetear los valores de la ventana pago	
 	 */
 	public void resetear() {
+		
 		miVentana.pago.total.setText("");
 		miVentana.pago.pagado.setText("");
 		miVentana.pago.restante.setText("");
 		actBotones(miVentana.pago.arrayBtn); 
+		total=0;
 		pagado = 0;
 				
 	}
@@ -75,9 +80,11 @@ public class ControladorPago implements ActionListener {
 		//Accion dependiendo de que boton venga el evento
 		switch (((JButton) e.getSource()).getName()) {
 	
-			case "btnCancelarPago": funciones.cambiarDePanel(miVentana.pago, miVentana.resumen);
+			case "btnCancelarPago": funciones.cambiarDePanel(miVentana.pago, miVentana.estanciasHotel);
 		     	JOptionPane.showMessageDialog(miVentana, "Devolucion de dinero introducido", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				resetear();
+				miVentana.resumen.mostrarResumen.clear();
+				miModelo.reservas=new  ArrayList<HabitacionHotel>();
 				break;
 								 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
@@ -89,8 +96,6 @@ public class ControladorPago implements ActionListener {
 			    mostrarCambios(arrayCambios);
 			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
 				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotel.getNombre() + " " + "Ubicacion: " + miModelo.hotel.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotel.getnEstrellas() + " " + "Categoria: "+ miModelo.reserva.getTipo() + " " + "Tarifa: "+miModelo.reserva.getPrecio() + " " + "Habitacion: "+miModelo.reserva.getnCamas());
-		
-				
 				resetear();
 				break;
 			

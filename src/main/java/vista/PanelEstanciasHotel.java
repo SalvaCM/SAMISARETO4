@@ -16,6 +16,10 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PanelEstanciasHotel extends JPanel {
 	
@@ -28,11 +32,10 @@ public class PanelEstanciasHotel extends JPanel {
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public JList<String> estancias_hoteles=new JList<String>(); 
 	public DefaultListModel<String> modelo = new DefaultListModel<String>();
-	
 	public DefaultTableModel tableModel;
 	public JTable tablaHabitaciones;
 	private final JScrollPane scrollPane = new JScrollPane();
-
+	public JButton btnReservar;
 	/**
 	 * Create the panel.
 	 */
@@ -74,9 +77,17 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		
+		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(184, 126, 714, 412);
+		scrollPane.setBounds(184, 126, 714, 213);
 		add(scrollPane);
+		
+		 btnReservar = new JButton("Reservar");
+		 btnReservar.setName("Reservar");
+		btnReservar.setForeground(Color.BLACK);
+		btnReservar.setBackground(Color.GREEN);
+		btnReservar.setBounds(714, 384, 89, 31);
+		add(btnReservar);
 	}
 }

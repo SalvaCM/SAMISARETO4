@@ -5,7 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -65,7 +68,8 @@ public class ControladorHotel implements ActionListener {
 					break;
 						
 
-					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles);
+					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
+					
 					break;
 					
 					
@@ -105,6 +109,66 @@ public class ControladorHotel implements ActionListener {
 				} catch (SQLException e1) {
 					e1.printStackTrace();}
 			}
+			
+			
+			
+			
+			//IMAGENES
+			public void imagen() {
+				 String enlace = "";
+				 ImageIcon imagen;
+				// JLabel etiqueta = null;
+				this.miVentana.hotel.repaint();
+				
+				
+				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
+					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\b.jpg";
+						System.out.println("barcelona");
+						
+				}
+				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("MADRID")) {
+					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\m.jpg";
+						System.out.println("m");
+						
+				}
+				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
+						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\sev.jpg";
+						 
+					}
+				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
+						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\valencia.jpg";
+						 
+					}
+				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
+						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\paris.jpg";
+						 
+					}
+				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("NUEVA YORK")) {
+					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+					enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\ny2.jpg";
+					 
+				} else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
+					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+					enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\roma.jpg";
+					 
+				
+				}
+					imagen=new ImageIcon(enlace);
+					//JOptionPane.showMessageDialog(null,imagen);
+					miVentana.hotel.etiqueta = new JLabel(imagen);
+					miVentana.hotel.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.hotel.etiqueta.setVisible(true);
+					//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
+					//this.miVentana.hotel.repaint();
+					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
+				
+			}
+			
 
 
 }

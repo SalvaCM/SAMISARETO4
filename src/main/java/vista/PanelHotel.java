@@ -4,6 +4,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -31,7 +32,7 @@ public class PanelHotel extends JPanel {
 	public JButton btnBuscar = new JButton("Buscar");
 	public JTable tablaResultados;
 	public DefaultTableModel tableModel;
-	
+	public JLabel etiqueta ;
 	public JComboBox<String> comboBox = new JComboBox<String>();
 
 	
@@ -70,7 +71,7 @@ public class PanelHotel extends JPanel {
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(197, 183, 700, 353);
+		scrollPane.setBounds(193, 288, 701, 187);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -98,7 +99,10 @@ public class PanelHotel extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
 		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
 		    
-	       
+		 ImageIcon imagen=new ImageIcon("C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\amarillo.jpg");
+		 etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(-20, -20, 1200, 800);
+		add(etiqueta);
 	       
 	       
 		

@@ -8,6 +8,7 @@ public class Alojamiento {
 	protected String nombre;
 	protected String ubicacion;
 	protected float tarifa;
+	
 	protected Habitacion habitacion;
 	
 		

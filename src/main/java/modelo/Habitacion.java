@@ -4,6 +4,7 @@ public class Habitacion {
 	protected int codHabitacion;
 	protected int tamano;
 	protected String tipo;
+	protected float nNoches;
 	
 	public Habitacion(int codHabitacion, int tamano, String tipo) {
 		this.codHabitacion = codHabitacion;
@@ -31,6 +32,13 @@ public class Habitacion {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
+	public float getNoches() {
+		return this.nNoches;
+	}
+	public void setNoches(float f) {
+		this.nNoches = f;
+	}
+	
 	
 	
 	

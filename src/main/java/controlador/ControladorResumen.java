@@ -45,6 +45,7 @@ public class ControladorResumen implements ActionListener {
 			public void resetear() {
 				miVentana.resumen.mostrarResumen.clear();
 				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
+			
 				for (int i = rows; i > 0; i--) {
 					miVentana.estanciasHotel.tableModel.removeRow(i-1);
 				}	
@@ -58,16 +59,26 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
-											miVentana.pago.pagado.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(miModelo.reserva.getPrecio()));
+				case "btnSiguienteResumen": 
+				
+											System.out.println(miModelo.reservas.size());
 											funciones.desBotones(miVentana.pago.btnSiguiente);
-											miVentana.pago.btnSiguiente.setEnabled(false);
-											miControlador.miControladorPago.total = miModelo.reserva.getPrecio();
+											//miVentana.pago.btnSiguiente.setEnabled(false);
+											miControlador.miControladorPago.resetear();
+											//miControlador.miControladorPago.total=0;
+											for(int i=0;i<miModelo.reservas.size();i++) {
+												miControlador.miControladorPago.total += miModelo.reservas.get(i).getPrecio();
+												
+												
+											}
+											System.out.println(miControlador.miControladorPago.total);
+											miVentana.pago.pagado.setText(formatoMoneda.format(0));
+											miVentana.pago.total.setText(formatoMoneda.format(	miControlador.miControladorPago.total));
+											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);			
 						break;
 						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel); resetear();  miControlador.miControladorHotel.Estancias();
-						
+				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.resumen); resetear();  miControlador.miControladorHotel.Estancias();
+			
 				break;
 		
 				}

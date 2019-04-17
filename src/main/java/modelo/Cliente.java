@@ -8,14 +8,14 @@ public class Cliente {
 	private String nombre;
 	private String apellido;
 	private Date fechaNacimiento;
-	private char[] contrasena;
+	private String contrasena;
 	
-	public Cliente(String dni,String nombre, String apellidos, Date fechaNacimiento, char[] contrasena) {
+	public Cliente(String dni,String nombre, String apellidos, Date fechaNacimiento, String password) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellidos;
 		this.fechaNacimiento = fechaNacimiento;
-		this.contrasena = contrasena;	
+		this.contrasena = password;	
 	}
 	
 	public Cliente() {
@@ -46,10 +46,10 @@ public class Cliente {
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
-	public char[] getContrasena() {
+	public String getContrasena() {
 		return contrasena;
 	}
-	public void setContrasena(char[] contrasena) {
+	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 	

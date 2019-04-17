@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 import vista.Ventana;
@@ -29,18 +32,22 @@ public class FuncionesRegistro {
 		
 		Cliente cliente;
 		String query = "";	
+		String passwordEncriptada = "";
 		
+		passwordEncriptada = DigestUtils.md5Hex(String.valueOf(contrasena));
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String dateN=dateFormat.format(date2);
 		
 		
-		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + String.valueOf(contrasena) + "');";
+		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + passwordEncriptada + "');";
 		
 				
 		//Comprobar que la insercion de los datos en la BD es correcta
 		if (miConsulta.insertarDatosBD(con, query)) {
-			cliente = new Cliente(DNI, Nombre, Apellido, date2 , contrasena);		
+			passwordEncriptada = DigestUtils.md5Hex(String.valueOf(contrasena));
+			cliente = new Cliente(DNI, Nombre, Apellido, date2 , passwordEncriptada);
+			System.out.println("contraseña: " +passwordEncriptada);
 		} else {
 			cliente = null;
 		}

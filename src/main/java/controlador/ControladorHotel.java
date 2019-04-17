@@ -53,7 +53,6 @@ public class ControladorHotel implements ActionListener {
 
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);
 					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-					System.out.println("contraseña ="+miModelo.cliente.getContrasena().toString());
 					break;
 					case "btnSiguienteHotel": 	
 					

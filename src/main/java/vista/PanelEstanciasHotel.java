@@ -5,6 +5,7 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -33,6 +34,8 @@ public class PanelEstanciasHotel extends JPanel {
 	public JTable tablaHabitaciones;
 	private final JScrollPane scrollPane = new JScrollPane();
 	public JButton btnReservar;
+	public JLabel etiqueta ;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -86,5 +89,11 @@ public class PanelEstanciasHotel extends JPanel {
 		btnReservar.setBackground(Color.GREEN);
 		btnReservar.setBounds(714, 384, 89, 31);
 		add(btnReservar);
+		
+	    
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 	}
 }

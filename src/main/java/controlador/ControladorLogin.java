@@ -7,7 +7,6 @@ import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
-import modelo.FuncionesLogin;
 import modelo.Modelo;
 import vista.Ventana;
 

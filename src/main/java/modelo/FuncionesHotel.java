@@ -109,7 +109,9 @@ public class FuncionesHotel {
 		return habitaciones;
 	}
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
-		String tipo=""; int tamano;boolean ocupada;
+		String tipo="";
+		int tamano;
+		boolean ocupada;
 		float precio=0;
 		int nCamas;
 		int codHabitacion;

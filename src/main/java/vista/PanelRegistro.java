@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -10,10 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 
 
@@ -116,6 +116,8 @@ public class PanelRegistro extends JPanel {
 		lblFechaDeNacimiento.setBounds(242, 321, 219, 30);
 		add(lblFechaDeNacimiento);
 		
+		Date fecha = new Date();
+		dateChooser.setMaxSelectableDate(fecha);
 		dateChooser.setBounds(468, 322, 219, 29);
 		dateChooser.setDateFormatString("yyyy-MM-dd");
 		add(dateChooser);

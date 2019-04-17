@@ -70,22 +70,23 @@ public class FuncionesLogin {
 		 if(cadena.length == contrasena.length) {
 			if(cadena[i] == contrasena[i]) {
 				devuelve= true;	
-				System.out.println("contraseña correcta");
-				JOptionPane.showMessageDialog(miVentana, "Contrasena correcta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 			}
 			else {
 				devuelve= false;
-				System.out.println("contraseña incorrecta");
 			}
 		 }else {
 			 devuelve=false;
-			 System.out.println("Contraseña no es del mismo tamaño");
 		 }
 		}
+		
 		if(devuelve == true) {
-			
+			JOptionPane.showMessageDialog(miVentana, "Contrasena correcta", "ATENCION", JOptionPane.WARNING_MESSAGE);
+		}else {
+			JOptionPane.showMessageDialog(miVentana, "Contrasena incorrecta", "ATENCION", JOptionPane.WARNING_MESSAGE);
 		}
 		return devuelve;
 	}
+	
+	
 
 }

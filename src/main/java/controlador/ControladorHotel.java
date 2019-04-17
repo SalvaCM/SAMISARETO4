@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Hotel;
 import modelo.Modelo;
+import vista.PanelHotel;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
@@ -122,49 +123,47 @@ public class ControladorHotel implements ActionListener {
 				
 				
 				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
-					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\b.jpg";
-						System.out.println("barcelona");
+					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
+						enlace="/imagenes/b.jpg";
+					
 						
 				}
 				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("MADRID")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\m.jpg";
-						System.out.println("m");
+						enlace="/imagenes/m.jpg";
+					
 						
 				}
 				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\sev.jpg";
+						enlace="/imagenes/sev.jpg";
 						 
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\valencia.jpg";
+						enlace="/imagenes/valencia.jpg";
 						 
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\paris.jpg";
+						enlace="/imagenes/paris.jpg";
 						 
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("NUEVA YORK")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-					enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\ny2.jpg";
+					enlace="/imagenes/ny2.jpg";
 					 
 				} else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-					enlace="C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\roma.jpg";
+					enlace="/imagenes/roma.jpg";
 					 
 				
 				}
-					imagen=new ImageIcon(enlace);
-					//JOptionPane.showMessageDialog(null,imagen);
+					imagen=new ImageIcon(PanelHotel.class.getResource(enlace));
 					miVentana.hotel.etiqueta = new JLabel(imagen);
 					miVentana.hotel.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.hotel.etiqueta.setVisible(true);
 					//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
-					//this.miVentana.hotel.repaint();
 					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
 				
 			}

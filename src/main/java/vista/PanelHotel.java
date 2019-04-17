@@ -90,7 +90,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		comboBox.setBounds(371, 142, 209, 26);
 		
-		// a�adir funcion para buscar provincias en la base de datos
+		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
 
 		add(comboBox);
@@ -99,8 +99,8 @@ public class PanelHotel extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
 		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
 		    
-		 ImageIcon imagen=new ImageIcon("C:\\workReto4\\SAMISARETO4\\src\\main\\java\\imagenes\\amarillo.jpg");
-		 etiqueta = new JLabel(imagen);
+		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/amarillo.jpg"));
+		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
 	       

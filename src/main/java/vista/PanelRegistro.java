@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.util.Date;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -32,6 +33,7 @@ public class PanelRegistro extends JPanel {
 	public JComboBox<String> comboBoxGenero = new JComboBox<String>();
 	public JPasswordField passwordField;
 	public JDateChooser dateChooser = new JDateChooser();
+	public JLabel etiqueta;
 
 	/**
 	 * Create the panel.
@@ -46,11 +48,12 @@ public class PanelRegistro extends JPanel {
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("REGISTRARSE");
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setForeground(Color.BLUE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("DNI:");
+		lblNewJgoodiesLabel_1.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewJgoodiesLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_1.setBounds(110, 178, 351, 35);
@@ -70,22 +73,25 @@ public class PanelRegistro extends JPanel {
 		add(btnRegistrarse);
 		
 		JLabel lblNombre = DefaultComponentFactory.getInstance().createLabel("NOMBRE:");
+		lblNombre.setForeground(Color.ORANGE);
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNombre.setBounds(110, 231, 351, 29);
 		add(lblNombre);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("APELLIDO:");
+		lblNewJgoodiesLabel_2.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewJgoodiesLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewJgoodiesLabel_2.setBounds(110, 281, 351, 29);
+		lblNewJgoodiesLabel_2.setBounds(202, 281, 259, 29);
 		add(lblNewJgoodiesLabel_2);
 
 		
 		JLabel lblContrasea = DefaultComponentFactory.getInstance().createLabel("CONTRASE\u00D1A:");
+		lblContrasea.setForeground(Color.ORANGE);
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblContrasea.setBounds(110, 362, 351, 25);
+		lblContrasea.setBounds(110, 387, 351, 25);
 		add(lblContrasea);
 		
 		textFieldDni = new JTextField();
@@ -108,19 +114,25 @@ public class PanelRegistro extends JPanel {
 		
 		passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		passwordField.setBounds(468, 363, 277, 26);
+		passwordField.setBounds(468, 388, 277, 26);
 		add(passwordField);
 		
 		JLabel lblFechaDeNacimiento = DefaultComponentFactory.getInstance().createLabel("FECHA DE NACIMIENTO:");
+		lblFechaDeNacimiento.setForeground(Color.ORANGE);
 		lblFechaDeNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblFechaDeNacimiento.setBounds(242, 321, 219, 30);
+		lblFechaDeNacimiento.setBounds(242, 335, 219, 30);
 		add(lblFechaDeNacimiento);
 		
 		Date fecha = new Date();
 		dateChooser.setMaxSelectableDate(fecha);
-		dateChooser.setBounds(468, 322, 219, 29);
+		dateChooser.setBounds(468, 336, 219, 29);
 		dateChooser.setDateFormatString("yyyy-MM-dd");
 		add(dateChooser);
+		
+		ImageIcon imagen=new ImageIcon(PanelRegistro.class.getResource("/imagenes/fondo1.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 		
 
 		

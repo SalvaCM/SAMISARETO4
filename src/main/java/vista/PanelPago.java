@@ -44,6 +44,7 @@ public class PanelPago extends JPanel {
 	public JButton btn001;
 	
 	public JButton[] arrayBtn= new JButton[15];
+	public JLabel etiqueta ;
 		
 
 	/**
@@ -57,7 +58,7 @@ public class PanelPago extends JPanel {
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
 		lblNewJgoodiesLabel.setBackground(new Color(70, 130, 180));
-		lblNewJgoodiesLabel.setForeground(new Color(70, 130, 180));
+		lblNewJgoodiesLabel.setForeground(Color.BLACK);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 52, 1065, 48);
@@ -74,18 +75,21 @@ public class PanelPago extends JPanel {
 		add(btnSiguiente);
 		
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("TOTAL:");
+		lblNewJgoodiesLabel_1.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_1.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_1.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_1.setBounds(658, 214, 178, 35);
 		add(lblNewJgoodiesLabel_1);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("PAGADO:");
+		lblNewJgoodiesLabel_2.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_2.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_2.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_2.setBounds(658, 321, 178, 30);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("RESTANTE:");
+		lblNewJgoodiesLabel_3.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_3.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_3.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_3.setBounds(658, 435, 209, 35);
@@ -219,12 +223,16 @@ public class PanelPago extends JPanel {
 		arrayBtn[14]=btn001;
 		
 		JLabel lblNewJgoodiesLabel_4 = DefaultComponentFactory.getInstance().createLabel("Haz clic en los billetes o monedas para introducir el dinero");
+		lblNewJgoodiesLabel_4.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_4.setFont(new Font("Aharoni", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel_4.setBounds(10, 127, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
 	
-	
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 
 	}
 }

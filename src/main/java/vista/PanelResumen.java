@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,6 +21,7 @@ private static final long serialVersionUID = 3L;
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public DefaultListModel<String> mostrarResumen = new DefaultListModel<String>();	
 	public JList<String> resumen = new JList<String>();
+	public JLabel etiqueta ;
 		
 
 	/**
@@ -52,6 +54,12 @@ private static final long serialVersionUID = 3L;
 		resumen = new JList<String>(mostrarResumen);
 		resumen.setBounds(224, 104, 632, 419);
 		add(resumen);
+		
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
+		
 		
 		
 	

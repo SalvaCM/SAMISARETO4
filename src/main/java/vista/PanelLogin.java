@@ -3,6 +3,8 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,7 +27,7 @@ public class PanelLogin extends JPanel {
 	public JButton btnLogin;
 	public JTextField TextDni; 
 	public JPasswordField passwordField;
-
+	public JLabel etiqueta ;
 	
 
 	/**
@@ -41,7 +43,7 @@ public class PanelLogin extends JPanel {
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("LOGIN");
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setForeground(Color.BLUE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
@@ -60,12 +62,14 @@ public class PanelLogin extends JPanel {
 	
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("DNI:");
+		lblNewJgoodiesLabel_3.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel_3.setBounds(322, 175, 440, 33);
 		add(lblNewJgoodiesLabel_3);
 		lblNewJgoodiesLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNewJgoodiesLabel2 = DefaultComponentFactory.getInstance().createLabel("PASSWORD:");
+		lblNewJgoodiesLabel2.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel2.setBounds(322, 281, 440, 33);
 		add(lblNewJgoodiesLabel2);
 		lblNewJgoodiesLabel2.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -92,6 +96,11 @@ public class PanelLogin extends JPanel {
 		lblNewJgoodiesLabel_1.setBackground(Color.CYAN); 
 		lblNewJgoodiesLabel_1.setBounds(322, 142, 440, 360);
 		add(lblNewJgoodiesLabel_1);
+		
+		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/fondo1.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 		
 
 	}

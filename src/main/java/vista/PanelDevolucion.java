@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -25,6 +26,7 @@ public class PanelDevolucion extends JPanel {
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public DefaultListModel<String> cambios = new DefaultListModel<String>();	
 	public JList<String> devolucion = new JList<String>();
+	public JLabel etiqueta;
 		
 		
 
@@ -39,7 +41,7 @@ public class PanelDevolucion extends JPanel {
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("CAMBIO");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setForeground(Color.BLACK);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.PLAIN, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 68, 1065, 48);
@@ -58,6 +60,11 @@ public class PanelDevolucion extends JPanel {
 		devolucion.setBackground(new Color(255, 255, 255));
 		devolucion.setBounds(217, 155, 657, 360);
 		add(devolucion);
+		
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 		
 
 		

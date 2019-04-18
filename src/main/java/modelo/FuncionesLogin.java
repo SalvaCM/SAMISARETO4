@@ -3,6 +3,9 @@ package modelo;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Date;
+
+import org.apache.commons.codec.digest.DigestUtils;
+
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 
@@ -55,17 +58,16 @@ public class FuncionesLogin {
 		while(rs.next()) {
 			passwordEncriptada = rs.getString("Contrasena");
 		}
+		
+		String pass1 = DigestUtils.md5Hex(String.valueOf(pass));
 
-
-/*		for(int i=0; i<passwordEncriptada.length(); i--) {
-			char[] cadena = passwordEncriptada.toCharArray();
-			if(pass[i] == cadena[i]) {
-				devuelve= true;
-			}else {
-				devuelve= false;
-			}
+		if(pass1.equals(passwordEncriptada)) {
+			devuelve= true;
+		}else {
+			devuelve= false;
+		}
 			
-		}*/
+		
 		return devuelve;
 		
 		

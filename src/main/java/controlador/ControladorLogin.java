@@ -63,13 +63,13 @@ public class ControladorLogin  implements ActionListener{
 		case "btnLogin": 	
 			try {
 					
-				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())) {
+				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
 					funciones.cambiarDePanel(miVentana.login, miVentana.hotel);
 					}
 				else {
-					System.out.println("Contrasena o usuario incorrecto");
+					JOptionPane.showMessageDialog(miVentana, "¡Contraseña incorrecta!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
 				}
 					resetear();
 

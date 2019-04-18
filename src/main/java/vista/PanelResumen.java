@@ -34,7 +34,7 @@ private static final long serialVersionUID = 3L;
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("RESUMEN");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 35, 1060, 48);

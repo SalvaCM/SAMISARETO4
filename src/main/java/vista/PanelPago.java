@@ -51,6 +51,7 @@ public class PanelPago extends JPanel {
 	 * Create the panel. 
 	 */
 	public PanelPago() {
+		setForeground(Color.DARK_GRAY);
 		setMaximumSize(new Dimension(800, 600));
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
@@ -58,7 +59,7 @@ public class PanelPago extends JPanel {
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
 		lblNewJgoodiesLabel.setBackground(new Color(70, 130, 180));
-		lblNewJgoodiesLabel.setForeground(Color.BLACK);
+		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setBounds(10, 52, 1065, 48);
@@ -75,37 +76,40 @@ public class PanelPago extends JPanel {
 		add(btnSiguiente);
 		
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("TOTAL:");
-		lblNewJgoodiesLabel_1.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_1.setForeground(Color.DARK_GRAY);
 		lblNewJgoodiesLabel_1.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_1.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_1.setBounds(658, 214, 178, 35);
 		add(lblNewJgoodiesLabel_1);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("PAGADO:");
-		lblNewJgoodiesLabel_2.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_2.setForeground(Color.DARK_GRAY);
 		lblNewJgoodiesLabel_2.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_2.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_2.setBounds(658, 321, 178, 30);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("RESTANTE:");
-		lblNewJgoodiesLabel_3.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_3.setForeground(Color.DARK_GRAY);
 		lblNewJgoodiesLabel_3.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_3.setFont(new Font("Aharoni", Font.PLAIN, 35));
 		lblNewJgoodiesLabel_3.setBounds(658, 435, 209, 35);
 		add(lblNewJgoodiesLabel_3);		
+		restante.setForeground(Color.RED);
 		
 		
 		restante.setHorizontalAlignment(SwingConstants.RIGHT);
 		restante.setFont(new Font("Tahoma", Font.PLAIN, 30));	
 	    restante.setBounds(888, 435, 135, 35);
 		add(restante);
+		pagado.setForeground(Color.RED);
 		
 		
 		pagado.setHorizontalAlignment(SwingConstants.RIGHT);
 		pagado.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		pagado.setBounds(889, 321, 135, 35);
 		add(pagado);
+		total.setForeground(Color.RED);
 		
 		
 		total.setHorizontalAlignment(SwingConstants.RIGHT);

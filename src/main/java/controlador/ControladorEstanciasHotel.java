@@ -57,7 +57,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			}
 			else
 			{
-				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
+				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.fechas);
 			}
 			controladorReservas=0;
 		}

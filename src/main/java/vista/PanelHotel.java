@@ -48,7 +48,7 @@ public class PanelHotel extends JPanel {
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL HOTEL");
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
+		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);

@@ -12,7 +12,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Hotel;
 import modelo.Modelo;
+import vista.PanelDevolucion;
+import vista.PanelEstanciasHotel;
+import vista.PanelFechas;
 import vista.PanelHotel;
+import vista.PanelPago;
+import vista.PanelResumen;
 import vista.Ventana;
 
 public class ControladorHotel implements ActionListener {
@@ -116,55 +121,129 @@ public class ControladorHotel implements ActionListener {
 			//IMAGENES
 			public void imagen() {
 				 String enlace = "";
-				 ImageIcon imagen;
+				 ImageIcon imagen1;
+				 ImageIcon imagen2;
+				 ImageIcon imagen3;
+				 ImageIcon imagen4; 
+				 ImageIcon imagen5;
+				 ImageIcon imagen6;
+				 
 				// JLabel etiqueta = null;
 				this.miVentana.hotel.repaint();
 				
 				
 				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
+					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/b.jpg";
 					
 						
 				}
 				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("MADRID")) {
-					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
+					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/m.jpg";
 					
 						
 				}
 				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/sev.jpg";
+						
 						 
+						
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/paris.jpg";
 						 
 					}
 				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("NUEVA YORK")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/ny2.jpg";
 					 
 				} else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
+					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/roma.jpg";
 					 
 				
 				}
-					imagen=new ImageIcon(PanelHotel.class.getResource(enlace));
-					miVentana.hotel.etiqueta = new JLabel(imagen);
+					imagen1=new ImageIcon(PanelHotel.class.getResource(enlace));
+					imagen2=new ImageIcon(PanelEstanciasHotel.class.getResource(enlace));
+					imagen3=new ImageIcon(PanelResumen.class.getResource(enlace));
+					imagen4=new ImageIcon(PanelDevolucion.class.getResource(enlace));
+					imagen5=new ImageIcon(PanelPago.class.getResource(enlace));
+					imagen6=new ImageIcon(PanelFechas.class.getResource(enlace));
+					
+					miVentana.hotel.etiqueta = new JLabel(imagen1);
 					miVentana.hotel.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.hotel.etiqueta.setVisible(true);
+					
+					miVentana.estanciasHotel.etiqueta = new JLabel(imagen2);
+					miVentana.estanciasHotel.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.estanciasHotel.etiqueta.setVisible(true);
+					
+					miVentana.resumen.etiqueta = new JLabel(imagen3);
+					miVentana.resumen.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.resumen.etiqueta.setVisible(true);
+					
+					miVentana.pago.etiqueta = new JLabel(imagen4);
+					miVentana.pago.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.pago.etiqueta.setVisible(true);
+					
+					miVentana.devolucion.etiqueta = new JLabel(imagen5);
+					miVentana.devolucion.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.devolucion.etiqueta.setVisible(true);
+					
+					miVentana.fechas.etiqueta = new JLabel(imagen6);
+					miVentana.fechas.etiqueta.setBounds(-20,-20, 1200, 800);
+					miVentana.fechas.etiqueta.setVisible(true);
+					
 					//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
 					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
-				
+					this.miVentana.estanciasHotel.add(miVentana.estanciasHotel.etiqueta);
+					this.miVentana.resumen.add(miVentana.resumen.etiqueta);
+					this.miVentana.pago.add(miVentana.pago.etiqueta);
+					this.miVentana.devolucion.add(miVentana.devolucion.etiqueta);
+					this.miVentana.fechas.add(miVentana.fechas.etiqueta);
 			}
 			
 

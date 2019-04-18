@@ -13,8 +13,8 @@ public class ControladorEstanciasHotel  implements ActionListener{
 	private Ventana miVentana;
 	private Modelo miModelo;
 	
-	
 	FuncionesControlador funciones = new FuncionesControlador();
+	private int controladorReservas=0;
 	
 	/**
 	 * Constructor de la clase
@@ -37,31 +37,29 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 
-		
-		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
-		funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
-		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-		todosLosHoteles();
-		break;
+		case "btnCancelarEstancias": 
+			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
+			funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+			funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+			todosLosHoteles();
+			break;
+
 		case "Reservar": 
-			if(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
-			{
-			JOptionPane.showMessageDialog(miVentana, "Seleccione una estancia", "Atencion!", JOptionPane.WARNING_MESSAGE);
-	
-			}else {
-			JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
-			 HabitacionElegida();
-				}
-		
+				JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				HabitacionElegida();
+				controladorReservas++;
 		break;
+		
 		case "btnSiguienteEstancias":
-			
-			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
-		
-		
-		
-		
-		
+			if (controladorReservas==0)//(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
+			{
+				JOptionPane.showMessageDialog(miVentana, "Seleccione una estancia", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			}
+			else
+			{
+				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
+			}
+			controladorReservas=0;
 		}
 		
 	}

@@ -44,7 +44,9 @@ public class ControladorDevolucion implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 						
-				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida); 
+				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
+				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 				PasarDeDespedidaASaludo();
 				resetear();
 				break;

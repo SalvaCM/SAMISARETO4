@@ -28,6 +28,7 @@ public class Ventana extends JFrame {
 	public PanelEstanciasHotel estanciasHotel;
 	public PanelLogin login;
 	public PanelRegistro registro;
+
 	
 	
 	/**
@@ -92,6 +93,8 @@ public class Ventana extends JFrame {
 		registro = new PanelRegistro();
 		contentPane.add(registro);
 		registro.setLayout(null);
+		
+		
 		
 		
 

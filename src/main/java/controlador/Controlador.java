@@ -29,6 +29,7 @@ public class Controlador {
 	public ControladorLogin miControladorLogin;
 	public ControladorRegistro miControladorRegistro;
 	public FuncionesControlador miFuncionesControlador;
+
 	
 	//Constructor
 	
@@ -45,6 +46,7 @@ public class Controlador {
 			this.miControladorLogin = new ControladorLogin(miVentana, miModelo);
 			this.miControladorRegistro = new ControladorRegistro(miVentana, miModelo);
 			this.miFuncionesControlador = new FuncionesControlador();
+			
 		
 		}
 

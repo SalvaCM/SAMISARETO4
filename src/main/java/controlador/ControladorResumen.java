@@ -74,7 +74,9 @@ public class ControladorResumen implements ActionListener {
 											System.out.println(miControlador.miControladorPago.total);
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
 											miVentana.pago.total.setText(formatoMoneda.format(	miControlador.miControladorPago.total));
-											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);			
+											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
+											
+									
 						break;
 						
 				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago); resetear();  miControlador.miControladorHotel.Estancias();

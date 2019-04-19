@@ -12,6 +12,11 @@ import javax.swing.border.LineBorder;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JList;
+import javax.swing.JTextArea;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class PanelResumen extends JPanel {
 
@@ -22,6 +27,7 @@ private static final long serialVersionUID = 3L;
 	public DefaultListModel<String> mostrarResumen = new DefaultListModel<String>();	
 	public JList<String> resumen = new JList<String>();
 	public JLabel etiqueta ;
+	public JTextArea areaResumen;
 		
 
 	/**
@@ -32,28 +38,43 @@ private static final long serialVersionUID = 3L;
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("RESUMEN");
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("DETALLES DE LA RESERVA");
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(new Color(0, 0, 0));
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(10, 35, 1060, 48);
+		lblNewJgoodiesLabel.setBounds(-172, 35, 1064, 48);
 		add(lblNewJgoodiesLabel);
-		btnCancelar.setFont(new Font("Aharoni", Font.PLAIN, 16));
+		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
 		btnCancelar.setName("btnCancelarResumen");
-		btnCancelar.setBounds(60, 556, 151, 48);
+		btnCancelar.setBounds(106, 517, 151, 48);
 		add(btnCancelar);
-		btnSiguiente.setFont(new Font("Aharoni", Font.PLAIN, 16));
+		btnSiguiente.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
 		btnSiguiente.setName("btnSiguienteResumen");
-		btnSiguiente.setBounds(874, 556, 156, 48);
+		btnSiguiente.setBounds(568, 517, 156, 48);
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(112, 152, 239, 275);
+		add(scrollPane);
 		resumen = new JList<String>(mostrarResumen);
-		resumen.setBounds(224, 104, 632, 419);
-		add(resumen);
+		resumen.setBorder(new TitledBorder(null, "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		scrollPane.setViewportView(resumen);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(392, 95, 239, 386);
+		add(scrollPane_1);
+		
+		areaResumen = new JTextArea();
+		scrollPane_1.setViewportView(areaResumen);
+		areaResumen.setBorder(new TitledBorder(null, "Habitacion Reservada", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		areaResumen.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		areaResumen.setEditable(false);
+		
 		
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
 		etiqueta = new JLabel(imagen);

@@ -36,17 +36,11 @@ public class HabitacionHotel extends Habitacion {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("HabitacionHotel [precio=");
-		builder.append(precio);
-		builder.append(", nCamas=");
-		builder.append(nCamas);
-		builder.append(", codHabitacion=");
-		builder.append(codHabitacion);
-		builder.append(", tamano=");
-		builder.append(tamano);
-		builder.append(", tipo=");
-		builder.append(tipo);
-		builder.append("]");
+		builder.append("Tipo: "+tipo+"\n");
+		builder.append("Nº Camas: "+nCamas+"\n");
+		builder.append("Tamaño: "+tamano+"\n");
+		builder.append("Precio: "+precio+"\n");
+		builder.append("\n");
 		return builder.toString();
 	}
 	

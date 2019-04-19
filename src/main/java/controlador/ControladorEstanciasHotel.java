@@ -58,6 +58,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			else
 			{
 				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
+				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotel.getNombre());
+				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotel.getUbicacion());
+				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotel.getnEstrellas());
 			}
 			controladorReservas=0;
 		}
@@ -85,18 +88,8 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
-		miVentana.resumen.mostrarResumen.addElement("Nombre del Hotel: " + miModelo.hotel.getNombre());
-		miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotel.getUbicacion());
-		miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotel.getnEstrellas());
-		
-		miVentana.resumen.mostrarResumen.addElement("Categoria: "+miModelo.reserva.getTipo());
-		miVentana.resumen.mostrarResumen.addElement("Tarifa: "+miModelo.reserva.getPrecio());
-		miVentana.resumen.mostrarResumen.addElement("Habitacion: "+miModelo.reserva.getnCamas());
-		
-
-		
+		}	
+			miVentana.resumen.areaResumen.append(miModelo.reserva.toString());	
 	}
 	
 	

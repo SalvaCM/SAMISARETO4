@@ -14,7 +14,7 @@ import modelo.Hotel;
 import modelo.Modelo;
 import vista.PanelDevolucion;
 import vista.PanelEstanciasHotel;
-import vista.PanelFechas;
+
 import vista.PanelHotel;
 import vista.PanelPago;
 import vista.PanelResumen;
@@ -65,10 +65,20 @@ public class ControladorHotel implements ActionListener {
 					{
 						JOptionPane.showMessageDialog(miVentana, "Seleccione un hotel", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				
-					}else {
-						
-						funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
-					}
+					}else if(miVentana.hotel.tablaResultados.getSelectedRow() != -1){
+						 if (miVentana.hotel.fecha.getDate()==null||miVentana.hotel.fecha2.getDate()==null) {
+								JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
+							}
+						 else if(((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000)<1){
+								 // System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+									JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
+								}
+							  else {
+								 // miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+								  System.out.println("NOCHES: "+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+									funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
+								}
+						}
 
 					break;
 						
@@ -138,7 +148,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/b.jpg";
 					
 						
@@ -149,7 +159,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/m.jpg";
 					
 						
@@ -160,7 +170,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						 miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/sev.jpg";
 						
 						 
@@ -172,7 +182,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						 miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
@@ -182,7 +192,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						 miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-						 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+						 //miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/paris.jpg";
 						 
 					}
@@ -192,7 +202,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/ny2.jpg";
 					 
 				} else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
@@ -201,7 +211,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
-					 miVentana.fechas.remove(miVentana.fechas.etiqueta);
+					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/roma.jpg";
 					 
 				
@@ -211,7 +221,7 @@ public class ControladorHotel implements ActionListener {
 					imagen3=new ImageIcon(PanelResumen.class.getResource(enlace));
 					imagen4=new ImageIcon(PanelDevolucion.class.getResource(enlace));
 					imagen5=new ImageIcon(PanelPago.class.getResource(enlace));
-					imagen6=new ImageIcon(PanelFechas.class.getResource(enlace));
+					//imagen6=new ImageIcon(PanelFechas.class.getResource(enlace));
 					
 					miVentana.hotel.etiqueta = new JLabel(imagen1);
 					miVentana.hotel.etiqueta.setBounds(-20,-20, 1200, 800);
@@ -233,9 +243,9 @@ public class ControladorHotel implements ActionListener {
 					miVentana.devolucion.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.devolucion.etiqueta.setVisible(true);
 					
-					miVentana.fechas.etiqueta = new JLabel(imagen6);
-					miVentana.fechas.etiqueta.setBounds(-20,-20, 1200, 800);
-					miVentana.fechas.etiqueta.setVisible(true);
+					//miVentana.fechas.etiqueta = new JLabel(imagen6);
+				//	miVentana.fechas.etiqueta.setBounds(-20,-20, 1200, 800);
+				//	miVentana.fechas.etiqueta.setVisible(true);
 					
 					//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
 					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
@@ -243,7 +253,7 @@ public class ControladorHotel implements ActionListener {
 					this.miVentana.resumen.add(miVentana.resumen.etiqueta);
 					this.miVentana.pago.add(miVentana.pago.etiqueta);
 					this.miVentana.devolucion.add(miVentana.devolucion.etiqueta);
-					this.miVentana.fechas.add(miVentana.fechas.etiqueta);
+					//this.miVentana.fechas.add(miVentana.fechas.etiqueta);
 			}
 			
 

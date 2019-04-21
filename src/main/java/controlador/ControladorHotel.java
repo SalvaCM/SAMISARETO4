@@ -3,6 +3,9 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -41,13 +44,23 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
 				miVentana.hotel.btnCancelar.addActionListener(this);
-		
+				
+				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
+					@Override
+				    public void propertyChange(PropertyChangeEvent e) {
+				        System.out.println(e.getPropertyName()+ ": " + e.getNewValue());
+				        miVentana.hotel.fechaSalida.setEnabled(true);
+				        miVentana.hotel.fechaSalida.setMinSelectableDate((java.util.Date) e.getNewValue());
+				    }
+				});
+				
 				
 			}
 			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
+			
 			
 			
 			@Override
@@ -60,18 +73,34 @@ public class ControladorHotel implements ActionListener {
 					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 					break;
 					case "btnSiguienteHotel": 	
+					validarCampos();
+	
+					break;	
+
+					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
 					
-					if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
-					{
-						JOptionPane.showMessageDialog(miVentana, "Seleccione un hotel", "Atencion!", JOptionPane.WARNING_MESSAGE);
+					break;					
+				}
 				
+			}
+			
+			
+				
+			
+			private void validarCampos() {
+				if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
+				{
+					JOptionPane.showMessageDialog(miVentana, "Seleccione un hotel", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			
+				}
+				else {
+					if (miVentana.hotel.fechaEntrada.getDate()==null||miVentana.hotel.fechaSalida.getDate()==null)
+					{
+						JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 					}
-					else {
-						if (miVentana.hotel.fechaEntrada.getDate()==null||miVentana.hotel.fechaSalida.getDate()==null)
-						{
-							JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
-						}
-						else if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
+					else 
+					{
+						if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
 						{
 							// System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
 							JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
@@ -82,16 +111,10 @@ public class ControladorHotel implements ActionListener {
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
 						}
 					}
-					break;	
-
-					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
-					
-					break;					
 				}
-
-			}
 				
-			
+			}
+
 			public void Estancias() {
 				try {
 					miModelo.hotel = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());

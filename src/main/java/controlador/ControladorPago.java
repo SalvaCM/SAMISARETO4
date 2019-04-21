@@ -67,6 +67,7 @@ public class ControladorPago implements ActionListener {
 		miVentana.pago.pagado.setText("");
 		miVentana.pago.restante.setText("");
 		actBotones(miVentana.pago.arrayBtn); 
+		miVentana.pago.btnCancelar.setEnabled(true);
 		total=0;
 		pagado = 0;
 				

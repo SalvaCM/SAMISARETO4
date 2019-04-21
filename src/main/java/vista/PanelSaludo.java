@@ -23,6 +23,7 @@ public class PanelSaludo extends JPanel {
 	
 	public JButton btnSaludo = new JButton("");
 	private JLabel etiqueta;
+	private JLabel etiqueta2;
 
 	/**
 	 * Create the panel.
@@ -41,7 +42,7 @@ public class PanelSaludo extends JPanel {
 		lblNewJgoodiesLabel2.setBackground(Color.WHITE);
 		lblNewJgoodiesLabel2.setFont(new Font("Tahoma", Font.ITALIC, 30));
 		lblNewJgoodiesLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel2.setBounds(63, 321, 1080, 78);
+		lblNewJgoodiesLabel2.setBounds(-36, 473, 1080, 78);
 		add(lblNewJgoodiesLabel2);
 		
 		btnSaludo.setName("btnSaludo");	
@@ -49,10 +50,16 @@ public class PanelSaludo extends JPanel {
 		btnSaludo.setContentAreaFilled(false);
 		add(btnSaludo);
 		
-		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/welcome.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/LOGO3.png"));
+		ImageIcon imagen2=new ImageIcon(PanelHotel.class.getResource("/imagenes/LOADER.gif"));
+
 		etiqueta = new JLabel(imagen);
-		etiqueta.setBounds(-20, -20, 1200, 800);
+		etiqueta.setBounds(24, -139, 1000, 800);
 		add(etiqueta);
+		
+		etiqueta2 = new JLabel(imagen2);
+		etiqueta2.setBounds(20, -139, 1005, 900);
+		add(etiqueta2);
 
 	}
 

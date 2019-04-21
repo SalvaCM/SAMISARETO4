@@ -146,7 +146,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
 					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					 //miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/b.jpg";
@@ -157,7 +157,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
 					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					// miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/m.jpg";
@@ -168,7 +168,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						// miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/sev.jpg";
@@ -180,7 +180,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						// miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/valencia.jpg";
@@ -190,7 +190,7 @@ public class ControladorHotel implements ActionListener {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-						 miVentana.pago.remove(miVentana.pago.etiqueta);
+						// miVentana.pago.remove(miVentana.pago.etiqueta);
 						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						 //miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/paris.jpg";
@@ -200,7 +200,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					// miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/ny2.jpg";
@@ -209,7 +209,7 @@ public class ControladorHotel implements ActionListener {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
-					 miVentana.pago.remove(miVentana.pago.etiqueta);
+					// miVentana.pago.remove(miVentana.pago.etiqueta);
 					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/roma.jpg";
@@ -235,9 +235,9 @@ public class ControladorHotel implements ActionListener {
 					miVentana.resumen.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.resumen.etiqueta.setVisible(true);
 					
-					miVentana.pago.etiqueta = new JLabel(imagen4);
+					/*miVentana.pago.etiqueta = new JLabel(imagen4);
 					miVentana.pago.etiqueta.setBounds(-20,-20, 1200, 800);
-					miVentana.pago.etiqueta.setVisible(true);
+					miVentana.pago.etiqueta.setVisible(true);*/
 					
 					miVentana.devolucion.etiqueta = new JLabel(imagen5);
 					miVentana.devolucion.etiqueta.setBounds(-20,-20, 1200, 800);
@@ -251,7 +251,7 @@ public class ControladorHotel implements ActionListener {
 					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
 					this.miVentana.estanciasHotel.add(miVentana.estanciasHotel.etiqueta);
 					this.miVentana.resumen.add(miVentana.resumen.etiqueta);
-					this.miVentana.pago.add(miVentana.pago.etiqueta);
+					//this.miVentana.pago.add(miVentana.pago.etiqueta);
 					this.miVentana.devolucion.add(miVentana.devolucion.etiqueta);
 					//this.miVentana.fechas.add(miVentana.fechas.etiqueta);
 			}

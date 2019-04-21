@@ -50,14 +50,15 @@ public class PanelHotel extends JPanel {
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
+		Date hoy = new Date();
 		fecha2=new JDateChooser();
 		fecha2.setName("vuelta");
 		fecha2.setOpaque(false);
 		fecha2.setDateFormatString("yyyy-MM-dd");
 		fecha2.setBounds(733, 155, 161, 26);
-		
+		fecha2.setMinSelectableDate(hoy);
 		add(fecha2);
-		Date hoy = new Date();
+		
 		fecha =new JDateChooser();
 		fecha.setName("ida");
 		fecha.setOpaque(false);
@@ -121,7 +122,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
 		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
 		    
-		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/fondo.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

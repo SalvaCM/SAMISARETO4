@@ -63,11 +63,11 @@ public class ControladorResumen implements ActionListener {
 				
 											System.out.println(miModelo.reservas.size());
 											funciones.desBotones(miVentana.pago.btnSiguiente);
-											//miVentana.pago.btnSiguiente.setEnabled(false);
+											
 											miControlador.miControladorPago.resetear();
-											//miControlador.miControladorPago.total=0;
+											
 											for(int i=0;i<miModelo.reservas.size();i++) {
-												miControlador.miControladorPago.total += miModelo.reservas.get(i).getPrecio();
+												miControlador.miControladorPago.total += miModelo.reservas.get(i).getPrecio()*miModelo.reservas.get(i).getNoches();;
 												
 												
 											}

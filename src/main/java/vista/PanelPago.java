@@ -54,7 +54,7 @@ public class PanelPago extends JPanel {
 		setForeground(Color.DARK_GRAY);
 		setMaximumSize(new Dimension(800, 600));
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		setBackground(new Color(245, 245, 245));
+		setBackground(new Color(176, 224, 230));
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
@@ -233,10 +233,10 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel_4.setBounds(10, 127, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
 	
-		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		/*ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
-		add(etiqueta);
+		add(etiqueta);*/
 
 	}
 }

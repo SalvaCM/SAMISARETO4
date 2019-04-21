@@ -65,33 +65,28 @@ public class ControladorHotel implements ActionListener {
 					{
 						JOptionPane.showMessageDialog(miVentana, "Seleccione un hotel", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				
-					}else if(miVentana.hotel.tablaResultados.getSelectedRow() != -1){
-						 if (miVentana.hotel.fecha.getDate()==null||miVentana.hotel.fecha2.getDate()==null) {
-								JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
-							}
-						 else if(((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000)<1){
-								 // System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
-									JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
-								}
-							  else {
-								 // miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
-								  System.out.println("NOCHES: "+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
-									funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
-								}
+					}
+					else {
+						if (miVentana.hotel.fechaEntrada.getDate()==null||miVentana.hotel.fechaSalida.getDate()==null)
+						{
+							JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 						}
-
-					break;
-						
+						else if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
+						{
+							// System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+							JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
+						}
+						else {
+							// miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+							System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
+							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
+						}
+					}
+					break;	
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
 					
-					break;
-					
-					
-				
-						
-					
-					
+					break;					
 				}
 
 			}

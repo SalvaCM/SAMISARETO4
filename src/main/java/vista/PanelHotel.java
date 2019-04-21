@@ -38,8 +38,8 @@ public class PanelHotel extends JPanel {
 	public DefaultTableModel tableModel;
 	public JLabel etiqueta ;
 	public JComboBox<String> comboBox = new JComboBox<String>();
-	public JDateChooser fecha;
-	public JDateChooser fecha2;
+	public JDateChooser fechaEntrada;
+	public JDateChooser fechaSalida;
 
 	
 	/**
@@ -51,22 +51,22 @@ public class PanelHotel extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		Date hoy = new Date();
-		fecha2=new JDateChooser();
-		fecha2.setName("vuelta");
-		fecha2.setOpaque(false);
-		fecha2.setDateFormatString("yyyy-MM-dd");
-		fecha2.setBounds(733, 155, 161, 26);
-		fecha2.setMinSelectableDate(hoy);
-		add(fecha2);
+		fechaSalida=new JDateChooser();
+		fechaSalida.setName("vuelta");
+		fechaSalida.setOpaque(false);
+		fechaSalida.setDateFormatString("yyyy-MM-dd");
+		fechaSalida.setBounds(733, 155, 161, 26);
+		fechaSalida.setMinSelectableDate(hoy);
+		add(fechaSalida);
 		
-		fecha =new JDateChooser();
-		fecha.setName("ida");
-		fecha.setOpaque(false);
-		fecha.setDateFormatString("yyyy-MM-dd");
-		fecha.setBounds(534, 155, 161, 26);
-		fecha.setMinSelectableDate(hoy);
+		fechaEntrada =new JDateChooser();
+		fechaEntrada.setName("ida");
+		fechaEntrada.setOpaque(false);
+		fechaEntrada.setDateFormatString("yyyy-MM-dd");
+		fechaEntrada.setBounds(534, 155, 161, 26);
+		fechaEntrada.setMinSelectableDate(hoy);
 		
-		add(fecha);
+		add(fechaEntrada);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL HOTEL");
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
@@ -117,10 +117,6 @@ public class PanelHotel extends JPanel {
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
 
 		add(comboBox);
-			
-
-		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(130);
-		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(73);
 		    
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);

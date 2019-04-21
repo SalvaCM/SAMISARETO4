@@ -104,7 +104,6 @@ public class ControladorPago implements ActionListener {
 			
 				default: 
 				pagado = miModelo.misFuncionesPago.sumarDineroPago(((JButton) e.getSource()).getName(), pagado);
-				
 		}
 		
 		if (pagado >= total) {

@@ -93,7 +93,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		try {
 			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
 			miModelo.reservas.add(miModelo.reserva);
-			miModelo.reserva.setNoches((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+			miModelo.reserva.setNoches((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

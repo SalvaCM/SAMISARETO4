@@ -45,15 +45,23 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			break;
 
 		case "Reservar": 
+			if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
+			{
+				JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+
+			}
+			else {
 				JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				HabitacionElegida();
 				controladorReservas++;
+			}
 		break;
 		
 		case "btnSiguienteEstancias":
+			
 			if (controladorReservas==0)//(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
 			{
-				JOptionPane.showMessageDialog(miVentana, "Seleccione una estancia", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(miVentana, "Reserve una estancia antes de continuar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}
 			else
 			{

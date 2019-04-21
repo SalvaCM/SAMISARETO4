@@ -41,8 +41,8 @@ public class ControladorRegistro implements ActionListener {
 		switch (((JButton) e.getSource()).getName()) {
 			    
 		case "btnRegistro": try {
-			if(miModelo.misFuncionesRegistro.comprobarCamposRegistro(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.dateChooser.getDate(),miVentana.registro.passwordField.getPassword())) {
-				miModelo.misFuncionesRegistro.registrarNuevoCliente(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.dateChooser.getDate(),miVentana.registro.passwordField.getPassword());
+			if(miModelo.misFuncionesRegistro.comprobarCamposRegistro(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.fechaNac.getDate(),miVentana.registro.passwordField.getPassword())) {
+				miModelo.misFuncionesRegistro.registrarNuevoCliente(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.fechaNac.getDate(),miVentana.registro.passwordField.getPassword());
 				funciones.cambiarDePanel(miVentana.registro, miVentana.login);
 			}
 			} catch (SQLException e1) {

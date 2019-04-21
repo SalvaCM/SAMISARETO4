@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.ImageIcon;
@@ -32,7 +33,7 @@ public class PanelRegistro extends JPanel {
 	public JTextField textFieldDni;
 	public JComboBox<String> comboBoxGenero = new JComboBox<String>();
 	public JPasswordField passwordField;
-	public JDateChooser dateChooser = new JDateChooser();
+	public JDateChooser fechaNac = new JDateChooser();
 	public JLabel etiqueta;
 
 	/**
@@ -123,12 +124,18 @@ public class PanelRegistro extends JPanel {
 		lblFechaDeNacimiento.setBounds(242, 335, 219, 30);
 		add(lblFechaDeNacimiento);
 		
-		Date fecha = new Date();
-		dateChooser.setMaxSelectableDate(fecha);
-		dateChooser.setBounds(468, 336, 219, 29);
-		dateChooser.setDateFormatString("yyyy-MM-dd");
-		add(dateChooser);
-		
+
+		Calendar LimitadorFecha = Calendar.getInstance(); LimitadorFecha.add(Calendar.YEAR, -18); 
+	    Date edadMin = LimitadorFecha.getTime(); 
+	    Calendar LimitadorFecha2 = Calendar.getInstance(); LimitadorFecha2.add(Calendar.YEAR, -114); 
+	    Date edadMax = LimitadorFecha2.getTime();
+	    
+	    fechaNac.getJCalendar().setMaxSelectableDate(edadMin);
+	    fechaNac.getJCalendar().setMinSelectableDate(edadMax);
+		fechaNac.setBounds(468, 336, 219, 29);
+		fechaNac.setDateFormatString("yyyy-MM-dd");
+		add(fechaNac);
+	
 		ImageIcon imagen=new ImageIcon(PanelRegistro.class.getResource("/imagenes/fondo1.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);

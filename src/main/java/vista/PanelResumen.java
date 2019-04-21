@@ -26,8 +26,9 @@ private static final long serialVersionUID = 3L;
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public DefaultListModel<String> mostrarResumen = new DefaultListModel<String>();	
 	public JList<String> resumen = new JList<String>();
+	private JList<String> resumenHotel;
 	public JLabel etiqueta ;
-	public JTextArea areaResumen;
+	public JTextArea resumenReserva;
 		
 
 	/**
@@ -57,23 +58,22 @@ private static final long serialVersionUID = 3L;
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(112, 152, 239, 275);
 		add(scrollPane);
-		resumen = new JList<String>(mostrarResumen);
-		resumen.setBorder(new TitledBorder(null, "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
-		scrollPane.setViewportView(resumen);
+		resumenHotel = new JList<String>(mostrarResumen);
+		resumenHotel.setBorder(new TitledBorder(null, "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		scrollPane.setViewportView(resumenHotel);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(392, 95, 239, 386);
 		add(scrollPane_1);
 		
-		areaResumen = new JTextArea();
-		scrollPane_1.setViewportView(areaResumen);
-		areaResumen.setBorder(new TitledBorder(null, "Habitacion Reservada", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
-		areaResumen.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		areaResumen.setEditable(false);
+		resumenReserva = new JTextArea();
+		scrollPane_1.setViewportView(resumenReserva);
+		resumenReserva.setBorder(new TitledBorder(null, "Habitacion Reservada", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		resumenReserva.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		resumenReserva.setEditable(false);
 		
 		
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));

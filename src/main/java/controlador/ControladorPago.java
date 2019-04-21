@@ -86,6 +86,8 @@ public class ControladorPago implements ActionListener {
 				resetear();
 				miVentana.resumen.mostrarResumen.clear();
 				miModelo.reservas=new  ArrayList<HabitacionHotel>();
+				miVentana.resumen.resumenReserva.setText(null);
+				miVentana.resumen.resumen.removeAll();
 				break;
 								 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
@@ -98,8 +100,6 @@ public class ControladorPago implements ActionListener {
 			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
 				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotel.getNombre() + " " + "Ubicacion: " + miModelo.hotel.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotel.getnEstrellas() + " " + "Categoria: "+ miModelo.reserva.getTipo() + " " + "Tarifa: "+miModelo.reserva.getPrecio() + " " + "Habitacion: "+miModelo.reserva.getnCamas());
 				resetear();
-				miVentana.resumen.areaResumen.removeAll();
-				miVentana.resumen.resumen.removeAll();
 				break;
 			
 				default: 

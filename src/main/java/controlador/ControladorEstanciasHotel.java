@@ -98,7 +98,8 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-			miVentana.resumen.areaResumen.append(miModelo.reserva.toString());	
+			miVentana.resumen.resumenReserva.append(miModelo.reserva.toString());
+			
 	}
 	
 	

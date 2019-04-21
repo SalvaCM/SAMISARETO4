@@ -37,20 +37,6 @@ public class ControladorResumen implements ActionListener {
 				miVentana.resumen.btnSiguiente.addActionListener(this);
 				miVentana.resumen.btnCancelar.addActionListener(this);
 			}
-			
-			
-			/**
-			 * Metodo para resetear los valores de la ventana pago	
-			 */
-			public void resetear() {
-				miVentana.resumen.mostrarResumen.clear();
-				int rows=miVentana.estanciasHotel.tableModel.getRowCount();
-			
-				for (int i = rows; i > 0; i--) {
-					miVentana.estanciasHotel.tableModel.removeRow(i-1);
-				}	
-			}
-			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
 			 */
@@ -59,30 +45,27 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": 
-				
-											System.out.println(miModelo.reservas.size());
+				case "btnSiguienteResumen": System.out.println(miModelo.reservas.size());
 											funciones.desBotones(miVentana.pago.btnSiguiente);
-											
 											miControlador.miControladorPago.resetear();
 											
 											for(int i=0;i<miModelo.reservas.size();i++) {
-												miControlador.miControladorPago.total += miModelo.reservas.get(i).getPrecio()*miModelo.reservas.get(i).getNoches();;
-												
-												
+												miControlador.miControladorPago.total += miModelo.reservas.get(i).getPrecio()*miModelo.reservas.get(i).getNoches();	
 											}
+											
 											System.out.println(miControlador.miControladorPago.total);
 											miVentana.pago.pagado.setText(formatoMoneda.format(0));
 											miVentana.pago.total.setText(formatoMoneda.format(	miControlador.miControladorPago.total));
 											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
+											break;	
 											
-									
-						break;
-						
-				case "btnCancelarResumen": funciones.cambiarDePanel(miVentana.resumen, miVentana.pago); resetear();  miControlador.miControladorHotel.Estancias();
-			
-				break;
-		
+				case "btnCancelarResumen":	funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel);
+											miControlador.miFuncionesControlador.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+											miVentana.resumen.resumenReserva.setText(null);
+											miVentana.resumen.mostrarResumen.clear();
+											
+											miControlador.miControladorHotel.Estancias();miModelo.reservas.removeAll(miModelo.reservas);
+											break;
 				}
 			}	
 	

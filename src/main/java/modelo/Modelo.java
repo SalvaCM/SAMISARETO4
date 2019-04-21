@@ -35,7 +35,7 @@ public class Modelo {
 		this.habitaciones = new ArrayList<HabitacionHotel>();
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotel = new Hotel();
-		this.reserva = new HabitacionHotel();
+		//this.reserva = new HabitacionHotel();
 		this.reservas=new  ArrayList<HabitacionHotel>(); 
 	}
 	

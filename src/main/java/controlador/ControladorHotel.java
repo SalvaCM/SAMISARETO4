@@ -74,6 +74,9 @@ public class ControladorHotel implements ActionListener {
 					break;
 					case "btnSiguienteHotel": 	
 					validarCampos();
+					reiniciarImagen();
+					
+					
 	
 					break;	
 
@@ -85,7 +88,7 @@ public class ControladorHotel implements ActionListener {
 			}
 			
 			
-				
+				//METODOS
 			
 			private void validarCampos() {
 				if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
@@ -98,10 +101,11 @@ public class ControladorHotel implements ActionListener {
 					{
 						JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 					}
-					else 
-					{
-						if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
+					
+					else if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
 						{
+						System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
+						
 							// System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
 							JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
 						}
@@ -110,7 +114,7 @@ public class ControladorHotel implements ActionListener {
 							System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
 						}
-					}
+					
 				}
 				
 			}
@@ -274,7 +278,14 @@ public class ControladorHotel implements ActionListener {
 					//this.miVentana.fechas.add(miVentana.fechas.etiqueta);
 			}
 			
-
+			public void reiniciarImagen() {
+				 miVentana.hotel.remove(miVentana.hotel.etiqueta);
+					ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+					miVentana.hotel.etiqueta = new JLabel(imagen);
+					miVentana.hotel.etiqueta.setBounds(-20, -20, 1200, 800);
+					this.miVentana.hotel.add(miVentana.hotel.etiqueta);
+					miVentana.hotel.etiqueta.setVisible(true);
+			}
 
 }
 

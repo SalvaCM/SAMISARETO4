@@ -21,7 +21,7 @@ import java.awt.Dimension;
  */
 public class PanelDevolucion extends JPanel {
 	
-	private static final long serialVersionUID = 5L;
+	private static final long serialVersionUID = 11L;
 	
 	public JButton btnSiguiente = new JButton("Siguiente");
 	public DefaultListModel<String> cambios = new DefaultListModel<String>();	

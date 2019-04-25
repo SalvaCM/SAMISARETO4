@@ -77,9 +77,6 @@ public class ControladorHotel implements ActionListener {
 					case "btnSiguienteHotel": 	
 					validarCampos();
 					reiniciarImagen();
-					
-					
-	
 					break;	
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();

@@ -49,8 +49,10 @@ public class ControladorHotel implements ActionListener {
 					@Override
 				    public void propertyChange(PropertyChangeEvent e) {
 				        System.out.println(e.getPropertyName()+ ": " + e.getNewValue());
+				        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
+				        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
 				        miVentana.hotel.fechaSalida.setEnabled(true);
-				        miVentana.hotel.fechaSalida.setMinSelectableDate((java.util.Date) e.getNewValue());
+				        miVentana.hotel.fechaSalida.setMinSelectableDate(fechaMinimaSalida);
 				    }
 				});
 				

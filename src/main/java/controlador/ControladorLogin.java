@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Ventana;

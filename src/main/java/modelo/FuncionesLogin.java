@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -73,7 +74,28 @@ public class FuncionesLogin {
 		
 		
 	}
-	
-	
+	public void cambiarContrasena(String passwordNueva, Cliente cliente) {
+		//Declaración e inicialización de variables:
 
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		String query = "UPDATE cliente SET contrasena = '" + passwordNueva +"' WHERE dni='" + cliente.getDni() + "';";
+				//Inicio programa:
+				java.sql.Statement stmt = null;
+				try {
+					stmt = con.createStatement();
+				} catch (java.sql.SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+				try {
+					stmt.executeUpdate (query);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			
+
+	}
 }

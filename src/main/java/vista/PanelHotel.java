@@ -40,6 +40,7 @@ public class PanelHotel extends JPanel {
 	public JComboBox<String> comboBox = new JComboBox<String>();
 	public JDateChooser fechaEntrada;
 	public JDateChooser fechaSalida;
+	public JButton btnPerfil = new JButton("Perfil");
 
 	
 	/**
@@ -121,6 +122,10 @@ public class PanelHotel extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		
+		btnPerfil.setName("btnPerfil");
+		btnPerfil.setBounds(10, 25, 89, 23);
+		add(btnPerfil);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

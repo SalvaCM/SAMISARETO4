@@ -8,16 +8,20 @@ import vista.Ventana;
 import modelo.Modelo;
 
 
-public class ControladorPanelUsuario implements ActionListener{
+public class ControladorUsuario implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
+	FuncionesControlador funciones = new FuncionesControlador();
 	
-	public ControladorPanelUsuario(Ventana miVentana, Modelo miModelo)
+	public ControladorUsuario(Ventana miVentana, Modelo miModelo)
 	{
 		this.miVentana=miVentana;
 		this.miModelo=miModelo;
 		this.miVentana.usuario.btnCambiarPw.addActionListener(this);
+		this.miVentana.usuario.btnCambiarContrasena.addActionListener(this);
+		
+	
 	}
 		
 	@Override
@@ -41,8 +45,8 @@ public class ControladorPanelUsuario implements ActionListener{
 				mostrarCampos();
 				break;
 			case "btnVolver":
-				//aqui panel al que se vuelve
-				miVentana.usuario.setVisible(false);
+				funciones.cambiarDePanel(miVentana.usuario, miVentana.hotel);
+				
 				break;
 	}
 	

@@ -14,7 +14,7 @@ import java.awt.Dimension;
  */
 public class Ventana extends JFrame { 
 
-	private static final long serialVersionUID = 12L;
+	private static final long serialVersionUID = 13L;
 
 	private JPanel contentPane;
 

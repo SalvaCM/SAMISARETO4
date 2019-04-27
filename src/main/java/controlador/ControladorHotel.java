@@ -44,6 +44,7 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
 				miVentana.hotel.btnCancelar.addActionListener(this);
+				miVentana.hotel.btnPerfil.addActionListener(this); 
 				
 				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 					@Override
@@ -81,7 +82,11 @@ public class ControladorHotel implements ActionListener {
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
 					
-					break;					
+					break;	
+					
+					case "btnPerfil": funciones.cambiarDePanel(miVentana.hotel, miVentana.usuario);
+					miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
+					break;
 				}
 				
 			}

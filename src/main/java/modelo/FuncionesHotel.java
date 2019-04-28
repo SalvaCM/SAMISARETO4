@@ -108,6 +108,7 @@ public class FuncionesHotel {
 		}
 		return habitaciones;
 	}
+	// AQUI SOLO LEEMOS LA HABITACION DONDE ESTA ESE CODIGO, PERO NO SE RESERVA COMO TAL, SOLO A NIVEL DE PROGRAMA NO DE BASE DE DATOS
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
 		String tipo="";
 		int tamano;

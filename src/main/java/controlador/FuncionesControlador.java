@@ -47,12 +47,8 @@ public class FuncionesControlador {
 			((DefaultTableModel) tableModel).removeRow(i-1);
 		}	
 	}
-	
 
-	
 
-	
-	
 
 			
 			

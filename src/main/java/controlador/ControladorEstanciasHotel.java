@@ -67,9 +67,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			else
 			{
 				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
-				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotel.getNombre());
-				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotel.getUbicacion());
-				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotel.getnEstrellas());
+				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotelReservado.getNombre());
+				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotelReservado.getUbicacion());
+				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotelReservado.getnEstrellas());
 			}
 			controladorReservas=0;
 		}
@@ -90,28 +90,17 @@ public class ControladorEstanciasHotel  implements ActionListener{
 	}
 	public void HabitacionElegida() {
 
-		int codigoHabitacion = miModelo.hotel.habitaciones.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
+		int codigoHabitacion = miModelo.hotelReservado.habitaciones.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
 		try {
-			miModelo.reserva = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
-			miModelo.reservas.add(miModelo.reserva);
-			miModelo.reserva.setNoches((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
+			miModelo.habitacionReservada = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
+			miModelo.reservas.add(miModelo.habitacionReservada);
+			miModelo.habitacionReservada.setNoches((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-			miVentana.resumen.resumenReserva.append(miModelo.reserva.toString());
+			miVentana.resumen.resumenReserva.append(miModelo.habitacionReservada.toString());
 			
 	}
 	
-	
-	public void limpiarTablas()
-	{
-		int rows=miVentana.estanciasHotel.tableModel.getRowCount();
-		for (int i = rows; i > 0; i--) {
-			miVentana.estanciasHotel.tableModel.removeRow(i-1);
-		}	
-		rows=miVentana.hotel.tableModel.getRowCount();
-		for (int i = rows; i > 0; i--) {
-			miVentana.hotel.tableModel.removeRow(i-1);
-		}	
-}}
+}

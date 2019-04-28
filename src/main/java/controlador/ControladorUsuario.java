@@ -32,7 +32,7 @@ public class ControladorUsuario implements ActionListener{
 				if(ValidarContrasena())
 				{
 					String passwordEncriptada = DigestUtils.md5Hex(String.valueOf(miVentana.usuario.passwordNueva.getPassword()));
-					miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
+					//miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
 					System.out.println(passwordEncriptada);
 					ocultarCampos();
 				}
@@ -90,6 +90,12 @@ public class ControladorUsuario implements ActionListener{
 		}
 		return resultado;
 }
+	public void buscarReservas() {
+		// HACER LLAMADA A LOS CAMPOS DE LA TABLA RESERVAS 
+		// ANTES HAY QUE HACER UN METODO PARA INSERTAR RESERVAS EN LA BD DESPUES DEL PAGO
+		// OPCIONAL HACER UN METODO PARA RECUPERAR POR SEPARADO LOS DATOS DE LA RESERVA DE HOTEL Y HABITACIONES
+		// ASI SE ESCRIBIRIAN EN EL PANEL USUARIO EN RESERVAS PASADAS Y FUTURAS
+	}
 
 
 }

@@ -98,7 +98,7 @@ public class ControladorPago implements ActionListener {
 				}
 			    mostrarCambios(arrayCambios);
 			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
-				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotel.getNombre() + " " + "Ubicacion: " + miModelo.hotel.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotel.getnEstrellas() + " " + "Categoria: "+ miModelo.reserva.getTipo() + " " + "Tarifa: "+miModelo.reserva.getPrecio() + " " + "Habitacion: "+miModelo.reserva.getnCamas());
+				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotelReservado.getNombre() + " " + "Ubicacion: " + miModelo.hotelReservado.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotelReservado.getnEstrellas() + " " + "Categoria: "+ miModelo.habitacionReservada.getTipo() + " " + "Tarifa: "+miModelo.habitacionReservada.getPrecio() + " " + "Habitacion: "+miModelo.habitacionReservada.getnCamas());
 				resetear();
 				break;
 			

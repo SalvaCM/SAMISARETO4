@@ -25,8 +25,6 @@ public class PanelUsuario extends JPanel {
 	private static final long serialVersionUID = 12L;
 	
 	public DefaultListModel<String> modelo2;
-	public JList<String> listaReservasPasados;
-	public JList<String> listaReservasFuturos;
 	public JButton btnCambiarPw;
 	public JLabel lblCodVuelta;
 	public JButton btnVolver;
@@ -54,14 +52,6 @@ public class PanelUsuario extends JPanel {
 
 		
 		modelo2=new DefaultListModel<String>();
-		listaReservasPasados = new JList<String>(modelo2);
-		listaReservasPasados.setValueIsAdjusting(true);
-		listaReservasPasados.setForeground(new Color(0, 51, 102));
-		listaReservasPasados.setBackground(Color.WHITE);
-		listaReservasPasados.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(212, 208, 200), null, null, null), "Reservas Pasadas", TitledBorder.LEADING, TitledBorder.TOP, null, Color.DARK_GRAY));
-		listaReservasPasados.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
-		listaReservasPasados.setBounds(47, 308, 349, 181);
-		add(listaReservasPasados);
 		
 		lblCodVuelta = new JLabel("");
 		lblCodVuelta.setForeground(Color.GRAY);
@@ -70,11 +60,9 @@ public class PanelUsuario extends JPanel {
 		lblCodVuelta.setBounds(574, 354, 108, 29);
 		add(lblCodVuelta);
 		
-		btnVolver = new JButton("Volver a Compra");
+		btnVolver = new JButton("Volver");
 		btnVolver.setName("btnVolver");
-		btnVolver.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
-		btnVolver.setBackground(Color.WHITE);
-		btnVolver.setForeground(Color.BLACK);
+
 		
 		btnVolver.setBounds(637, 523, 153, 46);
 		add(btnVolver);
@@ -84,14 +72,6 @@ public class PanelUsuario extends JPanel {
 		lblCuentaDeUsuario.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 25));
 		lblCuentaDeUsuario.setBounds(47, 66, 270, 46);
 		add(lblCuentaDeUsuario);
-		
-		listaReservasFuturos = new JList<String>(modelo2);
-		listaReservasFuturos.setForeground(new Color(0, 51, 102));
-		listaReservasFuturos.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 18));
-		listaReservasFuturos.setBorder(new TitledBorder(new BevelBorder(BevelBorder.LOWERED, new Color(212, 208, 200), null, null, null), "Reservas Futuras", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 128, 0)));
-		listaReservasFuturos.setBackground(Color.WHITE);
-		listaReservasFuturos.setBounds(398, 308, 356, 181);
-		add(listaReservasFuturos);
 		
 		passwordNueva = new JPasswordField();
 		passwordNueva.setBackground(Color.WHITE);
@@ -149,6 +129,20 @@ public class PanelUsuario extends JPanel {
 		btnCambiarContrasena.setName("btnCambiarContrasena");
 		btnCambiarContrasena.setBounds(410, 109, 153, 28);
 		add(btnCambiarContrasena);
+		
+		JTextArea txtReservasPasadas = new JTextArea();
+		txtReservasPasadas.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtReservasPasadas.setEditable(false);
+		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Pasadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
+		txtReservasPasadas.setBounds(47, 319, 319, 187);
+		add(txtReservasPasadas);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		textArea.setEditable(false);
+		textArea.setBorder(new TitledBorder(null, "Reservas Futuras", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
+		textArea.setBounds(373, 319, 319, 187);
+		add(textArea);
 		
 		
 		

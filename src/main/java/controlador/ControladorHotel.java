@@ -125,11 +125,11 @@ public class ControladorHotel implements ActionListener {
 
 			public void Estancias() {
 				try {
-					miModelo.hotel = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
+					miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
 					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
-					miModelo.hotel.habitaciones=miModelo.misFuncionesHotel.leerHabitaciones(codigo);
-					for(int i=0;i<miModelo.hotel.habitaciones.size();i++) {
-						Object[] habitacion = {miModelo.hotel.habitaciones.get(i).getCodHabitacion(),miModelo.hotel.habitaciones.get(i).getTipo(), miModelo.hotel.habitaciones.get(i).getnCamas(),miModelo.hotel.habitaciones.get(i).getPrecio()};
+					miModelo.hotelReservado.habitaciones=miModelo.misFuncionesHotel.leerHabitaciones(codigo);
+					for(int i=0;i<miModelo.hotelReservado.habitaciones.size();i++) {
+						Object[] habitacion = {miModelo.hotelReservado.habitaciones.get(i).getCodHabitacion(),miModelo.hotelReservado.habitaciones.get(i).getTipo(), miModelo.hotelReservado.habitaciones.get(i).getnCamas(),miModelo.hotelReservado.habitaciones.get(i).getPrecio()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 					}
 					

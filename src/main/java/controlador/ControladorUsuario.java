@@ -32,7 +32,7 @@ public class ControladorUsuario implements ActionListener{
 				if(ValidarContrasena())
 				{
 					String passwordEncriptada = DigestUtils.md5Hex(String.valueOf(miVentana.usuario.passwordNueva.getPassword()));
-					//miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
+					miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
 					System.out.println(passwordEncriptada);
 					ocultarCampos();
 				}
@@ -46,7 +46,6 @@ public class ControladorUsuario implements ActionListener{
 				break;
 			case "btnVolver":
 				funciones.cambiarDePanel(miVentana.usuario, miVentana.hotel);
-				
 				break;
 	}
 	

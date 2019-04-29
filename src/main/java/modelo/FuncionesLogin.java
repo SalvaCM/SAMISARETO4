@@ -5,17 +5,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 
+import javax.swing.JOptionPane;
+
 import org.apache.commons.codec.digest.DigestUtils;
 
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
+import vista.Ventana;
 
 
 
 public class FuncionesLogin {
 	
 	private Cliente cliente;
-
+	private Ventana miVentana;
 
 	public Cliente LogearUser (String DNI, char[] password) throws Exception {
 		
@@ -79,23 +82,12 @@ public class FuncionesLogin {
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
-		String query = "UPDATE cliente SET contrasena = '" + passwordNueva +"' WHERE dni='" + cliente.getDni() + "';";
-				//Inicio programa:
-				java.sql.Statement stmt = null;
-				try {
-					stmt = con.createStatement();
-				} catch (java.sql.SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
-				try {
-					stmt.executeUpdate (query);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-			
-
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query = "UPDATE clientes SET contrasena = '" + passwordNueva +"' WHERE dni='" + cliente.getDni() + "';";
+		
+		if (miConsulta.insertarDatosBD(con, query)) {
+			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con éxito", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+			cliente.setContrasena(passwordNueva);
+		}
 	}
 }

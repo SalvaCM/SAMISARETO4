@@ -102,6 +102,7 @@ public class PanelUsuario extends JPanel {
 		add(lblNewPasswordCheck);
 		
 		btnCambiarPw = new JButton("Cambiar");
+		btnCambiarPw.setName("btnCambiarPw");
 		btnCambiarPw.setForeground(new Color(0, 51, 102));
 		btnCambiarPw.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
 		btnCambiarPw.setBounds(627, 250, 117, 29);

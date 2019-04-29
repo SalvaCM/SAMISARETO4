@@ -103,6 +103,7 @@ public class FuncionesHotel {
 			habitacion.setnCamas(nCamas);
 			habitacion.setPrecio(precio);
 			habitacion.setOcupada(ocupada);
+			habitacion.setTamano(tamano);
 			habitaciones.add(habitacion);
 			System.out.println(habitacion.toString());
 		}

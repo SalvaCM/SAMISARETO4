@@ -40,7 +40,6 @@ public class HabitacionHotel extends Habitacion {
 		builder.append("Nº Camas: "+nCamas+"\n");
 		builder.append("Tamaño: "+tamano+"\n");
 		builder.append("Precio: "+precio+"\n");
-		builder.append("Numero de noches: "+nNoches+"\n");
 		builder.append("\n");
 		return builder.toString();
 	}

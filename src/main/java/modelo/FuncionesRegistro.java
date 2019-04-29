@@ -47,7 +47,7 @@ public class FuncionesRegistro {
 		if (miConsulta.insertarDatosBD(con, query)) {
 			passwordEncriptada = DigestUtils.md5Hex(String.valueOf(contrasena));
 			cliente = new Cliente(DNI, Nombre, Apellido, date2 , passwordEncriptada);
-			System.out.println("contraseña: " +passwordEncriptada);
+			System.out.println("contraseï¿½a: " +passwordEncriptada);
 		} else {
 			cliente = null;
 		}
@@ -90,14 +90,14 @@ public class FuncionesRegistro {
 	 */
 	public boolean validarNombreYApellido (String NombreOApellido) {
 		
-		 if (NombreOApellido.matches("^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$"))
+		 if (NombreOApellido.matches("^[a-zA-Z]+$"))
 			return false;
 		  else 
 			 return true;
 	}
 	
 	public boolean verificarDNI (String dni) throws SQLException {
-		//Declaración e inicialización de variables
+		//Declaraciï¿½n e inicializaciï¿½n de variables
 		ConexionBD miConexion = new ConexionBD();
 		ConsultaBD miConsulta = new ConsultaBD();
 		Connection con = miConexion.ConectarBD();
@@ -118,7 +118,7 @@ public class FuncionesRegistro {
 		
 		//Comprobar si ya existe ese DNI
 		if (verificarDNI(dni)) {
-			JOptionPane.showMessageDialog(miVentana, "Ya existe un ususario con ese DNI", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(miVentana, "Ya existe un ususario con ese DNI", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 			return false;
 		} else {
 			//Validacion de los campos
@@ -126,7 +126,7 @@ public class FuncionesRegistro {
 					if(validarDNI(dni)) {
 						if(validarNombreYApellido(nombre) || validarNombreYApellido(apellido))
 						{
-							JOptionPane.showMessageDialog(miVentana, "¡Nombre o apellido incorrecto!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(miVentana, "ï¿½Nombre o apellido incorrecto!", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 							return false;
 							
 						} else {
@@ -134,11 +134,11 @@ public class FuncionesRegistro {
 						}
 					}
 					else {
-						JOptionPane.showMessageDialog(miVentana, "¡Formato DNI incorrecto!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(miVentana, "ï¿½Formato DNI incorrecto!", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 						return false;
 					}
 			} else {
-				JOptionPane.showMessageDialog(miVentana, "¡Debe rellenar todos los campos!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(miVentana, "ï¿½Debe rellenar todos los campos!", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 				return false;
 			} 
 		}

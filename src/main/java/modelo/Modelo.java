@@ -14,11 +14,14 @@ public class Modelo {
 	public FuncionesPago misFuncionesPago;
 	public FuncionesLogin misFuncionesLogin;
 	public FuncionesRegistro misFuncionesRegistro;
+	public FuncionesReserva misFuncionesReserva;
 	public ArrayList<Hotel> listaHoteles;
 	public Hotel hotelReservado;	
 	public HabitacionHotel habitacionReservada;
 	public ArrayList<HabitacionHotel> reservas;
 	public Cliente cliente;
+	public ReservaHotel reservaHotel;
+
 		
 	/**
 	 * Constructor de la clase
@@ -31,10 +34,13 @@ public class Modelo {
 		this.misFuncionesPago = new FuncionesPago();
 		this.misFuncionesLogin = new FuncionesLogin();
 		this.misFuncionesRegistro = new FuncionesRegistro();
+		this.misFuncionesReserva = new FuncionesReserva();
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.hotelReservado = new Hotel();
 		//this.reserva = new HabitacionHotel();
 		this.reservas=new  ArrayList<HabitacionHotel>(); 
+		this.reservaHotel= new ReservaHotel();
+		
 	}
 	
 	public Controlador getControlador() {

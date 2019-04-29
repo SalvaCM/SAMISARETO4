@@ -7,6 +7,7 @@ public class ReservaHotel{
 	private int codReserva;
 	private Date fechaEntrada;
 	private Date fechaSalida;
+	private int noches;
 	private Hotel hotel = new Hotel();
 	private ArrayList<HabitacionHotel> reservas=new  ArrayList<HabitacionHotel>();
 
@@ -46,8 +47,12 @@ public class ReservaHotel{
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	
-	
 
-	
+	public int getNoches() {
+		return noches;
+	}
+
+	public void setNoches(int noches) {
+		this.noches = noches;
+	}
 }

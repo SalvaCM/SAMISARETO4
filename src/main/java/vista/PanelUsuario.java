@@ -27,7 +27,7 @@ public class PanelUsuario extends JPanel {
 	public DefaultListModel<String> modelo2;
 	public JButton btnCambiarPw;
 	public JLabel lblCodVuelta;
-	public JButton btnVolver;
+	public JButton btnVolver = new JButton("Volver");
 	public JPasswordField passwordNueva;
 	public JPasswordField passwordNuevacheck;
 	public JLabel lblCuentaDeUsuario;
@@ -60,10 +60,7 @@ public class PanelUsuario extends JPanel {
 		lblCodVuelta.setBounds(574, 354, 108, 29);
 		add(lblCodVuelta);
 		
-		btnVolver = new JButton("Volver");
 		btnVolver.setName("btnVolver");
-
-		
 		btnVolver.setBounds(637, 523, 153, 46);
 		add(btnVolver);
 		

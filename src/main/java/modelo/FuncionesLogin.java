@@ -73,9 +73,6 @@ public class FuncionesLogin {
 			
 		
 		return devuelve;
-		
-		
-		
 	}
 	public void cambiarContrasena(String passwordNueva, Cliente cliente) {
 		//Declaración e inicialización de variables:

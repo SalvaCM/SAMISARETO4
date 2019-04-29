@@ -9,8 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import ficheros.ManejadorFicherosTexto;
+import modelo.FuncionesReserva;
 import modelo.HabitacionHotel;
 import modelo.Modelo;
+import modelo.ReservaHotel;
 import vista.Ventana;
 
 public class ControladorPago implements ActionListener {
@@ -86,6 +88,7 @@ public class ControladorPago implements ActionListener {
 				resetear();
 				miVentana.resumen.mostrarResumen.clear();
 				miModelo.reservas=new  ArrayList<HabitacionHotel>();
+				//miModelo.reservaHotel=new ReservaHotel();
 				miVentana.resumen.resumenReserva.setText(null);
 				miVentana.resumen.resumen.removeAll();
 				break;
@@ -97,6 +100,7 @@ public class ControladorPago implements ActionListener {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
 			    mostrarCambios(arrayCambios);
+			   //uardarReserva();
 			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
 				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotelReservado.getNombre() + " " + "Ubicacion: " + miModelo.hotelReservado.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotelReservado.getnEstrellas() + " " + "Categoria: "+ miModelo.habitacionReservada.getTipo() + " " + "Tarifa: "+miModelo.habitacionReservada.getPrecio() + " " + "Habitacion: "+miModelo.habitacionReservada.getnCamas());
 				resetear();
@@ -121,8 +125,21 @@ public class ControladorPago implements ActionListener {
 		}
 		
 	}
-	
-    /**
+	/*
+    private void GuardarReserva() {
+		codReserva = nuevaReserva();
+    	
+    	miModelo.reservaHotel.setCodReserva(codReserva);
+		miModelo.reservaHotel.setFechaEntrada(fechaEntrada);
+		miModelo.reservaHotel.setFechaSalida(fechaSalida);
+		miModelo.reservaHotel.setHotel(miModelo.hotelReservado);
+		miModelo.reservaHotel.setReservas(miModelo.reservas);
+		miModelo.misFuncionesReserva.registrarReserva(codReserva, cliente, hotel, habitacionReservada, reservaHotel);
+		
+		
+		
+	}*/
+	/**
      * Metodo que desactiva todos los botones de dinero de la ventana pago
      * @param array de botones a desactivar 
      */

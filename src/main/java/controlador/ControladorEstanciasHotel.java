@@ -70,6 +70,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotelReservado.getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotelReservado.getUbicacion());
 				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotelReservado.getnEstrellas());
+				miModelo.reservaHotel.setReservas(miModelo.reservas);
 			}
 			controladorReservas=0;
 		}
@@ -94,7 +95,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		try {
 			miModelo.habitacionReservada = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
 			miModelo.reservas.add(miModelo.habitacionReservada);
-			miModelo.habitacionReservada.setNoches((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
+			miModelo.reservaHotel.setNoches((int) ((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

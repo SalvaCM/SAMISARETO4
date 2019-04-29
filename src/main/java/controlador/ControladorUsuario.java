@@ -20,6 +20,7 @@ public class ControladorUsuario implements ActionListener{
 		this.miModelo=miModelo;
 		this.miVentana.usuario.btnCambiarPw.addActionListener(this);
 		this.miVentana.usuario.btnCambiarContrasena.addActionListener(this);
+		this.miVentana.usuario.btnVolver.addActionListener(this);
 		
 	
 	}
@@ -44,8 +45,10 @@ public class ControladorUsuario implements ActionListener{
 			case "btnCambiarContrasena":
 				mostrarCampos();
 				break;
+			
 			case "btnVolver":
 				funciones.cambiarDePanel(miVentana.usuario, miVentana.hotel);
+				
 				break;
 	}
 	

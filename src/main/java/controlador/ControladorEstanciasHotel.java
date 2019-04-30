@@ -67,10 +67,17 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			else
 			{
 				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
+				/*
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotelReservado.getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotelReservado.getUbicacion());
 				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotelReservado.getnEstrellas());
+				*/
 				miModelo.reservaHotel.setReservas(miModelo.reservas);
+				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotel().getNombre());
+				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotel().getUbicacion());
+				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.reservaHotel.getHotel().getnEstrellas());
+				
+				
 			}
 			controladorReservas=0;
 		}

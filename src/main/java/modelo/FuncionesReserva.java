@@ -24,7 +24,6 @@ public class FuncionesReserva {
 	private Ventana miVentana;
 	private Modelo miModelo;
 
-/*
 	public void registrarReserva(int codReserva,int i) {
 		//Declaración e inicialización de variables:
 
@@ -32,13 +31,19 @@ public class FuncionesReserva {
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
 		System.out.println(codReserva);
-		String query = "INSERT into reservasHotel (codReserva,codhotel,codhabitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('" + codReserva + "', '" + miModelo.hotelReservado.getCod_hotel()+ "', '" + miModelo.habitacionReservada.getCodHabitacion() + "', '" + miModelo.cliente.getDni() + "', '" + miModelo.reservaHotel.getFechaEntrada() + "','"+ miModelo.reservaHotel.getFechaSalida()+"');";
+		System.out.println(miModelo.reservaHotel.getHotel().getCod_hotel());
+		System.out.println(miModelo.reservaHotel.getReservas().get(i).getCodHabitacion());
+		System.out.println(miModelo.cliente.getDni());
+		System.out.println(miModelo.reservaHotel.getFechaEntrada());
+		System.out.println(miModelo.reservaHotel.getFechaSalida());
+		
+		String query = "INSERT into reservasHotel (codReserva,codhotel,codhabitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('" + codReserva + "', '" + miModelo.reservaHotel.getHotel().getCod_hotel()+ "', '" + miModelo.reservaHotel.getReservas().get(i).getCodHabitacion() + "', '" + miModelo.cliente.getDni() + "', '" + miModelo.reservaHotel.getFechaEntrada() + "','"+ miModelo.reservaHotel.getFechaSalida()+"');";
+		
 		System.out.println(query);
 		if (miConsulta.insertarDatosBD(con, query)) {
 			JOptionPane.showMessageDialog(miVentana, "Reserva Realizada!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
-			
 		}
-	}*/
+	}
 	public int buscarNumeroReserva() {
 		//Declaración e inicialización de variables:
 

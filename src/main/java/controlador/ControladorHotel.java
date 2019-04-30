@@ -115,6 +115,9 @@ public class ControladorHotel implements ActionListener {
 						}
 						else {
 							// miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
+							miModelo.reservaHotel.setFechaEntrada((Date) miVentana.hotel.fechaEntrada.getDate());
+							miModelo.reservaHotel.setFechaSalida((Date)miVentana.hotel.fechaSalida.getDate());
+							
 							System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
 						}
@@ -126,7 +129,7 @@ public class ControladorHotel implements ActionListener {
 			public void Estancias() {
 				try {
 					miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
-					miModelo.reservaHotel.setHotel(miModelo.hotelReservado);
+					miModelo.reservaHotel.setHotel(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
 					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
 					miModelo.hotelReservado.habitaciones=miModelo.misFuncionesHotel.leerHabitaciones(codigo);
 					for(int i=0;i<miModelo.hotelReservado.habitaciones.size();i++) {

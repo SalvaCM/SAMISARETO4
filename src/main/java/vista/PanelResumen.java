@@ -29,6 +29,7 @@ private static final long serialVersionUID = 3L;
 	private JList<String> resumenHotel;
 	public JLabel etiqueta ;
 	public JTextArea resumenReserva;
+	public JTextArea txtDetalles;
 		
 
 	/**
@@ -59,14 +60,14 @@ private static final long serialVersionUID = 3L;
 		
 		mostrarResumen=new DefaultListModel<String>();
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(112, 152, 239, 275);
+		scrollPane.setBounds(120, 95, 239, 174);
 		add(scrollPane);
 		resumenHotel = new JList<String>(mostrarResumen);
 		resumenHotel.setBorder(new TitledBorder(null, "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		scrollPane.setViewportView(resumenHotel);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(392, 95, 239, 386);
+		scrollPane_1.setBounds(472, 95, 239, 386);
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();
@@ -77,6 +78,16 @@ private static final long serialVersionUID = 3L;
 		
 		
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		
+		JScrollPane scrollPane_2 = new JScrollPane();
+		scrollPane_2.setBounds(120, 281, 239, 190);
+		add(scrollPane_2);
+		
+		txtDetalles = new JTextArea();
+		scrollPane_2.setViewportView(txtDetalles);
+		txtDetalles.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtDetalles.setEditable(false);
+		txtDetalles.setBorder(new TitledBorder(null, "Detalles Reserva", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

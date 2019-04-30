@@ -54,6 +54,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			{
 				JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				HabitacionElegida();
+				miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().get(controladorReservas).toString());
 				controladorReservas++;
 			}
 		break;
@@ -70,7 +71,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotelReservado().getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion());
 				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
-				miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().toString());
+				miVentana.resumen.txtDetalles.append(miModelo.reservaHotel.toString());
 			}
 			controladorReservas=0;
 			
@@ -96,8 +97,6 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		int codigoHabitacion =miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
 		try {
 			miModelo.reservaHotel.getHabReservadas().add(miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion));
-			//miModelo.habitacionReservada = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
-			//miModelo.reservas.add(miModelo.habitacionReservada);
 			miModelo.reservaHotel.setNoches((int) ((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

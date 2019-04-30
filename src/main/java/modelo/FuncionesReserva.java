@@ -45,7 +45,7 @@ public class FuncionesReserva {
 		
 		System.out.println(query);
 		if (miConsulta.insertarDatosBD(con, query)) {
-			JOptionPane.showMessageDialog(miVentana, "Reserva Realizada!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+			System.out.println("Reserva Realizada");
 		}
 	}
 	public int buscarNumeroReserva() {

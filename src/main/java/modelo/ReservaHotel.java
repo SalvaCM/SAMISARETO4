@@ -56,4 +56,19 @@ public class ReservaHotel{
 	public void setNoches(int noches) {
 		this.noches = noches;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("\nCodigo de Reserva :");
+		builder.append(codReserva);
+		builder.append("\nFecha de Entrada :");
+		builder.append(fechaEntrada);
+		builder.append("\nFecha de Salida :");
+		builder.append(fechaSalida);
+		builder.append("\nnoches=:");
+		builder.append(noches);
+		return builder.toString();
+	}
+	
 }

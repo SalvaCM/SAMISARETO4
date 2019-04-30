@@ -97,13 +97,9 @@ public class ControladorPago implements ActionListener {
 				if (pagado > total) {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
-				System.out.println(miModelo.reservaHotel.getHotelReservado().getCod_hotel());
-				System.out.println(miModelo.reservaHotel.getHabReservadas().get(0).getCodHabitacion());
-				System.out.println(miModelo.cliente.getDni());
-				System.out.println(miModelo.reservaHotel.getFechaEntrada());
-				System.out.println(miModelo.reservaHotel.getFechaSalida());
 			    mostrarCambios(arrayCambios);
 			    GuardarReserva();
+			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
 			for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
 				ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 				fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "

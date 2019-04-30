@@ -87,8 +87,7 @@ public class ControladorPago implements ActionListener {
 		     	JOptionPane.showMessageDialog(miVentana, "Devolucion de dinero introducido", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				resetear();
 				miVentana.resumen.mostrarResumen.clear();
-				miModelo.reservas=new  ArrayList<HabitacionHotel>();
-				//miModelo.reservaHotel=new ReservaHotel();
+				miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
 				miVentana.resumen.resumenReserva.setText(null);
 				miVentana.resumen.resumen.removeAll();
 				break;
@@ -98,16 +97,24 @@ public class ControladorPago implements ActionListener {
 				if (pagado > total) {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
-				System.out.println(miModelo.reservaHotel.getHotel().getCod_hotel());
-				System.out.println(miModelo.reservaHotel.getReservas().get(0).getCodHabitacion());
+				System.out.println(miModelo.reservaHotel.getHotelReservado().getCod_hotel());
+				System.out.println(miModelo.reservaHotel.getHabReservadas().get(0).getCodHabitacion());
 				System.out.println(miModelo.cliente.getDni());
 				System.out.println(miModelo.reservaHotel.getFechaEntrada());
 				System.out.println(miModelo.reservaHotel.getFechaSalida());
 			    mostrarCambios(arrayCambios);
 			    GuardarReserva();
-			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
-				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotelReservado.getNombre() + " " + "Ubicacion: " + miModelo.hotelReservado.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotelReservado.getnEstrellas() + " " + "Categoria: "+ miModelo.habitacionReservada.getTipo() + " " + "Tarifa: "+miModelo.habitacionReservada.getPrecio() + " " + "Habitacion: "+miModelo.habitacionReservada.getnCamas()+" "+"Cliente: "+miModelo.cliente.getDni());
-				resetear();
+			for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
+				ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
+				fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "
+						+ "Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion() + " "
+						+ "Nº Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
+						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
+						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
+						+ miModelo.reservaHotel.getHabReservadas().get(j).getnCamas() + " " + "Cliente: "
+						+ miModelo.cliente.getDni());
+			}
+			resetear();
 				break;
 			
 				default: 
@@ -134,8 +141,8 @@ public class ControladorPago implements ActionListener {
     private void GuardarReserva() {
     	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
     	
-		for (int j = 0; j < miModelo.reservaHotel.getReservas().size(); j++) {
-			miModelo.misFuncionesReserva.registrarReserva(codReserva, j);
+		for (int j = 0; j < miModelo.reservaHotel.getHabReservadas().size(); j++) {
+			miModelo.misFuncionesReserva.registrarReserva(codReserva, j, miModelo.reservaHotel, miModelo.cliente);
 		}
 			miModelo.reservaHotel.setCodReserva(codReserva);
 		

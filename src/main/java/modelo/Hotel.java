@@ -7,8 +7,7 @@ public class Hotel {
 	private int nEstrellas;
 	private String ubicacion;
 	private String nombre;
-	public ArrayList<HabitacionHotel> habitaciones= new ArrayList<HabitacionHotel>();
-	public int habDisponibles;
+	public ArrayList<HabitacionHotel> habitacionesDisponibles= new ArrayList<HabitacionHotel>();
 	
 	public Hotel() {
 	}
@@ -45,39 +44,24 @@ public class Hotel {
 		this.nombre = nombre;
 	}
 	
-	
-	public int getHabDisponibles() {
-		return habDisponibles;
+	public ArrayList<HabitacionHotel> getHabitacionesDisp() {
+	return habitacionesDisponibles;
 	}
 
-	public void setHabDisponibles(int habDisponibles) {
-		this.habDisponibles = habDisponibles;
-	}
-
-	public ArrayList<HabitacionHotel> getHabitaciones() {
-	return habitaciones;
-	}
-
-	public void setHabitaciones(ArrayList<HabitacionHotel> habitaciones) {
-	this.habitaciones = habitaciones;
+	public void setHabitacionesDisp(ArrayList<HabitacionHotel> habitacionesDisponibles) {
+	this.habitacionesDisponibles = habitacionesDisponibles;
 	}
 
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Hotel [cod_hotel=");
-		builder.append(cod_hotel);
-		builder.append(", nEstrellas=");
-		builder.append(nEstrellas);
-		builder.append(", ubicacion=");
-		builder.append(ubicacion);
-		builder.append(", nombre=");
+		builder.append("Hotel :");
 		builder.append(nombre);
-		builder.append(", habitaciones=");
-		builder.append(habitaciones);
-		builder.append(", habDisponibles=");
-		builder.append(habDisponibles);
-		builder.append("]");
+		builder.append("\nEstrellas :");
+		builder.append(nEstrellas);
+		builder.append("\nUbicacion :");
+		builder.append(ubicacion);
+		builder.append("\n");
 		return builder.toString();
 	}
 	

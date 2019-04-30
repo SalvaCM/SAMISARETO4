@@ -88,7 +88,9 @@ public class FuncionesHotel {
 		}
 		return hoteles;
 	}
-
+	/**
+	 * Metodo para buscar los las habitaciones de un hotel determinado, devuelve un array con todos las habitaciones
+	 */
 	
 	public ArrayList<HabitacionHotel> leerHabitaciones(int codhotel) throws SQLException{
 		String tipo="";
@@ -121,6 +123,9 @@ public class FuncionesHotel {
 		}
 		return habitaciones;
 	}
+	/**
+	 *  BUSCA UNA HABITACION Y LA AÑADE AL ARRAY DE RESERVAS
+	 */
 	// AQUI SOLO LEEMOS LA HABITACION DONDE ESTA ESE CODIGO, PERO NO SE RESERVA COMO TAL, SOLO A NIVEL DE PROGRAMA NO DE BASE DE DATOS
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
 		String tipo="";
@@ -149,6 +154,9 @@ public class FuncionesHotel {
 		}
 		return habitacion;
 	}
+	/**
+	 *  LEE DE LA BASE DE DATOS LAS UBICACIONES DE LOS HOTELES Y LAS HACE DISPONIBLES PARA SELECCIONAR EN ESE FILTRO
+	 */
 	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
     	//Declaracion e incializacion de variables
 		

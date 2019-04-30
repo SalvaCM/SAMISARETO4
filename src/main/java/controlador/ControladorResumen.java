@@ -45,12 +45,11 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen": System.out.println(miModelo.reservas.size());
-											funciones.desBotones(miVentana.pago.btnSiguiente);
+				case "btnSiguienteResumen":	funciones.desBotones(miVentana.pago.btnSiguiente);
 											miControlador.miControladorPago.resetear();
 											
-											for(int i=0;i<miModelo.reservaHotel.getReservas().size();i++) {
-												miControlador.miControladorPago.total +=miModelo.reservaHotel.getReservas().get(i).getPrecio()*miModelo.reservaHotel.getNoches();	
+											for(int i=0;i<miModelo.reservaHotel.getHabReservadas().size();i++) {
+												miControlador.miControladorPago.total +=miModelo.reservaHotel.getHabReservadas().get(i).getPrecio()*miModelo.reservaHotel.getNoches();	
 											}
 											
 											System.out.println(miControlador.miControladorPago.total);
@@ -64,7 +63,7 @@ public class ControladorResumen implements ActionListener {
 											miVentana.resumen.resumenReserva.setText(null);
 											miVentana.resumen.mostrarResumen.clear();
 											
-											miControlador.miControladorHotel.Estancias();miModelo.reservas.removeAll(miModelo.reservas);
+											miControlador.miControladorHotel.Estancias();miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
 											break;
 				}
 			}	

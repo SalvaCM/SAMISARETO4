@@ -22,22 +22,26 @@ import vista.Ventana;
 public class FuncionesReserva {
 	
 	private Ventana miVentana;
-	private Modelo miModelo;
 
-	public void registrarReserva(int codReserva,int i) {
+	public void registrarReserva(int codReserva,int i, ReservaHotel reservaHotel,Cliente cliente) {
 		//Declaración e inicialización de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
-		System.out.println(codReserva);
-		System.out.println(miModelo.reservaHotel.getHotel().getCod_hotel());
-		System.out.println(miModelo.reservaHotel.getReservas().get(i).getCodHabitacion());
-		System.out.println(miModelo.cliente.getDni());
-		System.out.println(miModelo.reservaHotel.getFechaEntrada());
-		System.out.println(miModelo.reservaHotel.getFechaSalida());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		String query = "INSERT into reservasHotel (codReserva,codhotel,codhabitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('" + codReserva + "', '" + miModelo.reservaHotel.getHotel().getCod_hotel()+ "', '" + miModelo.reservaHotel.getReservas().get(i).getCodHabitacion() + "', '" + miModelo.cliente.getDni() + "', '" + miModelo.reservaHotel.getFechaEntrada() + "','"+ miModelo.reservaHotel.getFechaSalida()+"');";
+		String fechaE = dateFormat.format(reservaHotel.getFechaEntrada());
+		String fechaS=dateFormat.format(reservaHotel.getFechaSalida());
+		
+		System.out.println(codReserva);
+		System.out.println(reservaHotel.getHotelReservado().getCod_hotel());
+		System.out.println(reservaHotel.getHabReservadas().get(i).getCodHabitacion());
+		System.out.println(cliente.getDni());
+		System.out.println(reservaHotel.getFechaEntrada());
+		System.out.println(reservaHotel.getFechaSalida());
+		//codReserva iba en el insert
+		String query = "INSERT into reservasHotel (cod_hotel,codhabitacion,dni,fechaEntrada,fechaSalida) VALUES ('" + reservaHotel.getHotelReservado().getCod_hotel()+ "', '" + reservaHotel.getHabReservadas().get(i).getCodHabitacion() + "', '" + 2 + "', '" + fechaE + "','"+ fechaS+"');";
 		
 		System.out.println(query);
 		if (miConsulta.insertarDatosBD(con, query)) {

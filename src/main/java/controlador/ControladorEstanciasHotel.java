@@ -49,9 +49,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
-
 			}
-			else {
+			else 
+			{
 				JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				HabitacionElegida();
 				controladorReservas++;
@@ -60,26 +60,20 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		
 		case "btnSiguienteEstancias":
 			
-			if (controladorReservas==0)//(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
+			if (controladorReservas==0)
 			{
 				JOptionPane.showMessageDialog(miVentana, "Reserve una estancia antes de continuar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}
 			else
 			{
 				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
-				/*
-				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.hotelReservado.getNombre());
-				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.hotelReservado.getUbicacion());
-				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.hotelReservado.getnEstrellas());
-				*/
-				miModelo.reservaHotel.setReservas(miModelo.reservas);
-				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotel().getNombre());
-				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotel().getUbicacion());
-				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.reservaHotel.getHotel().getnEstrellas());
-				
-				
+				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotelReservado().getNombre());
+				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion());
+				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
+				miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().toString());
 			}
 			controladorReservas=0;
+			
 		}
 		
 	}
@@ -97,17 +91,18 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			} 
 	}
 	public void HabitacionElegida() {
-
-		int codigoHabitacion = miModelo.hotelReservado.habitaciones.get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
+		
+		
+		int codigoHabitacion =miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
 		try {
-			miModelo.habitacionReservada = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
-			miModelo.reservas.add(miModelo.habitacionReservada);
+			miModelo.reservaHotel.getHabReservadas().add(miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion));
+			//miModelo.habitacionReservada = miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion);
+			//miModelo.reservas.add(miModelo.habitacionReservada);
 			miModelo.reservaHotel.setNoches((int) ((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-			miVentana.resumen.resumenReserva.append(miModelo.habitacionReservada.toString());
 			
 	}
 	

@@ -32,7 +32,19 @@ public class Habitacion {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Habitacion [codHabitacion=");
+		builder.append(codHabitacion);
+		builder.append(", tamano=");
+		builder.append(tamano);
+		builder.append(", tipo=");
+		builder.append(tipo);
+		builder.append("]");
+		return builder.toString();
+	}
+	
 	
 	
 	

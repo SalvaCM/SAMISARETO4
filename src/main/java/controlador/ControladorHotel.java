@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
 import vista.PanelDevolucion;
@@ -115,32 +116,43 @@ public class ControladorHotel implements ActionListener {
 						}
 						else {
 							// miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
-							miModelo.reservaHotel.setFechaEntrada((Date) miVentana.hotel.fechaEntrada.getDate());
-							miModelo.reservaHotel.setFechaSalida((Date)miVentana.hotel.fechaSalida.getDate());
-							
+							miModelo.reservaHotel.setFechaEntrada(miVentana.hotel.fechaEntrada.getDate());
+							miModelo.reservaHotel.setFechaSalida(miVentana.hotel.fechaSalida.getDate());
 							System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
-							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); Estancias();
+							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); 
+							Estancias();
 						}
 					
 				}
 				
 			}
-
-			public void Estancias() {
+			/**
+			 * DEVUELVE UN ARRAYLIST DE LAS HABITACIONES DE UN HOTEL DETERMINADO
+			 */
+			public ArrayList<HabitacionHotel> Estancias() {
+				ArrayList<HabitacionHotel> habitaciones = new ArrayList<HabitacionHotel>();
 				try {
-					miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
-					miModelo.reservaHotel.setHotel(miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()));
-					int codigo = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow()).getCod_hotel();
-					miModelo.hotelReservado.habitaciones=miModelo.misFuncionesHotel.leerHabitaciones(codigo);
-					for(int i=0;i<miModelo.hotelReservado.habitaciones.size();i++) {
-						Object[] habitacion = {miModelo.hotelReservado.habitaciones.get(i).getCodHabitacion(),miModelo.hotelReservado.habitaciones.get(i).getTipo(), miModelo.hotelReservado.habitaciones.get(i).getnCamas(),miModelo.hotelReservado.habitaciones.get(i).getPrecio()};
+					
+					//miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
+					int indice = miVentana.hotel.tablaResultados.getSelectedRow();
+					Hotel hotel= miModelo.listaHoteles.get(indice);
+					miModelo.reservaHotel.setHotelReservado(hotel);
+					int codigo = miModelo.reservaHotel.getHotelReservado().getCod_hotel();
+					habitaciones =miModelo.misFuncionesHotel.leerHabitaciones(codigo);
+					miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(habitaciones);
+					for(int i=0;i<habitaciones.size();i++) {
+						Object[] habitacion = {habitaciones.get(i).getCodHabitacion(),habitaciones.get(i).getTipo(),habitaciones.get(i).getnCamas(),habitaciones.get(i).getPrecio()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 					}
 					
 				} catch (SQLException e1) {
 				e1.printStackTrace();
 				}
+				return habitaciones;
 			}
+			/**
+			 * FILTRA LOS HOTELES POR SU UBICACION
+			 */
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
 				
 				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);

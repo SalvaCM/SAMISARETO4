@@ -1,15 +1,16 @@
 package modelo;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ReservaHotel{
 	private int codReserva;
 	private Date fechaEntrada;
 	private Date fechaSalida;
 	private int noches;
-	private Hotel hotel = new Hotel();
-	private ArrayList<HabitacionHotel> reservas=new  ArrayList<HabitacionHotel>();
+	private Hotel hotelReservado = new Hotel();
+	private ArrayList<HabitacionHotel> habitacionesReservadas=new  ArrayList<HabitacionHotel>();
 
 	public ReservaHotel() {};
 	
@@ -32,20 +33,20 @@ public class ReservaHotel{
 		this.codReserva = codReserva;
 	}
 
-	public ArrayList<HabitacionHotel> getReservas() {
-		return reservas;
+	public ArrayList<HabitacionHotel> getHabReservadas() {
+		return habitacionesReservadas;
 	}
 
-	public void setReservas(ArrayList<HabitacionHotel> reservas) {
-		this.reservas = reservas;
+	public void setHabReservadas(ArrayList<HabitacionHotel> habitacionesReservadas) {
+		this.habitacionesReservadas = habitacionesReservadas;
 	}
 
-	public Hotel getHotel() {
-		return hotel;
+	public Hotel getHotelReservado() {
+		return hotelReservado;
 	}
 
-	public void setHotel(Hotel hotel) {
-		this.hotel = hotel;
+	public void setHotelReservado(Hotel hotelReservado) {
+		this.hotelReservado = hotelReservado;
 	}
 
 	public int getNoches() {

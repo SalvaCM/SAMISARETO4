@@ -61,6 +61,25 @@ public class Hotel {
 	public void setHabitaciones(ArrayList<HabitacionHotel> habitaciones) {
 	this.habitaciones = habitaciones;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Hotel [cod_hotel=");
+		builder.append(cod_hotel);
+		builder.append(", nEstrellas=");
+		builder.append(nEstrellas);
+		builder.append(", ubicacion=");
+		builder.append(ubicacion);
+		builder.append(", nombre=");
+		builder.append(nombre);
+		builder.append(", habitaciones=");
+		builder.append(habitaciones);
+		builder.append(", habDisponibles=");
+		builder.append(habDisponibles);
+		builder.append("]");
+		return builder.toString();
+	}
 	
 
 	

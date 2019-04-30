@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Cliente {
 	
+	private int codCliente;
 	private String dni;
 	private String nombre;
 	private String apellido;
@@ -51,6 +52,14 @@ public class Cliente {
 	}
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
+	}
+
+	public int getCodCliente() {
+		return codCliente;
+	}
+
+	public void setCodCliente(int codCliente) {
+		this.codCliente = codCliente;
 	}
 	
 	

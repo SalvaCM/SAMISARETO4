@@ -94,20 +94,21 @@ public class ControladorPago implements ActionListener {
 				break;
 								 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
-				
+			System.out.println(miModelo.reservaHotel.getHotel().toString()+" "+miModelo.reservaHotel.getReservas().get(0).toString()+" "+miModelo.reservaHotel.toString());
 				//Calcular cambios despues del pago
 				if (pagado > total) {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
 			    mostrarCambios(arrayCambios);
-			   //uardarReserva();
+			    GuardarReserva();
 			    ManejadorFicherosTexto fichero=new ManejadorFicherosTexto();
-				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotelReservado.getNombre() + " " + "Ubicacion: " + miModelo.hotelReservado.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotelReservado.getnEstrellas() + " " + "Categoria: "+ miModelo.habitacionReservada.getTipo() + " " + "Tarifa: "+miModelo.habitacionReservada.getPrecio() + " " + "Habitacion: "+miModelo.habitacionReservada.getnCamas());
+				fichero.archivoTexto("Nombre del Hotel: " + miModelo.hotelReservado.getNombre() + " " + "Ubicacion: " + miModelo.hotelReservado.getUbicacion() + " " + "Nº Estrellas: " + miModelo.hotelReservado.getnEstrellas() + " " + "Categoria: "+ miModelo.habitacionReservada.getTipo() + " " + "Tarifa: "+miModelo.habitacionReservada.getPrecio() + " " + "Habitacion: "+miModelo.habitacionReservada.getnCamas()+" "+"Cliente: "+miModelo.cliente.getDni());
 				resetear();
 				break;
 			
 				default: 
 				pagado = miModelo.misFuncionesPago.sumarDineroPago(((JButton) e.getSource()).getName(), pagado);
+				
 		}
 		
 		if (pagado >= total) {
@@ -125,20 +126,17 @@ public class ControladorPago implements ActionListener {
 		}
 		
 	}
-	/*
+	
     private void GuardarReserva() {
-		codReserva = nuevaReserva();
+    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
     	
-    	miModelo.reservaHotel.setCodReserva(codReserva);
-		miModelo.reservaHotel.setFechaEntrada(fechaEntrada);
-		miModelo.reservaHotel.setFechaSalida(fechaSalida);
-		miModelo.reservaHotel.setHotel(miModelo.hotelReservado);
-		miModelo.reservaHotel.setReservas(miModelo.reservas);
-		miModelo.misFuncionesReserva.registrarReserva(codReserva, cliente, hotel, habitacionReservada, reservaHotel);
+		for (int j = 0; j < miModelo.reservaHotel.getReservas().size(); j++) {
+			//miModelo.misFuncionesReserva.registrarReserva(codReserva, j);
+		}
+			miModelo.reservaHotel.setCodReserva(codReserva);
 		
-		
-		
-	}*/
+	}
+
 	/**
      * Metodo que desactiva todos los botones de dinero de la ventana pago
      * @param array de botones a desactivar 

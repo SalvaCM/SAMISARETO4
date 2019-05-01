@@ -56,6 +56,7 @@ public class PanelHotel extends JPanel {
 		fechaSalida.setName("vuelta");
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
+		
 		fechaSalida.setBounds(733, 155, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);

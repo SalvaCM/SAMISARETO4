@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -46,16 +47,32 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			break;
 
 		case "Reservar": 
-			if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)
-			{
-				JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
-			}
-			else 
-			{
-				JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
-				HabitacionElegida();
-				miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().get(controladorReservas).toString());
-				controladorReservas++;
+			try {
+				if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false)
+				{
+					JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+					HabitacionElegida();
+					miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().get(controladorReservas).toString());
+					controladorReservas++;
+					
+				}
+				if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==true)
+				{
+					JOptionPane.showMessageDialog(miVentana, "SELECIONES OTRAS FECHAS!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+					
+					
+				}
+				
+				 if(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)	{
+					JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			} catch (HeadlessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		break;
 		

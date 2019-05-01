@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.sql.Date;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -50,7 +50,7 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 					@Override
 				    public void propertyChange(PropertyChangeEvent e) {
-				        System.out.println(e.getPropertyName()+ ": " + e.getNewValue());
+				        System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
 				        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
 				        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
 				        miVentana.hotel.fechaSalida.setEnabled(true);
@@ -107,18 +107,12 @@ public class ControladorHotel implements ActionListener {
 						JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 					}
 					
-					else if(((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000)<1)
-						{
-						System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
-						
-							// System.out.println("prueba;"+(miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
-							JOptionPane.showMessageDialog(miVentana, "No es posible selecionar <1 dia", "Atencion!", JOptionPane.WARNING_MESSAGE);
-						}
-						else {
+					else {
 							// miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
 							miModelo.reservaHotel.setFechaEntrada(miVentana.hotel.fechaEntrada.getDate());
 							miModelo.reservaHotel.setFechaSalida(miVentana.hotel.fechaSalida.getDate());
-							System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
+							//System.out.println("higfjd.   "+miModelo.reservaHotel.getFechaSalida());
+							//System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); 
 							Estancias();
 						}

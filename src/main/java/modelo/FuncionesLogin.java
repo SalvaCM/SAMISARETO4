@@ -30,6 +30,7 @@ public class FuncionesLogin {
 		String nombre;
 		String apellido;
 		Date fechaNacimiento;
+		int cod;
 		
     	//Inicio del programa
 		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from clientes where DNI = '" + DNI + "';");
@@ -37,9 +38,11 @@ public class FuncionesLogin {
 		while(rs.next()) {
 			
 				cliente = new Cliente();
+				cod=rs.getInt("codcliente");
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");
+				cliente.setCodCliente(cod);
 				cliente.setDni(DNI);
 				cliente.setNombre(nombre);
 				cliente.setApellido(apellido);

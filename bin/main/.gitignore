@@ -1,6 +1,5 @@
-/modelo/
-/.gitignore
 /controlador/
-/imagenes/
 /ficheros/
+/imagenes/
+/modelo/
 /vista/

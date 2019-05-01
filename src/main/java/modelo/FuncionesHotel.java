@@ -1,9 +1,16 @@
 package modelo;
 
+import java.awt.HeadlessException;
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -175,7 +182,37 @@ public class FuncionesHotel {
 		return ubicaciones;
 
 	}
+	public boolean habitaOcupada (int cod, Date fida,Date fvuelta) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+	
+		boolean r = false;
+		Date f1 = null;
+		Date f2 = null;
+		/*String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		while(rs.next()) {
+				
+				
+				f1 = rs.getDate("fechaEntrada");
+				f2= rs.getDate("fechaSalida");
+				
+			}
 
+		//System.out.println("FECHA ENTRADA:  "+f1.getTime()+" | "+fida.getTime());
+	
+		
+	
+	 if(f2==null || f1==null) {
+			r=false;
+		}else {
+			if((f1.compareTo(fida)==0 && f2.compareTo(fvuelta)==0)||((f1.compareTo(fida))<0 && f2.compareTo(fvuelta)>0)) {
+				JOptionPane.showMessageDialog(miVentana, "Ocupado", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				r=true;
+			}
+		}*/
+		
+       return r;
+	}
 
 	
 }

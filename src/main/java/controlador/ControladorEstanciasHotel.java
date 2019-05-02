@@ -48,17 +48,10 @@ public class ControladorEstanciasHotel  implements ActionListener{
 
 		case "Reservar": 
 			try {
-				if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false)
-				{
-					JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
-					HabitacionElegida();
-					miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().get(controladorReservas).toString());
-					controladorReservas++;
-					
-				}
+				
 				if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==true)
 				{
-					JOptionPane.showMessageDialog(miVentana, "SELECIONES OTRAS FECHAS!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(miVentana, "Ocupado entre fechas  "+miModelo.misFuncionesHotel.rangoFechas(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate()).get(0)+"  y  "+miModelo.misFuncionesHotel.rangoFechas(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate()).get(1)+"", "SELECIONES OTRAS FECHAS!", JOptionPane.WARNING_MESSAGE);
 					
 					
 				}
@@ -66,7 +59,16 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				 if(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)	{
 					JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				}
-				
+				 else if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false)
+					{
+						JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+						
+						HabitacionElegida();
+						miVentana.estanciasHotel.tableModel.removeRow(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow());
+						miVentana.resumen.resumenReserva.append(miModelo.reservaHotel.getHabReservadas().get(controladorReservas).toString());
+						controladorReservas++;
+						
+					}
 			} catch (HeadlessException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

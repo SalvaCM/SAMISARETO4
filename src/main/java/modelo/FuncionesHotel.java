@@ -188,7 +188,7 @@ public class FuncionesHotel {
 		boolean r = false;
 		Date f1 = null;
 		Date f2 = null;
-		/*String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
+		String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				
@@ -205,13 +205,38 @@ public class FuncionesHotel {
 	 if(f2==null || f1==null) {
 			r=false;
 		}else {
-			if((f1.compareTo(fida)==0 && f2.compareTo(fvuelta)==0)||((f1.compareTo(fida))<0 && f2.compareTo(fvuelta)>0)) {
-				JOptionPane.showMessageDialog(miVentana, "Ocupado", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			if((fvuelta.compareTo(f1)>=0 && fida.compareTo(f2)<=0)) {
+				//JOptionPane.showMessageDialog(miVentana, "Ocupado entre fechas  "+f1+"  y  "+f2+"", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				r=true;
 			}
-		}*/
+		}
 		
        return r;
+	}
+	public ArrayList rangoFechas (int cod, Date fida,Date fvuelta) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+	
+		ArrayList<String> fechas = new ArrayList<String>();
+		Date f1 = null;
+		Date f2 = null;
+		String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		while(rs.next()) {
+				
+				
+				f1 = rs.getDate("fechaEntrada");
+				f2= rs.getDate("fechaSalida");
+				
+			}
+
+		fechas.add(f1.toString());
+		fechas.add(f2.toString());
+	
+		
+	
+	 
+		
+       return fechas;
 	}
 
 	

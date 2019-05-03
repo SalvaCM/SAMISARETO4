@@ -93,7 +93,7 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 	}	
-	/*public void Apatamentos() {
+	public void MostrarCasas() {
 
 		 try {
 			miModelo.listaApartamento=miModelo.misFuncionesHotel.leerHoteles();
@@ -107,6 +107,6 @@ public class ControladorElegir implements ActionListener{
 				e1.printStackTrace();
 			} 
 		
-	}*/	
+	}
 
 }

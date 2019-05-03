@@ -30,6 +30,7 @@ public class Controlador {
 	public ControladorRegistro miControladorRegistro;
 	public ControladorUsuario miControladorUsuario;
 	public FuncionesControlador miFuncionesControlador;
+	public ControladorElegir miControladorElegir;
 
 
 	
@@ -49,7 +50,7 @@ public class Controlador {
 			this.miControladorRegistro = new ControladorRegistro(miVentana, miModelo);
 			this.miControladorUsuario = new ControladorUsuario(miVentana, miModelo);
 			this.miFuncionesControlador = new FuncionesControlador();
-			
+			this.miControladorElegir=new ControladorElegir(miVentana, miModelo);
 		
 		}
 

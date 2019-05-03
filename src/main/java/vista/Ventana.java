@@ -29,6 +29,7 @@ public class Ventana extends JFrame {
 	public PanelLogin login;
 	public PanelRegistro registro;
 	public PanelUsuario usuario;
+	public PanelElegirAlojamiento alojamiento;
 	
 	
 	/**
@@ -98,7 +99,9 @@ public class Ventana extends JFrame {
 		contentPane.add(usuario);
 		usuario.setLayout(null);
 		
-		
+		alojamiento=new PanelElegirAlojamiento();
+		contentPane.add(alojamiento);
+		alojamiento.setLayout(null);
 
 		
 	}

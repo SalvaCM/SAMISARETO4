@@ -73,8 +73,9 @@ public class ControladorHotel implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 				
 
-					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.saludo);
+					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.alojamiento);
 					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+					miVentana.hotel.comboBox.removeAllItems();
 					break;
 					case "btnSiguienteHotel": 	
 					validarCampos();

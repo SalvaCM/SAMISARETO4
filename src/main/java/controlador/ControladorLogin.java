@@ -67,7 +67,7 @@ public class ControladorLogin  implements ActionListener{
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
-					funciones.cambiarDePanel(miVentana.login, miVentana.hotel);
+					funciones.cambiarDePanel(miVentana.login, miVentana.alojamiento);
 					}
 				else {
 					JOptionPane.showMessageDialog(miVentana, "¡Contraseña incorrecta!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
@@ -83,6 +83,7 @@ public class ControladorLogin  implements ActionListener{
 		break;
 		
 		case "btnRegistrarseLogin": funciones.cambiarDePanel(miVentana.login, miVentana.registro);
+		break;
 
 		}
 	}	

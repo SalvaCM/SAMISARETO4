@@ -3,6 +3,7 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.SQLException;
 import java.util.Date;
 
 import javax.swing.DefaultListModel;
@@ -102,7 +103,7 @@ public class PanelHotel extends JPanel {
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"cod","Nombre","Ubicacion","Estrellas"};
+		String col[] = {"cod","Nombre","Ubicacion",""};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -131,8 +132,6 @@ public class PanelHotel extends JPanel {
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
 		
-		
-
 	}
 }
 

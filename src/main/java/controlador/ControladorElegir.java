@@ -93,10 +93,10 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 	}	
-	public void MostrarCasas() {
+	/*public void MostrarCasas() {
 
 		 try {
-			miModelo.listaApartamento=miModelo.misFuncionesHotel.leerHoteles();
+			miModelo.listaCasas=miModelo.misFuncionesHotel.leerHoteles();
 			
 			for(int i=0;i<miModelo.listaHoteles.size();i++) {
 				Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
@@ -107,6 +107,6 @@ public class ControladorElegir implements ActionListener{
 				e1.printStackTrace();
 			} 
 		
-	}
+	}*/
 
 }

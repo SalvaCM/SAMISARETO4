@@ -64,7 +64,7 @@ public class PanelEstanciasHotel extends JPanel {
 		btnSiguiente.setName("btnSiguienteEstancias");
 		add(btnSiguiente);
 		
-		String col[] = {"cod","Tipo","Tamaño","Precio"};
+		String col[] = {"cod","Tipo","Tamaño","Precio","Tipo de Cama"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaHabitaciones = new JTable(tableModel);
 		tablaHabitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -80,7 +80,7 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(184, 126, 714, 213);
+		scrollPane.setBounds(10, 118, 849, 213);
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");
@@ -89,8 +89,7 @@ public class PanelEstanciasHotel extends JPanel {
 		btnReservar.setBackground(Color.GREEN);
 		btnReservar.setBounds(714, 384, 89, 31);
 		add(btnReservar);
-		
-	    
+
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);

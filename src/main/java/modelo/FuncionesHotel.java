@@ -23,6 +23,7 @@ public class FuncionesHotel {
 	
 	public Hotel hotel;
 	public HabitacionHotel habitacion;
+	public Cama cama;
 	private Ventana miVentana;
 	
 	
@@ -120,27 +121,23 @@ public class FuncionesHotel {
 			habitacion.setPrecio(precio);
 			habitacion.setTamano(tamano);
 			habitaciones.add(habitacion);
-			System.out.println(habitacion.toString());
 		}
 		return habitaciones;
 	}
 	public ArrayList<Cama> leerCamas(int codHabitacion) throws SQLException{
 		String tipocama="";
-		float precio=0;
 		int npersonas;
 		ArrayList<Cama> camas =new ArrayList<Cama>();
 		
-		String query="select cod_tipocama,tipocama,npersonas from cama where codHabitacion='"+codHabitacion+"';";
+		String query="select a.cod_tipocama,a.tipocama,a.n_personas from cama a,habitacion_cama h where a.cod_tipocama=h.COD_TIPOCAMA and h.cod_habitacion='"+codHabitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
-		
 		while(rs.next()) {
 			tipocama = rs.getString("tipocama");
-			npersonas=rs.getInt("npersonas");
-			Cama cama =new Cama();
+			npersonas=rs.getInt("n_personas");
+			cama =new Cama();
 			cama.setTipoCama(tipocama);
 			cama.setnPersonas(npersonas);
 			camas.add(cama);
-			System.out.println(habitacion.toString());
 		}
 		return camas;
 	}

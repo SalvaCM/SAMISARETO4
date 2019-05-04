@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import modelo.Cama;
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -108,28 +109,53 @@ public class ControladorHotel implements ActionListener {
 					}
 					
 					else {
-							// miModelo.Nnoches=(int) ((miVentana.hotel.fecha2.getCalendar().getTimeInMillis()-miVentana.hotel.fecha.getCalendar().getTimeInMillis())/86400000);
 							miModelo.reservaHotel.setFechaEntrada(miVentana.hotel.fechaEntrada.getDate());
 							miModelo.reservaHotel.setFechaSalida(miVentana.hotel.fechaSalida.getDate());
-							//System.out.println("higfjd.   "+miModelo.reservaHotel.getFechaSalida());
-							//System.out.println("NOCHES: "+(miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000);
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); 
-							Estancias();
+							miModelo.reservaHotel.setHotelReservado(ReservarHotel());
+							miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(Estancias());
+							rellenarTabla();
+							System.out.println(miModelo.reservaHotel.getHotelReservado().toString());
+							System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(0).toString());
+							System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(0).getCamas().get(0).toString());
+							
 						}
 					
 				}
-				
+				/**
+				 * 	Añade a la reserva el hotel seleccionado en el jtable
+				 */
 			}
+			private void rellenarTabla() {
+				String cadena="";
+				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
+					System.out.println(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion());
+					for(int z=0;z<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size();z++)
+					{
+						
+						cadena=cadena+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+",Para "+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+" Persona/s #";
+						System.out.println("cadena"+cadena);
+					}
+					Object[] habitacion = {miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTipo(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTamano(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getPrecio(),cadena};
+					miVentana.estanciasHotel.tableModel.addRow(habitacion);
+					cadena="";
+					
+				}
+			}
+
+			private Hotel ReservarHotel() {
+				
+				int indice = miVentana.hotel.tablaResultados.getSelectedRow();
+				Hotel hotel= miModelo.listaHoteles.get(indice);
+				return hotel;	
+			}
+
 			/**
 			 * DEVUELVE UN ARRAYLIST DE LAS HABITACIONES DE UN HOTEL DETERMINADO
 			 */
 			public ArrayList<HabitacionHotel> Estancias() {
-				ArrayList<HabitacionHotel> habitaciones = new ArrayList<HabitacionHotel>();
-
-					//miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
-					int indice = miVentana.hotel.tablaResultados.getSelectedRow();
-					Hotel hotel= miModelo.listaHoteles.get(indice);
-					miModelo.reservaHotel.setHotelReservado(hotel);
+				
+					ArrayList<HabitacionHotel> habitaciones = new ArrayList<HabitacionHotel>();
 					int codigo = miModelo.reservaHotel.getHotelReservado().getCod_hotel();
 					try {
 						habitaciones =miModelo.misFuncionesHotel.leerHabitaciones(codigo);
@@ -137,24 +163,15 @@ public class ControladorHotel implements ActionListener {
 						
 						e.printStackTrace();
 					}
-					//agregarCamas(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles);
-					miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(habitaciones);
-					for(int i=0;i<habitaciones.size();i++) {
-						Object[] habitacion = {habitaciones.get(i).getCodHabitacion(),habitaciones.get(i).getTipo(),habitaciones.get(i).getTamano(),habitaciones.get(i).getPrecio()};
-						miVentana.estanciasHotel.tableModel.addRow(habitacion);
+					for  (int i=0;i<habitaciones.size();i++)
+					{
+						try {
+							habitaciones.get(i).setCamas(miModelo.misFuncionesHotel.leerCamas(habitaciones.get(i).getCodHabitacion()));
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
 					}
 				return habitaciones;
-			}
-			private void agregarCamas(ArrayList<HabitacionHotel> habitaciones) {
-				for (int i=0;i<habitaciones.size();i++)
-				{
-					try {
-						habitaciones.get(i).setCamas(miModelo.misFuncionesHotel.leerCamas(habitaciones.get(i).getCodHabitacion()));
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-				
 			}
 
 			/**

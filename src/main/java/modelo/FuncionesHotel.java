@@ -102,33 +102,47 @@ public class FuncionesHotel {
 	public ArrayList<HabitacionHotel> leerHabitaciones(int codhotel) throws SQLException{
 		String tipo="";
 		float precio=0;
-		int nCamas;
 		int codHabitacion;
 		int tamano;
-		boolean ocupada;
 		ArrayList<HabitacionHotel> habitaciones =new ArrayList<HabitacionHotel>();
 		
-		String query="select codhabitacion,tipo,precio,ncamas,tamano,ocupada from habitacionesHotel where cod_hotel='"+codhotel+"';";
+		String query="select cod_habitacion,tipo,precio,tamano from habitacion_Hotel where cod_hotel='"+codhotel+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("codhabitacion");
+			codHabitacion = rs.getInt("cod_habitacion");
 			tipo = rs.getString("tipo");
 			precio = rs.getFloat("precio");
-			nCamas=rs.getInt("ncamas");
 			tamano=rs.getInt("tamano");
-			ocupada=rs.getBoolean("ocupada");
 			habitacion =new HabitacionHotel();
 			habitacion.setCodHabitacion(codHabitacion);
 			habitacion.setTipo(tipo);
-			habitacion.setnCamas(nCamas);
 			habitacion.setPrecio(precio);
-			habitacion.setOcupada(ocupada);
 			habitacion.setTamano(tamano);
 			habitaciones.add(habitacion);
 			System.out.println(habitacion.toString());
 		}
 		return habitaciones;
+	}
+	public ArrayList<Cama> leerCamas(int codHabitacion) throws SQLException{
+		String tipocama="";
+		float precio=0;
+		int npersonas;
+		ArrayList<Cama> camas =new ArrayList<Cama>();
+		
+		String query="select cod_tipocama,tipocama,npersonas from cama where codHabitacion='"+codHabitacion+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		
+		while(rs.next()) {
+			tipocama = rs.getString("tipocama");
+			npersonas=rs.getInt("npersonas");
+			Cama cama =new Cama();
+			cama.setTipoCama(tipocama);
+			cama.setnPersonas(npersonas);
+			camas.add(cama);
+			System.out.println(habitacion.toString());
+		}
+		return camas;
 	}
 	/**
 	 *  BUSCA UNA HABITACION Y LA AÑADE AL ARRAY DE RESERVAS
@@ -137,27 +151,21 @@ public class FuncionesHotel {
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
 		String tipo="";
 		int tamano;
-		boolean ocupada;
 		float precio=0;
-		int nCamas;
 		int codHabitacion;
 		habitacion =new HabitacionHotel();
-		String query="select codhabitacion,tipo,precio,tamano,ncamas,ocupada from habitacionesHotel where codhabitacion='"+cod_habitacion+"';";
+		String query="select cod_habitacion,tipo,precio,tamano from habitacion_Hotel where cod_habitacion='"+cod_habitacion+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
 		
 		while(rs.next()) {
-			codHabitacion = rs.getInt("codhabitacion");
+			codHabitacion = rs.getInt("cod_habitacion");
 			tipo = rs.getString("tipo");
 			precio = rs.getFloat("precio");
-			nCamas=rs.getInt("ncamas");
 			tamano=rs.getInt("tamano");
-			ocupada=rs.getBoolean("ocupada");
 			habitacion.setCodHabitacion(codHabitacion);
 			habitacion.setTipo(tipo);
 			habitacion.setTamano(tamano);
-			habitacion.setnCamas(nCamas);
 			habitacion.setPrecio(precio);
-			habitacion.setOcupada(ocupada);
 		}
 		return habitacion;
 	}
@@ -188,7 +196,7 @@ public class FuncionesHotel {
 		boolean r = false;
 		Date f1 = null;
 		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
+		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				

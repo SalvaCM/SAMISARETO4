@@ -1,15 +1,15 @@
 package modelo;
 
+import java.util.ArrayList;
+
 public class HabitacionHotel extends Habitacion {
 	protected float precio;
-	protected boolean ocupada;
-	protected int nCamas;
+	protected ArrayList<Cama> camas= new ArrayList<Cama>(); 
 	
-	public HabitacionHotel(int codHabitacion, int tamano, String tipo, float precio, boolean ocupada,int nCamas) {
+	public HabitacionHotel(int codHabitacion, int tamano, String tipo, float precio,ArrayList<Cama> camas) {
 		super(codHabitacion,tamano,tipo);
 		this.precio = precio;
-		this.ocupada = ocupada;
-		this.nCamas = nCamas;
+		this.camas=camas;
 	}
 	public HabitacionHotel()
 	{
@@ -21,27 +21,20 @@ public class HabitacionHotel extends Habitacion {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	public boolean isOcupada() {
-		return ocupada;
-	}
-	public void setOcupada(boolean ocupada) {
-		this.ocupada = ocupada;
-	}
-	public int getnCamas() {
-		return nCamas;
-	}
-	public void setnCamas(int nCamas) {
-		this.nCamas = nCamas;
-	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tipo: "+tipo+"\n");
-		builder.append("Nº Camas: "+nCamas+"\n");
 		builder.append("Tamaño: "+tamano+"\n");
 		builder.append("Precio: "+precio+"\n");
 		builder.append("\n");
 		return builder.toString();
+	}
+	public ArrayList<Cama> getCamas() {
+		return camas;
+	}
+	public void setCamas(ArrayList<Cama> camas) {
+		this.camas = camas;
 	}
 	
 	

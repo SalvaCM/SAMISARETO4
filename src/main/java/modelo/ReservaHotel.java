@@ -66,7 +66,7 @@ public class ReservaHotel{
 		builder.append(fechaEntrada);
 		builder.append("\nFecha de Salida :");
 		builder.append(fechaSalida);
-		builder.append("\nnoches=:");
+		builder.append("\nNoches :");
 		builder.append(noches);
 		return builder.toString();
 	}

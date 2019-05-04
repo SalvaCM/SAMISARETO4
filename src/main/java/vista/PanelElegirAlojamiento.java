@@ -17,7 +17,7 @@ public class PanelElegirAlojamiento extends JPanel {
 		
 		 hotel = new JButton("HOTEL");
 		 hotel.setName("hotel");
-		hotel.setBounds(395, 114, 138, 84);
+		hotel.setBounds(247, 118, 138, 396);
 		
 		setLayout(null);
 		add(hotel);
@@ -25,12 +25,12 @@ public class PanelElegirAlojamiento extends JPanel {
 		 apart = new JButton("APARTAMENTO");
 		 apart.setName("apart");
 		
-		apart.setBounds(395, 243, 138, 90);
+		apart.setBounds(395, 118, 138, 396);
 		add(apart);
 		
 		 casa = new JButton("CASA");
 		 casa.setName("casa");
-		casa.setBounds(395, 372, 138, 76);
+		casa.setBounds(543, 118, 138, 396);
 		add(casa);
 
 	}

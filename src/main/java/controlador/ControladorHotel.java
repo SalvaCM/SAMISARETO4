@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -126,25 +125,38 @@ public class ControladorHotel implements ActionListener {
 			 */
 			public ArrayList<HabitacionHotel> Estancias() {
 				ArrayList<HabitacionHotel> habitaciones = new ArrayList<HabitacionHotel>();
-				try {
-					
+
 					//miModelo.hotelReservado = miModelo.listaHoteles.get(miVentana.hotel.tablaResultados.getSelectedRow());
 					int indice = miVentana.hotel.tablaResultados.getSelectedRow();
 					Hotel hotel= miModelo.listaHoteles.get(indice);
 					miModelo.reservaHotel.setHotelReservado(hotel);
 					int codigo = miModelo.reservaHotel.getHotelReservado().getCod_hotel();
-					habitaciones =miModelo.misFuncionesHotel.leerHabitaciones(codigo);
+					try {
+						habitaciones =miModelo.misFuncionesHotel.leerHabitaciones(codigo);
+					} catch (SQLException e) {
+						
+						e.printStackTrace();
+					}
+					//agregarCamas(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles);
 					miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(habitaciones);
 					for(int i=0;i<habitaciones.size();i++) {
-						Object[] habitacion = {habitaciones.get(i).getCodHabitacion(),habitaciones.get(i).getTipo(),habitaciones.get(i).getnCamas(),habitaciones.get(i).getPrecio()};
+						Object[] habitacion = {habitaciones.get(i).getCodHabitacion(),habitaciones.get(i).getTipo(),habitaciones.get(i).getTamano(),habitaciones.get(i).getPrecio()};
 						miVentana.estanciasHotel.tableModel.addRow(habitacion);
 					}
-					
-				} catch (SQLException e1) {
-				e1.printStackTrace();
-				}
 				return habitaciones;
 			}
+			private void agregarCamas(ArrayList<HabitacionHotel> habitaciones) {
+				for (int i=0;i<habitaciones.size();i++)
+				{
+					try {
+						habitaciones.get(i).setCamas(miModelo.misFuncionesHotel.leerCamas(habitaciones.get(i).getCodHabitacion()));
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				
+			}
+
 			/**
 			 * FILTRA LOS HOTELES POR SU UBICACION
 			 */

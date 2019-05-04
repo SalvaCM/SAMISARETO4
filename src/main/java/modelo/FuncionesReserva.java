@@ -41,7 +41,7 @@ public class FuncionesReserva {
 		System.out.println(reservaHotel.getFechaEntrada());
 		System.out.println(reservaHotel.getFechaSalida());
 		//codReserva iba en el insert
-		String query = "INSERT into reservasHotel (codreserva,cod_hotel,codhabitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reservaHotel.getHotelReservado().getCod_hotel()+ "', '" + reservaHotel.getHabReservadas().get(i).getCodHabitacion() + "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
+		String query = "INSERT into reservas_Hotel (codreserva,cod_hotel,cod_habitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reservaHotel.getHotelReservado().getCod_hotel()+ "', '" + reservaHotel.getHabReservadas().get(i).getCodHabitacion() + "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
 		
 		System.out.println(query);
 		if (miConsulta.insertarDatosBD(con, query)) {
@@ -54,7 +54,7 @@ public class FuncionesReserva {
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
-		String query = ("select max(codreserva) from reservashotel;");
+		String query = ("select max(codreserva) from reservas_hotel;");
 		System.out.println(query);
 		int maxCodReserva=0;
 		

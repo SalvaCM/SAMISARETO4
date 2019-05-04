@@ -10,10 +10,6 @@ public class Casa extends Alojamiento {
 		this.tamanoT=tamanoTotal;
 		
 	}
-	
-	
-	
-	
 	public int getnBaños() {
 	
 		return this.nBanos;
@@ -26,6 +22,16 @@ public class Casa extends Alojamiento {
 	}
 	public void setTamanoT(int tamanoT) {
 		this.tamanoT = tamanoT;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Casa [nBanos=");
+		builder.append(nBanos);
+		builder.append(", tamanoT=");
+		builder.append(tamanoT);
+		builder.append("]");
+		return builder.toString();
 	}
 	
 	

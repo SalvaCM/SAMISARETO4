@@ -107,7 +107,7 @@ public class ControladorPago implements ActionListener {
 						+ "Nº Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
 						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
 						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
-						+ miModelo.reservaHotel.getHabReservadas().get(j).getnCamas() + " " + "Cliente: "
+						+  " " + "Cliente: "
 						+ miModelo.cliente.getDni());
 			}
 			resetear();

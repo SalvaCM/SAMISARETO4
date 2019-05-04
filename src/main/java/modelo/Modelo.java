@@ -20,7 +20,7 @@ public class Modelo {
 	public ArrayList<Casa> listaCasas;
 	public Cliente cliente;
 	public ReservaHotel reservaHotel;
-
+	public Cama cama;
 		
 	/**
 	 * Constructor de la clase

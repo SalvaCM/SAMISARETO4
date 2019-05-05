@@ -24,6 +24,7 @@ public class ControladorElegir implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
+	public int elegido;
 	
 	/**
 	 * Constructor de la clase
@@ -57,6 +58,7 @@ public class ControladorElegir implements ActionListener{
 		
 
 		case "hotel":funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
+		elegido=1;
 					
 			try {
 				ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
@@ -72,6 +74,7 @@ public class ControladorElegir implements ActionListener{
 	
 		break;
 		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
+		elegido=2;
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
 			miVentana.casa.comboBox.removeAllItems();
@@ -86,6 +89,7 @@ public class ControladorElegir implements ActionListener{
 		break;	
 		
 		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); MostrarApartamentos(); 
+		elegido=3;
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesApartamento.mostrarUbicaciones();
 			miVentana.apartamento.comboBox.removeAllItems();

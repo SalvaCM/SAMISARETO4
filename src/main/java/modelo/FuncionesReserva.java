@@ -41,7 +41,8 @@ public class FuncionesReserva {
 		System.out.println(reservaHotel.getFechaEntrada());
 		System.out.println(reservaHotel.getFechaSalida());
 		//codReserva iba en el insert
-		String query = "INSERT into reservas_Hotel (codreserva,cod_hotel,codhabitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reservaHotel.getHotelReservado().getCod_hotel()+ "', '" + reservaHotel.getHabReservadas().get(i).getCodHabitacion() + "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
+		String query = "INSERT into reservas_Hotel (cod_reserva,cod_hotel,cod_"
+				+ "habitacion,codcliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reservaHotel.getHotelReservado().getCod_hotel()+ "', '" + reservaHotel.getHabReservadas().get(i).getCodHabitacion() + "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
 		
 		System.out.println(query);
 		if (miConsulta.insertarDatosBD(con, query)) {
@@ -54,14 +55,14 @@ public class FuncionesReserva {
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
-		String query = ("select max(codreserva) from reservas_hotel;");
+		String query = ("select max(cod_reserva) from reservas_hotel;");
 		System.out.println(query);
 		int maxCodReserva=0;
 		
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		try {
 			while(rs.next()) {
-				   maxCodReserva = rs.getInt("max(codreserva)");
+				   maxCodReserva = rs.getInt("max(cod_reserva)");
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -71,7 +72,30 @@ public class FuncionesReserva {
 		return maxCodReserva+1;
 		
 	}
-	
+	public void registrarReservaC(int codReserva, ReservaCASAoAPART reserva,Cliente cliente) {
+		//Declaración e inicialización de variables:
+
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String fechaE = dateFormat.format(reserva.getFechaEntrada());
+		String fechaS=dateFormat.format(reserva.getFechaSalida());
+		
+		System.out.println(codReserva);
+		System.out.println(reserva.getCasaReservada().getCod_casa());
+		System.out.println(cliente.getDni());
+		System.out.println(reserva.getFechaEntrada());
+		System.out.println(reserva.getFechaSalida());
+		//codReserva iba en el insert
+		String query = "INSERT into reserva_casa (codreserva,cod_casa,codcliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reserva.getCasaReservada().getCod_casa()+  "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
+		
+		System.out.println(query);
+		if (miConsulta.insertarDatosBD(con, query)) {
+			System.out.println("Reserva Realizada");
+		}
+	}
 	
 	
 	 

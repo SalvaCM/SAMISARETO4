@@ -193,7 +193,7 @@ public class FuncionesHotel {
 		boolean r = false;
 		Date f1 = null;
 		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservas_hotel where codhabitacion='"+cod+"';";
+		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				

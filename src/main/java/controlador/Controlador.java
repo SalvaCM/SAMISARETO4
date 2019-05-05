@@ -42,7 +42,7 @@ public class Controlador {
 			this.miVentana = miVentana;
 			this.miModelo = miModelo;
 			
-			this.miControladorPago = new ControladorPago(miVentana, miModelo);
+			this.miControladorPago = new ControladorPago(miVentana, miModelo,this);
 			this.miControladorResumen = new ControladorResumen(miVentana, miModelo,this);
 			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo);
 			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
@@ -53,8 +53,8 @@ public class Controlador {
 			this.miControladorUsuario = new ControladorUsuario(miVentana, miModelo);
 			this.miFuncionesControlador = new FuncionesControlador();
 			this.miControladorElegir=new ControladorElegir(miVentana, miModelo);
-			this.miControladorCasa = new ControladorCasa(miVentana, miModelo);
-			this.miControladorApartamento = new ControladorApartamento(miVentana, miModelo);
+			this.miControladorCasa = new ControladorCasa(miVentana, miModelo,this);
+			this.miControladorApartamento = new ControladorApartamento(miVentana, miModelo,this);
 		
 		}
 

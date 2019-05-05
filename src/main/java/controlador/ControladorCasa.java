@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -14,12 +15,15 @@ import modelo.Casa;
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
+import modelo.ReservaCASAoAPART;
 import vista.Ventana;
 
 public class ControladorCasa implements ActionListener {
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
+	private Controlador miControlador;
+	
 
 	
 	FuncionesControlador funciones = new FuncionesControlador();
@@ -29,15 +33,17 @@ public class ControladorCasa implements ActionListener {
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
 	 */
-	public ControladorCasa(Ventana miVentana, Modelo miModelo) {
+	public ControladorCasa(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
 		
+		this.miControlador=miControlador;
 		miVentana.casa.btnSiguiente.addActionListener(this);
 		miVentana.casa.btnBuscar.addActionListener(this);
 		miVentana.casa.btnCancelar.addActionListener(this);
 		miVentana.casa.btnPerfil.addActionListener(this); 
+	
 		
 		miVentana.casa.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
@@ -70,14 +76,15 @@ public class ControladorCasa implements ActionListener {
 			miVentana.casa.comboBox.removeAllItems();
 			break;
 			
-			case "btnSiguienteCasa": funciones.cambiarDePanel(miVentana.casa, miVentana.resumen);	
-			funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
+			case "btnSiguienteCasa":
 			validarCampos();
 			break;	
 
 			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas);
 			
 			break;	
+			
+			
 			
 			case "btnPerfil": funciones.cambiarDePanel(miVentana.hotel, miVentana.usuario);
 			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
@@ -100,39 +107,39 @@ public class ControladorCasa implements ActionListener {
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}
+			else{
+				 funciones.cambiarDePanel(miVentana.casa, miVentana.resumenCyA);
+				 miModelo.reserva.setCasaReservada(ReservarCasa());
+				 miModelo.reserva.setFechaEntrada(miVentana.casa.fechaEntrada.getDate());
+				 miModelo.reserva.setFechaSalida(miVentana.casa.fechaSalida.getDate());
+				 miModelo.reserva.setNoches((int) ((miVentana.casa.fechaSalida.getCalendar().getTimeInMillis()-miVentana.casa.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
+				 miVentana.resumenCyA.resumenReserva.append(miModelo.reserva.getCasaReservada().toString());
+				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
+				 System.out.println("COD CASA:  " +miModelo.reserva.getCasaReservada().getCod_casa());
+				 System.out.println( miModelo.reserva.getCasaReservada().getPrecio());
+				
+				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();
+				 System.out.println("Total: "+miControlador.miControladorPago.total);
+			}
+				//funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
 			
+		
 			
 			
 		}
-		/**
-		 * 	Añade a la reserva el hotel seleccionado en el jtable
-		 */
 	}
 	
-	/**
-	 * DEVUELVE UN ARRAYLIST DE LAS HABITACIONES DE UN HOTEL DETERMINADO
-	 */
-	public ArrayList<HabitacionHotel> Estancias() {
-		
-			ArrayList<HabitacionHotel> habitaciones = new ArrayList<HabitacionHotel>();
-			int codigo = miModelo.reservaHotel.getHotelReservado().getCod_hotel();
-			try {
-				habitaciones =miModelo.misFuncionesHotel.leerHabitaciones(codigo);
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
-			}
-			for  (int i=0;i<habitaciones.size();i++)
-			{
-				try {
-					habitaciones.get(i).setCamas(miModelo.misFuncionesHotel.leerCamas(habitaciones.get(i).getCodHabitacion()));
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
-			}
-		return habitaciones;
-	}
+	
 
+	private Casa ReservarCasa() {
+		
+		int indice = miVentana.casa.tablaResultados.getSelectedRow();
+		
+		Casa casa= miModelo.listaCasas.get(indice);
+		return casa;	
+	}
 	/**
 	 * FILTRA LAS CASAS POR SU UBICACION
 	 */

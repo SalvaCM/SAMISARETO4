@@ -18,7 +18,7 @@ import vista.Ventana;
 public class ControladorPago implements ActionListener {
 	private Ventana miVentana;
 	private Modelo miModelo;
-	
+	private Controlador miControlador;
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	private int[] arrayCambios=null;
@@ -33,9 +33,9 @@ public class ControladorPago implements ActionListener {
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
 	 */
-	public ControladorPago (Ventana miVentana, Modelo miModelo) { 
+	public ControladorPago (Ventana miVentana, Modelo miModelo,Controlador miControlador) { 
 		
-	
+		this.miControlador=miControlador;
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
 		
@@ -57,6 +57,7 @@ public class ControladorPago implements ActionListener {
 		miVentana.pago.btn005.addActionListener(this);
 		miVentana.pago.btn002.addActionListener(this);
 		miVentana.pago.btn001.addActionListener(this);
+		
 		
 		
 	}
@@ -83,10 +84,11 @@ public class ControladorPago implements ActionListener {
 		//Accion dependiendo de que boton venga el evento
 		switch (((JButton) e.getSource()).getName()) {
 	
-			case "btnCancelarPago": funciones.cambiarDePanel(miVentana.pago, miVentana.estanciasHotel);
+			case "btnCancelarPago": funciones.cambiarDePanel(miVentana.pago, miVentana.alojamiento);
 		     	JOptionPane.showMessageDialog(miVentana, "Devolucion de dinero introducido", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				resetear();
 				miVentana.resumen.mostrarResumen.clear();
+				miVentana.resumenCyA.mostrarResumen.clear();
 				miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
 				miVentana.resumen.resumenReserva.setText(null);
 				miVentana.resumen.resumen.removeAll();
@@ -98,18 +100,43 @@ public class ControladorPago implements ActionListener {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}
 			    mostrarCambios(arrayCambios);
-			    GuardarReserva();
+			    
 			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
-			for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
-				ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
-				fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "
+			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
+			    if(miControlador.miControladorElegir.elegido==1) {
+			    	GuardarReservaH();
+			    	for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
+			    		ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
+			    		fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "
 						+ "Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion() + " "
 						+ "NÂº Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
 						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
 						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
 						+  " " + "Cliente: "
 						+ miModelo.cliente.getDni());
-			}
+			    }
+			    if(miControlador.miControladorElegir.elegido==2) {
+			    	GuardarReservaC();
+			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
+			    	miModelo.reserva.getApartReservado();
+			    	fichero.archivoTexto("Nombre del Apartamento: " + miModelo.reserva.getApartReservado().getNombre() + " "
+							+ "Ubicacion: " + miModelo.reserva.getApartReservado().getUbicacion() + " "
+						
+							+  " " + "Cliente: "
+							+ miModelo.cliente.getDni());
+			    		 
+			    	 }
+			    if(miControlador.miControladorElegir.elegido==3) {
+			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
+			    	miModelo.reserva.getCasaReservada();
+			    	fichero.archivoTexto("Nombre de la casa: " + miModelo.reserva.getCasaReservada().getNombre() + " "
+							+ "Ubicacion: " + miModelo.reserva.getCasaReservada().getUbicacion() + " "
+						
+							+  " " + "Cliente: "
+							+ miModelo.cliente.getDni());
+			    	
+			    }
+			    	}
 			resetear();
 				break;
 			
@@ -134,7 +161,7 @@ public class ControladorPago implements ActionListener {
 		
 	}
 	
-    private void GuardarReserva() {
+    private void GuardarReservaH() {
     	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
     	
 		for (int j = 0; j < miModelo.reservaHotel.getHabReservadas().size(); j++) {
@@ -143,6 +170,11 @@ public class ControladorPago implements ActionListener {
 			miModelo.reservaHotel.setCodReserva(codReserva);
 		
 	}
+    private void GuardarReservaC() {
+    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
+    	miModelo.misFuncionesReserva.registrarReservaC(codReserva, miModelo.reserva, miModelo.cliente);
+		miModelo.reservaHotel.setCodReserva(codReserva);
+    }
 
 	/**
      * Metodo que desactiva todos los botones de dinero de la ventana pago

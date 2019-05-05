@@ -16,7 +16,7 @@ public class testHabitacionHotel {
 	private int tamano=234;
 	private String tipo="SUITE";
 
-	HabitacionHotel testHabit=new HabitacionHotel(codHabitacion, tamano, tipo, precio,  ocupada,nCamas);
+	/*HabitacionHotel testHabit=new HabitacionHotel(codHabitacion, tamano, tipo, precio,  ocupada,nCamas);
 	
 
 	@Test
@@ -75,5 +75,5 @@ public class testHabitacionHotel {
 		result=testHabit.toString();
 		assertEquals(result,esperado);
 		
-	}
+	}*/
 }

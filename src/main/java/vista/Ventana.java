@@ -32,6 +32,7 @@ public class Ventana extends JFrame {
 	public PanelElegirAlojamiento alojamiento;
 	public PanelCasa casa;
 	public PanelApartamento apartamento;
+	public PanelResumenCasayApart resumenCyA;
 	
 	
 	/**
@@ -112,6 +113,10 @@ public class Ventana extends JFrame {
 		apartamento = new PanelApartamento();
 		contentPane.add(apartamento);
 		apartamento.setLayout(null);
+		
+		resumenCyA=new  PanelResumenCasayApart();
+		contentPane.add(resumenCyA);
+		resumenCyA.setLayout(null);
 	}
 	
 	  private void close(){

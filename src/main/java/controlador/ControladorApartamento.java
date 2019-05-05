@@ -20,6 +20,7 @@ public class ControladorApartamento implements ActionListener {
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
+	private Controlador miControlador;
 
 	
 	FuncionesControlador funciones = new FuncionesControlador();
@@ -29,10 +30,11 @@ public class ControladorApartamento implements ActionListener {
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
 	 */
-	public ControladorApartamento(Ventana miVentana, Modelo miModelo) {
+	public ControladorApartamento(Ventana miVentana, Modelo miModelo,Controlador miControlador) {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
+		this.miControlador=miControlador;
 		
 		miVentana.apartamento.btnSiguiente.addActionListener(this);
 		miVentana.apartamento.btnBuscar.addActionListener(this);
@@ -70,8 +72,8 @@ public class ControladorApartamento implements ActionListener {
 			miVentana.casa.comboBox.removeAllItems();
 			break;
 			
-			case "btnSiguienteApartamento": funciones.cambiarDePanel(miVentana.apartamento, miVentana.resumen);
-			funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+			case "btnSiguienteApartamento": 
+			
 			validarCampos();
 			break;	
 
@@ -92,13 +94,30 @@ public class ControladorApartamento implements ActionListener {
 	private void validarCampos() {
 		if(miVentana.apartamento.tablaResultados.getSelectedRow() == -1)
 		{
-			JOptionPane.showMessageDialog(miVentana, "Seleccione una casa", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(miVentana, "Seleccione una apartamento", "Atencion!", JOptionPane.WARNING_MESSAGE);
 	
 		}
 		else {
 			if (miVentana.apartamento.fechaEntrada.getDate()==null||miVentana.apartamento.fechaSalida.getDate()==null)
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			}else{
+				 funciones.cambiarDePanel(miVentana.apartamento, miVentana.resumenCyA);
+				 miModelo.reserva.setApartReservado(ReservarApartamento());
+				 miModelo.reserva.setFechaEntrada(miVentana.apartamento.fechaEntrada.getDate());
+				 miModelo.reserva.setFechaSalida(miVentana.apartamento.fechaSalida.getDate());
+				
+				 miModelo.reserva.setNoches((int) ((miVentana.apartamento.fechaSalida.getCalendar().getTimeInMillis()-miVentana.apartamento.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
+				 miVentana.resumenCyA.resumenReserva.append(miModelo.reserva.getApartReservado().toString());
+				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
+				 System.out.println( "COD APARTAMENTO:"+miModelo.reserva.getApartReservado().getCod_apartamento());
+				 System.out.println( miModelo.reserva.getApartReservado().getPrecio());
+				 miControlador.miControladorPago.total = miModelo.reserva.getApartReservado().getPrecio()* miModelo.reserva.getNoches();
+				
+				 System.out.println("Total: "+miControlador.miControladorPago.total);
+				 funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
 			}
 					
 			
@@ -123,6 +142,12 @@ public class ControladorApartamento implements ActionListener {
 			}
 		} catch (SQLException e1) {
 			e1.printStackTrace();}
+	}
+private Apartamento ReservarApartamento() {
+		
+		int indice = miVentana.apartamento.tablaResultados.getSelectedRow();
+		Apartamento apartamento= miModelo.listaApartamento.get(indice);
+		return apartamento;	
 	}
 
 }

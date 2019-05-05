@@ -46,6 +46,21 @@ public class Apartamento extends Alojamiento{
 	}
 
 
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Apartamento:");
+		builder.append(nombre);
+		builder.append("\nPiso :");
+		builder.append(piso);
+		builder.append("\nUbicacion :");
+		builder.append(ubicacion);
+		builder.append("\n");
+		builder.append("Precio :");
+		builder.append(precio);
+		
+		return builder.toString();
+	}
 	
+
 
 }

@@ -9,6 +9,7 @@ public class Modelo {
 
 	// Declaracion e inicializacion de variables
 	private Controlador miControlador;
+	
 	public FuncionesHotel misFuncionesHotel;
 	public FuncionesDevolucion misFuncionesDevolucion;
 	public FuncionesPago misFuncionesPago;
@@ -22,6 +23,7 @@ public class Modelo {
 	public ArrayList<Casa> listaCasas;
 	public Cliente cliente;
 	public ReservaHotel reservaHotel;
+	public ReservaCASAoAPART reserva;
 	public Cama cama;
 		
 	/**
@@ -42,6 +44,7 @@ public class Modelo {
 		this.listaApartamento=new ArrayList<Apartamento>();
 		this.listaCasas=new ArrayList<Casa>();
 		this.reservaHotel= new ReservaHotel();
+		this.reserva=new ReservaCASAoAPART();
 		
 	}
 	

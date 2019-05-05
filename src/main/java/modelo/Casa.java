@@ -1,39 +1,62 @@
 package modelo;
 
 public class Casa extends Alojamiento {
-	
-	private int nBanos;
-	private int tamanoT;
-	
-	public Casa(int nbanos,int tamanoTotal) {
-		this.nBanos=nbanos;
-		this.tamanoT=tamanoTotal;
-		
-	}
-	public int getnBaños() {
-	
-		return this.nBanos;
-	}
-	public void setnBaños(int nBanos) {
-		this.nBanos = nBanos;
-	}
-	public int getTamanoT() {
-		return this.tamanoT;
-	}
-	public void setTamanoT(int tamanoT) {
-		this.tamanoT = tamanoT;
-	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Casa [nBanos=");
-		builder.append(nBanos);
-		builder.append(", tamanoT=");
-		builder.append(tamanoT);
-		builder.append("]");
-		return builder.toString();
-	}
-	
+
+	 	private int cod_casa;
+		private int tamano;
+		private float precio;
+
+	 	public Casa(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion, float tarifa, int cod_casa, int tamano, float precio) {
+			super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion, tarifa);
+			this.cod_casa = cod_casa;
+			this.tamano = tamano;
+			this.precio = precio;
+		}
+
+
+
+	 	public Casa() {
+
+	 	}
+
+
+
+		public int getCod_casa() {
+			return cod_casa;
+		}
+
+
+
+		public void setCod_casa(int cod_casa) {
+			this.cod_casa = cod_casa;
+		}
+
+
+
+		public int getTamano() {
+			return tamano;
+		}
+
+
+
+		public void setTamano(int tamano) {
+			this.tamano = tamano;
+		}
+
+
+
+		public float getPrecio() {
+			return precio;
+		}
+
+
+
+		public void setPrecio(float precio) {
+			this.precio = precio;
+		}		
+
+	 	
+
 	
 
 

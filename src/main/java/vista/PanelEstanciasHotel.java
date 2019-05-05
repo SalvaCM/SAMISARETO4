@@ -80,7 +80,7 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(10, 118, 849, 213);
+		scrollPane.setBounds(55, 118, 913, 213);
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");

@@ -1,38 +1,36 @@
-
 package vista;
 
 import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Font;
-import java.sql.SQLException;
 import java.util.Date;
-
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
+
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 
-import javax.swing.JList;
-import javax.swing.ListSelectionModel;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JScrollPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.Dimension;
-import java.awt.Cursor;
+public class PanelCasa extends JPanel {
 
-public class PanelHotel extends JPanel {
-
-
-	private static final long serialVersionUID = 2L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 13L;
+	
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
-	public JList<String> list_hoteles=new JList<String>(); 
 	public DefaultListModel<String> modelo = new DefaultListModel<String>();
 	public JButton btnBuscar = new JButton("Buscar");
 	public JTable tablaResultados;
@@ -42,12 +40,12 @@ public class PanelHotel extends JPanel {
 	public JDateChooser fechaEntrada;
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
-
-	
 	/**
 	 * Create the panel.
 	 */
-	public PanelHotel() {
+	public PanelCasa() {
+
+		
 		setMaximumSize(new Dimension(800, 600));
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
@@ -73,7 +71,7 @@ public class PanelHotel extends JPanel {
 		
 		add(fechaEntrada);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL HOTEL");
+		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE LA CASA");
 		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
 		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
 		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
@@ -83,27 +81,27 @@ public class PanelHotel extends JPanel {
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);
 		
-		btnCancelar.setName("btnCancelarHotel");
+		btnCancelar.setName("btnCancelarCasa");
 
 		add(btnCancelar);
 		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnSiguiente.setBounds(874, 556, 156, 48);
 		
-		btnSiguiente.setName("btnSiguienteHotel");
+		btnSiguiente.setName("btnSiguienteCasa");
 	
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setBounds(332, 155, 98, 26);
-		btnBuscar.setName("btnBuscarHoteles");
+		btnBuscar.setName("btnBuscarCasas");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(193, 248, 701, 242);
+		scrollPane.setBounds(193, 288, 701, 187);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"cod","Nombre","Ubicacion","Estrellas"};
+		String col[] = {"cod","Nombre","Ubicacion","Tamaño","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
@@ -119,7 +117,7 @@ public class PanelHotel extends JPanel {
 		comboBox.setBounds(77, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
-		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "BILBAO", "VALENCIA", "BARCELONA", "SALAMANCA", "SEVILLA","BURGOS"}));
 
 		add(comboBox);
 		   
@@ -131,7 +129,6 @@ public class PanelHotel extends JPanel {
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
-		
 	}
-}
 
+}

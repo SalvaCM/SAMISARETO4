@@ -58,7 +58,7 @@ public class ControladorResumen implements ActionListener {
 											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
 											break;	
 											
-				case "btnCancelarResumen":	funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel);
+				case "btnCancelarResumen":	funciones.cambiarDePanel(miVentana.resumen, miVentana.alojamiento);
 											miControlador.miFuncionesControlador.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 											miVentana.resumen.resumenReserva.setText(null);
 											miVentana.resumen.mostrarResumen.clear();

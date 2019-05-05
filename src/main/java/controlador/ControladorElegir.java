@@ -56,13 +56,12 @@ public class ControladorElegir implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 		
 
-		case "hotel":funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel); tablaHotel();MostrarHoteles(); 
-					//funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+		case "hotel":funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
+					
 			try {
 				ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
 				miVentana.hotel.comboBox.removeAllItems();
 				for(int i=0;i<ubicaciones.size();i++) {
-					//Object[] hotel = {miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 					miVentana.hotel.comboBox.addItem(ubicaciones.get(i));
 					
 					}
@@ -72,16 +71,35 @@ public class ControladorElegir implements ActionListener{
 				} 
 	
 		break;
-		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);
-		tablaCasa();
-		
-		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-		
+		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
+		try {
+			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
+			miVentana.casa.comboBox.removeAllItems();
+			for(int i=0;i<ubicaciones.size();i++) {
+				miVentana.casa.comboBox.addItem(ubicaciones.get(i));
+				
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
 		break;	
-		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel); tablaApart();
-		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-			
-			break;
+		
+		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); MostrarApartamentos(); 
+		try {
+			ArrayList<String>ubicaciones=miModelo.misFuncionesApartamento.mostrarUbicaciones();
+			miVentana.apartamento.comboBox.removeAllItems();
+			for(int i=0;i<ubicaciones.size();i++) {
+				miVentana.apartamento.comboBox.addItem(ubicaciones.get(i));
+				
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+		break;	
+		
+		
 		
 	}
 	
@@ -102,21 +120,42 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 	}	
-	/*public void MostrarCasas() {
+	
+	public void MostrarCasas() {
+
+	 try {
+		miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
+		
+		for(int i=0;i<miModelo.listaCasas.size();i++) {
+			Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()}; 
+			miVentana.casa.tableModel.addRow(casa);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+	
+	}
+	
+	public void MostrarApartamentos() {
 
 		 try {
-			miModelo.listaCasas=miModelo.misFuncionesHotel.leerHoteles();
+			miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
 			
-			for(int i=0;i<miModelo.listaHoteles.size();i++) {
-				Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
-				miVentana.hotel.tableModel.addRow(hotel);
+			for(int i=0;i<miModelo.listaApartamento.size();i++) {
+				Object[] apartamento = {miModelo.listaApartamento.get(i).getCod_apartamento(),miModelo.listaApartamento.get(i).getNombre(), miModelo.listaApartamento.get(i).getUbicacion(),miModelo.listaApartamento.get(i).getTamano(),miModelo.listaApartamento.get(i).getPrecio(), miModelo.listaApartamento.get(i).getPiso()}; 
+				miVentana.apartamento.tableModel.addRow(apartamento);
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
 		
-	}*/
+		}
+
+	
+	
+	/*
 	public void tablaCasa() {
 		String col[] = {"cod","Nombre","Ubicacion","Precio"};
 		miVentana.hotel.tableModel= new DefaultTableModel(col, 0);
@@ -186,6 +225,6 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 		
-	}
+	}*/
 
 }

@@ -33,6 +33,7 @@ public class Controlador {
 	public ControladorElegir miControladorElegir;
 	public ControladorCasa miControladorCasa;
 	public ControladorApartamento miControladorApartamento;
+	public ControladorResumenCasayApart miControladorResumenCasayApart;
 
 
 	
@@ -55,6 +56,7 @@ public class Controlador {
 			this.miControladorElegir=new ControladorElegir(miVentana, miModelo);
 			this.miControladorCasa = new ControladorCasa(miVentana, miModelo,this);
 			this.miControladorApartamento = new ControladorApartamento(miVentana, miModelo,this);
+			this.miControladorResumenCasayApart = new ControladorResumenCasayApart(miVentana, miModelo, this);
 		
 		}
 

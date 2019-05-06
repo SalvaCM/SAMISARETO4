@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -25,7 +27,7 @@ public class ControladorCasa implements ActionListener {
 	private Controlador miControlador;
 	
 
-	
+	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	FuncionesControlador funciones = new FuncionesControlador();
 	
 	/**
@@ -121,7 +123,14 @@ public class ControladorCasa implements ActionListener {
 				 System.out.println( miModelo.reserva.getCasaReservada().getPrecio());
 				
 				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();
-				 System.out.println("Total: "+miControlador.miControladorPago.total);
+				 System.out.println("Total: "+ miControlador.miControladorPago.total);
+				 
+				
+				 
+				miVentana.pago.total.setText(formatoMoneda.format(0));
+				miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+				 
+				 
 			}
 				//funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
 			

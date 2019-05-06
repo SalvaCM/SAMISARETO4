@@ -24,7 +24,7 @@ public class FuncionesReserva {
 	private Ventana miVentana;
 
 	public void registrarReserva(int codReserva,int i, ReservaHotel reservaHotel,Cliente cliente) {
-		//Declaración e inicialización de variables:
+		//Declaraciï¿½n e inicializaciï¿½n de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
@@ -50,19 +50,19 @@ public class FuncionesReserva {
 		}
 	}
 	public int buscarNumeroReserva() {
-		//Declaración e inicialización de variables:
+		//Declaraciï¿½n e inicializaciï¿½n de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
-		String query = ("select max(cod_reserva) from reservas_hotel;");
+		String query = ("select max(codreserva) from reservas_hotel;");
 		System.out.println(query);
 		int maxCodReserva=0;
 		
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		try {
 			while(rs.next()) {
-				   maxCodReserva = rs.getInt("max(cod_reserva)");
+				   maxCodReserva = rs.getInt("max(codreserva)");
 				}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -73,7 +73,7 @@ public class FuncionesReserva {
 		
 	}
 	public void registrarReservaC(int codReserva, ReservaCASAoAPART reserva,Cliente cliente) {
-		//Declaración e inicialización de variables:
+		//Declaraciï¿½n e inicializaciï¿½n de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();

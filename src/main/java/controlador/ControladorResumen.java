@@ -52,9 +52,9 @@ public class ControladorResumen implements ActionListener {
 												miControlador.miControladorPago.total +=miModelo.reservaHotel.getHabReservadas().get(i).getPrecio()*miModelo.reservaHotel.getNoches();	
 											}
 											
-											System.out.println(miControlador.miControladorPago.total);
-											miVentana.pago.pagado.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(	miControlador.miControladorPago.total));
+											
+											miVentana.pago.total.setText(formatoMoneda.format(0));
+											miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
 											break;	
 											
@@ -63,9 +63,12 @@ public class ControladorResumen implements ActionListener {
 											
 											miVentana.resumen.resumenReserva.setText(null);
 											miVentana.resumen.mostrarResumen.clear();
+											miVentana.resumen.txtDetalles.setText(null);
 											
 											miControlador.miControladorHotel.Estancias();
 											miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
+											
+											miControlador.miControladorHotel.rellenarTabla();
 											break;
 				}
 			}	

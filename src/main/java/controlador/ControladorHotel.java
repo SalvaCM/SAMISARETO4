@@ -123,10 +123,10 @@ public class ControladorHotel implements ActionListener {
 					
 				}
 				/**
-				 * 	Añade a la reserva el hotel seleccionado en el jtable
+				 * 	Aï¿½ade a la reserva el hotel seleccionado en el jtable
 				 */
 			}
-			private void rellenarTabla() {
+			public void rellenarTabla() {
 				String cadena="";
 				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
 					System.out.println(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion());
@@ -253,7 +253,7 @@ public class ControladorHotel implements ActionListener {
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
-				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
+				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARï¿½S")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);

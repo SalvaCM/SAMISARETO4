@@ -34,8 +34,8 @@ public class ControladorResumenCasayApart implements ActionListener {
 				this.miControlador=miControlador;
 		
 			
-				miVentana.resumen.btnSiguiente.addActionListener(this);
-				miVentana.resumen.btnCancelar.addActionListener(this);
+				miVentana.resumenCyA.btnSiguiente.addActionListener(this);
+				miVentana.resumenCyA.btnCancelar.addActionListener(this);
 			}
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
@@ -45,13 +45,15 @@ public class ControladorResumenCasayApart implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen2":	funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);
-											funciones.desBotones(miVentana.pago.btnSiguiente);
-											miControlador.miControladorPago.resetear();
+				case "btnSiguienteResumen2":funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);
+											funciones.actBotones(miVentana.pago.btnSiguiente);
+										//	miControlador.miControladorPago.resetear();
 											
-											System.out.println("HOLA");
-											miVentana.pago.pagado.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+											
+											
+											//miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+											
+											System.out.println(miControlador.miControladorPago.total);
 											
 											break;	
 											

@@ -142,7 +142,7 @@ public class FuncionesHotel {
 		return camas;
 	}
 	/**
-	 *  BUSCA UNA HABITACION Y LA AÑADE AL ARRAY DE RESERVAS
+	 *  BUSCA UNA HABITACION Y LA Aï¿½ADE AL ARRAY DE RESERVAS
 	 */
 	// AQUI SOLO LEEMOS LA HABITACION DONDE ESTA ESE CODIGO, PERO NO SE RESERVA COMO TAL, SOLO A NIVEL DE PROGRAMA NO DE BASE DE DATOS
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
@@ -193,7 +193,7 @@ public class FuncionesHotel {
 		boolean r = false;
 		Date f1 = null;
 		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
+		String query="select fechaEntrada,fechaSalida from reservas_hotel where codhabitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				

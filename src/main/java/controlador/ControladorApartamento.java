@@ -5,7 +5,9 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ public class ControladorApartamento implements ActionListener {
 
 	
 	FuncionesControlador funciones = new FuncionesControlador();
+	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	
 	/**
 	 * Constructor de la clase
@@ -114,10 +117,14 @@ public class ControladorApartamento implements ActionListener {
 				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
 				 System.out.println( "COD APARTAMENTO:"+miModelo.reserva.getApartReservado().getCod_apartamento());
 				 System.out.println( miModelo.reserva.getApartReservado().getPrecio());
+				 
 				 miControlador.miControladorPago.total = miModelo.reserva.getApartReservado().getPrecio()* miModelo.reserva.getNoches();
-				
 				 System.out.println("Total: "+miControlador.miControladorPago.total);
-				 funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+				 
+				 miVentana.pago.total.setText(formatoMoneda.format(0));
+				 miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+				
+			//	funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
 			}
 					
 			

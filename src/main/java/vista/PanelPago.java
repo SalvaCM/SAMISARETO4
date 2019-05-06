@@ -232,6 +232,9 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel_4.setBounds(10, 127, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
+		
+		
+		
 	
 		/*ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
 		etiqueta = new JLabel(imagen);

@@ -24,6 +24,7 @@ public class ControladorPago implements ActionListener {
 	private int[] arrayCambios=null;
 	public double total=0;
 	public double pagado = 0;
+
 	
 	
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
@@ -92,6 +93,7 @@ public class ControladorPago implements ActionListener {
 				miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
 				miVentana.resumen.resumenReserva.setText(null);
 				miVentana.resumen.resumen.removeAll();
+				
 				break;
 								 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
@@ -101,7 +103,8 @@ public class ControladorPago implements ActionListener {
 				}
 			    mostrarCambios(arrayCambios);
 			    
-			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
+			    
 			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
 			    if(miControlador.miControladorElegir.elegido==1) {
 			    	GuardarReservaH();

@@ -131,11 +131,17 @@ public class ControladorHotel implements ActionListener {
 			public void rellenarTabla() {
 				StringBuilder cadena= new StringBuilder();
 				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
+					cadena = new StringBuilder();
 					System.out.println(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion());
 					for(int z=0;z<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size();z++)
 					{
-						cadena = new StringBuilder(); // Lo inicializamos de nuevo aquí para que se resetee cada vez q empieza con una habitacion nueva
-						cadena.append(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+",Para "+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+" Persona/s");
+						 // Lo inicializamos de nuevo aquí para que se resetee cada vez q empieza con una habitacion nueva
+						cadena.append(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+"("+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+"Pers)");		
+						if (z==miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size()-1)
+							cadena.append(".");
+						else
+							if (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size()>1)
+								cadena.append(",");
 						System.out.println("cadena"+cadena);
 						
 					}

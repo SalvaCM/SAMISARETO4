@@ -2,11 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import conexion.ConexionBD;
+import conexion.ConsultaBD;
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Ventana;
@@ -15,7 +18,6 @@ public class ControladorLogin  implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
-
 
 
 	
@@ -61,7 +63,7 @@ public class ControladorLogin  implements ActionListener{
 		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();
 		break;
 		
-		case "btnLogin": 	
+		case "btnLogin": 
 			try {
 					
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
@@ -78,6 +80,7 @@ public class ControladorLogin  implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		
 			
 	
 		break;

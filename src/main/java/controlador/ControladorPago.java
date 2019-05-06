@@ -107,19 +107,22 @@ public class ControladorPago implements ActionListener {
 			    
 			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
 			    if(miControlador.miControladorElegir.elegido==1) {
+			    	
 			    	GuardarReservaH();
 			    	for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
 			    		ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    		fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "
 						+ "Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion() + " "
-						+ "Nº Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
+						+ "N Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
 						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
 						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
 						+  " " + "Cliente: "
 						+ miModelo.cliente.getDni());
+			    	}
 			    }
-			    if(miControlador.miControladorElegir.elegido==2) {
-			    	GuardarReservaC();
+			    else if(miControlador.miControladorElegir.elegido==3) {
+			    
+			    	GuardarReservaA();
 			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    	miModelo.reserva.getApartReservado();
 			    	fichero.archivoTexto("Nombre del Apartamento: " + miModelo.reserva.getApartReservado().getNombre() + " "
@@ -128,8 +131,9 @@ public class ControladorPago implements ActionListener {
 							+  " " + "Cliente: "
 							+ miModelo.cliente.getDni());
 			    		 
-			    	 }
-			    if(miControlador.miControladorElegir.elegido==3) {
+			    }
+			    else if(miControlador.miControladorElegir.elegido==2) {
+			    	GuardarReservaC();
 			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    	miModelo.reserva.getCasaReservada();
 			    	fichero.archivoTexto("Nombre de la casa: " + miModelo.reserva.getCasaReservada().getNombre() + " "
@@ -139,7 +143,7 @@ public class ControladorPago implements ActionListener {
 							+ miModelo.cliente.getDni());
 			    	
 			    }
-			    	}
+			    	
 			resetear();
 				break;
 			
@@ -165,7 +169,7 @@ public class ControladorPago implements ActionListener {
 	}
 	
     private void GuardarReservaH() {
-    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
+    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaHotel();
     	
 		for (int j = 0; j < miModelo.reservaHotel.getHabReservadas().size(); j++) {
 			miModelo.misFuncionesReserva.registrarReserva(codReserva, j, miModelo.reservaHotel, miModelo.cliente);
@@ -174,9 +178,15 @@ public class ControladorPago implements ActionListener {
 		
 	}
     private void GuardarReservaC() {
-    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReserva();
-    	miModelo.misFuncionesReserva.registrarReservaC(codReserva, miModelo.reserva, miModelo.cliente);
-		miModelo.reservaHotel.setCodReserva(codReserva);
+    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaCasa();
+    	miModelo.misFuncionesReserva.registrarReservaCasa(codReserva, miModelo.reserva, miModelo.cliente);
+    	miModelo.reserva.setCodReserva(codReserva);
+    }
+    
+    private void GuardarReservaA() {
+    	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaApartamento();
+    	miModelo.misFuncionesReserva.registrarReservaApartamento(codReserva, miModelo.reserva, miModelo.cliente);
+    	miModelo.reserva.setCodReserva(codReserva);
     }
 
 	/**

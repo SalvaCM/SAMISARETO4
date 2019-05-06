@@ -145,9 +145,27 @@ public class ControladorHotel implements ActionListener {
 						cadena=cadena+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+",Para "+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+" Persona/s #";
 						System.out.println("cadena"+cadena);
 					}
-					miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).setPrecio((float) (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())));
-					Object[] habitacion = {miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTipo(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTamano(),miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getPrecio(),cadena};
-					miVentana.estanciasHotel.tableModel.addRow(habitacion);
+
+					try {
+						if (miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false) {
+							miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i)
+									.setPrecio((float) (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles
+											.get(i).getPrecio()
+											* miModelo.misFuncionesPago.tasa(miVentana.hotel.fechaEntrada.getDate(),
+													miVentana.hotel.fechaSalida.getDate())));
+							Object[] habitacion = {
+									miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i)
+											.getCodHabitacion(),
+									miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTipo(),
+									miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getTamano(),
+									miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getPrecio(),
+									cadena };
+							miVentana.estanciasHotel.tableModel.addRow(habitacion);
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					cadena="";
 					
 				}

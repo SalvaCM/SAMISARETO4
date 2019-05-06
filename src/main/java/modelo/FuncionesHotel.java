@@ -191,26 +191,18 @@ public class FuncionesHotel {
     	//Declaracion e incializacion de variables
 	
 		boolean r = false;
-		Date f1 = null;
-		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservas_hotel where codhabitacion='"+cod+"';";
+		Date fechaEntrada = null;
+		Date fechaSalida = null;
+		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
-				
-				
-				f1 = rs.getDate("fechaEntrada");
-				f2= rs.getDate("fechaSalida");
-				
+				fechaEntrada = rs.getDate("fechaEntrada");
+				fechaSalida= rs.getDate("fechaSalida");			
 			}
-
-		//System.out.println("FECHA ENTRADA:  "+f1.getTime()+" | "+fida.getTime());
-	
-		
-	
-	 if(f2==null || f1==null) {
+	 if(fechaSalida==null || fechaEntrada==null) {
 			r=false;
 		}else {
-			if((fvuelta.compareTo(f1)>=0 && fida.compareTo(f2)<=0)) {
+			if((fvuelta.compareTo(fechaEntrada)>=0 && fida.compareTo(fechaSalida)<=0)) {
 				//JOptionPane.showMessageDialog(miVentana, "Ocupado entre fechas  "+f1+"  y  "+f2+"", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				r=true;
 			}
@@ -222,20 +214,20 @@ public class FuncionesHotel {
     	//Declaracion e incializacion de variables
 	
 		ArrayList<String> fechas = new ArrayList<String>();
-		Date f1 = null;
-		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservashotel where codhabitacion='"+cod+"';";
+		Date fechaEntrada = null;
+		Date fechaSalida = null;
+		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {
 				
 				
-				f1 = rs.getDate("fechaEntrada");
-				f2= rs.getDate("fechaSalida");
+				fechaEntrada = rs.getDate("fechaEntrada");
+				fechaSalida= rs.getDate("fechaSalida");
 				
 			}
 
-		fechas.add(f1.toString());
-		fechas.add(f2.toString());
+		fechas.add(fechaEntrada.toString());
+		fechas.add(fechaSalida.toString());
 	
 		
 	

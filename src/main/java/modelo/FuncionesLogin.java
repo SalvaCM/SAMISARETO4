@@ -21,7 +21,8 @@ public class FuncionesLogin {
 	private Ventana miVentana;
 
 	public Cliente LogearUser (String DNI, char[] password) throws Exception {
-		
+
+
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
 		ConsultaBD miConsulta = new ConsultaBD();
@@ -38,7 +39,7 @@ public class FuncionesLogin {
 		while(rs.next()) {
 			
 				cliente = new Cliente();
-				cod=rs.getInt("codcliente");
+				cod=rs.getInt("cod_cliente");
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");

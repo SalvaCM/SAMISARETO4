@@ -7,13 +7,10 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
-import modelo.Cama;
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -123,11 +120,7 @@ public class ControladorHotel implements ActionListener {
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); 
 							miModelo.reservaHotel.setHotelReservado(ReservarHotel());
 							miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(Estancias());
-							rellenarTabla();
-							System.out.println(miModelo.reservaHotel.getHotelReservado().toString());
-							System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(0).toString());
-							System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(0).getCamas().get(0).toString());
-							
+							rellenarTabla();						
 						}
 					
 				}
@@ -136,14 +129,15 @@ public class ControladorHotel implements ActionListener {
 				 */
 			}
 			public void rellenarTabla() {
-				String cadena="";
+				StringBuilder cadena= new StringBuilder();
 				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
 					System.out.println(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion());
 					for(int z=0;z<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size();z++)
 					{
-						
-						cadena=cadena+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+",Para "+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+" Persona/s #";
+						cadena = new StringBuilder(); // Lo inicializamos de nuevo aquí para que se resetee cada vez q empieza con una habitacion nueva
+						cadena.append(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+",Para "+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+" Persona/s");
 						System.out.println("cadena"+cadena);
+						
 					}
 
 					try {
@@ -163,11 +157,8 @@ public class ControladorHotel implements ActionListener {
 							miVentana.estanciasHotel.tableModel.addRow(habitacion);
 						}
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					cadena="";
-					
 				}
 			}
 

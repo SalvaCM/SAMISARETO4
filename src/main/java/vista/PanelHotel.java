@@ -111,6 +111,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setResizable(false);
+		tablaResultados.setRowHeight(25);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
 		tablaResultados.setBackground(new Color(230, 230, 250));

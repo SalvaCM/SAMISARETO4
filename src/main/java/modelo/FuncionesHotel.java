@@ -46,8 +46,7 @@ public class FuncionesHotel {
 		
 		String query="select cod_hotel,nombre, ubicacion, nestrellas from hotel;";
 	
-	
-				if(con != null) {
+
 					ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 					while(rs.next()) {
 							hotel=new Hotel();
@@ -61,10 +60,7 @@ public class FuncionesHotel {
 							hotel.setnEstrellas(nEstrellas);
 							hoteles.add(hotel);
 						}
-				}else {
-					JOptionPane.showMessageDialog(miVentana, "ERROR DE CONEXION", "Atencion!", JOptionPane.ERROR_MESSAGE);
-					System.exit(0);
-				}
+				
 		
 			
 		return hoteles;
@@ -191,8 +187,13 @@ public class FuncionesHotel {
     	//Declaracion e incializacion de variables
 	
 		boolean r = false;
+
+		Date f1 = null;
+		Date f2 = null;
+
 		Date fechaEntrada = null;
 		Date fechaSalida = null;
+
 		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		while(rs.next()) {

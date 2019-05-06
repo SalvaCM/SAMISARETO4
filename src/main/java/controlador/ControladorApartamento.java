@@ -158,7 +158,8 @@ public class ControladorApartamento implements ActionListener {
 		} catch (SQLException e1) {
 			e1.printStackTrace();}
 	}
-private Apartamento ReservarApartamento() {
+	
+	private Apartamento ReservarApartamento() {
 		
 		int indice = miVentana.apartamento.tablaResultados.getSelectedRow();
 		Apartamento apartamento= miModelo.listaApartamento.get(indice);

@@ -60,9 +60,7 @@ public class ReservaHotel{
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\nCodigo de Reserva :");
-		builder.append(codReserva);
-		builder.append("\nFecha de Entrada :");
+		builder.append("Fecha de Entrada :");
 		builder.append(fechaEntrada);
 		builder.append("\nFecha de Salida :");
 		builder.append(fechaSalida);

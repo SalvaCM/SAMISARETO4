@@ -52,7 +52,9 @@ public class ControladorHotel implements ActionListener {
 				    public void propertyChange(PropertyChangeEvent e) {
 				        System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
 				        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
+				        if( fechaMinimaSalida != null) {
 				        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
+				        }
 				        miVentana.hotel.fechaSalida.setEnabled(true);
 				        miVentana.hotel.fechaSalida.setMinSelectableDate(fechaMinimaSalida);
 				    }
@@ -76,10 +78,17 @@ public class ControladorHotel implements ActionListener {
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.alojamiento);
 					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 					miVentana.hotel.comboBox.removeAllItems();
+					
+
+					miVentana.hotel.fechaEntrada.setCalendar(null);
+					miVentana.hotel.fechaSalida.setCalendar(null);
+					miVentana.hotel.fechaSalida.setEnabled(false);
 					break;
+					
 					case "btnSiguienteHotel": 	
 					validarCampos();
 					reiniciarImagen();
+					
 					break;	
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();

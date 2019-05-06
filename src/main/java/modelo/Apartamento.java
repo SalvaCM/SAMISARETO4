@@ -50,13 +50,15 @@ public class Apartamento extends Alojamiento{
 		StringBuilder builder = new StringBuilder();
 		builder.append("Apartamento:");
 		builder.append(nombre);
+		builder.append("\nTamano :");
+		builder.append(tamano + " m²");
 		builder.append("\nPiso :");
 		builder.append(piso);
 		builder.append("\nUbicacion :");
 		builder.append(ubicacion);
 		builder.append("\n");
 		builder.append("Precio :");
-		builder.append(precio);
+		builder.append(precio + " €");
 		
 		return builder.toString();
 	}

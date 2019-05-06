@@ -89,7 +89,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.resumen);
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotelReservado().getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion());
-				miVentana.resumen.mostrarResumen.addElement("Nº Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
+				miVentana.resumen.mostrarResumen.addElement("N Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
 				miVentana.resumen.txtDetalles.append(miModelo.reservaHotel.toString());
 			}
 			controladorReservas=0;

@@ -44,7 +44,7 @@ private static final long serialVersionUID = 3L;
 		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(-172, 35, 1064, 48);
+		lblNewJgoodiesLabel.setBounds(10, 33, 1064, 48);
 		add(lblNewJgoodiesLabel);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
@@ -54,18 +54,18 @@ private static final long serialVersionUID = 3L;
 		btnSiguiente.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
 		btnSiguiente.setName("btnSiguienteResumen2");
-		btnSiguiente.setBounds(568, 517, 156, 48);
+		btnSiguiente.setBounds(828, 517, 156, 48);
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(472, 95, 239, 386);
+		scrollPane_1.setBounds(644, 109, 239, 334);
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();
 		scrollPane_1.setViewportView(resumenReserva);
-		resumenReserva.setBorder(new TitledBorder(null, "Información alojamiento", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		resumenReserva.setBorder(new TitledBorder(null, "Informacion alojamiento", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		resumenReserva.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		resumenReserva.setEditable(false);
 		
@@ -73,7 +73,7 @@ private static final long serialVersionUID = 3L;
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(137, 121, 239, 190);
+		scrollPane_2.setBounds(235, 109, 273, 203);
 		add(scrollPane_2);
 		
 		txtDetalles = new JTextArea();

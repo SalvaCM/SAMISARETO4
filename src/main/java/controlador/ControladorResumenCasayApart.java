@@ -47,19 +47,28 @@ public class ControladorResumenCasayApart implements ActionListener {
 					    
 				case "btnSiguienteResumen2":funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);
 											funciones.actBotones(miVentana.pago.btnSiguiente);
-										//	miControlador.miControladorPago.resetear();
+
 											
-											
-											
-											//miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
-											
-											System.out.println(miControlador.miControladorPago.total);
-											
+											miVentana.resumenCyA.txtDetalles.setText(null);
+											miVentana.resumenCyA.resumenReserva.setText(null);
+											miVentana.resumenCyA.mostrarResumen.clear();
+											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 											break;	
 											
 				case "btnCancelarResumen2":	funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.alojamiento);
-											miVentana.resumen.resumenReserva.setText(null);
-											miVentana.resumen.mostrarResumen.clear();
+
+											miVentana.resumenCyA.txtDetalles.setText(null);
+											miVentana.resumenCyA.resumenReserva.setText(null);
+											miVentana.resumenCyA.mostrarResumen.clear();
+											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+											miVentana.apartamento.fechaSalida.setCalendar(null);
+											miVentana.apartamento.fechaEntrada.setCalendar(null);
+											miVentana.casa.fechaSalida.setCalendar(null);
+											miVentana.casa.fechaEntrada.setCalendar(null);
+											miVentana.apartamento.fechaSalida.setEnabled(false);
+											miVentana.casa.fechaSalida.setEnabled(false);
 											break;
 				}
 			}	

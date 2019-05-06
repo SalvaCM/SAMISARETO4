@@ -49,7 +49,9 @@ public class ControladorApartamento implements ActionListener {
 		    public void propertyChange(PropertyChangeEvent e) {
 		        System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
 		        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
+		        if(fechaMinimaSalida != null) {
 		        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
+		        }
 		        miVentana.apartamento.fechaSalida.setEnabled(true);
 		        miVentana.apartamento.fechaSalida.setMinSelectableDate(fechaMinimaSalida);
 		    }
@@ -73,11 +75,17 @@ public class ControladorApartamento implements ActionListener {
 			case "btnCancelarApartamento": funciones.cambiarDePanel(miVentana.apartamento, miVentana.alojamiento);
 			funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
 			miVentana.casa.comboBox.removeAllItems();
+			
+			miVentana.apartamento.fechaEntrada.setCalendar(null);
+			miVentana.apartamento.fechaSalida.setCalendar(null);
+			miVentana.apartamento.fechaSalida.setEnabled(false);
+			
 			break;
 			
 			case "btnSiguienteApartamento": 
 			
 			validarCampos();
+			
 			break;	
 
 			case "btnBuscarApartamentos": filtrarPorUbicacion(miModelo.listaApartamento);

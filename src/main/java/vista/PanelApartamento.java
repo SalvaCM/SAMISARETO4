@@ -102,7 +102,7 @@ public class PanelApartamento extends JPanel {
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"cod","Nombre","Ubicacion","Tamaño","Precio","Piso"};
+		String col[] = {"cod","Nombre","Ubicacion","Tamano","Precio","Piso"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

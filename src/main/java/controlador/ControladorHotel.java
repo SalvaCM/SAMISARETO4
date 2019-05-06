@@ -5,12 +5,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.lang.reflect.Array;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JSlider;
+
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -125,14 +128,15 @@ public class ControladorHotel implements ActionListener {
 					
 				}
 				/**
-				 * 	Aï¿½ade a la reserva el hotel seleccionado en el jtable
+				 * 	Rellena la Tabla de Habitaciones Disponibles
 				 */
 			}
 			public void rellenarTabla() {
+				int nCamas=miVentana.hotel.nCamas.getValue();
+				System.out.println("nCamas"+nCamas);
 				StringBuilder cadena= new StringBuilder();
 				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
 					cadena = new StringBuilder();
-					System.out.println(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCodHabitacion());
 					for(int z=0;z<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size();z++)
 					{
 						 // Lo inicializamos de nuevo aquí para que se resetee cada vez q empieza con una habitacion nueva
@@ -141,13 +145,15 @@ public class ControladorHotel implements ActionListener {
 							cadena.append(".");
 						else
 							if (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size()>1)
-								cadena.append(",");
-						System.out.println("cadena"+cadena);
-						
+								cadena.append(",");	
 					}
-
+					
 					try {
 						if (miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false) {
+							int totalCamas=sumasNpersonas(i);
+							System.out.println("total :"+totalCamas);
+							if (nCamas==0 || nCamas==totalCamas)
+							{
 							miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i)
 									.setPrecio((float) (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles
 											.get(i).getPrecio()
@@ -161,11 +167,22 @@ public class ControladorHotel implements ActionListener {
 									miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getPrecio(),
 									cadena };
 							miVentana.estanciasHotel.tableModel.addRow(habitacion);
+							}
 						}
 					} catch (SQLException e) {
 						e.printStackTrace();
 					}
 				}
+			}
+
+			private int sumasNpersonas(int indice) {
+				int totalPersonas=0;
+				for (int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(indice).getCamas().size();i++)
+				{
+					totalPersonas+=miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(indice).getCamas().get(i).getnPersonas();
+				
+				}
+				return totalPersonas;
 			}
 
 			private Hotel ReservarHotel() {

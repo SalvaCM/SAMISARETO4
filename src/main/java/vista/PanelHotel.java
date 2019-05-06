@@ -25,6 +25,8 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 import java.awt.Cursor;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
 
 public class PanelHotel extends JPanel {
 
@@ -42,6 +44,7 @@ public class PanelHotel extends JPanel {
 	public JDateChooser fechaEntrada;
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
+	public JSlider nCamas;
 
 	
 	/**
@@ -129,6 +132,21 @@ public class PanelHotel extends JPanel {
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 25, 89, 23);
 		add(btnPerfil);
+		
+		nCamas = new JSlider();
+		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		nCamas.setValue(0);
+		nCamas.setMaximum(5);
+		nCamas.setBounds(189, 200, 98, 23);
+		add(nCamas);
+		
+		JLabel lblNewLabel = new JLabel("Numero Camas :");
+		lblNewLabel.setBounds(87, 200, 92, 24);
+		add(lblNewLabel);
+		
+		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");
+		lblUbicacion.setBounds(77, 131, 122, 14);
+		add(lblUbicacion);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

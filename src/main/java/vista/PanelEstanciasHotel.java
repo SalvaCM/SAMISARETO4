@@ -14,6 +14,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -67,11 +68,26 @@ public class PanelEstanciasHotel extends JPanel {
 		String col[] = {"cod","Tipo","Tamaño","Precio","Tipo de Cama"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaHabitaciones = new JTable(tableModel);
+		tablaHabitaciones.setDragEnabled(false);
 		tablaHabitaciones.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		tablaHabitaciones.getColumnModel().getColumn(0).setMaxWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
-		tablaHabitaciones.getColumnModel().getColumn(0).setResizable(false);
+		tablaHabitaciones.setRowHeight(25);
+		tablaHabitaciones.getColumnModel().getColumn(1).setMinWidth(50);
+		tablaHabitaciones.getColumnModel().getColumn(1).setPreferredWidth(50);
+		tablaHabitaciones.getColumnModel().getColumn(2).setMinWidth(25);
+		tablaHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(25);
+		tablaHabitaciones.getColumnModel().getColumn(3).setMinWidth(25);
+		tablaHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(25);
+		tablaHabitaciones.getColumnModel().getColumn(4).setMinWidth(200);
+		tablaHabitaciones.getColumnModel().getColumn(4).setPreferredWidth(200);
+		tablaHabitaciones.getColumnModel().getColumn(1).setResizable(false);
+		tablaHabitaciones.getColumnModel().getColumn(2).setResizable(false);
+		tablaHabitaciones.getColumnModel().getColumn(3).setResizable(false);
+		tablaHabitaciones.getColumnModel().getColumn(4).setResizable(false);
+		
+		
 		tablaHabitaciones.setDefaultEditor(Object.class, null);
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));
@@ -80,7 +96,7 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(55, 118, 913, 213);
+		scrollPane.setBounds(60, 160, 913, 145);
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");

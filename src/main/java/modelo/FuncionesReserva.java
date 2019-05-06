@@ -137,6 +137,7 @@ public class FuncionesReserva {
 		System.out.println(reserva.getFechaEntrada());
 		System.out.println(reserva.getFechaSalida());
 		//codReserva iba en el insert
+
 		String query = "INSERT into reserva_casa (cod_reserva,cod_casa,cod_cliente,fechaEntrada,fechaSalida) VALUES ('"+codReserva+"','" + reserva.getCasaReservada().getCod_casa()+  "', '" + cliente.getCodCliente() + "', '" + fechaE + "','"+ fechaS+"');";
 		
 		System.out.println(query);

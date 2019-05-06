@@ -21,7 +21,8 @@ public class FuncionesLogin {
 	private Ventana miVentana;
 
 	public Cliente LogearUser (String DNI, char[] password) throws Exception {
-		
+
+
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
 		ConsultaBD miConsulta = new ConsultaBD();

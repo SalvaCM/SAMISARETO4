@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.Hashtable;
 
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -138,6 +139,10 @@ public class PanelHotel extends JPanel {
 		nCamas.setValue(0);
 		nCamas.setMaximum(5);
 		nCamas.setBounds(193, 200, 98, 23);
+		nCamas.setMinorTickSpacing(1);
+		nCamas.setPaintTicks(true);
+
+
 		add(nCamas);
 		
 		JLabel lblNewLabel = new JLabel("Numero Camas :");

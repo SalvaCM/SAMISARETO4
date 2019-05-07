@@ -137,11 +137,11 @@ public class PanelHotel extends JPanel {
 		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		nCamas.setValue(0);
 		nCamas.setMaximum(5);
-		nCamas.setBounds(189, 200, 98, 23);
+		nCamas.setBounds(193, 200, 98, 23);
 		add(nCamas);
 		
 		JLabel lblNewLabel = new JLabel("Numero Camas :");
-		lblNewLabel.setBounds(87, 200, 92, 24);
+		lblNewLabel.setBounds(77, 200, 122, 24);
 		add(lblNewLabel);
 		
 		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");

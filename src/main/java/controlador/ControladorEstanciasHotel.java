@@ -44,6 +44,16 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 			funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 			todosLosHoteles();
+			
+			funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+			funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+			miVentana.hotel.fechaEntrada.setCalendar(null);
+			miVentana.hotel.fechaSalida.setCalendar(null);
+			miVentana.hotel.fechaSalida.setEnabled(false);
+			
+			miVentana.resumen.mostrarResumen.clear();
+			miVentana.resumen.resumenReserva.setText(null);
+		
 			break;
 
 		case "Reservar": 
@@ -90,7 +100,8 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotelReservado().getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion());
 				miVentana.resumen.mostrarResumen.addElement("N Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
-				miVentana.resumen.txtDetalles.append(miModelo.reservaHotel.toString());
+
+
 			}
 			controladorReservas=0;
 			

@@ -57,6 +57,7 @@ public class ControladorApartamento implements ActionListener {
 		    }
 		});
 		
+
 		
 	}
 	

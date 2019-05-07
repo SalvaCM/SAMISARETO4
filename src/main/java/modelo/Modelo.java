@@ -25,6 +25,7 @@ public class Modelo {
 	public ReservaHotel reservaHotel;
 	public ReservaCASAoAPART reserva;
 	public Cama cama;
+	public Hotel hotel;
 		
 	/**
 	 * Constructor de la clase
@@ -45,6 +46,7 @@ public class Modelo {
 		this.listaCasas=new ArrayList<Casa>();
 		this.reservaHotel= new ReservaHotel();
 		this.reserva=new ReservaCASAoAPART();
+		this.hotel = new Hotel();
 		
 	}
 	

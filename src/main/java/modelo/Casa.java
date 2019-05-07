@@ -1,7 +1,12 @@
 package modelo;
 
-public class Casa extends Alojamiento {
+import java.text.NumberFormat;
+import java.util.Locale;
 
+public class Casa extends Alojamiento {
+	
+		NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
+		
 	 	private int cod_casa;
 		private int tamano;
 		private float precio=0;
@@ -68,7 +73,7 @@ public class Casa extends Alojamiento {
 			builder.append(ubicacion);
 			builder.append("\n");
 			builder.append("Precio :");
-			builder.append(precio + " €");
+			builder.append(formatoMoneda.format(precio));
 			return builder.toString();
 		}
 		

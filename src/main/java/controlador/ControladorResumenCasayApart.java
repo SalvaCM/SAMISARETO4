@@ -46,8 +46,9 @@ public class ControladorResumenCasayApart implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 					    
 				case "btnSiguienteResumen2":funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);
-											funciones.actBotones(miVentana.pago.btnSiguiente);
-
+											funciones.actBotones(miVentana.pago.btnCancelar);
+											miControlador.miControladorPago.actBotones(miVentana.pago.arrayBtn);
+											funciones.desBotones(miVentana.pago.btnSiguiente);
 											
 											miVentana.resumenCyA.txtDetalles.setText(null);
 											miVentana.resumenCyA.resumenReserva.setText(null);
@@ -63,8 +64,10 @@ public class ControladorResumenCasayApart implements ActionListener {
 											miVentana.resumenCyA.mostrarResumen.clear();
 											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
-											miVentana.apartamento.fechaSalida.setCalendar(null);
+										
 											miVentana.apartamento.fechaEntrada.setCalendar(null);
+											miVentana.apartamento.fechaSalida.setCalendar(null);
+											
 											miVentana.casa.fechaSalida.setCalendar(null);
 											miVentana.casa.fechaEntrada.setCalendar(null);
 											miVentana.apartamento.fechaSalida.setEnabled(false);

@@ -1,8 +1,13 @@
 package modelo;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class HabitacionHotel extends Habitacion {
+	
+	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
+	
 	protected float precio;
 	protected ArrayList<Cama> camas= new ArrayList<Cama>(); 
 	
@@ -26,7 +31,7 @@ public class HabitacionHotel extends Habitacion {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tipo: "+tipo+"\n");
 		builder.append("Tamano: "+tamano+ " m²" +"\n");
-		builder.append("Precio: "+precio+ " €" + "\n");
+		builder.append("Precio: "+formatoMoneda.format(precio)+ "\n");
 		builder.append("\n");
 		return builder.toString();
 	}

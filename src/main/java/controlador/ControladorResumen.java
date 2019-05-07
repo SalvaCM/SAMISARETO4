@@ -61,6 +61,8 @@ public class ControladorResumen implements ActionListener {
 											miVentana.resumen.mostrarResumen.clear();
 											miVentana.resumen.txtDetalles.setText(null);
 											miControlador.miControladorHotel.rellenarTabla();
+											
+											funciones.desBotones(miVentana.pago.btnSiguiente);
 											break;	
 											
 				case "btnCancelarResumen":	funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel);
@@ -74,9 +76,16 @@ public class ControladorResumen implements ActionListener {
 											miModelo.reservaHotel.getHabReservadas().removeAll(miModelo.reservaHotel.getHabReservadas());
 											
 											miControlador.miControladorHotel.rellenarTabla();
-											miVentana.hotel.fechaSalida.setCalendar(null);
-											miVentana.hotel.fechaEntrada.setCalendar(null);
 											miVentana.hotel.fechaSalida.setEnabled(false);
+											
+											funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+										
+											
+											funciones.actBotones(miVentana.pago.btnCancelar);
+											miControlador.miControladorPago.actBotones(miVentana.pago.arrayBtn);
+											
 											break;
 				}
 			}	

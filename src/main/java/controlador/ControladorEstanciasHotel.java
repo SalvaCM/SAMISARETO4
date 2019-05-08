@@ -40,19 +40,10 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 
 		case "btnCancelarEstancias": 
-			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
-			funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
-			funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+			resetear();
 			todosLosHoteles();
 			
-			funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
-			funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
-			miVentana.hotel.fechaEntrada.setCalendar(null);
-			miVentana.hotel.fechaSalida.setCalendar(null);
-			miVentana.hotel.fechaSalida.setEnabled(false);
 			
-			miVentana.resumen.mostrarResumen.clear();
-			miVentana.resumen.resumenReserva.setText(null);
 		
 			break;
 
@@ -133,5 +124,15 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		}	
 			
 	}
-	
+	public void resetear() {
+		funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
+		funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+		miVentana.hotel.fechaEntrada.setCalendar(null);
+		miVentana.hotel.fechaSalida.setCalendar(null);
+		miVentana.hotel.fechaSalida.setEnabled(false);
+		miVentana.hotel.nCamas.setValue(0);
+		miVentana.resumen.mostrarResumen.clear();
+		miVentana.resumen.resumenReserva.setText(null);
+	}
 }

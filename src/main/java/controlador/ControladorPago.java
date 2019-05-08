@@ -76,6 +76,16 @@ public class ControladorPago implements ActionListener {
 		miVentana.pago.btnCancelar.setEnabled(true);
 		total=0;
 		pagado = 0;
+		miVentana.hotel.fechaEntrada.setCalendar(null);
+		miVentana.hotel.fechaSalida.setCalendar(null);
+		miVentana.hotel.fechaSalida.setEnabled(false);
+		miVentana.apartamento.fechaEntrada.setCalendar(null);
+		miVentana.apartamento.fechaSalida.setCalendar(null);
+		miVentana.apartamento.fechaSalida.setEnabled(false);
+		miVentana.casa.fechaEntrada.setCalendar(null);
+		miVentana.casa.fechaSalida.setCalendar(null);
+		miVentana.casa.fechaSalida.setEnabled(false);
+		miVentana.hotel.nCamas.setValue(0);
 		
 				
 	}
@@ -101,8 +111,6 @@ public class ControladorPago implements ActionListener {
 				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones, miVentana.estanciasHotel.tableModel);
 				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 				funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
-				limpiarFechas();
-				
 				funciones.desBotones(miVentana.pago.btnSiguiente);
 											
 				
@@ -154,11 +162,8 @@ public class ControladorPago implements ActionListener {
 							+  " " + "Cliente: "
 							+ miModelo.cliente.getDni());
 			    	
-			    }
-			    	
-			resetear();
-			limpiarFechas();
-			
+			    }		    	
+			resetear();		
 				break;
 			
 				default: 
@@ -286,17 +291,6 @@ public class ControladorPago implements ActionListener {
 		miVentana.devolucion.devolucion.setModel(miVentana.devolucion.cambios);
 		
 	}
-	public void limpiarFechas()
-	{
-		miVentana.hotel.fechaEntrada.setCalendar(null);
-		miVentana.hotel.fechaSalida.setCalendar(null);
-		miVentana.hotel.fechaSalida.setEnabled(false);
-		miVentana.apartamento.fechaEntrada.setCalendar(null);
-		miVentana.apartamento.fechaSalida.setCalendar(null);
-		miVentana.apartamento.fechaSalida.setEnabled(false);
-		miVentana.casa.fechaEntrada.setCalendar(null);
-		miVentana.casa.fechaSalida.setCalendar(null);
-		miVentana.casa.fechaSalida.setEnabled(false);
-	}
+
 	
 }

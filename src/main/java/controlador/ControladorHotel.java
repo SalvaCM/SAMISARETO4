@@ -76,11 +76,7 @@ public class ControladorHotel implements ActionListener {
 				
 
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.alojamiento);
-					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-					miVentana.hotel.comboBox.removeAllItems();
-					miVentana.hotel.fechaEntrada.setCalendar(null);
-					miVentana.hotel.fechaSalida.setCalendar(null);
-					miVentana.hotel.fechaSalida.setEnabled(false);
+					resetear();
 					break;
 					
 					case "btnSiguienteHotel": 	
@@ -102,6 +98,18 @@ public class ControladorHotel implements ActionListener {
 			
 			
 				//METODOS
+			public void resetear() 
+			{
+				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+				funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+				miVentana.hotel.fechaEntrada.setCalendar(null);
+				miVentana.hotel.fechaSalida.setCalendar(null);
+				miVentana.hotel.fechaSalida.setEnabled(false);
+				miVentana.hotel.nCamas.setValue(0);
+				miVentana.resumen.mostrarResumen.clear();
+				miVentana.resumen.resumenReserva.setText(null);
+				miVentana.hotel.comboBox.removeAllItems();
+			}
 			
 			private void validarCampos() {
 				if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)

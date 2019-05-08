@@ -39,7 +39,7 @@ public class FuncionesLogin {
 		while(rs.next()) {
 			
 				cliente = new Cliente();
-				cod=rs.getInt("codcliente");
+				cod=rs.getInt("cod_cliente");
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");
@@ -79,7 +79,7 @@ public class FuncionesLogin {
 		return devuelve;
 	}
 	public void cambiarContrasena(String passwordNueva, Cliente cliente) {
-		//Declaración e inicialización de variables:
+		//Declaraciï¿½n e inicializaciï¿½n de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
@@ -87,7 +87,7 @@ public class FuncionesLogin {
 		String query = "UPDATE clientes SET contrasena = '" + passwordNueva +"' WHERE dni='" + cliente.getDni() + "';";
 		
 		if (miConsulta.insertarDatosBD(con, query)) {
-			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con éxito", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con ï¿½xito", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 			cliente.setContrasena(passwordNueva);
 		}
 	}

@@ -165,7 +165,7 @@ public class PanelHotel extends JPanel {
 		lblNewLabel.setBounds(61, 192, 122, 45);
 		add(lblNewLabel);
 		
-		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n :");
+		JLabel lblUbicacion = new JLabel("Ubicacion :");
 		lblUbicacion.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblUbicacion.setBounds(81, 149, 104, 38);
 		add(lblUbicacion);
@@ -173,10 +173,7 @@ public class PanelHotel extends JPanel {
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
 		
-		JLabel label = new JLabel("Ubicaci\u00F3n :");
-		label.setHorizontalAlignment(SwingConstants.TRAILING);
-		label.setBounds(613, 155, 104, 38);
-		add(label);
+
 		
 	}
 }

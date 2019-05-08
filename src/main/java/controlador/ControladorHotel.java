@@ -78,8 +78,6 @@ public class ControladorHotel implements ActionListener {
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.alojamiento);
 					funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 					miVentana.hotel.comboBox.removeAllItems();
-					
-
 					miVentana.hotel.fechaEntrada.setCalendar(null);
 					miVentana.hotel.fechaSalida.setCalendar(null);
 					miVentana.hotel.fechaSalida.setEnabled(false);

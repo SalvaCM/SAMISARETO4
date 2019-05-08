@@ -8,6 +8,8 @@ import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
+import com.toedter.calendar.JDateChooser;
+
 import ficheros.ManejadorFicherosTexto;
 import modelo.FuncionesReserva;
 import modelo.HabitacionHotel;
@@ -99,15 +101,7 @@ public class ControladorPago implements ActionListener {
 				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones, miVentana.estanciasHotel.tableModel);
 				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 				funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
-				miVentana.hotel.fechaEntrada.setCalendar(null);
-				miVentana.hotel.fechaSalida.setCalendar(null);
-				miVentana.hotel.fechaSalida.setEnabled(false);
-				miVentana.apartamento.fechaEntrada.setCalendar(null);
-				miVentana.apartamento.fechaSalida.setCalendar(null);
-				miVentana.apartamento.fechaSalida.setEnabled(false);
-				miVentana.casa.fechaEntrada.setCalendar(null);
-				miVentana.casa.fechaSalida.setCalendar(null);
-				miVentana.casa.fechaSalida.setEnabled(false);
+				limpiarFechas();
 				
 				funciones.desBotones(miVentana.pago.btnSiguiente);
 											
@@ -163,12 +157,7 @@ public class ControladorPago implements ActionListener {
 			    }
 			    	
 			resetear();
-			miVentana.hotel.fechaEntrada.setCalendar(null);
-			miVentana.hotel.fechaEntrada.setCalendar(null);
-			miVentana.casa.fechaEntrada.setCalendar(null);
-			miVentana.casa.fechaEntrada.setCalendar(null);
-			miVentana.apartamento.fechaEntrada.setCalendar(null);
-			miVentana.apartamento.fechaEntrada.setCalendar(null);
+			limpiarFechas();
 			
 				break;
 			
@@ -296,6 +285,18 @@ public class ControladorPago implements ActionListener {
 		//Actualizamos la lista con los datos del modelo
 		miVentana.devolucion.devolucion.setModel(miVentana.devolucion.cambios);
 		
+	}
+	public void limpiarFechas()
+	{
+		miVentana.hotel.fechaEntrada.setCalendar(null);
+		miVentana.hotel.fechaSalida.setCalendar(null);
+		miVentana.hotel.fechaSalida.setEnabled(false);
+		miVentana.apartamento.fechaEntrada.setCalendar(null);
+		miVentana.apartamento.fechaSalida.setCalendar(null);
+		miVentana.apartamento.fechaSalida.setEnabled(false);
+		miVentana.casa.fechaEntrada.setCalendar(null);
+		miVentana.casa.fechaSalida.setCalendar(null);
+		miVentana.casa.fechaSalida.setEnabled(false);
 	}
 	
 }

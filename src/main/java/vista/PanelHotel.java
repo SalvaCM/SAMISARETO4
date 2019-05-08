@@ -62,7 +62,7 @@ public class PanelHotel extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(733, 155, 161, 26);
+		fechaSalida.setBounds(733, 181, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -72,7 +72,7 @@ public class PanelHotel extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(534, 155, 161, 26);
+		fechaEntrada.setBounds(733, 155, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -84,6 +84,27 @@ public class PanelHotel extends JPanel {
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
+		
+		nCamas = new JSlider();
+		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		nCamas.setValue(0);
+		nCamas.setMaximum(5);
+		nCamas.setBounds(193, 192, 169, 45);
+		nCamas.setMinorTickSpacing(1);
+		nCamas.setPaintTicks(true);
+		nCamas.setPaintLabels(true); 
+		nCamas.setPaintLabels(true); 
+		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
+		position.put(0, new JLabel("0"));
+		position.put(1, new JLabel("1"));
+		position.put(2, new JLabel("2"));
+		position.put(3, new JLabel("3"));
+		position.put(4, new JLabel("4"));
+		position.put(5, new JLabel("5"));
+		// Set the label to be drawn
+		nCamas.setLabelTable(position); 
+		add(nCamas);
+		
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);
 		
@@ -98,7 +119,7 @@ public class PanelHotel extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		btnBuscar.setBounds(332, 155, 98, 26);
+		btnBuscar.setBounds(426, 155, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
@@ -121,7 +142,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(77, 155, 209, 26);
+		comboBox.setBounds(190, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
@@ -134,27 +155,28 @@ public class PanelHotel extends JPanel {
 		btnPerfil.setBounds(10, 25, 89, 23);
 		add(btnPerfil);
 		
-		nCamas = new JSlider();
-		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		nCamas.setValue(0);
-		nCamas.setMaximum(4);
-		nCamas.setBounds(193, 200, 98, 23);
-		nCamas.setMinorTickSpacing(1);
-		nCamas.setPaintTicks(true);
-
-
-		add(nCamas);
+		JLabel lblFechas = new JLabel("Fechas :\r\n\r\n");
+		lblFechas.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblFechas.setBounds(617, 155, 104, 38);
+		add(lblFechas);
 		
 		JLabel lblNewLabel = new JLabel("Numero Camas :");
-		lblNewLabel.setBounds(77, 200, 122, 24);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblNewLabel.setBounds(61, 192, 122, 45);
 		add(lblNewLabel);
 		
-		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n");
-		lblUbicacion.setBounds(77, 131, 122, 14);
+		JLabel lblUbicacion = new JLabel("Ubicaci\u00F3n :");
+		lblUbicacion.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblUbicacion.setBounds(81, 149, 104, 38);
 		add(lblUbicacion);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
+		
+		JLabel label = new JLabel("Ubicaci\u00F3n :");
+		label.setHorizontalAlignment(SwingConstants.TRAILING);
+		label.setBounds(613, 155, 104, 38);
+		add(label);
 		
 	}
 }

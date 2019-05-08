@@ -137,7 +137,7 @@ public class PanelHotel extends JPanel {
 		nCamas = new JSlider();
 		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		nCamas.setValue(0);
-		nCamas.setMaximum(5);
+		nCamas.setMaximum(4);
 		nCamas.setBounds(193, 200, 98, 23);
 		nCamas.setMinorTickSpacing(1);
 		nCamas.setPaintTicks(true);

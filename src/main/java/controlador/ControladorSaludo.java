@@ -43,7 +43,7 @@ public class ControladorSaludo implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 			    
 
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.login); 
+		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.alojamiento); 
 						  if ( con != null) {
 							  
 						  }else {

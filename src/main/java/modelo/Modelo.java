@@ -26,6 +26,7 @@ public class Modelo {
 	public ReservaCASAoAPART reserva;
 	public Cama cama;
 	public Hotel hotel;
+	public boolean logged=false;
 		
 	/**
 	 * Constructor de la clase

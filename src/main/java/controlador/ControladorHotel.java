@@ -294,7 +294,7 @@ public class ControladorHotel implements ActionListener {
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
-				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PAR�S")) {
+				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARIS")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						 miVentana.resumen.remove(miVentana.resumen.etiqueta);

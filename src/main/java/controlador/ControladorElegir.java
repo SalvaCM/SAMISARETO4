@@ -57,7 +57,9 @@ public class ControladorElegir implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 		
 
-		case "hotel":funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
+		case "hotel":
+			
+			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
 		elegido=1;
 					
 			try {

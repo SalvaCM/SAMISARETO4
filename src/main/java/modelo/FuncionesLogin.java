@@ -39,7 +39,7 @@ public class FuncionesLogin {
 		while(rs.next()) {
 			
 				cliente = new Cliente();
-				cod=rs.getInt("cod_cliente");
+				cod=rs.getInt("codcliente");
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");

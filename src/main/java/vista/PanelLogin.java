@@ -97,7 +97,7 @@ public class PanelLogin extends JPanel {
 		lblNewJgoodiesLabel_1.setBounds(322, 142, 440, 360);
 		add(lblNewJgoodiesLabel_1);
 		
-		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/fondo1.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

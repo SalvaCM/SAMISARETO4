@@ -136,7 +136,7 @@ public class PanelRegistro extends JPanel {
 		fechaNac.setDateFormatString("yyyy-MM-dd");
 		add(fechaNac);
 	
-		ImageIcon imagen=new ImageIcon(PanelRegistro.class.getResource("/imagenes/fondo1.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelRegistro.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

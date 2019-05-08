@@ -70,7 +70,7 @@ private static final long serialVersionUID = 3L;
 		resumenReserva.setEditable(false);
 		
 		
-		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
 		scrollPane_2.setBounds(235, 109, 273, 203);

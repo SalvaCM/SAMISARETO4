@@ -62,16 +62,17 @@ public class ControladorResumenCasayApart implements ActionListener {
 											miVentana.resumenCyA.txtDetalles.setText(null);
 											miVentana.resumenCyA.resumenReserva.setText(null);
 											miVentana.resumenCyA.mostrarResumen.clear();
-											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+											
 											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 										
 											miVentana.apartamento.fechaEntrada.setCalendar(null);
 											miVentana.apartamento.fechaSalida.setCalendar(null);
-											
-											miVentana.casa.fechaSalida.setCalendar(null);
-											miVentana.casa.fechaEntrada.setCalendar(null);
 											miVentana.apartamento.fechaSalida.setEnabled(false);
+											
+											miVentana.casa.fechaEntrada.setCalendar(null);
+											miVentana.casa.fechaSalida.setCalendar(null);
 											miVentana.casa.fechaSalida.setEnabled(false);
+											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											break;
 				}
 			}	

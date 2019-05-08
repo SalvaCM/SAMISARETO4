@@ -47,7 +47,7 @@ public class ControladorApartamento implements ActionListener {
 		miVentana.apartamento.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
 		    public void propertyChange(PropertyChangeEvent e) {
-		        System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
+		        System.out.println(e.getPropertyName()+ ":Entrada " + e.getNewValue());
 		        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
 		        if(fechaMinimaSalida != null) {
 		        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
@@ -56,6 +56,31 @@ public class ControladorApartamento implements ActionListener {
 		        miVentana.apartamento.fechaSalida.setMinSelectableDate(fechaMinimaSalida);
 		    }
 		});
+		miVentana.apartamento.fechaSalida.addPropertyChangeListener("date", new PropertyChangeListener() {
+
+            @Override
+            public void propertyChange(PropertyChangeEvent e) {
+            	 System.out.println(e.getPropertyName()+ ":Salida " + e.getNewValue());
+            	funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+            	try {
+            		miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
+            	} catch (SQLException e1) {
+            		// TODO Auto-generated catch block
+            		e1.printStackTrace();
+            	}
+        		System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.apartamento.fechaEntrada.getDate(), miVentana.apartamento.fechaSalida.getDate()));
+            	for(int i=0;i<miModelo.listaApartamento.size();i++) {
+
+            		miModelo.listaApartamento.get(i).setPrecio((float) (miModelo.listaApartamento.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.apartamento.fechaEntrada.getDate(), miVentana.apartamento.fechaSalida.getDate())));
+            		Object[] apart = {miModelo.listaApartamento.get(i).getCod_apartamento(),miModelo.listaApartamento.get(i).getNombre(), miModelo.listaApartamento.get(i).getUbicacion(),miModelo.listaApartamento.get(i).getTamano(),miModelo.listaApartamento.get(i).getPrecio(),miModelo.listaApartamento.get(i).getPiso()};
+            		miVentana.apartamento.tableModel.addRow(apart);
+
+                }
+
+            	
+}
+
+});
 		
 
 		

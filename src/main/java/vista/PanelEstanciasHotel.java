@@ -106,7 +106,7 @@ public class PanelEstanciasHotel extends JPanel {
 		btnReservar.setBounds(714, 384, 89, 31);
 		add(btnReservar);
 
-		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

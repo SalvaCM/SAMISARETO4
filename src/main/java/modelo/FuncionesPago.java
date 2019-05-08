@@ -44,6 +44,12 @@ public class FuncionesPago {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} 
+		if(f1==null && f2==null) {
+			tasa=1d;
+			
+		}else {
+			
+		
 		if((f2.compareTo(date1)>=0 && f1.compareTo(date2)<=0)) {
 				tasa=1.5;
 				if((f2.compareTo(date3)>=0 && f1.compareTo(date3)<=0)) {
@@ -66,6 +72,8 @@ public class FuncionesPago {
 			tasa=1.65;
 			
 		}
+		}
+		
 		return tasa;
 			
 	}

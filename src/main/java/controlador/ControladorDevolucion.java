@@ -8,11 +8,13 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 
 import modelo.Modelo;
+import testmodelo.miModelo;
 import vista.Ventana;
 
 public class ControladorDevolucion implements ActionListener {
 			
 			private Ventana miVentana;
+			private Modelo miModelo;
 		
 			FuncionesControlador funciones = new FuncionesControlador();
 
@@ -25,6 +27,7 @@ public class ControladorDevolucion implements ActionListener {
 			public ControladorDevolucion(Ventana miVentana, Modelo miModelo) {
 				
 				this.miVentana = miVentana;
+				this.miModelo = miModelo;
 				
 				miVentana.devolucion.btnSiguiente.addActionListener(this);
 			}
@@ -59,11 +62,13 @@ public class ControladorDevolucion implements ActionListener {
 			 * Metodo para pasar del la ventana despedida a la de saludo automaticamente (en milisegundos)
 			 */
 			public void PasarDeDespedidaASaludo() {
+				miModelo.logged = false;
 				Timer timer = new Timer();
 				TimerTask esperar = new TimerTask() {
 					@Override
 					public void run() {
 						funciones.cambiarDePanel(miVentana.despedida, miVentana.saludo);
+						
 					}
 				};
 				timer.schedule(esperar, 3500);

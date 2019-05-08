@@ -69,7 +69,8 @@ public class ControladorLogin  implements ActionListener{
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
-					funciones.cambiarDePanel(miVentana.login, miVentana.alojamiento);
+					miModelo.logged = true;
+					funciones.cambiarDePanel(miVentana.login, miVentana.resumen);
 					}
 				else {
 					JOptionPane.showMessageDialog(miVentana, "¡Contraseña incorrecta!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
@@ -77,7 +78,6 @@ public class ControladorLogin  implements ActionListener{
 					resetear();
 
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		
@@ -90,5 +90,9 @@ public class ControladorLogin  implements ActionListener{
 
 		}
 	}	
+	public void LoguearUser()
+	{
+		
+	}
 
 }

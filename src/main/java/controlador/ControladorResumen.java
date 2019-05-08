@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import modelo.Modelo;
 import vista.Ventana;
@@ -45,26 +46,34 @@ public class ControladorResumen implements ActionListener {
 				
 				switch (((JButton) e.getSource()).getName()) {
 					    
-				case "btnSiguienteResumen":	funciones.desBotones(miVentana.pago.btnSiguiente);
-											miControlador.miControladorPago.resetear();
-											
-											for(int i=0;i<miModelo.reservaHotel.getHabReservadas().size();i++) {
-												miControlador.miControladorPago.total +=miModelo.reservaHotel.getHabReservadas().get(i).getPrecio()*miModelo.reservaHotel.getNoches();	
+				case "btnSiguienteResumen":	if (miModelo.logged==false)
+											{	
+												JOptionPane.showMessageDialog(miVentana, "¡Resgistrese Para Continuar!", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+												funciones.cambiarDePanel(miVentana.resumen, miVentana.login);
 											}
-											
-											
-											miVentana.pago.total.setText(formatoMoneda.format(0));
-											miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
-											funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
-											
-											miVentana.resumen.resumenReserva.setText(null);
-											miVentana.resumen.mostrarResumen.clear();
-											miVentana.resumen.txtDetalles.setText(null);
-											miControlador.miControladorHotel.rellenarTabla();
-											
-											funciones.desBotones(miVentana.pago.btnSiguiente);
-											break;	
-											
+											else
+											{
+												funciones.desBotones(miVentana.pago.btnSiguiente);
+												miControlador.miControladorPago.resetear();
+												
+												for(int i=0;i<miModelo.reservaHotel.getHabReservadas().size();i++) {
+													miControlador.miControladorPago.total +=miModelo.reservaHotel.getHabReservadas().get(i).getPrecio()*miModelo.reservaHotel.getNoches();	
+												}
+												
+												
+												miVentana.pago.total.setText(formatoMoneda.format(0));
+												miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+												funciones.cambiarDePanel(miVentana.resumen, miVentana.pago);
+												
+												miVentana.resumen.resumenReserva.setText(null);
+												miVentana.resumen.mostrarResumen.clear();
+												miVentana.resumen.txtDetalles.setText(null);
+												miControlador.miControladorHotel.rellenarTabla();
+												
+												funciones.desBotones(miVentana.pago.btnSiguiente);
+											}
+												break;	
+												
 				case "btnCancelarResumen":	funciones.cambiarDePanel(miVentana.resumen, miVentana.estanciasHotel);
 											miControlador.miFuncionesControlador.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 											

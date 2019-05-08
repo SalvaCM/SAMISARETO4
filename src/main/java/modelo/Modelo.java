@@ -26,7 +26,11 @@ public class Modelo {
 	public ReservaCASAoAPART reserva;
 	public Cama cama;
 	public Hotel hotel;
+<<<<<<< HEAD
 	public FuncionesCodigos misFuncionesCodigos;
+=======
+	public boolean logged=false;
+>>>>>>> e99ca4754a9d42d7c9f07341285458f2ab69f01d
 		
 	/**
 	 * Constructor de la clase

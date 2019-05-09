@@ -4,24 +4,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import javax.swing.JOptionPane;
-
-import org.apache.commons.codec.digest.DigestUtils;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
-import testmodelo.miModelo;
-import vista.Ventana;
+
 
 
 public class FuncionesReserva {
-	
-	private Ventana miVentana;
+
 
 	public void registrarReserva(int codReserva,int i, ReservaHotel reservaHotel,Cliente cliente) {
 		//Declaracion e inicializacion de variables:

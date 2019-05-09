@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import modelo.FuncionesReserva;
+
 
 public class ManejadorFicherosTexto {
     
@@ -17,7 +19,7 @@ public class ManejadorFicherosTexto {
     public ManejadorFicherosTexto() {
 	
     }
-    
+    	FuncionesReserva funcionesReserva = new FuncionesReserva();
     
     
     
@@ -29,11 +31,10 @@ public class ManejadorFicherosTexto {
      */
     
     public void archivoTexto(String reserva) {
-    	int n=(int) (Math.random() * 1000) + 1;
-    try {
+    	int n =funcionesReserva.buscarNumeroReservaHotel();
 
         String ruta = "C:\\SAMISAreservas\\reserva"+n+".txt";
- 
+        try {
         //String[] contenido =  {"HOLA","SARA"};
         File file = new File(ruta);
         // Si el archivo no existe es creado

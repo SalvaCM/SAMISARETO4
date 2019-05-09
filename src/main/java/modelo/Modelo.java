@@ -26,8 +26,9 @@ public class Modelo {
 	public ReservaCASAoAPART reserva;
 	public Cama cama;
 	public Hotel hotel;
-	public FuncionesCodigos misFuncionesCodigos;
+	public FuncionesCodigosDto misFuncionesCodigos;
 	public boolean logged=false;
+	public CodigosDto codigosDto;
 		
 	/**
 	 * Constructor de la clase
@@ -49,7 +50,9 @@ public class Modelo {
 		this.reservaHotel= new ReservaHotel();
 		this.reserva=new ReservaCASAoAPART();
 		this.hotel = new Hotel();
-		this.misFuncionesCodigos = new FuncionesCodigos();
+		this.misFuncionesCodigos = new FuncionesCodigosDto();
+		this.codigosDto = new CodigosDto();
+		
 		
 	}
 	

@@ -70,6 +70,7 @@ public class ControladorLogin  implements ActionListener{
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
 					funciones.cambiarDePanel(miVentana.login, miVentana.alojamiento);
+					
 					}
 				else {
 					JOptionPane.showMessageDialog(miVentana, "¡Contraseña incorrecta!", "¡Atención!", JOptionPane.WARNING_MESSAGE);

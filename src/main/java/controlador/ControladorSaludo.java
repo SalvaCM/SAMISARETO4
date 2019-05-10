@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
@@ -43,8 +45,11 @@ public class ControladorSaludo implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 			    
 
-		case "btnSaludo": funciones.cambiarDePanel(miVentana.saludo, miVentana.login); 
+		case "btnSaludo":
+			funciones.cambiarDePanel(miVentana.saludo, miVentana.login); 
+		      
 						  if ( con != null) {
+							  
 							  
 						  }else {
 							  JOptionPane.showMessageDialog(miVentana, "ERROR DE CONEXION", "¡Atencion!", JOptionPane.ERROR_MESSAGE);

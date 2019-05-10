@@ -10,7 +10,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -58,9 +61,8 @@ public class ControladorElegir implements ActionListener{
 		
 
 		case "hotel":
-			
 			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
-		elegido=1;
+		 elegido=1;
 					
 			try {
 				ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();

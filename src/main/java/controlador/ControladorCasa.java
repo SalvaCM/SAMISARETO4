@@ -30,6 +30,7 @@ public class ControladorCasa implements ActionListener {
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	FuncionesControlador funciones = new FuncionesControlador();
 	
+	
 	/**
 	 * Constructor de la clase
 	 * @param miVentana instancia de la ventna principal

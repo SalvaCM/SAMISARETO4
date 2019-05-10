@@ -29,6 +29,7 @@ public class ControladorApartamento implements ActionListener {
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	
 	/**
+	 * 
 	 * Constructor de la clase
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles

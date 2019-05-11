@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
@@ -129,5 +131,16 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		miVentana.hotel.nCamas.setValue(0);
 		miVentana.resumen.mostrarResumen.clear();
 		miVentana.resumen.resumenReserva.setText(null);
+		try {
+			ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
+			miVentana.hotel.comboBox.removeAllItems();
+			for(int i=0;i<ubicaciones.size();i++) {
+				miVentana.hotel.comboBox.addItem(ubicaciones.get(i));
+				
+				}
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
 	}
 }

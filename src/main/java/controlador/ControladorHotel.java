@@ -84,7 +84,7 @@ public class ControladorHotel implements ActionListener {
 					
 					break;	
 
-					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen();
+					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen(); 
 					
 					break;	
 					
@@ -258,73 +258,73 @@ public class ControladorHotel implements ActionListener {
 				
 				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
-					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					//miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 //miVentana.pago.remove(miVentana.pago.etiqueta);
-					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/b.jpg";
 					
 						
 				}
-				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("MADRID")) {
+				  if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("MADRID")) {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
-					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					// miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					// miVentana.pago.remove(miVentana.pago.etiqueta);
-					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					 //miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/m.jpg";
 					
 						
 				}
-				 else if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
+				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+						// miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						 //miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						// miVentana.pago.remove(miVentana.pago.etiqueta);
-						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						 //miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/sev.jpg";
 						
 						 
 						
 					}
-				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
+				 	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+						//miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						// miVentana.pago.remove(miVentana.pago.etiqueta);
-						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
-				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARIS")) {
+				 	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-						 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-						 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					//	miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+						// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 						// miVentana.pago.remove(miVentana.pago.etiqueta);
-						 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+						// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 						 //miVentana.fechas.remove(miVentana.fechas.etiqueta);
 						enlace="/imagenes/paris.jpg";
 						 
 					}
-				 else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("NUEVA YORK")) {
+				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("NUEVA YORK")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					// miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					 //miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					// miVentana.pago.remove(miVentana.pago.etiqueta);
-					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/ny2.jpg";
 					 
-				} else	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
+				} 	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("ROMA")) {
 					 miVentana.hotel.remove( miVentana.hotel.etiqueta);
-					 miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
-					 miVentana.resumen.remove(miVentana.resumen.etiqueta);
+					// miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					// miVentana.pago.remove(miVentana.pago.etiqueta);
-					 miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
+					// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);
 					// miVentana.fechas.remove(miVentana.fechas.etiqueta);
 					enlace="/imagenes/roma.jpg";
 					 
@@ -336,26 +336,26 @@ public class ControladorHotel implements ActionListener {
 					imagen4=new ImageIcon(PanelDevolucion.class.getResource(enlace));
 					imagen5=new ImageIcon(PanelPago.class.getResource(enlace));
 					//imagen6=new ImageIcon(PanelFechas.class.getResource(enlace));
-					
-					miVentana.hotel.etiqueta = new JLabel(imagen1);
+					miVentana.hotel.etiqueta.setIcon(imagen1);
+					/*miVentana.hotel.etiqueta = new JLabel(imagen1);
 					miVentana.hotel.etiqueta.setBounds(-20,-20, 1200, 800);
-					miVentana.hotel.etiqueta.setVisible(true);
+					miVentana.hotel.etiqueta.setVisible(true);*/
 					
-					miVentana.estanciasHotel.etiqueta = new JLabel(imagen2);
+					/*miVentana.estanciasHotel.etiqueta = new JLabel(imagen2);
 					miVentana.estanciasHotel.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.estanciasHotel.etiqueta.setVisible(true);
 					
 					miVentana.resumen.etiqueta = new JLabel(imagen3);
 					miVentana.resumen.etiqueta.setBounds(-20,-20, 1200, 800);
-					miVentana.resumen.etiqueta.setVisible(true);
+					miVentana.resumen.etiqueta.setVisible(true);*/
 					
 					/*miVentana.pago.etiqueta = new JLabel(imagen4);
 					miVentana.pago.etiqueta.setBounds(-20,-20, 1200, 800);
 					miVentana.pago.etiqueta.setVisible(true);*/
-					
+					/*
 					miVentana.devolucion.etiqueta = new JLabel(imagen5);
 					miVentana.devolucion.etiqueta.setBounds(-20,-20, 1200, 800);
-					miVentana.devolucion.etiqueta.setVisible(true);
+					miVentana.devolucion.etiqueta.setVisible(true);*/
 					
 					//miVentana.fechas.etiqueta = new JLabel(imagen6);
 				//	miVentana.fechas.etiqueta.setBounds(-20,-20, 1200, 800);
@@ -363,15 +363,15 @@ public class ControladorHotel implements ActionListener {
 					
 					//AGREGAMOS LA ETIQUETA QUE CONTIENE LA IMAGEN AL FRAME
 					this.miVentana.hotel.add(miVentana.hotel.etiqueta);	 
-					this.miVentana.estanciasHotel.add(miVentana.estanciasHotel.etiqueta);
-					this.miVentana.resumen.add(miVentana.resumen.etiqueta);
+					//this.miVentana.estanciasHotel.add(miVentana.estanciasHotel.etiqueta);
+					//this.miVentana.resumen.add(miVentana.resumen.etiqueta);
 					//this.miVentana.pago.add(miVentana.pago.etiqueta);
-					this.miVentana.devolucion.add(miVentana.devolucion.etiqueta);
+					//this.miVentana.devolucion.add(miVentana.devolucion.etiqueta);
 					//this.miVentana.fechas.add(miVentana.fechas.etiqueta);
 			}
 			
 			public void reiniciarImagen() {
-				 miVentana.hotel.remove(miVentana.hotel.etiqueta);
+				    miVentana.hotel.remove(miVentana.hotel.etiqueta);
 					ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
 					miVentana.hotel.etiqueta = new JLabel(imagen);
 					miVentana.hotel.etiqueta.setBounds(-20, -20, 1200, 800);

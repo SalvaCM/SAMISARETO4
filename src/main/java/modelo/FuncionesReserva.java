@@ -116,7 +116,7 @@ public class FuncionesReserva {
 		
 		System.out.println(codReserva);
 		System.out.println(reserva.getCasaReservada().getCod_casa());
-		System.out.println(cliente.getDni());
+	
 		System.out.println(reserva.getFechaEntrada());
 		System.out.println(reserva.getFechaSalida());
 		//codReserva iba en el insert
@@ -142,7 +142,7 @@ public class FuncionesReserva {
 		
 		System.out.println(codReserva);
 		System.out.println(reserva.getApartReservado().getCod_apartamento());
-		System.out.println(cliente.getDni());
+	
 		System.out.println(reserva.getFechaEntrada());
 		System.out.println(reserva.getFechaSalida());
 		//codReserva iba en el insert

@@ -125,6 +125,9 @@ public class ControladorHotel implements ActionListener {
 					else {
 							miModelo.reservaHotel.setFechaEntrada(miVentana.hotel.fechaEntrada.getDate());
 							miModelo.reservaHotel.setFechaSalida(miVentana.hotel.fechaSalida.getDate());
+
+							miModelo.hotel.setCod_hotel(ReservarHotel().getCod_hotel());
+		
 							funciones.cambiarDePanel(miVentana.hotel, miVentana.estanciasHotel); 
 							miModelo.reservaHotel.setHotelReservado(ReservarHotel());
 							miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(Estancias());

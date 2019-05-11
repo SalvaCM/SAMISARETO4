@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Dimension;
+import javax.swing.JTextField;
 
 
 /** 
@@ -22,6 +23,7 @@ public class PanelPago extends JPanel {
 	
 	public JButton btnCancelar = new JButton("Cancelar");
 	public JButton btnSiguiente = new JButton("Siguiente");
+	public JButton btnCodigoDto = new JButton("Validar");
 	
 	public JLabel restante = new JLabel();
 	public JLabel pagado = new JLabel();
@@ -45,6 +47,7 @@ public class PanelPago extends JPanel {
 	
 	public JButton[] arrayBtn= new JButton[15];
 	public JLabel etiqueta ;
+	public JTextField textCodigo;
 		
 
 	/**
@@ -56,6 +59,21 @@ public class PanelPago extends JPanel {
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(176, 224, 230));
 		setLayout(null);
+		
+		btnCodigoDto.setName("btnCodigoDto");
+		btnCodigoDto.setBounds(609, 567, 89, 23);
+		add(btnCodigoDto);
+		
+		textCodigo = new JTextField();
+		textCodigo.setBounds(493, 570, 106, 20);
+		textCodigo.setColumns(10);
+		add(textCodigo);
+	
+		
+		JLabel lblCodigoPromocinal = DefaultComponentFactory.getInstance().createTitle("Codigo promocinal: ");
+		lblCodigoPromocinal.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblCodigoPromocinal.setBounds(297, 569, 194, 21);
+		add(lblCodigoPromocinal);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
 		lblNewJgoodiesLabel.setBackground(new Color(70, 130, 180));
@@ -233,13 +251,11 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel_4.setBounds(10, 127, 1065, 26);
 		add(lblNewJgoodiesLabel_4);
 		
-		
-		
-	
-		/*ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+
+		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
-		add(etiqueta);*/
+		add(etiqueta);
 
 	}
 }

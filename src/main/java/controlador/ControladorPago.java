@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -11,6 +12,7 @@ import javax.swing.JOptionPane;
 import com.toedter.calendar.JDateChooser;
 
 import ficheros.ManejadorFicherosTexto;
+import modelo.CodigosDto;
 import modelo.FuncionesReserva;
 import modelo.HabitacionHotel;
 import modelo.Modelo;
@@ -45,6 +47,7 @@ public class ControladorPago implements ActionListener {
 		//Definicion de los listeners de los botones del panel
 		miVentana.pago.btnSiguiente.addActionListener(this); 
 		miVentana.pago.btnCancelar.addActionListener(this); 
+		miVentana.pago.btnCodigoDto.addActionListener(this);
 		miVentana.pago.btn500.addActionListener(this);
 		miVentana.pago.btn200.addActionListener(this);
 		miVentana.pago.btn100.addActionListener(this); 
@@ -115,7 +118,26 @@ public class ControladorPago implements ActionListener {
 											
 				
 				break;
-								 
+			case "btnCodigoDto": try {	
+				double totalConDto = miModelo.misFuncionesCodigos.descuento(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+				miControlador.miControladorPago.total = totalConDto;
+				
+				miVentana.pago.total.setText(formatoMoneda.format(0));
+				miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+				
+				if(miModelo.misFuncionesCodigos.validar(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
+					funciones.desBotones(miVentana.pago.btnCodigoDto);
+					funciones.desBotones(miVentana.pago.btnCancelar);
+				}
+				
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				
+				
+				break;
+										 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
 				//Calcular cambios despues del pago
 				if (pagado > total) {
@@ -123,7 +145,7 @@ public class ControladorPago implements ActionListener {
 				}
 			    mostrarCambios(arrayCambios);
 			    
-			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "�Atenci�n!", JOptionPane.WARNING_MESSAGE);
+			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "�Atencion!", JOptionPane.WARNING_MESSAGE);
 			    
 			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
 			    if(miControlador.miControladorElegir.elegido==1) {

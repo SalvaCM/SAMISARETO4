@@ -137,7 +137,7 @@ public class ControladorPago implements ActionListener {
 						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
 						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
 						+  " " + "Cliente: "
-						+ miModelo.cliente.getDni());
+						+ miModelo.cliente.getDni()+"\n");
 			    	}
 			    }
 			    else if(miControlador.miControladorElegir.elegido==3) {

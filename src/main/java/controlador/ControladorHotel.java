@@ -5,15 +5,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.reflect.Array;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JSlider;
-
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -50,7 +49,7 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 					@Override
 				    public void propertyChange(PropertyChangeEvent e) {
-				        System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
+				        //System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
 				        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
 				        if( fechaMinimaSalida != null) {
 				        fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
@@ -131,7 +130,6 @@ public class ControladorHotel implements ActionListener {
 							miModelo.reservaHotel.getHotelReservado().setHabitacionesDisp(Estancias());
 							rellenarTabla();						
 						}
-					
 				}
 				/**
 				 * 	Rellena la Tabla de Habitaciones Disponibles
@@ -155,9 +153,11 @@ public class ControladorHotel implements ActionListener {
 					}
 					
 					try {
-						if (miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false) {
+						boolean reservada=miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getCodHabitacion(), miModelo.reservaHotel.getFechaEntrada(),miModelo.reservaHotel.getFechaSalida());
+						System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo()+miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo()+" "+ reservada);
+						if (reservada==false) {
 							int totalCamas=sumasNpersonas(i);
-							System.out.println("total :"+totalCamas);
+							System.out.println("total :"+totalCamas+" "+miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo());
 							if (nCamas==0 || nCamas==totalCamas)
 							{
 							miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i)

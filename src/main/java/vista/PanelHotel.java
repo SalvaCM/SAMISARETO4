@@ -3,7 +3,6 @@ package vista;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.sql.SQLException;
 import java.util.Date;
 import java.util.Hashtable;
 
@@ -27,7 +26,6 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 import java.awt.Cursor;
 import javax.swing.JSlider;
-import javax.swing.JTextField;
 
 public class PanelHotel extends JPanel {
 

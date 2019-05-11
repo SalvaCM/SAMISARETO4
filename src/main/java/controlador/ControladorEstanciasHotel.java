@@ -39,12 +39,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 
-		case "btnCancelarEstancias": 
+		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
 			resetear();
 			todosLosHoteles();
-			
-			
-		
 			break;
 
 		case "Reservar": 
@@ -60,7 +57,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				 if(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() == -1)	{
 					JOptionPane.showMessageDialog(miVentana, "Seleccione  estancia para reservar!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				}
-				 else if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1 && miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion(), miVentana.hotel.fechaEntrada.getDate(),miVentana.hotel.fechaSalida.getDate())==false)
+				 else if (miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow() != -1)
 					{
 						JOptionPane.showMessageDialog(miVentana, "Reservado!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 						
@@ -112,9 +109,8 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			} 
 	}
 	public void HabitacionElegida() {
-		
-		
-		int codigoHabitacion =miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow()).getCodHabitacion();
+		 int row = miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow();
+		 int codigoHabitacion = (int) miVentana.estanciasHotel.tableModel.getValueAt(row, 0);
 		try {
 			miModelo.reservaHotel.getHabReservadas().add(miModelo.misFuncionesHotel.reservarHabitacion(codigoHabitacion));
 			miModelo.reservaHotel.setNoches((int) ((miVentana.hotel.fechaSalida.getCalendar().getTimeInMillis()-miVentana.hotel.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
@@ -125,7 +121,6 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			
 	}
 	public void resetear() {
-		funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
 		funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 		miVentana.hotel.fechaEntrada.setCalendar(null);

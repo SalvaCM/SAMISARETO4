@@ -188,9 +188,6 @@ public class FuncionesHotel {
 	
 		boolean r = false;
 
-		Date f1 = null;
-		Date f2 = null;
-
 		Date fechaEntrada = null;
 		Date fechaSalida = null;
 
@@ -200,6 +197,7 @@ public class FuncionesHotel {
 				fechaEntrada = rs.getDate("fechaEntrada");
 				fechaSalida= rs.getDate("fechaSalida");			
 			}
+		System.out.println("Resultado de la select"+fechaEntrada);
 	 if(fechaSalida==null || fechaEntrada==null) {
 			r=false;
 		}else {

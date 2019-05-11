@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.Date;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -137,13 +139,13 @@ public class ControladorRegistro implements ActionListener {
 			      
 			      // wrap a scrollpane around it
 			      JScrollPane scrollPane = new JScrollPane(textArea);
-			      
+			      Date fechaRegistro=new Date();
 			      // display them in a message dialog
 			      int  confirmado=  JOptionPane.showConfirmDialog(null, scrollPane,"   Acepte las condiciones de uso",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE);
 			      if (JOptionPane.OK_OPTION== confirmado) {
 			    	   System.out.println("confirmado");
 			    	   if(miModelo.misFuncionesRegistro.comprobarCamposRegistro(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.fechaNac.getDate(),miVentana.registro.passwordField.getPassword())) {
-							miModelo.misFuncionesRegistro.registrarNuevoCliente(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.fechaNac.getDate(),miVentana.registro.passwordField.getPassword());
+							miModelo.misFuncionesRegistro.registrarNuevoCliente(miVentana.registro.textFieldDni.getText(), miVentana.registro.textFieldNombre.getText(),  miVentana.registro.textFieldApellido.getText(), miVentana.registro.fechaNac.getDate(),miVentana.registro.passwordField.getPassword(),fechaRegistro);
 							funciones.cambiarDePanel(miVentana.registro, miVentana.login); 
 						}
 				       

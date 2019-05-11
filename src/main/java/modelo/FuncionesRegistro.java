@@ -23,7 +23,7 @@ public class FuncionesRegistro {
 	private Ventana miVentana;
 
 	
-	public Cliente registrarNuevoCliente(String DNI, String Nombre, String Apellido, Date date2, char[] contrasena) throws SQLException, ParseException {
+	public Cliente registrarNuevoCliente(String DNI, String Nombre, String Apellido, Date date2, char[] contrasena, Date fechaRegistro) throws SQLException, ParseException {
 		
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -38,16 +38,17 @@ public class FuncionesRegistro {
 		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String dateN=dateFormat.format(date2);
+		String dateR=dateFormat.format(fechaRegistro);
 		
 		
-		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + passwordEncriptada + "');";
+		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena,fechaRegistro) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + passwordEncriptada + "', '" + dateR + "');";
 		
 				
 		//Comprobar que la insercion de los datos en la BD es correcta
 		if (miConsulta.insertarDatosBD(con, query)) {
 			passwordEncriptada = DigestUtils.md5Hex(String.valueOf(contrasena));
 			cliente = new Cliente(DNI, Nombre, Apellido, date2 , passwordEncriptada);
-			System.out.println("contrase�a: " +passwordEncriptada);
+			System.out.println("contrasena: " +passwordEncriptada);
 		} else {
 			cliente = null;
 		}

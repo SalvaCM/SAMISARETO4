@@ -118,23 +118,25 @@ public class ControladorPago implements ActionListener {
 											
 				
 				break;
-			case "btnCodigoDto": try {	
-				double totalConDto = miModelo.misFuncionesCodigos.descuento(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
-				miControlador.miControladorPago.total = totalConDto;
-				
-				miVentana.pago.total.setText(formatoMoneda.format(0));
-				miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
-				
-				if(miModelo.misFuncionesCodigos.validar(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
-					funciones.desBotones(miVentana.pago.btnCodigoDto);
-					funciones.desBotones(miVentana.pago.btnCancelar);
-				}
-				
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-				
+			case "btnCodigoDto": 
+				if (miControlador.miControladorElegir.elegido==1) {
+					try {	
+					double totalConDto = miModelo.misFuncionesCodigos.descuentoHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+					miControlador.miControladorPago.total = totalConDto;
+					
+					miVentana.pago.total.setText(formatoMoneda.format(0));
+					miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+					
+					if(miModelo.misFuncionesCodigos.validarHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
+						funciones.desBotones(miVentana.pago.btnCodigoDto);
+						funciones.desBotones(miVentana.pago.btnCancelar);
+					}
+					
+					} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+					}
+				}	
 				
 				break;
 										 

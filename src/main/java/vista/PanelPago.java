@@ -65,7 +65,7 @@ public class PanelPago extends JPanel {
 		add(btnCodigoDto);
 		
 		textCodigo = new JTextField();
-		textCodigo.setBounds(493, 570, 106, 20);
+		textCodigo.setBounds(493, 570, 106, 25);
 		textCodigo.setColumns(10);
 		add(textCodigo);
 	

@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.UnsupportedEncodingException;
+
 import javax.swing.JButton;
 import org.apache.commons.codec.digest.DigestUtils;
 import vista.Ventana;
@@ -33,7 +35,12 @@ public class ControladorUsuario implements ActionListener{
 				if(ValidarContrasena())
 				{
 					String passwordEncriptada = DigestUtils.md5Hex(String.valueOf(miVentana.usuario.passwordNueva.getPassword()));
-					miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
+					try {
+						miModelo.misFuncionesLogin.cambiarContrasena(passwordEncriptada, miModelo.cliente);
+					} catch (UnsupportedEncodingException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					System.out.println(passwordEncriptada);
 					ocultarCampos();
 				}

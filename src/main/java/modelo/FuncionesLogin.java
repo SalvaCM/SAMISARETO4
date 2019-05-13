@@ -101,7 +101,6 @@ public class FuncionesLogin {
 	public static String encriptar(String cadena) throws UnsupportedEncodingException 
 	{
 		 	String cadenaEncriptada = Base64.getEncoder().encodeToString(cadena.toString().getBytes());
-		 	
 		 	System.out.println(cadena + " encriptando = " + cadenaEncriptada);
 		 	 
 		 	return cadenaEncriptada;
@@ -117,7 +116,7 @@ public class FuncionesLogin {
 		  System.out.println(cadenaEncriptada + " desencriptando = " + cadenaDesencriptada);
 		    
 		 
-		return cadenaEncriptada;
+		return cadenaDesencriptada;
 		
 	  }
 }

@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -140,7 +138,6 @@ public class ControladorHotel implements ActionListener {
 			}
 			public void rellenarTabla() {
 				int nCamas=miVentana.hotel.nCamas.getValue();
-				System.out.println("nCamas"+nCamas);
 				StringBuilder cadena= new StringBuilder();
 				for(int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.size();i++) {
 					cadena = new StringBuilder();
@@ -157,7 +154,6 @@ public class ControladorHotel implements ActionListener {
 					
 					try {
 						boolean reservada=miModelo.misFuncionesHotel.habitaOcupada(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getCodHabitacion(), miModelo.reservaHotel.getFechaEntrada(),miModelo.reservaHotel.getFechaSalida());
-						System.out.println(miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo()+miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo()+" "+ reservada);
 						if (reservada==false) {
 							int totalCamas=sumasNpersonas(i);
 							System.out.println("total :"+totalCamas+" "+miModelo.reservaHotel.getHotelReservado().getHabitacionesDisp().get(i).getTipo());

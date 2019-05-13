@@ -1,5 +1,6 @@
 package modelo;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class FuncionesRegistro {
 	private Ventana miVentana;
 
 	
-	public Cliente registrarNuevoCliente(String DNI, String Nombre, String Apellido, Date date2, char[] contrasena, Date fechaRegistro) throws SQLException, ParseException {
+	public Cliente registrarNuevoCliente(String DNI, String Nombre, String Apellido, Date date2, char[] contrasena, Date fechaRegistro) throws SQLException, ParseException, UnsupportedEncodingException {
 		
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -39,9 +40,14 @@ public class FuncionesRegistro {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String dateN=dateFormat.format(date2);
 		String dateR=dateFormat.format(fechaRegistro);
+		String dniEncriptado = FuncionesLogin.encriptar(DNI);
+		String nombreEncriptado = FuncionesLogin.encriptar(Nombre);
+		String apellidoEncriptado = FuncionesLogin.encriptar(Apellido);
+		
+
 		
 		
-		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena,fechaRegistro) VALUES ('" + DNI + "', '" + Nombre + "', '" + Apellido + "', '" + dateN + "', '" + passwordEncriptada + "', '" + dateR + "');";
+		query = "INSERT into clientes (DNI,Nombre,Apellido, Fecha_nacimiento, Contrasena,fechaRegistro) VALUES ('" + dniEncriptado + "', '" + nombreEncriptado + "', '" + apellidoEncriptado + "', '" + dateN + "', '" + passwordEncriptada + "', '" + dateR + "');";
 		
 				
 		//Comprobar que la insercion de los datos en la BD es correcta
@@ -145,9 +151,16 @@ public class FuncionesRegistro {
 		}
 		
 	}
+
+		    
+		 
+	
+}
+
+
 	
 	
 	
 	
 	 
-}
+

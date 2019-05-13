@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.util.Base64;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -34,7 +35,8 @@ public class FuncionesLogin {
 		int cod;
 		
     	//Inicio del programa
-		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from clientes where DNI = '" + DNI + "';");
+		String DniEncriptado=encriptar(DNI);
+		ResultSet rs = miConsulta.hacerConsultaBD(con, "select * from clientes where DNI = '" + DniEncriptado + "';");
 		
 		while(rs.next()) {
 			
@@ -43,10 +45,12 @@ public class FuncionesLogin {
 				nombre = rs.getString("Nombre");
 				apellido = rs.getString("Apellido");
 				fechaNacimiento = rs.getDate("Fecha_nacimiento");
+				String nomDesencriptado = desencriptar(nombre);
+				String apeDesencriptado = desencriptar(apellido);		
 				cliente.setCodCliente(cod);
 				cliente.setDni(DNI);
-				cliente.setNombre(nombre);
-				cliente.setApellido(apellido);
+				cliente.setNombre(nomDesencriptado);
+				cliente.setApellido(apeDesencriptado);
 				cliente.setFechaNacimiento(fechaNacimiento);
 			
 		}
@@ -62,7 +66,8 @@ public class FuncionesLogin {
 		boolean devuelve = false;
 		
 		//Inicio del programa
-		ResultSet rs = miConsulta.hacerConsultaBD(con, "select Contrasena from clientes where DNI = '" + DNI + "';");
+		String dniEncriptado = encriptar(DNI);
+		ResultSet rs = miConsulta.hacerConsultaBD(con, "select Contrasena from clientes where DNI = '" + dniEncriptado + "';");
 		while(rs.next()) {
 			passwordEncriptada = rs.getString("Contrasena");
 		}
@@ -78,17 +83,41 @@ public class FuncionesLogin {
 		
 		return devuelve;
 	}
-	public void cambiarContrasena(String passwordNueva, Cliente cliente) {
+	public void cambiarContrasena(String passwordNueva, Cliente cliente) throws UnsupportedEncodingException {
 		//Declaraci�n e inicializaci�n de variables:
 
 		ConexionBD miConexion = new ConexionBD();
 		Connection con = miConexion.ConectarBD();
 		ConsultaBD miConsulta = new ConsultaBD();
-		String query = "UPDATE clientes SET contrasena = '" + passwordNueva +"' WHERE dni='" + cliente.getDni() + "';";
+		String dniEncriptado = encriptar(cliente.getDni());
+		String query = "UPDATE clientes SET contrasena = '" + passwordNueva +"' WHERE dni='" + dniEncriptado + "';";
 		
 		if (miConsulta.insertarDatosBD(con, query)) {
 			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con �xito", "�Atenci�n!", JOptionPane.WARNING_MESSAGE);
 			cliente.setContrasena(passwordNueva);
 		}
 	}
+	
+	public static String encriptar(String cadena) throws UnsupportedEncodingException 
+	{
+		 	String cadenaEncriptada = Base64.getEncoder().encodeToString(cadena.toString().getBytes());
+		 	
+		 	System.out.println(cadena + " encriptando = " + cadenaEncriptada);
+		 	 
+		 	return cadenaEncriptada;
+	}
+	  
+	public static String desencriptar(String cadenaEncriptada)
+	{
+	 
+		  byte[] byteArray = Base64.getDecoder().decode(cadenaEncriptada);
+		 
+		  String cadenaDesencriptada = new String(byteArray);
+		 
+		  System.out.println(cadenaEncriptada + " desencriptando = " + cadenaDesencriptada);
+		    
+		 
+		return cadenaEncriptada;
+		
+	  }
 }

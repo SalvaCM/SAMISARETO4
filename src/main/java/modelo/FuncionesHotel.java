@@ -1,18 +1,11 @@
 package modelo;
 
-import java.awt.HeadlessException;
 import java.sql.Connection;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.Format;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
@@ -24,9 +17,6 @@ public class FuncionesHotel {
 	public Hotel hotel;
 	public HabitacionHotel habitacion;
 	public Cama cama;
-	private Ventana miVentana;
-	
-	
 	/**
 	 * Metodo para mostrar los alojamientos disponibles en el JTABLE
 	 */
@@ -209,31 +199,7 @@ public class FuncionesHotel {
 		
        return r;
 	}
-	public ArrayList rangoFechas (int cod, Date fida,Date fvuelta) throws SQLException{ 
-    	//Declaracion e incializacion de variables
-	
-		ArrayList<String> fechas = new ArrayList<String>();
-		Date fechaEntrada = null;
-		Date fechaSalida = null;
-		String query="select fechaEntrada,fechaSalida from reservas_hotel where cod_habitacion='"+cod+"';";
-		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-		while(rs.next()) {
-				
-				
-				fechaEntrada = rs.getDate("fechaEntrada");
-				fechaSalida= rs.getDate("fechaSalida");
-				
-			}
 
-		fechas.add(fechaEntrada.toString());
-		fechas.add(fechaSalida.toString());
-	
-		
-	
-	 
-		
-       return fechas;
-	}
 
 	
 }

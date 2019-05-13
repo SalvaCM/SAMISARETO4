@@ -91,7 +91,9 @@ public class FuncionesCodigosDto {
 						validar = false;
 					}else {
 						if(codigo.equals(codigoDto)) {	
-							validar = true;					   
+							validar = true;	
+							String query2 =" DELETE FROM codigos_hotel WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);						
 						}else {
 							validar = false;
 						}
@@ -171,7 +173,9 @@ public class FuncionesCodigosDto {
 						validar = false;
 					}else {
 						if(codigo.equals(codigoDto)) {	
-							validar = true;					   
+							validar = true;	
+							String query2 =" DELETE FROM codigos_casa WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);
 						}else {
 							validar = false;
 						}
@@ -249,7 +253,11 @@ public class FuncionesCodigosDto {
 						validar = false;
 					}else {
 						if(codigo.equals(codigoDto)) {	
-							validar = true;					   
+							validar = true;		
+							
+							String query2 =" DELETE FROM codigos_apartamento WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);
+							
 						}else {
 							validar = false;
 						}

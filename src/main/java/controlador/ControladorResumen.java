@@ -48,7 +48,7 @@ public class ControladorResumen implements ActionListener {
 					    
 				case "btnSiguienteResumen":	if (miModelo.logged==false)
 											{	
-												JOptionPane.showMessageDialog(miVentana, "¡Resgistrese Para Continuar!", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+												JOptionPane.showMessageDialog(miVentana, "ï¿½Resgistrese Para Continuar!", "ï¿½Atenciï¿½n!", JOptionPane.INFORMATION_MESSAGE);
 												funciones.cambiarDePanel(miVentana.resumen, miVentana.login);
 											}
 											else
@@ -71,6 +71,8 @@ public class ControladorResumen implements ActionListener {
 												miControlador.miControladorHotel.rellenarTabla();
 												
 												funciones.desBotones(miVentana.pago.btnSiguiente);
+												funciones.actBotones(miVentana.pago.btnCodigoDto);
+												miVentana.pago.textCodigo.setText(null);
 											}
 												break;	
 												

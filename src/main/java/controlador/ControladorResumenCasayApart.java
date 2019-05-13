@@ -63,6 +63,8 @@ public class ControladorResumenCasayApart implements ActionListener {
 											miVentana.resumenCyA.mostrarResumen.clear();
 											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+											funciones.actBotones(miVentana.pago.btnCodigoDto);
+											miVentana.pago.textCodigo.setText(null);
 					}
 					break;	
 											

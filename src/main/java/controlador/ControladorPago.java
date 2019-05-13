@@ -116,6 +116,7 @@ public class ControladorPago implements ActionListener {
 				funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 				funciones.desBotones(miVentana.pago.btnSiguiente);
 				funciones.actBotones(miVentana.pago.btnCodigoDto);
+				miVentana.pago.textCodigo.setText(null);
 											
 				
 				break;

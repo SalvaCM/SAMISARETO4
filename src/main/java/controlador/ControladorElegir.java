@@ -24,7 +24,7 @@ public class ControladorElegir implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
-	public int elegido;
+	public int elegido = 1;
 	
 	/**
 	 * Constructor de la clase
@@ -104,6 +104,7 @@ public class ControladorElegir implements ActionListener{
 				e1.printStackTrace();
 			} 
 		break;	
+		
 		
 		
 		

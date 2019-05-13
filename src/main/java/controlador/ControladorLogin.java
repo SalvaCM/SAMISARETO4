@@ -32,11 +32,11 @@ public class ControladorLogin  implements ActionListener{
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
 	 * @param miControlador 
 	 */
-	public ControladorLogin(Ventana miVentana, Modelo miModelo) {
+	public ControladorLogin(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
-
+		this.miControlador = miControlador;
 	
 		miVentana.login.btnCancelar.addActionListener(this);
 		miVentana.login.btnRegistrarse.addActionListener(this);
@@ -70,20 +70,22 @@ public class ControladorLogin  implements ActionListener{
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
-					miModelo.logged = true;
-					funciones.cambiarDePanel(miVentana.login, miVentana.resumen);
+					miModelo.logged = true;					
+				
+					if(miControlador.miControladorElegir.elegido==1) {
+						funciones.cambiarDePanel(miVentana.login, miVentana.resumen);
+					}					
+					else if(miControlador.miControladorElegir.elegido==2 || miControlador.miControladorElegir.elegido==3) {
+						funciones.cambiarDePanel(miVentana.login, miVentana.resumenCyA);
+					} 
 				}
+
+				
 				else {
-					JOptionPane.showMessageDialog(miVentana, "¡Contraseña incorrecta!", "¡Atención!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(miVentana, "ï¿½Contraseï¿½a incorrecta!", "ï¿½Atenciï¿½n!", JOptionPane.WARNING_MESSAGE);
 				}
 				
-			/*	if(miControlador.miControladorElegir.elegido==1) {
-					funciones.cambiarDePanel(miVentana.login, miVentana.resumen);
-				}					
-				else if(miControlador.miControladorElegir.elegido==2 || miControlador.miControladorElegir.elegido==3) {
-					funciones.cambiarDePanel(miVentana.login, miVentana.resumenCyA);
-				} */
-				
+			
 					resetear();
 
 			} catch (Exception e1) {
@@ -99,9 +101,6 @@ public class ControladorLogin  implements ActionListener{
 
 		}
 	}	
-	public void LoguearUser()
-	{
+	
 		
-	}
-
 }

@@ -30,6 +30,7 @@ public class Modelo {
 	public boolean logged=false;
 	public CodigosDto codigosDto;
 	public Casa casa;
+	public Apartamento apartamento;
 		
 	/**
 	 * Constructor de la clase
@@ -54,6 +55,7 @@ public class Modelo {
 		this.misFuncionesCodigos = new FuncionesCodigosDto();
 		this.codigosDto = new CodigosDto();
 		this.casa = new Casa();
+		this.apartamento = new Apartamento();
 		
 		
 	}

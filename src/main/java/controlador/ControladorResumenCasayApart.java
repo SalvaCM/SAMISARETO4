@@ -47,12 +47,12 @@ public class ControladorResumenCasayApart implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 					    
 				case "btnSiguienteResumen2":
-					/*if (miModelo.logged==false)
+					if (miModelo.logged==false)
 					{	
-						JOptionPane.showMessageDialog(miVentana, "¡Resgistrese Para Continuar!", "¡Atención!", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(miVentana, "ï¿½Resgistrese Para Continuar!", "ï¿½Atenciï¿½n!", JOptionPane.INFORMATION_MESSAGE);
 						funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.login);
 					}
-					else{*/					
+					else{				
 											funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);
 											funciones.actBotones(miVentana.pago.btnCancelar);
 											miControlador.miControladorPago.actBotones(miVentana.pago.arrayBtn);
@@ -63,7 +63,7 @@ public class ControladorResumenCasayApart implements ActionListener {
 											miVentana.resumenCyA.mostrarResumen.clear();
 											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
-				//	}
+					}
 					break;	
 											
 				case "btnCancelarResumen2":	funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.alojamiento);

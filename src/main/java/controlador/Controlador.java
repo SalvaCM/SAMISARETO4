@@ -49,7 +49,7 @@ public class Controlador {
 			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
 			this.miControladorSaludo = new ControladorSaludo(miVentana, miModelo);
 			this.miControladorEstanciasHotel = new ControladorEstanciasHotel(miVentana, miModelo);
-			this.miControladorLogin = new ControladorLogin(miVentana, miModelo);
+			this.miControladorLogin = new ControladorLogin(miVentana, miModelo,this);
 			this.miControladorRegistro = new ControladorRegistro(miVentana, miModelo);
 			this.miControladorUsuario = new ControladorUsuario(miVentana, miModelo);
 			this.miFuncionesControlador = new FuncionesControlador();

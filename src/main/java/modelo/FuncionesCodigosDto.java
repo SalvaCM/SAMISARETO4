@@ -83,10 +83,7 @@ public class FuncionesCodigosDto {
 							codigo= rs.getString("codigo");
 			
 						}
-					
-					
-					System.out.println("codigo:" + codigo);
-					System.out.println("codigo:" + codigoDto);
+
 					boolean validar;
 					
 					if (codigo == null || codigo == "")		
@@ -166,8 +163,85 @@ public class FuncionesCodigosDto {
 						}
 					
 					
-					System.out.println("codigo:" + codigo);
-					System.out.println("codigo:" + codigoDto);
+		
+					boolean validar;
+					
+					if (codigo == null || codigo == "")		
+					{	
+						validar = false;
+					}else {
+						if(codigo.equals(codigoDto)) {	
+							validar = true;					   
+						}else {
+							validar = false;
+						}
+					}
+					
+					return validar;
+
+	}
+	
+	public double descuentoApart(int codigoCliente, int codigoApart, String codigoDto, double total) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+		
+		
+		String codigo = "";
+		float porcentaje = 0;
+		
+		
+		// Inicio
+		
+		String query="select codigo,porcentaje from codigos_Apartamento where cod_cliente ='" + codigoCliente + "' and cod_apartamento='" + codigoApart + "';";
+
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		
+					while(rs.next()) {
+											
+							codigo= rs.getString("codigo");
+							porcentaje = rs.getFloat("porcentaje");
+										
+							
+						}
+					
+		double totalConDto = total;
+		System.out.println("codigo:" + codigo);
+		System.out.println("codigo:" + codigoDto);
+					
+		if (codigoDto == null || codigoDto == "")		
+		{	
+			JOptionPane.showMessageDialog(miVentana, "Introduce un codigo", "Atencion!", JOptionPane.WARNING_MESSAGE);
+		}else {
+			if(codigo.equals(codigoDto)) {	
+				totalConDto = (float) (total - (total * porcentaje / 100));
+							   
+			}else {
+				JOptionPane.showMessageDialog(miVentana, "No existe el codigo introducido", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				totalConDto = total;
+			}
+		}
+				return totalConDto;
+
+	}
+	
+	public boolean validarApart (int codigoCliente, int codigoApart, String codigoDto) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+				
+		String codigo = "";
+		
+		// Inicio
+		
+		String query="select codigo from codigos_Apartamento where cod_cliente ='" + codigoCliente + "' and cod_apartamento='" + codigoApart + "';";
+
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		
+					while(rs.next()) {
+							
+							
+						
+							codigo= rs.getString("codigo");
+
+						}
+					
 					boolean validar;
 					
 					if (codigo == null || codigo == "")		

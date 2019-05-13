@@ -115,6 +115,7 @@ public class ControladorPago implements ActionListener {
 				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 				funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 				funciones.desBotones(miVentana.pago.btnSiguiente);
+				funciones.actBotones(miVentana.pago.btnCodigoDto);
 											
 				
 				break;
@@ -129,14 +130,56 @@ public class ControladorPago implements ActionListener {
 					
 					if(miModelo.misFuncionesCodigos.validarHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
 						funciones.desBotones(miVentana.pago.btnCodigoDto);
-						funciones.desBotones(miVentana.pago.btnCancelar);
+
 					}
 					
 					} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 					}
-				}	
+				}
+				else if (miControlador.miControladorElegir.elegido==2) {
+					try {	
+						
+						
+						double totalConDto = miModelo.misFuncionesCodigos.descuentoCasa(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+						miControlador.miControladorPago.total = totalConDto;
+						
+						miVentana.pago.total.setText(formatoMoneda.format(0));
+						miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+						
+						if(miModelo.misFuncionesCodigos.validarCasa(miModelo.cliente.getCodCliente(),  miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText())==true) {
+							funciones.desBotones(miVentana.pago.btnCodigoDto);
+
+						}
+						
+						} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						}
+				}
+				else if (miControlador.miControladorElegir.elegido==3) {
+					
+					try {	
+						
+						
+						
+						double totalConDto = miModelo.misFuncionesCodigos.descuentoApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+						miControlador.miControladorPago.total = totalConDto;
+						
+						miVentana.pago.total.setText(formatoMoneda.format(0));
+						miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+						
+						if(miModelo.misFuncionesCodigos.validarApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento() ,miVentana.pago.textCodigo.getText())==true) {
+							funciones.desBotones(miVentana.pago.btnCodigoDto);
+
+						}
+						
+						} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						}
+				}
 				
 				break;
 										 

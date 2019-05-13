@@ -154,7 +154,6 @@ public class ControladorCasa implements ActionListener {
 				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
-				 System.out.println("COD CASA:  " +miModelo.reserva.getCasaReservada().getCod_casa());
 				 System.out.println( miModelo.reserva.getCasaReservada().getPrecio());
 				
 				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();

@@ -123,6 +123,7 @@ public class ControladorPago implements ActionListener {
 			case "btnCodigoDto": 
 				if (miControlador.miControladorElegir.elegido==1) {
 					try {	
+					
 					double totalConDto = miModelo.misFuncionesCodigos.descuentoHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
 					miControlador.miControladorPago.total = totalConDto;
 					
@@ -186,6 +187,47 @@ public class ControladorPago implements ActionListener {
 										 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
 				//Calcular cambios despues del pago
+			if (miControlador.miControladorElegir.elegido==1) {
+				try {	
+				
+				
+				if(miModelo.misFuncionesCodigos.validarHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
+					miModelo.misFuncionesCodigos.borrarCodigoHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText());
+				}
+				
+				} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				}
+			}
+			else if (miControlador.miControladorElegir.elegido==2) {
+				try {	
+				
+				
+				if(miModelo.misFuncionesCodigos.validarCasa(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText())==true) {
+					miModelo.misFuncionesCodigos.borrarCodigoCasa(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText());
+				}
+				
+				} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				}
+			}
+			else if (miControlador.miControladorElegir.elegido==3) {
+				try {	
+				
+				
+				if(miModelo.misFuncionesCodigos.validarApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(),miVentana.pago.textCodigo.getText())==true) {
+					miModelo.misFuncionesCodigos.borrarCodigoApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(),miVentana.pago.textCodigo.getText());
+				}
+				
+				} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+				}
+			}
+			
+			
 				if (pagado > total) {
 					arrayCambios = miModelo.misFuncionesDevolucion.cambios(Math.abs(total - pagado));
 				}

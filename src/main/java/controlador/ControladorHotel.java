@@ -146,7 +146,7 @@ public class ControladorHotel implements ActionListener {
 					cadena = new StringBuilder();
 					for(int z=0;z<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size();z++)
 					{
-						 // Lo inicializamos de nuevo aquí para que se resetee cada vez q empieza con una habitacion nueva
+						 // Lo inicializamos de nuevo aquï¿½ para que se resetee cada vez q empieza con una habitacion nueva
 						cadena.append(miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getTipoCama()+"("+miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().get(z).getnPersonas()+"Pers)");		
 						if (z==miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i).getCamas().size()-1)
 							cadena.append(".");
@@ -303,7 +303,7 @@ public class ControladorHotel implements ActionListener {
 						enlace="/imagenes/valencia.jpg";
 						 
 					}
-				 	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARÍS")) {
+				 	if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("PARIS")) {
 						 miVentana.hotel.remove( miVentana.hotel.etiqueta);
 					//	miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 						// miVentana.resumen.remove(miVentana.resumen.etiqueta);

@@ -91,9 +91,7 @@ public class FuncionesCodigosDto {
 						validar = false;
 					}else {
 						if(codigo.equals(codigoDto)) {	
-							validar = true;	
-							String query2 =" DELETE FROM codigos_hotel WHERE codigo='" + codigo + "';";							
-							miConsulta.insertarDatosBD(con, query2);						
+							validar = true;					
 						}else {
 							validar = false;
 						}
@@ -174,8 +172,7 @@ public class FuncionesCodigosDto {
 					}else {
 						if(codigo.equals(codigoDto)) {	
 							validar = true;	
-							String query2 =" DELETE FROM codigos_casa WHERE codigo='" + codigo + "';";							
-							miConsulta.insertarDatosBD(con, query2);
+
 						}else {
 							validar = false;
 						}
@@ -255,8 +252,7 @@ public class FuncionesCodigosDto {
 						if(codigo.equals(codigoDto)) {	
 							validar = true;		
 							
-							String query2 =" DELETE FROM codigos_apartamento WHERE codigo='" + codigo + "';";							
-							miConsulta.insertarDatosBD(con, query2);
+						
 							
 						}else {
 							validar = false;
@@ -266,4 +262,114 @@ public class FuncionesCodigosDto {
 					return validar;
 
 	}
+	
+	public void borrarCodigoHotel (int codigoCliente, int codigoHotel, String codigoDto) throws SQLException{ 
+    	//Declaracion e incializacion de variables	
+		
+		String codigo = "";
+
+		// Inicio
+		
+		String query="select codigo from codigos_Hotel where cod_cliente ='" + codigoCliente + "' and cod_hotel='" + codigoHotel + "';";
+
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		
+					while(rs.next()) {
+				
+							codigo= rs.getString("codigo");
+			
+						}
+
+					
+					if (codigo == null || codigo == "")		
+					{	
+						
+					}else {
+						if(codigo.equals(codigoDto)) {								
+							String query2 =" DELETE FROM codigos_hotel WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);						
+						}else {
+							
+						}
+					}
+					
+				
+
+	}
+	
+	public void borrarCodigoCasa (int codigoCliente, int codigoCasa, String codigoDto) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+				
+		String codigo = "";
+		
+		// Inicio
+		
+		String query="select codigo from codigos_Casa where cod_cliente ='" + codigoCliente + "' and cod_casa='" + codigoCasa + "';";
+
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		
+					while(rs.next()) {				
+						
+							codigo= rs.getString("codigo");
+						}
+	
+					
+					if (codigo == null || codigo == "")		
+					{	
+						
+					}else {
+						if(codigo.equals(codigoDto)) {	
+							String query2 =" DELETE FROM codigos_casa WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);
+
+						}else {
+	
+						}
+					}
+					
+
+
+	}
+	
+	public void borrarCodigoApart (int codigoCliente, int codigoApart, String codigoDto) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+				
+		String codigo = "";
+		
+		// Inicio
+		
+		String query="select codigo from codigos_Apartamento where cod_cliente ='" + codigoCliente + "' and cod_apartamento='" + codigoApart + "';";
+
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		
+					while(rs.next()) {
+							
+							
+						
+							codigo= rs.getString("codigo");
+
+						}
+					
+		
+					
+					if (codigo == null || codigo == "")		
+					{	
+					
+					}else {
+						if(codigo.equals(codigoDto)) {	
+							
+							String query2 =" DELETE FROM codigos_apartamento WHERE codigo='" + codigo + "';";							
+							miConsulta.insertarDatosBD(con, query2);
+							
+						}else {
+						
+						}
+					}
+
+	}
+	
+
+
+
+	
 }

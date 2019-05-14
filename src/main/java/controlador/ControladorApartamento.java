@@ -60,13 +60,15 @@ public class ControladorApartamento implements ActionListener {
 
             @Override
             public void propertyChange(PropertyChangeEvent e) {
+            	 java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
+ 		        if(fechaMinimaSalida != null) {
             	 System.out.println(e.getPropertyName()+ ":Salida " + e.getNewValue());
             	 funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
             	 apartSinOcupar();
             	
-
+ 		        }
             	
-}
+     }
 
 });
 		

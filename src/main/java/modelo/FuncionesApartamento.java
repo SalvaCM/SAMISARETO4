@@ -115,36 +115,5 @@ public class FuncionesApartamento {
 
  		return apartamentos;
 	}
- 	public boolean apartOcupado (int cod, Date fida,Date fvuelta) throws SQLException{ 
-    	//Declaracion e incializacion de variables
-	
-		boolean r = false;
-		Date f1 = null;
-		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reserva_apartamento where cod_apart='"+cod+"';";
-		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-		while(rs.next()) {
-				
-				
-				f1 = rs.getDate("fechaEntrada");
-				f2= rs.getDate("fechaSalida");
-				
-			}
-
-		//System.out.println("FECHA ENTRADA:  "+f1.getTime()+" | "+fida.getTime());
-	
-		
-	
-	 if(f2==null || f1==null) {
-			r=false;
-		}else {
-			if((fvuelta.compareTo(f1)>=0 && fida.compareTo(f2)<=0)) {
-				//JOptionPane.showMessageDialog(miVentana, "Ocupado entre fechas  "+f1+"  y  "+f2+"", "Atencion!", JOptionPane.WARNING_MESSAGE);
-				r=true;
-			}
-		}
-		
-       return r;
- 	}
-
+ 	
 }

@@ -63,19 +63,27 @@ public class ControladorCasa implements ActionListener {
 
             @Override
             public void propertyChange(PropertyChangeEvent e) {
-            	java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
-		        if(fechaMinimaSalida != null ) {
-		        	System.out.println(e.getPropertyName()+ ":Salida CASA " + e.getNewValue());
-	            	funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
-	            	MostrarCasasSinReserv();
-		        	
-		        }
-            
+            	 System.out.println(e.getPropertyName()+ ":Salida CASA " + e.getNewValue());
+            	funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
+            	try {
+            		miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
+            	} catch (SQLException e1) {
+            		// TODO Auto-generated catch block
+            		e1.printStackTrace();
+            	}
+        		System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate()));
+            	for(int i=0;i<miModelo.listaCasas.size();i++) {
+
+            		miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
+            		Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()};
+            		miVentana.casa.tableModel.addRow(casa);
+
+                }
+
             
 }
 
 });
-
 		
 
 		
@@ -124,25 +132,6 @@ public class ControladorCasa implements ActionListener {
 	
 	
 		//METODOS
-	public void MostrarCasasSinReserv() {
-		 System.out.println( "ENTRA");
-
-		 try {
-			miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
-			
-			for(int i=0;i<miModelo.listaCasas.size();i++) {
-				if(miModelo.misFuncionesCasa.casaOcupada(miModelo.listaCasas.get(i).getCod_casa(), miVentana.casa.fechaEntrada.getDate(),miVentana.casa.fechaSalida.getDate())==false){
-					miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
-           		Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()};
-           		miVentana.casa.tableModel.addRow(casa);
-				}
-			}
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} 
-		 
-		}
 	
 	private void validarCampos() {
 		if(miVentana.casa.tablaResultados.getSelectedRow() == -1)

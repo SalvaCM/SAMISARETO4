@@ -3,6 +3,8 @@ package modelo;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JOptionPane;
 
@@ -366,6 +368,48 @@ public class FuncionesCodigosDto {
 						}
 					}
 
+	}
+	public void crearCodigoHotel(ReservaHotel reservaHotel,Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+
+		String query = "INSERT into codigos_hotel (cod_hotel,cod_cliente,codigo,porcentaje) VALUES ('"+reservaHotel.getHotelReservado().getCod_hotel()+ "','" + cliente.getCodCliente() + "', '" + "BONO" + "','"+ 10 +"');";
+		
+		System.out.println(query);
+		if (miConsulta.insertarDatosBD(con, query)) {
+			System.out.println("codigo promocional recibido !");
+		}
+	}
+	public void crearCodigoCasa(ReservaCASAoAPART reservaCasa,Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+
+		String query = "INSERT into codigos_casa (cod_casa,cod_cliente,codigo,porcentaje) VALUES ('"+reservaCasa.getCasaReservada().getCod_casa()+ "','" + cliente.getCodCliente() + "', '" + "BONO" + "','"+ 10 +"');";
+		
+		System.out.println(query);
+		if (miConsulta.insertarDatosBD(con, query)) {
+			System.out.println("codigo promocional recibido !");
+		}
+	}
+	public void crearCodigoApart(ReservaCASAoAPART reservaApart,Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+
+		String query = "INSERT into codigos_hotel (cod_hotel,cod_cliente,codigo,porcentaje) VALUES ('"+reservaApart.getApartReservado().getCod_apartamento()+ "','" + cliente.getCodCliente() + "', '" + "BONO" + "','"+ 10 +"');";
+		
+		System.out.println(query);
+		if (miConsulta.insertarDatosBD(con, query)) {
+			System.out.println("codigo promocional recibido !");
+		}
 	}
 	
 

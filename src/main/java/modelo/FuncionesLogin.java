@@ -93,7 +93,7 @@ public class FuncionesLogin {
 		String query = "UPDATE clientes SET contrasena = '" + passwordNueva +"' WHERE dni='" + dniEncriptado + "';";
 		
 		if (miConsulta.insertarDatosBD(con, query)) {
-			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con �xito", "�Atenci�n!", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(miVentana, "Password Cambiada con exito", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			cliente.setContrasena(passwordNueva);
 		}
 	}
@@ -101,7 +101,7 @@ public class FuncionesLogin {
 	public static String encriptar(String cadena) throws UnsupportedEncodingException 
 	{
 		 	String cadenaEncriptada = Base64.getEncoder().encodeToString(cadena.toString().getBytes());
-		 	System.out.println(cadena + " encriptando = " + cadenaEncriptada);
+		 	
 		 	 
 		 	return cadenaEncriptada;
 	}
@@ -112,8 +112,6 @@ public class FuncionesLogin {
 		  byte[] byteArray = Base64.getDecoder().decode(cadenaEncriptada);
 		 
 		  String cadenaDesencriptada = new String(byteArray);
-		 
-		  System.out.println(cadenaEncriptada + " desencriptando = " + cadenaDesencriptada);
 		    
 		 
 		return cadenaDesencriptada;

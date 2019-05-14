@@ -11,8 +11,7 @@ public class ReservaCASAoAPART {
 	private int noches;
 	private Casa casaReservada = new Casa();
 	private Apartamento apartReservado = new Apartamento();
-	private ArrayList<Casa> casaReservadas=new  ArrayList<Casa>();
-	private ArrayList<Apartamento> apatamentosReservado=new  ArrayList<Apartamento>();
+	
 	public int getCodReserva() {
 		return codReserva;
 	}
@@ -49,17 +48,4 @@ public class ReservaCASAoAPART {
 	public void setApartReservado(Apartamento apartReservado) {
 		this.apartReservado = apartReservado;
 	}
-	public ArrayList<Casa> getCasaReservadas() {
-		return casaReservadas;
-	}
-	public void setCasaReservadas(ArrayList<Casa> casaReservadas) {
-		this.casaReservadas = casaReservadas;
-	}
-	public ArrayList<Apartamento> getApatamentosReservado() {
-		return apatamentosReservado;
-	}
-	public void setApatamentosReservado(ArrayList<Apartamento> apatamentosReservado) {
-		this.apatamentosReservado = apatamentosReservado;
-	}
-
 }

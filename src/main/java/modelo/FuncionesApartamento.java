@@ -44,7 +44,7 @@ public class FuncionesApartamento {
 							tamano = rs.getInt("tamano");
 							precio = rs.getFloat("precio");
 							piso = rs.getInt("piso");
-
+							
  							apartamento.setCod_apartamento(codapartamento);
 							apartamento.setNombre(nombre);
 							apartamento.setUbicacion(ubicacion);

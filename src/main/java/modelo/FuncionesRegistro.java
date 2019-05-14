@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -54,10 +55,10 @@ public class FuncionesRegistro {
 		if (miConsulta.insertarDatosBD(con, query)) {
 			passwordEncriptada = DigestUtils.md5Hex(String.valueOf(contrasena));
 			cliente = new Cliente(DNI, Nombre, Apellido, date2 , passwordEncriptada);
-			System.out.println("contrasena: " +passwordEncriptada);
 		} else {
 			cliente = null;
 		}
+		
 				
 		return cliente;
 		

@@ -249,6 +249,8 @@ public class ControladorPago implements ActionListener {
 						+  " " + "Cliente: "
 						+ miModelo.cliente.getDni()+"\n");
 			    	}
+			    	 miModelo.misFuncionesCodigos.crearCodigoHotel(miModelo.reservaHotel, miModelo.cliente);
+			    	 
 			    }
 			    else if(miControlador.miControladorElegir.elegido==3) {
 			    
@@ -260,8 +262,9 @@ public class ControladorPago implements ActionListener {
 						
 							+  " " + "Cliente: "
 							+ miModelo.cliente.getDni());
-			    		 
+			    	miModelo.misFuncionesCodigos.crearCodigoApart(miModelo.reserva, miModelo.cliente);
 			    }
+			    
 			    else if(miControlador.miControladorElegir.elegido==2) {
 			    	GuardarReservaC();
 			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
@@ -271,9 +274,9 @@ public class ControladorPago implements ActionListener {
 						
 							+  " " + "Cliente: "
 							+ miModelo.cliente.getDni());
-			    	
-			    }		    	
-			resetear();		
+			    	miModelo.misFuncionesCodigos.crearCodigoCasa(miModelo.reserva, miModelo.cliente);
+			    }
+			    resetear();		
 				break;
 			
 				default: 

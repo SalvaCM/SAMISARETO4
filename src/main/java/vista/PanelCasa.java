@@ -130,5 +130,4 @@ public class PanelCasa extends JPanel {
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
 	}
-
 }

@@ -34,7 +34,7 @@ public class FuncionesCasa {
 
  				// Inicio			
 
-				String query="select * from casa;";
+				String query="SELECT `COD_CASA`, `NOMBRE`, `UBICACION`, `TAMANO`, `PRECIO` FROM casa where cod_casa NOT IN (select reserva_casa.cod_casa from reserva_casa);";
 					
 				ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 				
@@ -56,10 +56,53 @@ public class FuncionesCasa {
 							
 						}	
  									
+ 					ArrayList<Casa> casasOrden=leerCasaOrden();
+ 					casasOrden.addAll(casas);
+ 					return casasOrden;
 
+ 		}
+	public ArrayList<Casa> leerCasaOrden() throws SQLException{ 
+    	//Declaracion e incializacion de variables	    
+
+				String nombre="";
+				String ubicacion=""; 
+				int codcasa;
+				int tamano;
+				float precio;
+
+ 				ArrayList<Casa> casas =new ArrayList<Casa>();
+
+
+ 				// Inicio			
+
+				String query="SELECT c.COD_CASA, c.NOMBRE,c.UBICACION, c.TAMANO, c.PRECIO FROM casa c, reserva_casa r where c.cod_casa=r.cod_casa group by r.cod_casa order by count(r.cod_casa);";
+					
+				ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+				
+ 					while(rs.next()) {
+							casa=new Casa();
+								
+							codcasa = rs.getInt("cod_casa");
+							nombre = rs.getString("nombre");
+							ubicacion = rs.getString("ubicacion");
+							tamano = rs.getInt("tamano");
+							precio = rs.getFloat("precio");
+								
+ 							casa.setCod_casa(codcasa);
+							casa.setNombre(nombre);
+							casa.setUbicacion(ubicacion);
+							casa.setTamano(tamano); 
+							casa.setPrecio(precio);
+							casas.add(casa);
+							
+						}	
+ 									
+ 					
  					return casas;
 
  		}
+
+
 
 
  	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
@@ -147,8 +190,8 @@ public class FuncionesCasa {
 		}
 		
        return r;
-	}*/
-	public ArrayList rangoFechas(int cod, Date fida,Date fvuelta) throws SQLException{ 
+	}
+	/*public ArrayList rangoFechas(int cod, Date fida,Date fvuelta) throws SQLException{ 
     	//Declaracion e incializacion de variables
 	
 		ArrayList<String> fechas = new ArrayList<String>();
@@ -173,7 +216,7 @@ public class FuncionesCasa {
 		
        return fechas;
 	}
-	
+	*/
 
 	
 	}

@@ -64,21 +64,26 @@ public class ControladorCasa implements ActionListener {
             @Override
             public void propertyChange(PropertyChangeEvent e) {
             	 System.out.println(e.getPropertyName()+ ":Salida CASA " + e.getNewValue());
-            	funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
-            	try {
-            		miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
-            	} catch (SQLException e1) {
-            		// TODO Auto-generated catch block
-            		e1.printStackTrace();
-            	}
-        		System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate()));
-            	for(int i=0;i<miModelo.listaCasas.size();i++) {
+            	
+            	
 
-            		miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
-            		Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()};
-            		miVentana.casa.tableModel.addRow(casa);
 
-                }
+            		try {
+						miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
+						System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate()));
+		            	for(int i=0;i<miModelo.listaCasas.size();i++) {
+
+		            		miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
+		            		Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()};
+		            		miVentana.casa.tableModel.addRow(casa);
+
+		                }
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+            	
+        		
 
             
 }

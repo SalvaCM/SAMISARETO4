@@ -117,20 +117,32 @@ public class ControladorPago implements ActionListener {
 				funciones.desBotones(miVentana.pago.btnSiguiente);
 				funciones.actBotones(miVentana.pago.btnCodigoDto);
 				miVentana.pago.textCodigo.setText(null);
+				miVentana.pago.descuento.setVisible(false);
+				miVentana.pago.lblNewJgoodiesTitle.setVisible(false);
 											
 				
 				break;
 			case "btnCodigoDto": 
 				if (miControlador.miControladorElegir.elegido==1) {
 					try {	
-					
-					double totalConDto = miModelo.misFuncionesCodigos.descuentoHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+
+					double totalConDto = miModelo.misFuncionesCodigos.descuentoHotelTotal(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
 					miControlador.miControladorPago.total = totalConDto;
 					
 					miVentana.pago.total.setText(formatoMoneda.format(0));
 					miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 					
+					
 					if(miModelo.misFuncionesCodigos.validarHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(),miVentana.pago.textCodigo.getText())==true) {
+						
+						double dto = miModelo.misFuncionesCodigos.descuentoHotel(miModelo.cliente.getCodCliente(), miModelo.hotel.getCod_hotel(), miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+						
+						miVentana.pago.descuento.setText(formatoMoneda.format(0));
+						miVentana.pago.descuento.setText(formatoMoneda.format(dto));
+						System.out.println(miVentana.pago.descuento.getText());
+						miVentana.pago.descuento.setVisible(true);
+						miVentana.pago.lblNewJgoodiesTitle.setVisible(true);
+	
 						funciones.desBotones(miVentana.pago.btnCodigoDto);
 
 					}
@@ -144,13 +156,24 @@ public class ControladorPago implements ActionListener {
 					try {	
 						
 						
-						double totalConDto = miModelo.misFuncionesCodigos.descuentoCasa(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+						double totalConDto = miModelo.misFuncionesCodigos.descuentoCasaTotal(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
 						miControlador.miControladorPago.total = totalConDto;
 						
 						miVentana.pago.total.setText(formatoMoneda.format(0));
 						miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 						
 						if(miModelo.misFuncionesCodigos.validarCasa(miModelo.cliente.getCodCliente(),  miModelo.reserva.getCasaReservada().getCod_casa(),miVentana.pago.textCodigo.getText())==true) {
+							
+							double dto = miModelo.misFuncionesCodigos.descuentoCasa(miModelo.cliente.getCodCliente(), miModelo.reserva.getCasaReservada().getCod_casa(), miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+							
+							miVentana.pago.descuento.setText(formatoMoneda.format(0));
+							miVentana.pago.descuento.setText(formatoMoneda.format(dto));
+							
+							System.out.println(miVentana.pago.descuento.getText());
+							
+							miVentana.pago.descuento.setVisible(true);
+							miVentana.pago.lblNewJgoodiesTitle.setVisible(true);
+							
 							funciones.desBotones(miVentana.pago.btnCodigoDto);
 
 						}
@@ -160,20 +183,31 @@ public class ControladorPago implements ActionListener {
 						e1.printStackTrace();
 						}
 				}
-				else if (miControlador.miControladorElegir.elegido==3) {
+				else if (miControlador.miControladorElegir.elegido==3) { 
 					
 					try {	
 						
 						
 						
-						double totalConDto = miModelo.misFuncionesCodigos.descuentoApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+						double totalConDto = miModelo.misFuncionesCodigos.descuentoApartTotal(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(),miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
 						miControlador.miControladorPago.total = totalConDto;
 						
 						miVentana.pago.total.setText(formatoMoneda.format(0));
 						miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 						
 						if(miModelo.misFuncionesCodigos.validarApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento() ,miVentana.pago.textCodigo.getText())==true) {
+							
+							double dto = miModelo.misFuncionesCodigos.descuentoApart(miModelo.cliente.getCodCliente(), miModelo.reserva.getApartReservado().getCod_apartamento(), miVentana.pago.textCodigo.getText(), miControlador.miControladorPago.total);
+							
+							miVentana.pago.descuento.setText(formatoMoneda.format(0));
+							miVentana.pago.descuento.setText(formatoMoneda.format(dto));
+							
+							System.out.println(miVentana.pago.descuento.getText());
+							
+							miVentana.pago.descuento.setVisible(true);
+							miVentana.pago.lblNewJgoodiesTitle.setVisible(true);
 							funciones.desBotones(miVentana.pago.btnCodigoDto);
+							
 
 						}
 						
@@ -277,6 +311,8 @@ public class ControladorPago implements ActionListener {
 			    	miModelo.misFuncionesCodigos.crearCodigoCasa(miModelo.reserva, miModelo.cliente);
 			    }
 			    resetear();		
+			    miVentana.pago.descuento.setVisible(false);
+				miVentana.pago.lblNewJgoodiesTitle.setVisible(false);
 				break;
 			
 				default: 

@@ -31,7 +31,51 @@ public class FuncionesApartamento {
 
  		// Inicio
 
- 		String query="select * from apartamento;";
+ 		String query="SELECT `COD_APARTAMENTO`, `NOMBRE`, `UBICACION`, `TAMANO`, `PRECIO`, `PISO` FROM apartamento where cod_apartamento NOT IN (select reserva_apartamento.cod_apart from reserva_apartamento)";
+
+ 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+
+ 		while(rs.next()) {
+							apartamento=new Apartamento();
+
+ 							codapartamento = rs.getInt("cod_apartamento");
+							nombre = rs.getString("nombre");
+							ubicacion = rs.getString("ubicacion");
+							tamano = rs.getInt("tamano");
+							precio = rs.getFloat("precio");
+							piso = rs.getInt("piso");
+							
+ 							apartamento.setCod_apartamento(codapartamento);
+							apartamento.setNombre(nombre);
+							apartamento.setUbicacion(ubicacion);
+							apartamento.setTamano(tamano);
+							apartamento.setPrecio(precio);
+							apartamento.setPiso(piso);
+
+ 							apartamentos.add(apartamento);
+				}
+ 		ArrayList<Apartamento> apartamentosOrden=leerApartamentoOrden();
+ 		apartamentosOrden.addAll(apartamentos);
+ 		
+
+ 		return apartamentosOrden;
+
+ 	}
+ 	public ArrayList<Apartamento> leerApartamentoOrden() throws SQLException{ 
+    	//Declaracion e incializacion de variables
+
+ 		String nombre="";	
+		String ubicacion=""; 
+		int codapartamento;
+		int tamano;
+		float precio;
+		int piso;
+
+ 		ArrayList<Apartamento> apartamentos =new ArrayList<Apartamento>();
+
+ 		// Inicio
+
+ 		String query="SELECT a.COD_APARTAMENTO, a.NOMBRE, a.UBICACION,a. TAMANO, a.PRECIO,a.PISO FROM apartamento a, reserva_apartamento r where a.cod_apartamento=r.cod_apart group by r.cod_apart order by count(r.cod_apart) desc;";
 
  		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 

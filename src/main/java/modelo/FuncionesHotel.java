@@ -34,7 +34,8 @@ public class FuncionesHotel {
 		
 		// Inicio
 		
-		String query="select cod_hotel,nombre, ubicacion, nestrellas from hotel;";
+		
+		String query="select cod_hotel,nombre,ubicacion, nestrellas from hotel   where cod_hotel not in (select reservas_hotel.cod_hotel from reservas_hotel);";
 	
 
 					ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
@@ -52,8 +53,40 @@ public class FuncionesHotel {
 						}
 				
 		
-			
-		return hoteles;
+					ArrayList<Hotel> hotelesOrden=leerHotelesOrden();
+					hotelesOrden.addAll(hoteles);
+		return hotelesOrden;
+
+	}
+	public ArrayList<Hotel> leerHotelesOrden() throws SQLException{ 
+    	//Declaracion e incializacion de variables
+		
+		String nombre="";	String ubicacion="";	int nEstrellas=0; int codhotel;
+		ArrayList<Hotel> hoteles2 =new ArrayList<Hotel>();
+		
+		// Inicio
+		
+		String query="select h.cod_hotel,h.nombre,h.ubicacion, h.nestrellas from hotel h ,reservas_hotel r where h.cod_hotel=r.cod_hotel  group by r.cod_hotel order by count(r.cod_hotel) desc; ";
+		
+	
+
+					ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+					while(rs.next()) {
+							hotel=new Hotel();
+							codhotel = rs.getInt("cod_hotel");
+							nombre = rs.getString("nombre");
+							ubicacion = rs.getString("ubicacion");
+							nEstrellas = rs.getInt("nestrellas");
+							hotel.setCod_hotel(codhotel);
+							hotel.setNombre(nombre);
+							hotel.setUbicacion(ubicacion);
+							hotel.setnEstrellas(nEstrellas);
+							hoteles2.add(hotel);
+						}
+				
+		
+		
+		return hoteles2;
 
 	}
 	/**

@@ -17,7 +17,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class PanelLogin extends JPanel {
 	
-	/**
+	/**	Panel Dedicado a la Funcion de Login de Usuario
 	 * 
 	 */
 	private static final long serialVersionUID = 9L;
@@ -28,6 +28,7 @@ public class PanelLogin extends JPanel {
 	public JTextField TextDni; 
 	public JPasswordField passwordField;
 	public JLabel etiqueta ;
+	public JPanel paneldeRetorno;
 	
 
 	/**
@@ -36,7 +37,7 @@ public class PanelLogin extends JPanel {
 	public PanelLogin() {
 		
 		setMaximumSize(new Dimension(1080, 650));
-		setBorder(new LineBorder(new Color(0, 0, 0), 4));
+
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
@@ -103,5 +104,15 @@ public class PanelLogin extends JPanel {
 		add(etiqueta);
 		
 
+	}
+
+
+	public JPanel getPaneldeRetorno() {
+		return paneldeRetorno;
+	}
+
+
+	public void setPaneldeRetorno(JPanel paneldeRetorno) {
+		this.paneldeRetorno = paneldeRetorno;
 	}
 }

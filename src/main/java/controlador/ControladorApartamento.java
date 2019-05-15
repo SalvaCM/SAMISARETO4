@@ -13,8 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import modelo.Apartamento;
-import modelo.Casa;
-import modelo.HabitacionHotel;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -117,9 +115,15 @@ public class ControladorApartamento implements ActionListener {
 			case "btnBuscarApartamentos": filtrarPorUbicacion(miModelo.listaApartamento);
 			
 			break;	
+			case "btnLogin" : 
+				miVentana.login.paneldeRetorno=miVentana.apartamento;
+				funciones.cambiarDePanel(miVentana.apartamento, miVentana.login);	
+			break;
 			
-			case "btnPerfil": funciones.cambiarDePanel(miVentana.hotel, miVentana.usuario);
-			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
+			case "btnPerfil" : 
+				funciones.cambiarDePanel(miVentana.apartamento, miVentana.usuario);
+				miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+						+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
 			break;
 		}
 		

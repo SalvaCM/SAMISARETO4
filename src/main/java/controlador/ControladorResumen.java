@@ -37,6 +37,9 @@ public class ControladorResumen implements ActionListener {
 			
 				miVentana.resumen.btnSiguiente.addActionListener(this);
 				miVentana.resumen.btnCancelar.addActionListener(this);
+				miVentana.resumen.btnLogin.addActionListener(this);
+				miVentana.resumen.btnPerfil.addActionListener(this);
+				
 			}
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
@@ -98,6 +101,16 @@ public class ControladorResumen implements ActionListener {
 											miControlador.miControladorPago.actBotones(miVentana.pago.arrayBtn);
 											
 											break;
+					case "btnLogin" : 
+						miVentana.login.paneldeRetorno=miVentana.resumen;
+						funciones.cambiarDePanel(miVentana.resumen, miVentana.login);	
+					break;
+					
+					case "btnPerfil" : 
+						funciones.cambiarDePanel(miVentana.resumen, miVentana.usuario);	
+						miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+								+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+					break;
 				}
 			}	
 	

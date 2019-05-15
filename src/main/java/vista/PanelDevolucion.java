@@ -27,6 +27,8 @@ public class PanelDevolucion extends JPanel {
 	public DefaultListModel<String> cambios = new DefaultListModel<String>();	
 	public JList<String> devolucion = new JList<String>();
 	public JLabel etiqueta;
+	public JButton btnPerfil = new JButton("Perfil");
+	public JButton btnLogin = new JButton("Login");
 		
 		
 
@@ -61,7 +63,16 @@ public class PanelDevolucion extends JPanel {
 		devolucion.setBounds(217, 155, 657, 360);
 		add(devolucion);
 		
-		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/fondo.jpg"));
+		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setEnabled(false);
+		btnPerfil.setName("btnPerfil");
+		btnPerfil.setBounds(10, 35, 89, 23);
+		
+		add(btnPerfil);
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 11, 89, 23);
+		
+		add(btnLogin);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

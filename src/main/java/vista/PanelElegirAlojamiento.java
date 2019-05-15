@@ -6,6 +6,7 @@ import javax.swing.border.LineBorder;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -21,7 +22,9 @@ public class PanelElegirAlojamiento extends JPanel {
 	public JButton hotel;
 	public JButton apart;
 	public JButton casa;
-	
+	public JButton btnPerfil;
+	public JButton btnLogin;
+	public JLabel etiqueta ;
 	/**
 	 * Create the panel.
 	 */
@@ -29,8 +32,6 @@ public class PanelElegirAlojamiento extends JPanel {
 		
 
 		setMaximumSize(new Dimension(800, 600));
-		setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL ALOJAMIENTO");
@@ -58,6 +59,22 @@ public class PanelElegirAlojamiento extends JPanel {
 		 casa.setName("casa");
 		casa.setBounds(728, 200, 218, 213);
 		add(casa);
+		
+		btnPerfil = new JButton("Perfil");
+		btnPerfil.setEnabled(false);
+		btnPerfil.setName("btnPerfil");
+		btnPerfil.setBounds(10, 42, 89, 23);
+		add(btnPerfil);
+		
+		btnLogin = new JButton("Login");
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 18, 89, 23);
+		add(btnLogin);
+		
+		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(0, -58, 1075, 773);
+		add(etiqueta);
 
 	}
 }

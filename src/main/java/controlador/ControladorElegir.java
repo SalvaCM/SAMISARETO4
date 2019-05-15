@@ -1,20 +1,11 @@
 package controlador;
 
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
-
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -39,14 +30,12 @@ public class ControladorElegir implements ActionListener{
 		miVentana.alojamiento.hotel.addActionListener(this);
 		miVentana.alojamiento.apart.addActionListener(this);
 		miVentana.alojamiento.casa.addActionListener(this);
-	
+		miVentana.alojamiento.btnLogin.addActionListener(this);
+		miVentana.alojamiento.btnPerfil.addActionListener(this);
 		
 		
 	}
-	
-	
-	
-	
+
 	/**
 	 * Metodo para las llamadas a los botones de la ventana resumen
 	 */
@@ -105,7 +94,16 @@ public class ControladorElegir implements ActionListener{
 				e1.printStackTrace();
 			} 
 		break;	
+		case "btnLogin" : 
+			miVentana.login.paneldeRetorno=miVentana.alojamiento;
+			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);	
+		break;
 		
+		case "btnPerfil" : 
+			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.usuario);	
+			miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+					+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+		break;
 		
 		
 		

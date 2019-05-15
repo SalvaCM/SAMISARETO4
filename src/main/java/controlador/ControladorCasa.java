@@ -1,6 +1,5 @@
 package controlador;
 
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -14,10 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import modelo.Casa;
-import modelo.HabitacionHotel;
-import modelo.Hotel;
 import modelo.Modelo;
-import modelo.ReservaCASAoAPART;
 import vista.Ventana;
 
 public class ControladorCasa implements ActionListener {
@@ -50,7 +46,6 @@ public class ControladorCasa implements ActionListener {
 		miVentana.casa.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
 		    public void propertyChange(PropertyChangeEvent e) {
-		        System.out.println(e.getPropertyName()+ ":ENTRADA CASA " + e.getNewValue());
 		        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
 		        if(fechaMinimaSalida != null ) {
 		        	fechaMinimaSalida.setTime(fechaMinimaSalida.getTime()+86400000);
@@ -63,14 +58,8 @@ public class ControladorCasa implements ActionListener {
 
             @Override
             public void propertyChange(PropertyChangeEvent e) {
-            	 System.out.println(e.getPropertyName()+ ":Salida CASA " + e.getNewValue());
-            	
-            	
-
-
             		try {
 						miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
-						System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate()));
 		            	for(int i=0;i<miModelo.listaCasas.size();i++) {
 
 		            		miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
@@ -82,26 +71,15 @@ public class ControladorCasa implements ActionListener {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-            	
-        		
-
             
 }
 
 });
 		
-
-		
-		
-	}
-	
-	
+	}	
 	/**
 	 * Metodo para las llamadas a los botones de la ventana resumen
 	 */
-	
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -125,11 +103,14 @@ public class ControladorCasa implements ActionListener {
 			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas);
 			
 			break;	
+			case "btnLogin" : 
+				miVentana.login.paneldeRetorno=miVentana.casa;
+				funciones.cambiarDePanel(miVentana.casa, miVentana.login);	
+			break;
 			
-			
-			
-			case "btnPerfil": funciones.cambiarDePanel(miVentana.hotel, miVentana.usuario);
-			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
+			case "btnPerfil" : 
+				funciones.cambiarDePanel(miVentana.casa, miVentana.usuario);	
+				miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
 			break;
 		}
 		

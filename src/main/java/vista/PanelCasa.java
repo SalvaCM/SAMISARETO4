@@ -40,6 +40,7 @@ public class PanelCasa extends JPanel {
 	public JDateChooser fechaEntrada;
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
+	public JButton btnLogin = new JButton("Login");
 	/**
 	 * Create the panel.
 	 */
@@ -122,10 +123,15 @@ public class PanelCasa extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
-		
+		btnPerfil.setEnabled(false);
 		btnPerfil.setName("btnPerfil");
-		btnPerfil.setBounds(10, 25, 89, 23);
+		btnPerfil.setBounds(10, 38, 89, 23);
+		
 		add(btnPerfil);
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 14, 89, 23);
+		
+		add(btnLogin);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

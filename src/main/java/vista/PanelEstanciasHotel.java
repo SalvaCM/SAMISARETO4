@@ -36,7 +36,8 @@ public class PanelEstanciasHotel extends JPanel {
 	private final JScrollPane scrollPane = new JScrollPane();
 	public JButton btnReservar;
 	public JLabel etiqueta ;
-	
+	public JButton btnPerfil = new JButton("Perfil");
+	public JButton btnLogin = new JButton("Login");
 	/**
 	 * Create the panel.
 	 */
@@ -107,6 +108,17 @@ public class PanelEstanciasHotel extends JPanel {
 		add(btnReservar);
 
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
+		
+		
+		btnPerfil.setEnabled(false);
+		btnPerfil.setName("btnPerfil");
+		btnPerfil.setBounds(10, 35, 89, 23);
+		add(btnPerfil);
+		
+		
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 11, 89, 23);
+		add(btnLogin);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

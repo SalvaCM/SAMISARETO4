@@ -30,9 +30,11 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
 		
-		this.miVentana.estanciasHotel.btnCancelar.addActionListener(this);
-		this.miVentana.estanciasHotel.btnSiguiente.addActionListener(this);	
-		this.miVentana.estanciasHotel.btnReservar.addActionListener(this);
+		miVentana.estanciasHotel.btnCancelar.addActionListener(this);
+		miVentana.estanciasHotel.btnSiguiente.addActionListener(this);	
+		miVentana.estanciasHotel.btnReservar.addActionListener(this);
+		miVentana.estanciasHotel.btnLogin.addActionListener(this);
+		miVentana.estanciasHotel.btnPerfil.addActionListener(this);
 		
 	}
 	
@@ -93,6 +95,17 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				miVentana.resumen.txtDetalles.append(miModelo.reservaHotel.toString());
 			}
 			controladorReservas=0;
+		break;
+		case "btnLogin" : 
+			miVentana.login.paneldeRetorno=miVentana.estanciasHotel;
+			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.login);	
+		break;
+		
+		case "btnPerfil" : 
+			funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.usuario);	
+			miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+					+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+		break;
 			
 		}
 		

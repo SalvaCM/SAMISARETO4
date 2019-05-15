@@ -16,11 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 
 public class PanelApartamento extends JPanel {
@@ -40,6 +37,7 @@ public class PanelApartamento extends JPanel {
 	public JDateChooser fechaEntrada;
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
+	public JButton btnLogin = new JButton("Login");
 
 	/**
 	 * Create the panel.
@@ -71,14 +69,6 @@ public class PanelApartamento extends JPanel {
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
-		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL APARTAMENTO");
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);
 		
@@ -123,10 +113,15 @@ public class PanelApartamento extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
-		btnPerfil.setBounds(10, 25, 89, 23);
+		btnPerfil.setBounds(10, 48, 89, 23);
 		add(btnPerfil);
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 23, 89, 23);
+		
+		add(btnLogin);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

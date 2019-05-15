@@ -13,10 +13,8 @@ import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JList;
 import javax.swing.JTextArea;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 
 public class PanelResumen extends JPanel {
 
@@ -30,6 +28,8 @@ private static final long serialVersionUID = 3L;
 	public JLabel etiqueta ;
 	public JTextArea resumenReserva;
 	public JTextArea txtDetalles;
+	public JButton btnPerfil;
+	public JButton btnLogin;
 		
 
 	/**
@@ -45,7 +45,7 @@ private static final long serialVersionUID = 3L;
 		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
 		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(10, 28, 1064, 48);
+		lblNewJgoodiesLabel.setBounds(169, 23, 775, 48);
 		add(lblNewJgoodiesLabel);
 		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		
@@ -88,6 +88,17 @@ private static final long serialVersionUID = 3L;
 		txtDetalles.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtDetalles.setEditable(false);
 		txtDetalles.setBorder(new TitledBorder(null, "Detalles Reserva", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		
+		btnPerfil = new JButton("Perfil");
+		btnPerfil.setEnabled(false);
+		btnPerfil.setName("btnPerfil");
+		btnPerfil.setBounds(10, 41, 89, 23);
+		add(btnPerfil);
+		
+		btnLogin = new JButton("Login");
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 17, 89, 23);
+		add(btnLogin);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

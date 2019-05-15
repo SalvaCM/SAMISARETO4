@@ -8,7 +8,6 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 
 import modelo.Modelo;
-import testmodelo.miModelo;
 import vista.Ventana;
 
 public class ControladorDevolucion implements ActionListener {
@@ -30,6 +29,8 @@ public class ControladorDevolucion implements ActionListener {
 				this.miModelo = miModelo;
 				
 				miVentana.devolucion.btnSiguiente.addActionListener(this);
+				miVentana.devolucion.btnLogin.addActionListener(this);
+				miVentana.devolucion.btnPerfil.addActionListener(this);
 			}
 			
 			/**
@@ -54,6 +55,18 @@ public class ControladorDevolucion implements ActionListener {
 				PasarDeDespedidaASaludo();
 				resetear();
 				break;
+				
+				case "btnLogin" : 
+					miVentana.login.paneldeRetorno=miVentana.alojamiento;
+					funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);	
+				break;
+				
+				case "btnPerfil" : 
+					funciones.cambiarDePanel(miVentana.alojamiento, miVentana.usuario);
+					miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+							+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+				break;
+				
 		
 				}
 			}	

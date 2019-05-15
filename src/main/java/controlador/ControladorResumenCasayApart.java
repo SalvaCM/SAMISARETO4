@@ -37,6 +37,9 @@ public class ControladorResumenCasayApart implements ActionListener {
 			
 				miVentana.resumenCyA.btnSiguiente.addActionListener(this);
 				miVentana.resumenCyA.btnCancelar.addActionListener(this);
+				miVentana.resumenCyA.btnLogin.addActionListener(this);
+				miVentana.resumenCyA.btnPerfil.addActionListener(this);
+				
 			}
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
@@ -85,6 +88,16 @@ public class ControladorResumenCasayApart implements ActionListener {
 											miVentana.casa.fechaSalida.setEnabled(false);
 											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											break;
+				case "btnLogin" : 
+					miVentana.login.paneldeRetorno=miVentana.resumenCyA;
+					funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.login);	
+				break;
+				
+				case "btnPerfil" : 
+					funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.usuario);	
+					miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
+							+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+				break;
 				}
 			}	
 	

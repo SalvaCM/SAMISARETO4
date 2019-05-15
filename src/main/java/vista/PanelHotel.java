@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
 import java.util.Hashtable;
-
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,7 +14,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
-
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.JTable;
@@ -44,6 +42,7 @@ public class PanelHotel extends JPanel {
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
 	public JSlider nCamas;
+	public JButton btnLogin = new JButton("Login");
 
 	
 	/**
@@ -148,10 +147,16 @@ public class PanelHotel extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
-		btnPerfil.setBounds(10, 25, 89, 23);
+		btnPerfil.setBounds(10, 41, 89, 23);
 		add(btnPerfil);
+		
+		
+		btnLogin.setName("btnLogin");
+		btnLogin.setBounds(10, 17, 89, 23);
+		add(btnLogin);
 		
 		JLabel lblFechas = new JLabel("Fechas :\r\n\r\n");
 		lblFechas.setHorizontalAlignment(SwingConstants.TRAILING);

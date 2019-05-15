@@ -2,14 +2,10 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-import conexion.ConexionBD;
-import conexion.ConsultaBD;
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Ventana;
@@ -50,6 +46,9 @@ public class ControladorLogin  implements ActionListener{
 		miVentana.login.TextDni.setText(""); 
 		miVentana.login.passwordField.setText("");
 	}
+	public void LoggingOut() {
+		miModelo.logged=false;
+	}
 
 	
 	
@@ -73,7 +72,7 @@ public class ControladorLogin  implements ActionListener{
 					miModelo.logged = true;					
 				
 					if(miControlador.miControladorElegir.elegido==1) {
-						funciones.cambiarDePanel(miVentana.login, miVentana.resumen);
+						funciones.cambiarDePanel(miVentana.login, miVentana.login.paneldeRetorno);
 					}					
 					else if(miControlador.miControladorElegir.elegido==2 || miControlador.miControladorElegir.elegido==3) {
 						funciones.cambiarDePanel(miVentana.login, miVentana.resumenCyA);

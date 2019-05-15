@@ -28,6 +28,9 @@ public class PanelPago extends JPanel {
 	public JLabel restante = new JLabel();
 	public JLabel pagado = new JLabel();
 	public JLabel total = new JLabel();
+	
+	public JLabel descuento = new JLabel();
+	public JLabel lblNewJgoodiesTitle = DefaultComponentFactory.getInstance().createTitle("DESCUENTO:");
 
 	public JButton btn500;
 	public JButton btn200;
@@ -60,19 +63,34 @@ public class PanelPago extends JPanel {
 		setBackground(new Color(176, 224, 230));
 		setLayout(null);
 		
+		descuento.setVisible(false);
+		
+		lblNewJgoodiesTitle.setVisible(false);
+		lblNewJgoodiesTitle.setForeground(Color.DARK_GRAY);
+		lblNewJgoodiesTitle.setHorizontalTextPosition(SwingConstants.LEADING);
+		lblNewJgoodiesTitle.setFont(new Font("Dialog", Font.PLAIN, 25));
+		lblNewJgoodiesTitle.setBounds(658, 278, 237, 30);
+		add(lblNewJgoodiesTitle);
+		descuento.setToolTipText("");
+		descuento.setHorizontalAlignment(SwingConstants.RIGHT);
+		descuento.setForeground(Color.RED);
+		descuento.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		descuento.setBounds(888, 273, 135, 35);
+		add(descuento);
+		
 		btnCodigoDto.setName("btnCodigoDto");
-		btnCodigoDto.setBounds(609, 567, 89, 23);
+		btnCodigoDto.setBounds(609, 572, 89, 23);
 		add(btnCodigoDto);
 		
 		textCodigo = new JTextField();
-		textCodigo.setBounds(493, 570, 106, 25);
+		textCodigo.setBounds(493, 572, 106, 23);
 		textCodigo.setColumns(10);
 		add(textCodigo);
 	
 		
 		JLabel lblCodigoPromocinal = DefaultComponentFactory.getInstance().createTitle("Codigo promocinal: ");
 		lblCodigoPromocinal.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblCodigoPromocinal.setBounds(297, 569, 194, 21);
+		lblCodigoPromocinal.setBounds(297, 569, 194, 26);
 		add(lblCodigoPromocinal);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("PAGO");
@@ -104,7 +122,7 @@ public class PanelPago extends JPanel {
 		lblNewJgoodiesLabel_2.setForeground(Color.DARK_GRAY);
 		lblNewJgoodiesLabel_2.setHorizontalTextPosition(SwingConstants.LEADING);
 		lblNewJgoodiesLabel_2.setFont(new Font("Aharoni", Font.PLAIN, 35));
-		lblNewJgoodiesLabel_2.setBounds(658, 321, 178, 30);
+		lblNewJgoodiesLabel_2.setBounds(658, 345, 178, 30);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("RESTANTE:");
@@ -125,7 +143,7 @@ public class PanelPago extends JPanel {
 		
 		pagado.setHorizontalAlignment(SwingConstants.RIGHT);
 		pagado.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		pagado.setBounds(889, 321, 135, 35);
+		pagado.setBounds(888, 345, 135, 35);
 		add(pagado);
 		total.setForeground(Color.RED);
 		

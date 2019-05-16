@@ -14,10 +14,6 @@ public class ControladorLogin  implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
-	private Controlador miControlador;
-
-
-	
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	
 	FuncionesControlador funciones = new FuncionesControlador();
@@ -32,8 +28,6 @@ public class ControladorLogin  implements ActionListener{
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
-		this.miControlador = miControlador;
-	
 		miVentana.login.btnCancelar.addActionListener(this);
 		miVentana.login.btnRegistrarse.addActionListener(this);
 		miVentana.login.btnLogin.addActionListener(this);
@@ -69,19 +63,13 @@ public class ControladorLogin  implements ActionListener{
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
 					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
-					miModelo.logged = true;					
-				
-					if(miControlador.miControladorElegir.elegido==1) {
-						funciones.cambiarDePanel(miVentana.login, miVentana.login.paneldeRetorno);
-					}					
-					else if(miControlador.miControladorElegir.elegido==2 || miControlador.miControladorElegir.elegido==3) {
-						funciones.cambiarDePanel(miVentana.login, miVentana.resumenCyA);
-					} 
+					miModelo.logged = true;
+					activarPerfil();
+					
+					funciones.cambiarDePanel(miVentana.login, miVentana.login.paneldeRetorno);
 				}
-
-				
 				else {
-					JOptionPane.showMessageDialog(miVentana, "�Contrase�a incorrecta!", "�Atenci�n!", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(miVentana, "Password Incorrecto", "Atencion!", JOptionPane.WARNING_MESSAGE);
 				}
 				
 			
@@ -99,6 +87,29 @@ public class ControladorLogin  implements ActionListener{
 		break;
 
 		}
+	}
+
+	public void activarPerfil() {
+		String logout="Logout";
+		miVentana.alojamiento.btnLogin.setText(logout);
+		miVentana.apartamento.btnLogin.setText(logout);
+		miVentana.casa.btnLogin.setText(logout);
+		miVentana.devolucion.btnLogin.setText(logout);
+		miVentana.estanciasHotel.btnLogin.setText(logout);
+		miVentana.resumen.btnLogin.setText(logout);
+		miVentana.resumenCyA.btnLogin.setText(logout);
+		miVentana.hotel.btnLogin.setText(logout);
+
+		
+		miVentana.alojamiento.btnPerfil.setEnabled(true);
+		miVentana.apartamento.btnPerfil.setEnabled(true);
+		miVentana.casa.btnPerfil.setEnabled(true);
+		miVentana.devolucion.btnPerfil.setEnabled(true);
+		miVentana.estanciasHotel.btnPerfil.setEnabled(true);
+		miVentana.resumen.btnPerfil.setEnabled(true);
+		miVentana.resumenCyA.btnPerfil.setEnabled(true);
+		miVentana.hotel.btnPerfil.setEnabled(true);
+		
 	}	
 	
 		

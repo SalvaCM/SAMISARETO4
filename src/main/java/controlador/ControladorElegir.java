@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Modelo;
 import vista.Ventana;
@@ -15,7 +16,6 @@ public class ControladorElegir implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
-	public int elegido = 1;
 	
 	/**
 	 * Constructor de la clase
@@ -32,8 +32,6 @@ public class ControladorElegir implements ActionListener{
 		miVentana.alojamiento.casa.addActionListener(this);
 		miVentana.alojamiento.btnLogin.addActionListener(this);
 		miVentana.alojamiento.btnPerfil.addActionListener(this);
-		
-		
 	}
 
 	/**
@@ -46,10 +44,8 @@ public class ControladorElegir implements ActionListener{
 		switch (((JButton) e.getSource()).getName()) {
 		
 
-		case "hotel":
-			
+		case "hotel":	
 			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
-		elegido=1;
 					
 			try {
 				
@@ -66,7 +62,7 @@ public class ControladorElegir implements ActionListener{
 	
 		break;
 		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
-		elegido=2;
+
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
 			miVentana.casa.comboBox.removeAllItems();
@@ -78,10 +74,9 @@ public class ControladorElegir implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} 
-		break;	
+		break;			
 		
 		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); MostrarApartamentos(); 
-		elegido=3;
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesApartamento.mostrarUbicaciones();
 			miVentana.apartamento.comboBox.removeAllItems();
@@ -95,8 +90,23 @@ public class ControladorElegir implements ActionListener{
 			} 
 		break;	
 		case "btnLogin" : 
-			miVentana.login.paneldeRetorno=miVentana.alojamiento;
-			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);	
+			if (miVentana.alojamiento.btnLogin.getText().equals("Login"))
+			{
+				miVentana.login.paneldeRetorno=miVentana.alojamiento;
+				funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);
+			}
+			else
+			{
+				desactivarPerfil();
+				miVentana.login.paneldeRetorno=null;
+				funciones.cambiarDePanel(miVentana.alojamiento, miVentana.saludo);
+				JOptionPane.showMessageDialog(miVentana, "Desconectando Usuario", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				miModelo.logged=false;
+				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+				funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.hotel.tableModel);
+				funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.hotel.tableModel);
+			}
 		break;
 		
 		case "btnPerfil" : 
@@ -104,9 +114,6 @@ public class ControladorElegir implements ActionListener{
 			miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
 					+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
 		break;
-		
-		
-		
 	}
 	
 	
@@ -158,6 +165,29 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 		}
+	public void desactivarPerfil() {
+		String logout="Login";
+		miVentana.alojamiento.btnLogin.setText(logout);
+		miVentana.apartamento.btnLogin.setText(logout);
+		miVentana.casa.btnLogin.setText(logout);
+		miVentana.devolucion.btnLogin.setText(logout);
+		miVentana.estanciasHotel.btnLogin.setText(logout);
+		miVentana.resumen.btnLogin.setText(logout);
+		miVentana.resumenCyA.btnLogin.setText(logout);
+		miVentana.hotel.btnLogin.setText(logout);
+
+		
+		miVentana.alojamiento.btnPerfil.setEnabled(false);
+		miVentana.apartamento.btnPerfil.setEnabled(false);
+		miVentana.casa.btnPerfil.setEnabled(false);
+		miVentana.devolucion.btnPerfil.setEnabled(false);
+		miVentana.estanciasHotel.btnPerfil.setEnabled(false);
+		miVentana.resumen.btnPerfil.setEnabled(false);
+		miVentana.resumenCyA.btnPerfil.setEnabled(false);
+		miVentana.hotel.btnPerfil.setEnabled(false);
+		
+	}	
+
 
 
 

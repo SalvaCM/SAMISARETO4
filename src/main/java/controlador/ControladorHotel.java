@@ -11,6 +11,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -44,6 +47,32 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.btnCancelar.addActionListener(this);
 				miVentana.hotel.btnLogin.addActionListener(this);
 				miVentana.hotel.btnPerfil.addActionListener(this);
+				miVentana.hotel.nEstrellas.addChangeListener(new ChangeListener() {
+					public void stateChanged(ChangeEvent a) {
+						funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+						if(miVentana.hotel.nEstrellas.getValue()==0) {
+									try {
+										miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
+										funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+										for(int i=0;i<miModelo.listaHoteles.size();i++) {
+											Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+											miVentana.hotel.tableModel.addRow(hotel);
+											}
+										} catch (SQLException e1) {
+											// TODO Auto-generated catch block
+											e1.printStackTrace();
+										} 
+								}
+								else {
+									filtrarPorEstrellas();
+									}
+								
+					
+							
+							
+					}
+					
+				});
 				
 				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 					@Override
@@ -187,7 +216,20 @@ public class ControladorHotel implements ActionListener {
 					}
 				}
 			}
-
+			public void filtrarPorEstrellas() {
+				int nEstrellas=miVentana.hotel.nEstrellas.getValue();
+				try {
+					
+					miModelo.listaHoteles=miModelo.misFuncionesHotel.filtrarPorEstrellas(nEstrellas);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				for(int i=0;i<miModelo.listaHoteles.size();i++) {
+					Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+					miVentana.hotel.tableModel.addRow(hotel);
+					}
+				}
 			private int sumasNpersonas(int indice) {
 				int totalPersonas=0;
 				for (int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(indice).getCamas().size();i++)

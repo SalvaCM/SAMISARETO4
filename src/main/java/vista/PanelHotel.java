@@ -24,6 +24,8 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 import java.awt.Cursor;
 import javax.swing.JSlider;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class PanelHotel extends JPanel {
 
@@ -42,6 +44,7 @@ public class PanelHotel extends JPanel {
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
 	public JSlider nCamas;
+	public JSlider nEstrellas;
 	public JButton btnLogin = new JButton("Login");
 
 	
@@ -101,6 +104,27 @@ public class PanelHotel extends JPanel {
 		// Set the label to be drawn
 		nCamas.setLabelTable(position); 
 		add(nCamas);
+		nEstrellas = new JSlider();
+		
+		nEstrellas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		nEstrellas.setValue(0);
+		nEstrellas.setMaximum(5);
+		nEstrellas.setBounds(96, 99, 169, 45);
+		nEstrellas.setMinorTickSpacing(1);
+		nEstrellas.setPaintTicks(true);
+		nEstrellas.setPaintLabels(true); 
+		nEstrellas.setPaintLabels(true); 
+		Hashtable<Integer, JLabel> position2 = new Hashtable<Integer, JLabel>();
+		position2.put(0, new JLabel("0"));
+		position2.put(1, new JLabel("1"));
+		position2.put(2, new JLabel("2"));
+		position2.put(3, new JLabel("3"));
+		position2.put(4, new JLabel("4"));
+		position2.put(5, new JLabel("5"));
+		
+		// Set the label to be drawn
+		nEstrellas.setLabelTable(position2); 
+		add(nEstrellas);
 		
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);

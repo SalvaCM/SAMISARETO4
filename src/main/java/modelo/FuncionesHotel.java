@@ -115,6 +115,37 @@ public class FuncionesHotel {
 		}
 		return hoteles;
 	}
+	public ArrayList<Hotel> filtrarPorEstrellas(int estrellas) throws SQLException{ 
+    	//Declaracion e incializacion de variables
+		
+		String nombre="";	String ubicacion="";	int nEstrellas=0; int codhotel;
+		ArrayList<Hotel> hoteles2 =new ArrayList<Hotel>();
+		
+		// Inicio
+		
+		String query="select cod_hotel,nombre,ubicacion, nestrellas from hotel  where nestrellas='"+estrellas+"'; ";
+		
+	
+
+					ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+					while(rs.next()) {
+							hotel=new Hotel();
+							codhotel = rs.getInt("cod_hotel");
+							nombre = rs.getString("nombre");
+							ubicacion = rs.getString("ubicacion");
+							nEstrellas = rs.getInt("nestrellas");
+							hotel.setCod_hotel(codhotel);
+							hotel.setNombre(nombre);
+							hotel.setUbicacion(ubicacion);
+							hotel.setnEstrellas(nEstrellas);
+							hoteles2.add(hotel);
+						}
+				
+		
+		
+		return hoteles2;
+
+	}
 	/**
 	 * Metodo para buscar los las habitaciones de un hotel determinado, devuelve un array con todos las habitaciones
 	 */

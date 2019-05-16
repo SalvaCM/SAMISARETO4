@@ -144,6 +144,7 @@ public class ControladorHotel implements ActionListener {
 				miVentana.resumen.mostrarResumen.clear();
 				miVentana.resumen.resumenReserva.setText(null);
 				miVentana.hotel.comboBox.removeAllItems();
+				miVentana.hotel.nEstrellas.setValue(0);
 			}
 			
 			private void validarCampos() {

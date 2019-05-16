@@ -26,6 +26,8 @@ import java.awt.Cursor;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import javax.swing.border.TitledBorder;
+import javax.swing.UIManager;
 
 public class PanelHotel extends JPanel {
 
@@ -84,16 +86,6 @@ public class PanelHotel extends JPanel {
 		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		add(lblNewJgoodiesLabel);
-		
-		nCamas = new JSlider();
-		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		nCamas.setValue(0);
-		nCamas.setMaximum(5);
-		nCamas.setBounds(193, 192, 169, 45);
-		nCamas.setMinorTickSpacing(1);
-		nCamas.setPaintTicks(true);
-		nCamas.setPaintLabels(true); 
-		nCamas.setPaintLabels(true); 
 		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 		position.put(0, new JLabel("0"));
 		position.put(1, new JLabel("1"));
@@ -101,19 +93,27 @@ public class PanelHotel extends JPanel {
 		position.put(3, new JLabel("3"));
 		position.put(4, new JLabel("4"));
 		position.put(5, new JLabel("5"));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Camas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBounds(193, 169, 181, 68);
+		add(panel_1);
+		panel_1.setLayout(null);
+		
+		nCamas = new JSlider();
+		nCamas.setBounds(6, 16, 169, 45);
+		panel_1.add(nCamas);
+		nCamas.setForeground(Color.WHITE);
+		nCamas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		nCamas.setValue(0);
+		nCamas.setMaximum(5);
+		nCamas.setMinorTickSpacing(1);
+		nCamas.setPaintTicks(true);
+		nCamas.setPaintLabels(true); 
+		nCamas.setPaintLabels(true); 
 		// Set the label to be drawn
 		nCamas.setLabelTable(position); 
-		add(nCamas);
-		nEstrellas = new JSlider();
-		
-		nEstrellas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-		nEstrellas.setValue(0);
-		nEstrellas.setMaximum(5);
-		nEstrellas.setBounds(96, 99, 169, 45);
-		nEstrellas.setMinorTickSpacing(1);
-		nEstrellas.setPaintTicks(true);
-		nEstrellas.setPaintLabels(true); 
-		nEstrellas.setPaintLabels(true); 
 		Hashtable<Integer, JLabel> position2 = new Hashtable<Integer, JLabel>();
 		position2.put(0, new JLabel("0"));
 		position2.put(1, new JLabel("1"));
@@ -122,9 +122,26 @@ public class PanelHotel extends JPanel {
 		position2.put(4, new JLabel("4"));
 		position2.put(5, new JLabel("5"));
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estrellas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel.setBounds(388, 169, 181, 68);
+		add(panel);
+		panel.setLayout(null);
+		nEstrellas = new JSlider();
+		nEstrellas.setBounds(6, 16, 169, 45);
+		panel.add(nEstrellas);
+		
+		nEstrellas.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		nEstrellas.setValue(0);
+		nEstrellas.setMaximum(5);
+		nEstrellas.setMinorTickSpacing(1);
+		nEstrellas.setPaintTicks(true);
+		nEstrellas.setPaintLabels(true); 
+		nEstrellas.setPaintLabels(true); 
+		
 		// Set the label to be drawn
 		nEstrellas.setLabelTable(position2); 
-		add(nEstrellas);
 		
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);
@@ -140,7 +157,7 @@ public class PanelHotel extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		btnBuscar.setBounds(426, 155, 98, 26);
+		btnBuscar.setBounds(422, 131, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
@@ -163,7 +180,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(190, 155, 209, 26);
+		comboBox.setBounds(193, 131, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
@@ -187,14 +204,9 @@ public class PanelHotel extends JPanel {
 		lblFechas.setBounds(617, 155, 104, 38);
 		add(lblFechas);
 		
-		JLabel lblNewLabel = new JLabel("Numero Camas :");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblNewLabel.setBounds(61, 192, 122, 45);
-		add(lblNewLabel);
-		
 		JLabel lblUbicacion = new JLabel("Ubicacion :");
 		lblUbicacion.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblUbicacion.setBounds(81, 149, 104, 38);
+		lblUbicacion.setBounds(79, 125, 104, 38);
 		add(lblUbicacion);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);

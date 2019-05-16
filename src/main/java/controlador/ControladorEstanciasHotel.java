@@ -144,6 +144,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		miVentana.hotel.nCamas.setValue(0);
 		miVentana.resumen.mostrarResumen.clear();
 		miVentana.resumen.resumenReserva.setText(null);
+		miVentana.hotel.nEstrellas.setValue(0);
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
 			miVentana.hotel.comboBox.removeAllItems();

@@ -16,7 +16,7 @@ public class ControladorUsuario implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	
-	public ControladorUsuario(Ventana miVentana, Modelo miModelo)
+	public ControladorUsuario(Ventana miVentana, Modelo miModelo, Controlador miControlador)
 	{
 		this.miVentana=miVentana;
 		this.miModelo=miModelo;

@@ -16,13 +16,15 @@ public class ControladorElegir implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
+	public int elegido = 1;
 	
 	/**
 	 * Constructor de la clase
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+	 * @param miControlador 
 	 */
-	public ControladorElegir(Ventana miVentana, Modelo miModelo) {
+	public ControladorElegir(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
@@ -48,7 +50,7 @@ public class ControladorElegir implements ActionListener{
 			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
 					
 			try {
-				
+				elegido=1;
 				ArrayList<String>ubicaciones=miModelo.misFuncionesHotel.mostrarUbicaciones();
 				miVentana.hotel.comboBox.removeAllItems();
 				for(int i=0;i<ubicaciones.size();i++) {
@@ -62,7 +64,7 @@ public class ControladorElegir implements ActionListener{
 	
 		break;
 		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
-
+		elegido=2;
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
 			miVentana.casa.comboBox.removeAllItems();
@@ -76,7 +78,9 @@ public class ControladorElegir implements ActionListener{
 			} 
 		break;			
 		
-		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); MostrarApartamentos(); 
+		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento);
+		elegido=3;
+		MostrarApartamentos(); 
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesApartamento.mostrarUbicaciones();
 			miVentana.apartamento.comboBox.removeAllItems();

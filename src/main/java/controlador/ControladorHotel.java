@@ -36,8 +36,9 @@ public class ControladorHotel implements ActionListener {
 			 * Constructor de la clase
 			 * @param miVentana instancia de la ventna principal
 			 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+			 * @param miControlador 
 			 */
-			public ControladorHotel(Ventana miVentana, Modelo miModelo) {
+			public ControladorHotel(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 				
 				this.miVentana = miVentana;
 				this.miModelo = miModelo;

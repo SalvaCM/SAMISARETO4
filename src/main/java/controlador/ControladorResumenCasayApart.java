@@ -89,8 +89,7 @@ public class ControladorResumenCasayApart implements ActionListener {
 											funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
 											break;
 				case "btnLogin" : 
-					miVentana.login.paneldeRetorno=miVentana.resumenCyA;
-					funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.login);	
+					miControlador.miControladorLogin.tratarLogin(miVentana.resumenCyA.btnLogin,miVentana.resumenCyA);
 				break;
 				
 				case "btnPerfil" : 

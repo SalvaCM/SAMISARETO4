@@ -61,6 +61,27 @@ public class FuncionesCasa {
  					return casasOrden;
 
  		}
+	public ArrayList<Habitacion> leerHabitaciones(int codCasa) throws SQLException{
+		String tipo="";
+		int codHabitacion;
+		int tamano;
+		ArrayList<Habitacion> habitaciones =new ArrayList<Habitacion>();
+		
+		String query="select h.cod_habitacion,h.tipo,h.tamano from habitacion h,habitacion_casa hc where hc.cod_casa='"+codCasa+"' and hc.cod_habitacion=h.cod_habitacion;";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		
+		while(rs.next()) {
+			codHabitacion = rs.getInt("cod_habitacion");
+			tipo = rs.getString("tipo");
+			tamano=rs.getInt("tamano");
+			Habitacion habitacion =new Habitacion();
+			habitacion.setCodHabitacion(codHabitacion);
+			habitacion.setTipo(tipo);
+			habitacion.setTamano(tamano);
+			habitaciones.add(habitacion);
+		}
+		return habitaciones;
+	}
 	public ArrayList<Casa> leerCasaOrden() throws SQLException{ 
     	//Declaracion e incializacion de variables	    
 

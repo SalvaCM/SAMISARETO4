@@ -1,6 +1,7 @@
 package modelo;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Apartamento extends Alojamiento{
@@ -11,19 +12,19 @@ public class Apartamento extends Alojamiento{
 	private int cod_apartamento;
 	private float precio;
 	private int tamano;
+	private ArrayList<Habitacion> habitaciones= new ArrayList<Habitacion>();
 		
-	public Apartamento(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion, float tarifa, int piso, int cod_apartamento, float precio, int tamano) {
-		super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion, tarifa);
-		this.piso = piso;
-		this.cod_apartamento = cod_apartamento;
-		this.precio = precio;
-		this.tamano = tamano;
+	public ArrayList<Habitacion> getHabitaciones() {
+		return habitaciones;
 	}
-	
+
+	public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+
 	public Apartamento() {
 		
 	}
-	
 	
 	public int getPiso() {
 		return piso;

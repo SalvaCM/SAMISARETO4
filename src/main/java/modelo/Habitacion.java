@@ -35,13 +35,11 @@ public class Habitacion {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Habitacion [codHabitacion=");
-		builder.append(codHabitacion);
-		builder.append(", tamano=");
-		builder.append(tamano);
-		builder.append(", tipo=");
+		builder.append("Tipo : ");
 		builder.append(tipo);
-		builder.append("]");
+		builder.append(" Tamano : ");
+		builder.append(tamano);
+		builder.append("\n");
 		return builder.toString();
 	}
 	

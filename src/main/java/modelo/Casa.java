@@ -1,6 +1,7 @@
 package modelo;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Locale;
 
 public class Casa extends Alojamiento {
@@ -10,6 +11,7 @@ public class Casa extends Alojamiento {
 	 	private int cod_casa;
 		private int tamano;
 		private float precio=0;
+		private ArrayList<Habitacion> habitaciones= new ArrayList<Habitacion>();
 
 	 	public Casa(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion, float tarifa, int cod_casa, int tamano, float precio) {
 			super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion, tarifa);
@@ -75,6 +77,18 @@ public class Casa extends Alojamiento {
 			builder.append("Precio :");
 			builder.append(formatoMoneda.format(precio));
 			return builder.toString();
+		}
+
+
+
+		public ArrayList<Habitacion> getHabitaciones() {
+			return habitaciones;
+		}
+
+
+
+		public void setHabitaciones(ArrayList<Habitacion> habitaciones) {
+			this.habitaciones = habitaciones;
 		}
 		
 

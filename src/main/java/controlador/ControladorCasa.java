@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 import modelo.Casa;
+import modelo.FuncionesCasa;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -99,6 +100,7 @@ public class ControladorCasa implements ActionListener {
 			
 			case "btnSiguienteCasa":
 				validarCampos();
+				
 			break;	
 
 			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas);
@@ -143,16 +145,22 @@ public class ControladorCasa implements ActionListener {
 				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
-				 System.out.println( miModelo.reserva.getCasaReservada().getPrecio());
-				
-				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();
-				 System.out.println("Total: "+ miControlador.miControladorPago.total);
+				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();	
 				 
-				
-				 
-				miVentana.pago.total.setText(formatoMoneda.format(0));
-				miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
-				 
+				 miVentana.pago.total.setText(formatoMoneda.format(0));
+				 miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
+				try {
+					miVentana.resumenCyA.resumenReserva.append("\nHabitaciones :\n" ); 
+					miModelo.casa.setHabitaciones(miModelo.misFuncionesCasa.leerHabitaciones(miModelo.reserva.getCasaReservada().getCod_casa()));
+					 System.out.println(miModelo.casa.getHabitaciones().get(0).getTipo());
+					for (int i = 0; i < miModelo.casa.getHabitaciones().size(); i++) {
+						miVentana.resumenCyA.resumenReserva.append( miModelo.casa.getHabitaciones().get(i).toString());
+					}
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				 
 			}
 				//funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);

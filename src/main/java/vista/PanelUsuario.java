@@ -37,6 +37,11 @@ public class PanelUsuario extends JPanel {
 	public JLabel lblErrContra;
 	public JTextArea txtDatosPersonales;
 	public JButton btnCambiarContrasena = new JButton("Cambiar Contrasena");
+	public JTextArea txtReservasPasadas = new JTextArea();
+	public JTextArea txtreservasFuturas = new JTextArea();
+
+	public JPanel paneldeRetorno;
+	
 
 	/**
 	 * Método: PaneCambioFinal
@@ -128,19 +133,19 @@ public class PanelUsuario extends JPanel {
 		btnCambiarContrasena.setBounds(410, 109, 153, 28);
 		add(btnCambiarContrasena);
 		
-		JTextArea txtReservasPasadas = new JTextArea();
+		
 		txtReservasPasadas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtReservasPasadas.setEditable(false);
 		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Pasadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
 		txtReservasPasadas.setBounds(47, 319, 319, 187);
 		add(txtReservasPasadas);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		textArea.setEditable(false);
-		textArea.setBorder(new TitledBorder(null, "Reservas Futuras", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
-		textArea.setBounds(373, 319, 319, 187);
-		add(textArea);
+		
+		txtreservasFuturas.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtreservasFuturas.setEditable(false);
+		txtreservasFuturas.setBorder(new TitledBorder(null, "Reservas Futuras", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
+		txtreservasFuturas.setBounds(373, 319, 319, 187);
+		add(txtreservasFuturas);
 		
 		
 		

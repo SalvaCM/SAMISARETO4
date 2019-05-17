@@ -100,9 +100,11 @@ public class ControladorElegir implements ActionListener{
 		break;
 		
 		case "btnPerfil" : 
-			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.usuario);	
-			miVentana.usuario.txtDatosPersonales.append("Nombre : " + miModelo.cliente.getNombre() + " "
-					+ miModelo.cliente.getApellido() + "\nFecha Nac. :" + miModelo.cliente.getFechaNacimiento());
+			miControlador.miControladorUsuario.TratarPerfil(miVentana.alojamiento);
+			miVentana.usuario.txtDatosPersonales.setText("");
+			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
+			miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
+			miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
 		break;
 	}
 	

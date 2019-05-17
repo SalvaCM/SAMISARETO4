@@ -109,8 +109,11 @@ public class ControladorCasa implements ActionListener {
 			break;
 			
 			case "btnPerfil" : 
-				funciones.cambiarDePanel(miVentana.casa, miVentana.usuario);	
+				miControlador.miControladorUsuario.TratarPerfil(miVentana.casa);
+				miVentana.usuario.txtDatosPersonales.setText("");
 				miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
+				miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
+				miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
 			break;
 		}
 		

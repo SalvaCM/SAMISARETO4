@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
 
 import javax.swing.JButton;
+import javax.swing.JPanel;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import vista.Ventana;
 import modelo.Modelo;
@@ -54,8 +56,7 @@ public class ControladorUsuario implements ActionListener{
 				break;
 			
 			case "btnVolver":
-				funciones.cambiarDePanel(miVentana.usuario, miVentana.hotel);
-				
+				funciones.cambiarDePanel(miVentana.usuario, miVentana.usuario.paneldeRetorno);
 				break;
 	}
 	
@@ -105,6 +106,10 @@ public class ControladorUsuario implements ActionListener{
 		// OPCIONAL HACER UN METODO PARA RECUPERAR POR SEPARADO LOS DATOS DE LA RESERVA DE HOTEL Y HABITACIONES
 		// ASI SE ESCRIBIRIAN EN EL PANEL USUARIO EN RESERVAS PASADAS Y FUTURAS
 	}
+	public void TratarPerfil(JPanel panelActual) {
+			miVentana.usuario.paneldeRetorno=panelActual;
+			funciones.cambiarDePanel(panelActual, miVentana.usuario);
+		}
 
 
 }

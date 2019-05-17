@@ -45,15 +45,15 @@ public class Controlador {
 			
 			this.miControladorPago = new ControladorPago(miVentana, miModelo,this);
 			this.miControladorResumen = new ControladorResumen(miVentana, miModelo,this);
-			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo);
-			this.miControladorHotel = new ControladorHotel(miVentana, miModelo);
+			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo,this);
+			this.miControladorHotel = new ControladorHotel(miVentana, miModelo,this);
 			this.miControladorSaludo = new ControladorSaludo(miVentana, miModelo);
-			this.miControladorEstanciasHotel = new ControladorEstanciasHotel(miVentana, miModelo);
+			this.miControladorEstanciasHotel = new ControladorEstanciasHotel(miVentana, miModelo,this);
 			this.miControladorLogin = new ControladorLogin(miVentana, miModelo,this);
 			this.miControladorRegistro = new ControladorRegistro(miVentana, miModelo);
-			this.miControladorUsuario = new ControladorUsuario(miVentana, miModelo);
+			this.miControladorUsuario = new ControladorUsuario(miVentana, miModelo,this);
 			this.miFuncionesControlador = new FuncionesControlador();
-			this.miControladorElegir=new ControladorElegir(miVentana, miModelo);
+			this.miControladorElegir=new ControladorElegir(miVentana, miModelo,this);
 			this.miControladorCasa = new ControladorCasa(miVentana, miModelo,this);
 			this.miControladorApartamento = new ControladorApartamento(miVentana, miModelo,this);
 			this.miControladorResumenCasayApart = new ControladorResumenCasayApart(miVentana, miModelo, this);

@@ -1,6 +1,7 @@
 
 package vista;
 
+import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
@@ -28,6 +29,7 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
+import javax.swing.JCheckBox;
 
 public class PanelHotel extends JPanel {
 
@@ -48,6 +50,7 @@ public class PanelHotel extends JPanel {
 	public JSlider nCamas;
 	public JSlider nEstrellas;
 	public JButton btnLogin = new JButton("Login");
+	public CheckboxGroup group;
 
 	
 	/**
@@ -59,12 +62,20 @@ public class PanelHotel extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		Date hoy = new Date();
+		group=new CheckboxGroup();
+		JCheckBox chckbxPiscina = new JCheckBox("piscina",false);
+		chckbxPiscina.setBounds(757, 207, 97, 23);
+		add(chckbxPiscina);
+		
+		JCheckBox chckbxWifi = new JCheckBox("parking");
+		chckbxWifi.setBounds(627, 207, 97, 23);
+		add(chckbxWifi);
 		fechaSalida=new JDateChooser();
 		fechaSalida.setName("vuelta");
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(733, 181, 161, 26);
+		fechaSalida.setBounds(731, 157, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -74,7 +85,7 @@ public class PanelHotel extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(733, 155, 161, 26);
+		fechaEntrada.setBounds(731, 131, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -201,7 +212,7 @@ public class PanelHotel extends JPanel {
 		
 		JLabel lblFechas = new JLabel("Fechas :\r\n\r\n");
 		lblFechas.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFechas.setBounds(617, 155, 104, 38);
+		lblFechas.setBounds(615, 131, 104, 38);
 		add(lblFechas);
 		
 		JLabel lblUbicacion = new JLabel("Ubicacion :");
@@ -211,6 +222,10 @@ public class PanelHotel extends JPanel {
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(903, 207, 89, 23);
+		add(btnNewButton);
 		
 
 		

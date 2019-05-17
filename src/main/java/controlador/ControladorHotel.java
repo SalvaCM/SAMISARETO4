@@ -28,6 +28,7 @@ public class ControladorHotel implements ActionListener {
 						
 			private Ventana miVentana;
 			private Modelo miModelo;
+			private Controlador miControlador;
 	
 			
 			FuncionesControlador funciones = new FuncionesControlador();
@@ -36,11 +37,13 @@ public class ControladorHotel implements ActionListener {
 			 * Constructor de la clase
 			 * @param miVentana instancia de la ventna principal
 			 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+			 * @param miControlador 
 			 */
-			public ControladorHotel(Ventana miVentana, Modelo miModelo) {
+			public ControladorHotel(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 				
 				this.miVentana = miVentana;
 				this.miModelo = miModelo;
+				this.miControlador = miControlador;
 				
 				miVentana.hotel.btnSiguiente.addActionListener(this);
 				miVentana.hotel.btnBuscar.addActionListener(this);
@@ -117,8 +120,7 @@ public class ControladorHotel implements ActionListener {
 					break;	
 					
 					case "btnLogin" : 
-						miVentana.login.paneldeRetorno=miVentana.hotel;
-						funciones.cambiarDePanel(miVentana.hotel, miVentana.login);	
+						miControlador.miControladorLogin.tratarLogin(miVentana.hotel.btnLogin,miVentana.hotel);
 					break;
 					
 					case "btnPerfil" : 

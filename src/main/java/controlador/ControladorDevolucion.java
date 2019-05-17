@@ -8,13 +8,15 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 
 import modelo.Modelo;
+import testcontrolador.controlador;
 import vista.Ventana;
 
 public class ControladorDevolucion implements ActionListener {
 			
 			private Ventana miVentana;
 			private Modelo miModelo;
-		
+			private Controlador miControlador; 
+			
 			FuncionesControlador funciones = new FuncionesControlador();
 
 			
@@ -22,11 +24,13 @@ public class ControladorDevolucion implements ActionListener {
 			 * Constructor de la clase
 			 * @param miVentana instancia de la ventna principal
 			 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+			 * @param miControlador 
 			 */
-			public ControladorDevolucion(Ventana miVentana, Modelo miModelo) {
+			public ControladorDevolucion(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 				
 				this.miVentana = miVentana;
 				this.miModelo = miModelo;
+				this.miControlador = miControlador;
 				
 				miVentana.devolucion.btnSiguiente.addActionListener(this);
 				miVentana.devolucion.btnLogin.addActionListener(this);
@@ -57,8 +61,7 @@ public class ControladorDevolucion implements ActionListener {
 				break;
 				
 				case "btnLogin" : 
-					miVentana.login.paneldeRetorno=miVentana.alojamiento;
-					funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);	
+					miControlador.miControladorLogin.tratarLogin(miVentana.devolucion.btnLogin,miVentana.devolucion);
 				break;
 				
 				case "btnPerfil" : 

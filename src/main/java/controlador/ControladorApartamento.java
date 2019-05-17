@@ -41,6 +41,7 @@ public class ControladorApartamento implements ActionListener {
 		miVentana.apartamento.btnBuscar.addActionListener(this);
 		miVentana.apartamento.btnCancelar.addActionListener(this);
 		miVentana.apartamento.btnPerfil.addActionListener(this); 
+		miVentana.apartamento.btnLogin.addActionListener(this);
 		
 		miVentana.apartamento.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
@@ -116,8 +117,7 @@ public class ControladorApartamento implements ActionListener {
 			
 			break;	
 			case "btnLogin" : 
-				miVentana.login.paneldeRetorno=miVentana.apartamento;
-				funciones.cambiarDePanel(miVentana.apartamento, miVentana.login);	
+				miControlador.miControladorLogin.tratarLogin(miVentana.apartamento.btnLogin,miVentana.apartamento);
 			break;
 			
 			case "btnPerfil" : 

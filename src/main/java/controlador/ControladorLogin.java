@@ -6,6 +6,8 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 import modelo.Cliente;
 import modelo.Modelo;
 import vista.Ventana;
@@ -14,6 +16,7 @@ public class ControladorLogin  implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
+	private Controlador miControlador;
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	
 	FuncionesControlador funciones = new FuncionesControlador();
@@ -28,6 +31,8 @@ public class ControladorLogin  implements ActionListener{
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
+		this.miControlador = miControlador;
+		
 		miVentana.login.btnCancelar.addActionListener(this);
 		miVentana.login.btnRegistrarse.addActionListener(this);
 		miVentana.login.btnLogin.addActionListener(this);
@@ -110,7 +115,50 @@ public class ControladorLogin  implements ActionListener{
 		miVentana.resumenCyA.btnPerfil.setEnabled(true);
 		miVentana.hotel.btnPerfil.setEnabled(true);
 		
+	}
+	public void desactivarPerfil() {
+		
+		String login="Login";
+		miVentana.alojamiento.btnLogin.setText(login);
+		miVentana.apartamento.btnLogin.setText(login);
+		miVentana.casa.btnLogin.setText(login);
+		miVentana.devolucion.btnLogin.setText(login);
+		miVentana.estanciasHotel.btnLogin.setText(login);
+		miVentana.resumen.btnLogin.setText(login);
+		miVentana.resumenCyA.btnLogin.setText(login);
+		miVentana.hotel.btnLogin.setText(login);
+
+		
+		miVentana.alojamiento.btnPerfil.setEnabled(false);
+		miVentana.apartamento.btnPerfil.setEnabled(false);
+		miVentana.casa.btnPerfil.setEnabled(false);
+		miVentana.devolucion.btnPerfil.setEnabled(false);
+		miVentana.estanciasHotel.btnPerfil.setEnabled(false);
+		miVentana.resumen.btnPerfil.setEnabled(false);
+		miVentana.resumenCyA.btnPerfil.setEnabled(false);
+		miVentana.hotel.btnPerfil.setEnabled(false);
+		
 	}	
+
+	public void tratarLogin(JButton botonLogin,JPanel panelActual) {
+		if (botonLogin.getText().equals("Login"))
+		{
+			miVentana.login.paneldeRetorno=panelActual;
+			funciones.cambiarDePanel(panelActual, miVentana.login);
+		}
+		else
+		{
+			desactivarPerfil();
+			miVentana.login.paneldeRetorno=null;
+			funciones.cambiarDePanel(panelActual, miVentana.saludo);
+			JOptionPane.showMessageDialog(miVentana, "Desconectando Usuario", "Atencion!", JOptionPane.WARNING_MESSAGE);
+			miModelo.logged=false;
+			funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+			funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+			funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.hotel.tableModel);
+			funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.hotel.tableModel);
+		}
+	}
 	
 		
 }

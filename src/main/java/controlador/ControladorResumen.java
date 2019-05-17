@@ -102,8 +102,7 @@ public class ControladorResumen implements ActionListener {
 											
 											break;
 					case "btnLogin" : 
-						miVentana.login.paneldeRetorno=miVentana.resumen;
-						funciones.cambiarDePanel(miVentana.resumen, miVentana.login);	
+						miControlador.miControladorLogin.tratarLogin(miVentana.resumen.btnLogin,miVentana.resumen);
 					break;
 					
 					case "btnPerfil" : 

@@ -35,12 +35,13 @@ public class ControladorCasa implements ActionListener {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
-		
 		this.miControlador=miControlador;
+		
 		miVentana.casa.btnSiguiente.addActionListener(this);
 		miVentana.casa.btnBuscar.addActionListener(this);
 		miVentana.casa.btnCancelar.addActionListener(this);
 		miVentana.casa.btnPerfil.addActionListener(this); 
+		miVentana.casa.btnLogin.addActionListener(this);
 	
 		
 		miVentana.casa.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
@@ -97,15 +98,14 @@ public class ControladorCasa implements ActionListener {
 			break;
 			
 			case "btnSiguienteCasa":
-			validarCampos();
+				validarCampos();
 			break;	
 
 			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas);
 			
 			break;	
 			case "btnLogin" : 
-				miVentana.login.paneldeRetorno=miVentana.casa;
-				funciones.cambiarDePanel(miVentana.casa, miVentana.login);	
+				miControlador.miControladorLogin.tratarLogin(miVentana.casa.btnLogin,miVentana.casa);
 			break;
 			
 			case "btnPerfil" : 

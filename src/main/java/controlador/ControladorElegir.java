@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Modelo;
 import vista.Ventana;
@@ -17,16 +16,20 @@ public class ControladorElegir implements ActionListener{
 	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
 	public int elegido = 1;
+	private Controlador miControlador;
+	
 	
 	/**
 	 * Constructor de la clase
 	 * @param miVentana instancia de la ventna principal
 	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+	 * @param miControlador 
 	 */
-	public ControladorElegir(Ventana miVentana, Modelo miModelo) {
+	public ControladorElegir(Ventana miVentana, Modelo miModelo, Controlador miControlador) {
 		
 		this.miVentana = miVentana;
 		this.miModelo = miModelo;
+		this.miControlador = miControlador;
 		
 		miVentana.alojamiento.hotel.addActionListener(this);
 		miVentana.alojamiento.apart.addActionListener(this);
@@ -93,23 +96,7 @@ public class ControladorElegir implements ActionListener{
 			} 
 		break;	
 		case "btnLogin" : 
-			if (miVentana.alojamiento.btnLogin.getText().equals("Login"))
-			{
-				miVentana.login.paneldeRetorno=miVentana.alojamiento;
-				funciones.cambiarDePanel(miVentana.alojamiento, miVentana.login);
-			}
-			else
-			{
-				desactivarPerfil();
-				miVentana.login.paneldeRetorno=null;
-				funciones.cambiarDePanel(miVentana.alojamiento, miVentana.saludo);
-				JOptionPane.showMessageDialog(miVentana, "Desconectando Usuario", "Atencion!", JOptionPane.WARNING_MESSAGE);
-				miModelo.logged=false;
-				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
-				funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.hotel.tableModel);
-				funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.hotel.tableModel);
-			}
+			miControlador.miControladorLogin.tratarLogin(miVentana.alojamiento.btnLogin,miVentana.alojamiento);
 		break;
 		
 		case "btnPerfil" : 
@@ -168,29 +155,7 @@ public class ControladorElegir implements ActionListener{
 			} 
 		
 		}
-	public void desactivarPerfil() {
-		String logout="Login";
-		miVentana.alojamiento.btnLogin.setText(logout);
-		miVentana.apartamento.btnLogin.setText(logout);
-		miVentana.casa.btnLogin.setText(logout);
-		miVentana.devolucion.btnLogin.setText(logout);
-		miVentana.estanciasHotel.btnLogin.setText(logout);
-		miVentana.resumen.btnLogin.setText(logout);
-		miVentana.resumenCyA.btnLogin.setText(logout);
-		miVentana.hotel.btnLogin.setText(logout);
-
-		
-		miVentana.alojamiento.btnPerfil.setEnabled(false);
-		miVentana.apartamento.btnPerfil.setEnabled(false);
-		miVentana.casa.btnPerfil.setEnabled(false);
-		miVentana.devolucion.btnPerfil.setEnabled(false);
-		miVentana.estanciasHotel.btnPerfil.setEnabled(false);
-		miVentana.resumen.btnPerfil.setEnabled(false);
-		miVentana.resumenCyA.btnPerfil.setEnabled(false);
-		miVentana.hotel.btnPerfil.setEnabled(false);
-		
-	}	
-
+	
 
 
 

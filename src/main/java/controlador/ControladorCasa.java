@@ -114,8 +114,9 @@ public class ControladorCasa implements ActionListener {
 				miControlador.miControladorUsuario.TratarPerfil(miVentana.casa);
 				miVentana.usuario.txtDatosPersonales.setText("");
 				miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-				miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-				miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+				miVentana.usuario.txtReservasPasadas.setText("");
+				miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+				
 			break;
 		}
 		
@@ -152,7 +153,6 @@ public class ControladorCasa implements ActionListener {
 				try {
 					miVentana.resumenCyA.resumenReserva.append("\nHabitaciones :\n" ); 
 					miModelo.casa.setHabitaciones(miModelo.misFuncionesCasa.leerHabitaciones(miModelo.reserva.getCasaReservada().getCod_casa()));
-					 System.out.println(miModelo.casa.getHabitaciones().get(0).getTipo());
 					for (int i = 0; i < miModelo.casa.getHabitaciones().size(); i++) {
 						miVentana.resumenCyA.resumenReserva.append( miModelo.casa.getHabitaciones().get(i).toString());
 					}

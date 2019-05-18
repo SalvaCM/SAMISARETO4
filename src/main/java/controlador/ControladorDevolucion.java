@@ -8,7 +8,8 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 
 import modelo.Modelo;
-import testcontrolador.controlador;
+import modelo.ReservaCASAoAPART;
+import modelo.ReservaHotel;
 import vista.Ventana;
 
 public class ControladorDevolucion implements ActionListener {
@@ -37,13 +38,7 @@ public class ControladorDevolucion implements ActionListener {
 				miVentana.devolucion.btnPerfil.addActionListener(this);
 			}
 			
-			/**
-			 * Metodo para resetear los valores de la ventana devolucion	
-			 */ 
-			public void  resetear() {		
-				miVentana.devolucion.cambios.removeAllElements();
 			
-			}
 			
 			/**
 			 * Metodo para las llamadas a los botones de la ventana resumen
@@ -54,10 +49,8 @@ public class ControladorDevolucion implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 						
 				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
-				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
-				PasarDeDespedidaASaludo();
-				resetear();
+					PasarDeDespedidaASaludo();
+					resetear();
 				break;
 				
 				case "btnLogin" : 
@@ -68,8 +61,9 @@ public class ControladorDevolucion implements ActionListener {
 					miControlador.miControladorUsuario.TratarPerfil(miVentana.devolucion);
 					miVentana.usuario.txtDatosPersonales.setText("");
 					miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-					miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-					miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+					miVentana.usuario.txtReservasPasadas.setText("");
+					miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+					
 				break;
 				
 		
@@ -80,7 +74,7 @@ public class ControladorDevolucion implements ActionListener {
 			 * Metodo para pasar del la ventana despedida a la de saludo automaticamente (en milisegundos)
 			 */
 			public void PasarDeDespedidaASaludo() {
-				miModelo.logged = false;
+		
 				Timer timer = new Timer();
 				TimerTask esperar = new TimerTask() {
 					@Override
@@ -91,7 +85,18 @@ public class ControladorDevolucion implements ActionListener {
 				};
 				timer.schedule(esperar, 3500);
 			}
+			/**
+			 * Metodo para resetear los valores de la ventana devolucion y en este caso preparar para una nueva sesion
+			 */ 
+			public void  resetear() {		
+				miVentana.devolucion.cambios.removeAllElements();
+				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+				miModelo.logged = false;
+				miModelo.reserva = new ReservaCASAoAPART();
+				miModelo.reservaHotel = new ReservaHotel();
 			
+			}
 	
 			
 		

@@ -13,7 +13,6 @@ public class ControladorElegir implements ActionListener{
 
 	private Ventana miVentana;
 	private Modelo miModelo;
-	FuncionesControlador funciones = new FuncionesControlador();
 	public DefaultTableModel tabHotel ;
 	public int elegido = 1;
 	private Controlador miControlador;
@@ -49,7 +48,7 @@ public class ControladorElegir implements ActionListener{
 		
 
 		case "hotel":	
-			funciones.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
+			miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
 			elegido=1;	
 			try {
 				
@@ -65,7 +64,7 @@ public class ControladorElegir implements ActionListener{
 				} 
 	
 		break;
-		case "casa":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
+		case "casa":  miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
 		elegido=2;
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
@@ -80,7 +79,7 @@ public class ControladorElegir implements ActionListener{
 			} 
 		break;			
 		
-		case "apart":  funciones.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); 
+		case "apart":  miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); 
 		MostrarApartamentos();
 		elegido=3;
 		try {
@@ -103,8 +102,9 @@ public class ControladorElegir implements ActionListener{
 			miControlador.miControladorUsuario.TratarPerfil(miVentana.alojamiento);
 			miVentana.usuario.txtDatosPersonales.setText("");
 			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-			miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-			miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+			miVentana.usuario.txtReservasPasadas.setText("");
+			miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+			
 		break;
 	}
 	
@@ -114,7 +114,7 @@ public class ControladorElegir implements ActionListener{
 
 		 try {
 			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
-			funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
 			for(int i=0;i<miModelo.listaHoteles.size();i++) {
 				Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
 				miVentana.hotel.tableModel.addRow(hotel);
@@ -130,7 +130,7 @@ public class ControladorElegir implements ActionListener{
 
 	 try {
 		miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
-		funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
+		miControlador.miFuncionesControlador.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
 		for(int i=0;i<miModelo.listaCasas.size();i++) {
 			Object[] casa = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()}; 
 			miVentana.casa.tableModel.addRow(casa);
@@ -146,7 +146,7 @@ public class ControladorElegir implements ActionListener{
 
 		 try {
 			miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
-			funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
 			for(int i=0;i<miModelo.listaApartamento.size();i++) {
 				Object[] apartamento = {miModelo.listaApartamento.get(i).getCod_apartamento(),miModelo.listaApartamento.get(i).getNombre(), miModelo.listaApartamento.get(i).getUbicacion(),miModelo.listaApartamento.get(i).getTamano(),miModelo.listaApartamento.get(i).getPrecio(), miModelo.listaApartamento.get(i).getPiso()}; 
 				miVentana.apartamento.tableModel.addRow(apartamento);

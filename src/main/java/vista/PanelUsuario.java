@@ -136,15 +136,15 @@ public class PanelUsuario extends JPanel {
 		
 		txtReservasPasadas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtReservasPasadas.setEditable(false);
-		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Pasadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
-		txtReservasPasadas.setBounds(47, 319, 319, 187);
+		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Realizadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
+		txtReservasPasadas.setBounds(47, 319, 434, 187);
 		add(txtReservasPasadas);
 		
 		
 		txtreservasFuturas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtreservasFuturas.setEditable(false);
-		txtreservasFuturas.setBorder(new TitledBorder(null, "Reservas Futuras", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
-		txtreservasFuturas.setBounds(373, 319, 319, 187);
+		txtreservasFuturas.setBorder(new TitledBorder(null, "Bonos Disponibles", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
+		txtreservasFuturas.setBounds(482, 319, 262, 187);
 		add(txtreservasFuturas);
 		
 		

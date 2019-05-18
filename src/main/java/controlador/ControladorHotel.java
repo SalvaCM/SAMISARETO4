@@ -116,25 +116,26 @@ public class ControladorHotel implements ActionListener {
 					break;	
 
 					case "btnBuscarHoteles": filtrarPorUbicacion(miModelo.listaHoteles); imagen(); 
-					
+
 					break;	
 					
 					case "btnLogin" : 
 						miControlador.miControladorLogin.tratarLogin(miVentana.hotel.btnLogin,miVentana.hotel);
+						
 					break;
 					
 					case "btnPerfil" : 
 						miControlador.miControladorUsuario.TratarPerfil(miVentana.hotel);
 						miVentana.usuario.txtDatosPersonales.setText("");
 						miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-						miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-						miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+						miVentana.usuario.txtReservasPasadas.setText("");
+						miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+						
 					break;
 				}
 				
 			}
-			
-			
+
 				//METODOS
 			public void resetear() 
 			{

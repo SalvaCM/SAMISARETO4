@@ -107,8 +107,9 @@ public class ControladorEstanciasHotel  implements ActionListener{
 			miControlador.miControladorUsuario.TratarPerfil(miVentana.estanciasHotel);
 			miVentana.usuario.txtDatosPersonales.setText("");
 			miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-			miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-			miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+			miVentana.usuario.txtReservasPasadas.setText("");
+			miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+			
 		break;
 			
 		}

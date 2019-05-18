@@ -52,7 +52,7 @@ public class ControladorResumen implements ActionListener {
 				case "btnSiguienteResumen":	if (miModelo.logged==false)
 											{	
 												JOptionPane.showMessageDialog(miVentana, "�Resgistrese Para Continuar!", "�Atenci�n!", JOptionPane.INFORMATION_MESSAGE);
-												funciones.cambiarDePanel(miVentana.resumen, miVentana.login);
+												miControlador.miControladorLogin.tratarLogin(miVentana.resumen.btnLogin,miVentana.resumen);
 											}
 											else
 											{
@@ -109,8 +109,8 @@ public class ControladorResumen implements ActionListener {
 						miControlador.miControladorUsuario.TratarPerfil(miVentana.resumen);
 						miVentana.usuario.txtDatosPersonales.setText("");
 						miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
-						miVentana.usuario.txtReservasPasadas.append("Aqui sus reservas Pasadas");
-						miVentana.usuario.txtreservasFuturas.append("Aqui sus reservas Futuras");
+						miVentana.usuario.txtReservasPasadas.setText("");
+						miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
 					break;
 				}
 			}	

@@ -19,7 +19,7 @@ public class ControladorLogin  implements ActionListener{
 	private Controlador miControlador;
 	NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(Locale.getDefault());
 	
-	FuncionesControlador funciones = new FuncionesControlador();
+
 	
 	/**
 	 * Constructor de la clase
@@ -45,12 +45,7 @@ public class ControladorLogin  implements ActionListener{
 		miVentana.login.TextDni.setText(""); 
 		miVentana.login.passwordField.setText("");
 	}
-	public void LoggingOut() {
-		miModelo.logged=false;
-	}
 
-	
-	
 	/**
 	 * Metodo para las llamadas a los botones de la ventana resumen
 	 */
@@ -59,7 +54,7 @@ public class ControladorLogin  implements ActionListener{
 		
 		switch (((JButton) e.getSource()).getName()) {
 			    
-		case "btnCancelarLogin": funciones.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();
+		case "btnCancelarLogin": miControlador.miFuncionesControlador.cambiarDePanel(miVentana.login, miVentana.saludo); resetear();
 		break;
 		
 		case "btnLogin": 
@@ -71,7 +66,7 @@ public class ControladorLogin  implements ActionListener{
 					miModelo.logged = true;
 					activarPerfil();
 					
-					funciones.cambiarDePanel(miVentana.login, miVentana.login.paneldeRetorno);
+					miControlador.miFuncionesControlador.cambiarDePanel(miVentana.login, miVentana.login.paneldeRetorno);
 				}
 				else {
 					JOptionPane.showMessageDialog(miVentana, "Password Incorrecto", "Atencion!", JOptionPane.WARNING_MESSAGE);
@@ -88,7 +83,7 @@ public class ControladorLogin  implements ActionListener{
 	
 		break;
 		
-		case "btnRegistrarseLogin": funciones.cambiarDePanel(miVentana.login, miVentana.registro);
+		case "btnRegistrarseLogin": miControlador.miFuncionesControlador.cambiarDePanel(miVentana.login, miVentana.registro);
 		break;
 
 		}
@@ -144,19 +139,19 @@ public class ControladorLogin  implements ActionListener{
 		if (botonLogin.getText().equals("Login"))
 		{
 			miVentana.login.paneldeRetorno=panelActual;
-			funciones.cambiarDePanel(panelActual, miVentana.login);
+			miControlador.miFuncionesControlador.cambiarDePanel(panelActual, miVentana.login);
 		}
 		else
 		{
 			desactivarPerfil();
 			miVentana.login.paneldeRetorno=null;
-			funciones.cambiarDePanel(panelActual, miVentana.saludo);
+			miControlador.miFuncionesControlador.cambiarDePanel(panelActual, miVentana.saludo);
 			JOptionPane.showMessageDialog(miVentana, "Desconectando Usuario", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			miModelo.logged=false;
-			funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
-			funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
-			funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.hotel.tableModel);
-			funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.hotel.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.casa.tablaResultados,miVentana.hotel.tableModel);
+			miControlador.miFuncionesControlador.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.hotel.tableModel);
 		}
 	}
 	

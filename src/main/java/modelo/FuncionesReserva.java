@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
+import testmodelo.miModelo;
 
 
 
@@ -153,6 +154,43 @@ public class FuncionesReserva {
 			System.out.println("Reserva Realizada");
 		}
 	}
+	public String buscarReservasUsuario() {
+		//Declaracion e inicializacion de variables:
+		StringBuilder cadenaReservas = new StringBuilder();
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query =" SELECT R.COD_RESERVA,HH.TIPO,HH.PRECIO,H.NOMBRE,C.COD_CLIENTE,R.FECHAENTRADA,R.FECHASALIDA"+
+				" FROM HABITACION_HOTEL HH,HOTEL H,RESERVAS_HOTEL R,CLIENTES C"+
+				" WHERE R.COD_HABITACION=HH.COD_HABITACION AND R.COD_HOTEL=H.COD_HOTEL AND C.COD_CLIENTE=R.COD_CLIENTE and hh.cod_hotel=h.cod_hotel And r.cod_cliente=2"+
+				" GROUP BY R.COD_RESERVA,R.COD_HABITACION,R.COD_HOTEL"+  
+				" ORDER BY R.FECHAENTRADA ASC;";
+		System.out.println(query);
+		int codReserva=0;String tipo;String precio;String nombre;String fEntrada;String fSalida;
+		
+		
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		try {
+			while(rs.next()) {
+				cadenaReservas.append(rs.getInt("cod_reserva")+" ");
+				cadenaReservas.append(rs.getString("TIPO")+" ");
+				cadenaReservas.append(rs.getFloat("PRECIO")+" ");
+				cadenaReservas.append(rs.getString("NOMBRE")+" ");
+				cadenaReservas.append(rs.getInt("COD_CLIENTE")+" ");
+				cadenaReservas.append(rs.getDate("FECHAENTRADA")+" ");
+				cadenaReservas.append(rs.getDate("FECHASALIDA")+" ");
+				cadenaReservas.append("\n");
+
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String cReservas = cadenaReservas.toString();
+		return cReservas;
+		
+	}
+	
 	
 	
 	 

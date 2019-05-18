@@ -48,7 +48,7 @@ public class Principal {
 		miVentana = new Ventana();
 		miModelo = new Modelo();
 		miControlador = new Controlador(miVentana, miModelo);
-		
+
 		
 		//Iniciar la ventana
 		miVentana.setVisible(true);
@@ -56,4 +56,5 @@ public class Principal {
 		
 	}
 
+	
 }

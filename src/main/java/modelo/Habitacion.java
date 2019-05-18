@@ -35,7 +35,7 @@ public class Habitacion {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Tipo : ");
+		builder.append(" - ");
 		builder.append(tipo);
 		builder.append(" Tamano : ");
 		builder.append(tamano);

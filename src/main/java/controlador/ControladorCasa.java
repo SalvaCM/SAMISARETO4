@@ -156,7 +156,11 @@ public class ControladorCasa implements ActionListener {
 					for (int i = 0; i < miModelo.casa.getHabitaciones().size(); i++) {
 						miVentana.resumenCyA.resumenReserva.append( miModelo.casa.getHabitaciones().get(i).toString());
 					}
-					
+					miVentana.resumenCyA.resumenReserva.append("\nDormitorios :\n" );
+					miModelo.casa.setDormitorios(miModelo.misFuncionesCasa.leerDormitorios(miModelo.reserva.getCasaReservada().getCod_casa()));
+					for (int i = 0; i < miModelo.casa.getDormitorios().size(); i++) {
+						miVentana.resumenCyA.resumenReserva.append( miModelo.casa.getDormitorios().get(i).toString());
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

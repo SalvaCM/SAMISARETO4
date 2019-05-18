@@ -58,7 +58,7 @@ private static final long serialVersionUID = 3L;
 		mostrarResumen=new DefaultListModel<String>();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(644, 109, 239, 334);
+		scrollPane_1.setBounds(574, 109, 309, 334);
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();

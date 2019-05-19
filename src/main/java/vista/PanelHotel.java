@@ -50,7 +50,11 @@ public class PanelHotel extends JPanel {
 	public JSlider nCamas;
 	public JSlider nEstrellas;
 	public JButton btnLogin = new JButton("Login");
-	public CheckboxGroup group;
+	public JCheckBox Pisc;
+	public JCheckBox Gim;
+	public JCheckBox Park;
+	public JCheckBox Spa;
+	public JCheckBox Wi;
 
 	
 	/**
@@ -62,14 +66,8 @@ public class PanelHotel extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		Date hoy = new Date();
-		group=new CheckboxGroup();
-		JCheckBox chckbxPiscina = new JCheckBox("piscina",false);
-		chckbxPiscina.setBounds(757, 207, 97, 23);
-		add(chckbxPiscina);
 		
-		JCheckBox chckbxWifi = new JCheckBox("parking");
-		chckbxWifi.setBounds(627, 207, 97, 23);
-		add(chckbxWifi);
+		
 		fechaSalida=new JDateChooser();
 		fechaSalida.setName("vuelta");
 		fechaSalida.setOpaque(false);
@@ -219,6 +217,31 @@ public class PanelHotel extends JPanel {
 		lblUbicacion.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblUbicacion.setBounds(79, 125, 104, 38);
 		add(lblUbicacion);
+		
+		Pisc = new JCheckBox("Piscina");
+		Pisc.setBounds(79, 264, 97, 23);
+		add(Pisc);
+		
+		
+		Gim = new JCheckBox("Gimnasio");
+		Gim.setBounds(79, 305, 97, 23);
+		add(Gim);
+		
+		 Park = new JCheckBox("Parking");
+		 Park.setBounds(79, 345, 97, 23);
+		 add(Park);
+		
+		 Spa = new JCheckBox("Spa");
+		 Spa.setBounds(79, 384, 97, 23);
+		 add(Spa);
+		
+		 Wi = new JCheckBox("Wifi");
+		 Wi.setBounds(79, 424, 97, 23);
+		 add(Wi);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(63, 248, 120, 242);
+		add(panel_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
@@ -226,8 +249,6 @@ public class PanelHotel extends JPanel {
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.setBounds(903, 207, 89, 23);
 		add(btnNewButton);
-		
-
 		
 	}
 }

@@ -49,6 +49,7 @@ public class ControladorElegir implements ActionListener{
 
 		case "hotel":	
 			miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.hotel);  MostrarHoteles();  
+			miControlador.miControladorHotel.resetearServiciosH();
 			elegido=1;	
 			try {
 				
@@ -65,7 +66,8 @@ public class ControladorElegir implements ActionListener{
 	
 		break;
 		case "casa":  miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.casa); MostrarCasas(); 
-		elegido=2;
+		miControlador.miControladorCasa.resetearServicio();
+		
 		try {
 			ArrayList<String>ubicaciones=miModelo.misFuncionesCasa.mostrarUbicaciones();
 			miVentana.casa.comboBox.removeAllItems();
@@ -80,6 +82,8 @@ public class ControladorElegir implements ActionListener{
 		break;			
 		
 		case "apart":  miControlador.miFuncionesControlador.cambiarDePanel(miVentana.alojamiento, miVentana.apartamento); 
+		
+		miControlador.miControladorApartamento.resetearServicios();
 		MostrarApartamentos();
 		elegido=3;
 		try {

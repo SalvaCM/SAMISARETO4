@@ -18,6 +18,7 @@ public class Modelo {
 	public FuncionesReserva misFuncionesReserva;
 	public FuncionesCasa misFuncionesCasa;
 	public FuncionesApartamento misFuncionesApartamento;
+	public FuncionesServicios misFuncionesServicios;
 	public ArrayList<Hotel> listaHoteles;
 	public ArrayList<Apartamento> listaApartamento;
 	public ArrayList<Casa> listaCasas;
@@ -46,6 +47,7 @@ public class Modelo {
 		this.misFuncionesReserva = new FuncionesReserva();
 		this.misFuncionesCasa = new FuncionesCasa();
 		this.misFuncionesApartamento = new FuncionesApartamento();
+		this.misFuncionesServicios=new FuncionesServicios();
 		this.listaHoteles  = new ArrayList<Hotel>();
 		this.listaApartamento=new ArrayList<Apartamento>();
 		this.listaCasas=new ArrayList<Casa>();

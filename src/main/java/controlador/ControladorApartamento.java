@@ -2,15 +2,20 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
 
 import modelo.Apartamento;
 import modelo.Modelo;
@@ -42,6 +47,12 @@ public class ControladorApartamento implements ActionListener {
 		miVentana.apartamento.btnCancelar.addActionListener(this);
 		miVentana.apartamento.btnPerfil.addActionListener(this); 
 		miVentana.apartamento.btnLogin.addActionListener(this);
+		miVentana.apartamento.BoxGim.addItemListener(new pincharServicios());
+		miVentana.apartamento.BoxPark.addItemListener(new pincharServicios());
+		miVentana.apartamento.BoxPisc.addItemListener(new pincharServicios());
+		miVentana.apartamento.BoxSpa.addItemListener(new pincharServicios());
+		miVentana.apartamento.BoxWi.addItemListener(new pincharServicios());
+		
 		
 		miVentana.apartamento.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 			@Override
@@ -61,13 +72,14 @@ public class ControladorApartamento implements ActionListener {
             public void propertyChange(PropertyChangeEvent e) {
             	 System.out.println(e.getPropertyName()+ ":Salida " + e.getNewValue());
             	funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+            	resetearServicios();
             	try {
             		miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
             	} catch (SQLException e1) {
             		// TODO Auto-generated catch block
             		e1.printStackTrace();
             	}
-        		System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.apartamento.fechaEntrada.getDate(), miVentana.apartamento.fechaSalida.getDate()));
+        		//System.out.println("TASA: "+miModelo.misFuncionesPago.tasa(miVentana.apartamento.fechaEntrada.getDate(), miVentana.apartamento.fechaSalida.getDate()));
             	for(int i=0;i<miModelo.listaApartamento.size();i++) {
 
             		miModelo.listaApartamento.get(i).setPrecio((float) (miModelo.listaApartamento.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.apartamento.fechaEntrada.getDate(), miVentana.apartamento.fechaSalida.getDate())));
@@ -134,6 +146,60 @@ public class ControladorApartamento implements ActionListener {
 	
 		//METODOS
 	
+private class pincharServicios implements ItemListener {
+		
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+				try {
+					
+					ArrayList<Apartamento> apartamentos =new ArrayList<Apartamento>();
+							apartamentos=miModelo.misFuncionesServicios.serviciosApart(miVentana.apartamento.BoxPark.isSelected(), miVentana.apartamento.BoxPisc.isSelected(),miVentana.apartamento.BoxGim.isSelected(),miVentana.apartamento.BoxWi.isSelected(),miVentana.apartamento.BoxSpa.isSelected());
+						funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+						for(int i=0;i<apartamentos.size();i++) {
+							apartamentos.get(i).setPrecio(miModelo.listaApartamento.get(i).getPrecio()+miModelo.misFuncionesServicios.adicionA(miModelo.listaApartamento.get(i).getCod_apartamento(), miVentana.apartamento.BoxPark.isSelected(), miVentana.apartamento.BoxPisc.isSelected(), miVentana.apartamento.BoxGim.isSelected(), miVentana.apartamento.BoxWi.isSelected(), miVentana.apartamento.BoxSpa.isSelected()));
+								Object[] aparta = {apartamentos.get(i).getCod_apartamento(),apartamentos.get(i).getNombre(),apartamentos.get(i).getUbicacion(),apartamentos.get(i).getTamano(),apartamentos.get(i).getPrecio(),apartamentos.get(i).getPiso()}; 
+								miVentana.apartamento.tableModel.addRow(aparta);
+								}
+						if(miVentana.apartamento.BoxGim.isSelected()==false && miVentana.apartamento.BoxPisc.isSelected()==false && miVentana.apartamento.BoxPark.isSelected()==false && miVentana.apartamento.BoxSpa.isSelected()==false && miVentana.apartamento.BoxWi.isSelected()==false) {
+								
+				    			
+							//miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
+				    			funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
+				    			for(int i=0;i<miModelo.listaApartamento.size();i++) {
+									Object[] aparta2 = {miModelo.listaApartamento.get(i).getCod_apartamento(),miModelo.listaApartamento.get(i).getNombre(), miModelo.listaApartamento.get(i).getUbicacion(),miModelo.listaApartamento.get(i).getTamano(),miModelo.listaApartamento.get(i).getPrecio(),miModelo.listaApartamento.get(i).getPiso()}; 
+									miVentana.apartamento.tableModel.addRow(aparta2);
+									}
+				    			
+				    			
+				    		}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		    		
+				
+			 
+		    }
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	private void validarCampos() {
 		if(miVentana.apartamento.tablaResultados.getSelectedRow() == -1)
 		{
@@ -145,15 +211,17 @@ public class ControladorApartamento implements ActionListener {
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}else{
+				DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
 				 funciones.cambiarDePanel(miVentana.apartamento, miVentana.resumenCyA);
 				 miModelo.reserva.setApartReservado(ReservarApartamento());
 				 miModelo.reserva.setFechaEntrada(miVentana.apartamento.fechaEntrada.getDate());
 				 miModelo.reserva.setFechaSalida(miVentana.apartamento.fechaSalida.getDate());
-				
+				 String fechaE = dateF.format( miModelo.reserva.getFechaEntrada());
+					String fechaS=  dateF.format(miModelo.reserva.getFechaSalida());
 				 miModelo.reserva.setNoches((int) ((miVentana.apartamento.fechaSalida.getCalendar().getTimeInMillis()-miVentana.apartamento.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 				 miVentana.resumenCyA.resumenReserva.append(miModelo.reserva.getApartReservado().toString());
-				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
-				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ fechaE+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ fechaS+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
 				 System.out.println( "COD APARTAMENTO:"+miModelo.reserva.getApartReservado().getCod_apartamento());
 				 System.out.println( miModelo.reserva.getApartReservado().getPrecio());
@@ -197,5 +265,12 @@ public class ControladorApartamento implements ActionListener {
 		Apartamento apartamento= miModelo.listaApartamento.get(indice);
 		return apartamento;	
 	}
-
+	public void resetearServicios() {
+		miVentana.apartamento.BoxGim.setSelected(false);
+		miVentana.apartamento.BoxPark.setSelected(false);
+		miVentana.apartamento.BoxPisc.setSelected(false);
+		miVentana.apartamento.BoxSpa.setSelected(false);
+		miVentana.apartamento.BoxWi.setSelected(false);
+		
+ }
 }

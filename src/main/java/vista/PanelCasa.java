@@ -21,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.JCheckBox;
 
 public class PanelCasa extends JPanel {
 
@@ -41,6 +42,11 @@ public class PanelCasa extends JPanel {
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
 	public JButton btnLogin = new JButton("Login");
+	public JCheckBox chckbxNewCheckBoxPisc;
+	public JCheckBox chckbxNewCheckBoxGim;
+	public JCheckBox chckbxNewCheckBoxPark;
+	public JCheckBox chckbxNewCheckBoxSpa;
+	public JCheckBox chckbxNewCheckBoxWi;
 	/**
 	 * Create the panel.
 	 */
@@ -98,7 +104,7 @@ public class PanelCasa extends JPanel {
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(193, 288, 701, 187);
+		scrollPane.setBounds(190, 296, 701, 187);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -123,15 +129,35 @@ public class PanelCasa extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		
+		 chckbxNewCheckBoxPisc = new JCheckBox("Piscina");
+		chckbxNewCheckBoxPisc.setBounds(310, 228, 97, 23);
+		add(chckbxNewCheckBoxPisc);
 		btnPerfil.setEnabled(false);
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 38, 89, 23);
 		
 		add(btnPerfil);
+		
+		 chckbxNewCheckBoxGim = new JCheckBox("Gimnasio");
+		chckbxNewCheckBoxGim.setBounds(155, 228, 97, 23);
+		add(chckbxNewCheckBoxGim);
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 14, 89, 23);
 		
 		add(btnLogin);
+		
+		 chckbxNewCheckBoxPark = new JCheckBox("Parking");
+		chckbxNewCheckBoxPark.setBounds(390, 228, 97, 23);
+		add(chckbxNewCheckBoxPark);
+		
+		 chckbxNewCheckBoxSpa = new JCheckBox("Spa");
+		chckbxNewCheckBoxSpa.setBounds(245, 228, 97, 23);
+		add(chckbxNewCheckBoxSpa);
+		
+		 chckbxNewCheckBoxWi = new JCheckBox("Wifi");
+		chckbxNewCheckBoxWi.setBounds(80, 228, 97, 23);
+		add(chckbxNewCheckBoxWi);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

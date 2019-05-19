@@ -10,6 +10,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +39,11 @@ public class PanelApartamento extends JPanel {
 	public JDateChooser fechaSalida;
 	public JButton btnPerfil = new JButton("Perfil");
 	public JButton btnLogin = new JButton("Login");
+	public JCheckBox BoxPisc;
+	public JCheckBox BoxGim;
+	public JCheckBox BoxPark;
+	public JCheckBox BoxSpa;
+	public JCheckBox BoxWi;
 
 	/**
 	 * Create the panel.
@@ -122,9 +128,31 @@ public class PanelApartamento extends JPanel {
 		btnLogin.setBounds(10, 23, 89, 23);
 		
 		add(btnLogin);
+		
+		BoxPisc = new JCheckBox("Piscina");
+		BoxPisc.setBounds(310, 228, 97, 23);
+		add(BoxPisc);
+		
+		
+		BoxGim = new JCheckBox("Gimnasio");
+		BoxGim.setBounds(155, 228, 97, 23);
+		add(BoxGim);
+		
+		 BoxPark = new JCheckBox("Parking");
+		 BoxPark.setBounds(390, 228, 97, 23);
+		 add(BoxPark);
+		
+		 BoxSpa = new JCheckBox("Spa");
+		 BoxSpa.setBounds(245, 228, 97, 23);
+		 add(BoxSpa);
+		
+		 BoxWi = new JCheckBox("Wifi");
+		 BoxWi.setBounds(80, 228, 97, 23);
+		 add(BoxWi);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
+			
 
 	}
 

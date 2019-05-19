@@ -2,10 +2,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -43,6 +47,12 @@ public class ControladorCasa implements ActionListener {
 		miVentana.casa.btnCancelar.addActionListener(this);
 		miVentana.casa.btnPerfil.addActionListener(this); 
 		miVentana.casa.btnLogin.addActionListener(this);
+		miVentana.casa.chckbxNewCheckBoxGim.addItemListener(new pincharServicio());
+		miVentana.casa.chckbxNewCheckBoxPark.addItemListener(new pincharServicio());
+		miVentana.casa.chckbxNewCheckBoxPisc.addItemListener(new pincharServicio());
+		miVentana.casa.chckbxNewCheckBoxSpa.addItemListener(new pincharServicio());
+		miVentana.casa.chckbxNewCheckBoxWi.addItemListener(new pincharServicio());
+		
 	
 		
 		miVentana.casa.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
@@ -61,7 +71,9 @@ public class ControladorCasa implements ActionListener {
             @Override
             public void propertyChange(PropertyChangeEvent e) {
             		try {
+            			funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
 						miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
+						resetearServicio();
 		            	for(int i=0;i<miModelo.listaCasas.size();i++) {
 
 		            		miModelo.listaCasas.get(i).setPrecio((float) (miModelo.listaCasas.get(i).getPrecio()*miModelo.misFuncionesPago.tasa(miVentana.casa.fechaEntrada.getDate(), miVentana.casa.fechaSalida.getDate())));
@@ -91,11 +103,11 @@ public class ControladorCasa implements ActionListener {
 			case "btnCancelarCasa": funciones.cambiarDePanel(miVentana.casa, miVentana.alojamiento);
 			funciones.limpiarTabla(miVentana.casa.tablaResultados,miVentana.casa.tableModel);
 			miVentana.casa.comboBox.removeAllItems();
-			
-
 			miVentana.casa.fechaEntrada.setCalendar(null);
 			miVentana.casa.fechaSalida.setCalendar(null);
 			miVentana.casa.fechaSalida.setEnabled(false);
+			resetearServicio();
+			
 			break;
 			
 			case "btnSiguienteCasa":
@@ -124,6 +136,49 @@ public class ControladorCasa implements ActionListener {
 	
 	
 		//METODOS
+	private class pincharServicio implements ItemListener {
+		
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			// TODO Auto-generated method stub
+				try {
+					
+					ArrayList<Casa> casas =new ArrayList<Casa>();
+					casas=miModelo.misFuncionesServicios.serviciosCasa(miVentana.casa.chckbxNewCheckBoxPark.isSelected(), miVentana.casa.chckbxNewCheckBoxPisc.isSelected(),miVentana.casa.chckbxNewCheckBoxGim.isSelected(),miVentana.casa.chckbxNewCheckBoxWi.isSelected(),miVentana.casa.chckbxNewCheckBoxSpa.isSelected());
+						 funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+							for(int i=0;i<casas.size();i++) {
+								casas.get(i).setPrecio(miModelo.listaCasas.get(i).getPrecio()+miModelo.misFuncionesServicios.adicionC(miModelo.listaCasas.get(i).getCod_casa(),miVentana.casa.chckbxNewCheckBoxPark.isSelected() ,miVentana.casa.chckbxNewCheckBoxPisc.isSelected(), miVentana.casa.chckbxNewCheckBoxGim.isSelected(), miVentana.casa.chckbxNewCheckBoxWi.isSelected(), miVentana.casa.chckbxNewCheckBoxSpa.isSelected()));
+								Object[] casa = {casas.get(i).getCod_casa(),casas.get(i).getNombre(), casas.get(i).getUbicacion(),casas.get(i).getTamano(),casas.get(i).getPrecio()}; 
+								miVentana.casa.tableModel.addRow(casa);
+								}
+							if(miVentana.casa.chckbxNewCheckBoxGim.isSelected()==false && miVentana.casa.chckbxNewCheckBoxPisc.isSelected()==false && miVentana.casa.chckbxNewCheckBoxPark.isSelected()==false && miVentana.casa.chckbxNewCheckBoxSpa.isSelected()==false && miVentana.casa.chckbxNewCheckBoxWi.isSelected()==false) {
+								
+				    			//miModelo.listaCasas=miModelo.misFuncionesCasa.leerCasa();
+				    			funciones.limpiarTabla(miVentana.casa.tablaResultados, miVentana.casa.tableModel);
+				    			for(int i=0;i<miModelo.listaCasas.size();i++) {
+									Object[] casa2 = {miModelo.listaCasas.get(i).getCod_casa(),miModelo.listaCasas.get(i).getNombre(), miModelo.listaCasas.get(i).getUbicacion(),miModelo.listaCasas.get(i).getTamano(),miModelo.listaCasas.get(i).getPrecio()}; 
+									miVentana.casa.tableModel.addRow(casa2);
+									}
+				    			
+				    			
+				    		}
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		    		
+				
+			 
+		    }
+		
+		
+		
+		
+	}
+	
+	
+	
+	
 	
 	private void validarCampos() {
 		if(miVentana.casa.tablaResultados.getSelectedRow() == -1)
@@ -137,14 +192,18 @@ public class ControladorCasa implements ActionListener {
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}
 			else{
+				DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+				
 				 funciones.cambiarDePanel(miVentana.casa, miVentana.resumenCyA);
 				 miModelo.reserva.setCasaReservada(ReservarCasa());
 				 miModelo.reserva.setFechaEntrada(miVentana.casa.fechaEntrada.getDate());
 				 miModelo.reserva.setFechaSalida(miVentana.casa.fechaSalida.getDate());
+				 String fechaE = dateF.format( miModelo.reserva.getFechaEntrada());
+					String fechaS=  dateF.format(miModelo.reserva.getFechaSalida());
 				 miModelo.reserva.setNoches((int) ((miVentana.casa.fechaSalida.getCalendar().getTimeInMillis()-miVentana.casa.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 				 miVentana.resumenCyA.resumenReserva.append(miModelo.reserva.getCasaReservada().toString());
-				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ miModelo.reserva.getFechaEntrada()+"\n");
-				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ miModelo.reserva.getFechaSalida()+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ fechaE+"\n");
+				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ fechaS+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
 				 miControlador.miControladorPago.total = miModelo.reserva.getCasaReservada().getPrecio()* miModelo.reserva.getNoches();	
 				 
@@ -200,6 +259,12 @@ public class ControladorCasa implements ActionListener {
 		} catch (SQLException e1) {
 			e1.printStackTrace();}
 	}
-	
+	public void resetearServicio() {
+		miVentana.casa.chckbxNewCheckBoxGim.setSelected(false);
+		miVentana.casa.chckbxNewCheckBoxPark.setSelected(false);
+		miVentana.casa.chckbxNewCheckBoxPisc.setSelected(false);
+		miVentana.casa.chckbxNewCheckBoxSpa.setSelected(false);
+		miVentana.casa.chckbxNewCheckBoxWi.setSelected(false);
+	}
 
 }

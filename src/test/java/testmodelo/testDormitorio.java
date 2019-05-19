@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import modelo.Dormitorio;
 
-public class testDormitorio {
+/*public class testDormitorio {
 	private int nCamas=2;
 	private int codHabitacion=01;
 	private int taman=300;
@@ -57,3 +57,4 @@ public class testDormitorio {
 	}
 
 }
+*/

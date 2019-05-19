@@ -3,6 +3,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.sql.SQLException;
@@ -14,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import modelo.Apartamento;
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -50,6 +53,11 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.btnCancelar.addActionListener(this);
 				miVentana.hotel.btnLogin.addActionListener(this);
 				miVentana.hotel.btnPerfil.addActionListener(this);
+				miVentana.hotel.Gim.addItemListener(new pincharServiciosH());
+				miVentana.hotel.Pisc.addItemListener(new pincharServiciosH());
+				miVentana.hotel.Wi.addItemListener(new pincharServiciosH());
+				miVentana.hotel.Spa.addItemListener(new pincharServiciosH());
+				miVentana.hotel.Park.addItemListener(new pincharServiciosH());
 				miVentana.hotel.nEstrellas.addChangeListener(new ChangeListener() {
 					public void stateChanged(ChangeEvent a) {
 						funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
@@ -69,17 +77,14 @@ public class ControladorHotel implements ActionListener {
 								else {
 									filtrarPorEstrellas();
 									}
-								
-					
-							
-							
-					}
+						}
 					
 				});
 				
 				miVentana.hotel.fechaEntrada.addPropertyChangeListener("date", new PropertyChangeListener() {
 					@Override
 				    public void propertyChange(PropertyChangeEvent e) {
+						
 				        //System.out.println(e.getPropertyName()+ ":++ " + e.getNewValue());
 				        java.util.Date fechaMinimaSalida=(java.util.Date) e.getNewValue();
 				        if( fechaMinimaSalida != null) {
@@ -87,6 +92,13 @@ public class ControladorHotel implements ActionListener {
 				        }
 				        miVentana.hotel.fechaSalida.setEnabled(true);
 				        miVentana.hotel.fechaSalida.setMinSelectableDate(fechaMinimaSalida);
+				    }
+				});
+				miVentana.hotel.fechaSalida.addPropertyChangeListener("date", new PropertyChangeListener() {
+					@Override
+				    public void propertyChange(PropertyChangeEvent e) {
+						resetearServiciosH();
+				        
 				    }
 				});
 				
@@ -137,6 +149,68 @@ public class ControladorHotel implements ActionListener {
 			}
 
 				//METODOS
+			
+			
+			private class pincharServiciosH implements ItemListener {
+				
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					// TODO Auto-generated method stub
+						try {
+							
+							ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
+								hoteles=miModelo.misFuncionesServicios.serviciosHotel(miVentana.hotel.Park.isSelected(), miVentana.hotel.Pisc.isSelected(),miVentana.hotel.Gim.isSelected(),miVentana.hotel.Wi.isSelected(),miVentana.hotel.Spa.isSelected());
+								funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+								for(int i=0;i<hoteles.size();i++) {
+									
+										Object[] hotel = {hoteles.get(i).getCod_hotel(),hoteles.get(i).getNombre(),hoteles.get(i).getUbicacion(),hoteles.get(i).getnEstrellas()}; 
+										miVentana.hotel.tableModel.addRow(hotel);
+										}
+								if(miVentana.hotel.Gim.isSelected()==false && miVentana.hotel.Pisc.isSelected()==false && miVentana.hotel.Park.isSelected()==false && miVentana.hotel.Spa.isSelected()==false && miVentana.hotel.Wi.isSelected()==false) {
+										
+						    			
+									//miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
+						    			funciones.limpiarTabla(miVentana.hotel.tablaResultados, miVentana.hotel.tableModel);
+						    			for(int i=0;i<miModelo.listaHoteles.size();i++) {
+											Object[] hotel2 = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
+											miVentana.hotel.tableModel.addRow(hotel2);
+											}
+						    			
+						    			
+						    		}
+							} catch (SQLException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+				    		
+						
+					 
+				    }
+				
+				
+				
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			public void resetear() 
 			{
 				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
@@ -203,8 +277,8 @@ public class ControladorHotel implements ActionListener {
 							if (nCamas==0 || nCamas==totalCamas)
 							{
 							miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(i)
-									.setPrecio((float) (miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles
-											.get(i).getPrecio()
+									.setPrecio((float)(( miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles
+											.get(i).getPrecio()+miModelo.misFuncionesServicios.adicionH(miModelo.reservaHotel.getHotelReservado().getCod_hotel(), miVentana.hotel.Park.isSelected(), miVentana.hotel.Pisc.isSelected(),miVentana.hotel.Gim.isSelected(),miVentana.hotel.Wi.isSelected(),miVentana.hotel.Spa.isSelected()))
 											* miModelo.misFuncionesPago.tasa(miVentana.hotel.fechaEntrada.getDate(),
 													miVentana.hotel.fechaSalida.getDate())));
 							Object[] habitacion = {
@@ -224,6 +298,7 @@ public class ControladorHotel implements ActionListener {
 			}
 			public void filtrarPorEstrellas() {
 				int nEstrellas=miVentana.hotel.nEstrellas.getValue();
+				resetearServiciosH();
 				try {
 					
 					miModelo.listaHoteles=miModelo.misFuncionesHotel.filtrarPorEstrellas(nEstrellas);
@@ -281,7 +356,7 @@ public class ControladorHotel implements ActionListener {
 			 * FILTRA LOS HOTELES POR SU UBICACION
 			 */
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
-				
+				resetearServiciosH();
 				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 				try {
 					miModelo.listaHoteles= miModelo.misFuncionesHotel.buscarUbicacion(miVentana.hotel.comboBox.getSelectedItem().toString());
@@ -434,5 +509,15 @@ public class ControladorHotel implements ActionListener {
 					miVentana.hotel.etiqueta.setVisible(true);
 			}
 
+			
+			public void resetearServiciosH() {
+				miVentana.hotel.Gim.setSelected(false);
+				miVentana.hotel.Spa.setSelected(false);
+				miVentana.hotel.Park.setSelected(false);
+				miVentana.hotel.Wi.setSelected(false);
+				miVentana.hotel.Pisc.setSelected(false);
+				
+				
+		 }
 }
 

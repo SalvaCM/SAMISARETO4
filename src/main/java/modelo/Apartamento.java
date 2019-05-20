@@ -13,6 +13,7 @@ public class Apartamento extends Alojamiento{
 	private float precio;
 	private int tamano;
 	private ArrayList<Habitacion> habitaciones= new ArrayList<Habitacion>();
+	private ArrayList<Dormitorio> dormitorios = new ArrayList<Dormitorio>();
 		
 	public ArrayList<Habitacion> getHabitaciones() {
 		return habitaciones;
@@ -67,6 +68,14 @@ public class Apartamento extends Alojamiento{
 		builder.append(formatoMoneda.format(precio));
 		
 		return builder.toString();
+	}
+
+	public ArrayList<Dormitorio> getDormitorios() {
+		return dormitorios;
+	}
+
+	public void setDormitorios(ArrayList<Dormitorio> dormitorios) {
+		this.dormitorios = dormitorios;
 	}
 	
 

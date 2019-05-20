@@ -47,14 +47,6 @@ public class PanelEstanciasHotel extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE UNA ESTANCIA");
-		lblNewJgoodiesLabel.setBounds(10, 59, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
-		
 		btnCancelar.setBounds(60, 556, 151, 48);
 		
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
@@ -97,23 +89,26 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(60, 160, 913, 145);
+		scrollPane.setBounds(62, 231, 913, 196);
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");
+		 btnReservar.setFont(new Font("Dialog", Font.BOLD, 11));
 		 btnReservar.setName("Reservar");
 		btnReservar.setForeground(Color.BLACK);
 		btnReservar.setBackground(Color.GREEN);
-		btnReservar.setBounds(714, 384, 89, 31);
+		btnReservar.setBounds(482, 451, 89, 31);
 		add(btnReservar);
 
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		
 		
 		btnPerfil.setEnabled(false);
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 35, 89, 23);
 		add(btnPerfil);
+		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		
 		
 		btnLogin.setName("btnLogin");

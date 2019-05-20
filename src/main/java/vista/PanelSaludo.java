@@ -36,15 +36,6 @@ public class PanelSaludo extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
-		
-		JLabel lblNewJgoodiesLabel2 = DefaultComponentFactory.getInstance().createLabel("(PULSE PARA CONTINUAR)");
-		lblNewJgoodiesLabel2.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel2.setBackground(Color.WHITE);
-		lblNewJgoodiesLabel2.setFont(new Font("Tahoma", Font.ITALIC, 30));
-		lblNewJgoodiesLabel2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel2.setBounds(-36, 473, 1080, 78);
-		add(lblNewJgoodiesLabel2);
-		
 		btnSaludo.setName("btnSaludo");	
 		btnSaludo.setBounds(-14, -11, 1150, 732);
 		btnSaludo.setContentAreaFilled(false);

@@ -65,12 +65,36 @@ public class FuncionesApartamento {
  		return apartamentosOrden;
 
  	}
+
  	
  	/**
  	 * Lee de la base de datos todos los apartamentos en orden
  	 * @return Arraylist de todos los apartamentos
  	 * @throws SQLException
  	 */
+
+ 	public ArrayList<Habitacion> leerHabitaciones(int codApart) throws SQLException{
+		String tipo="";
+		int codHabitacion;
+		int tamano;
+		ArrayList<Habitacion> habitaciones =new ArrayList<Habitacion>();
+		
+		String query="select h.cod_habitacion,h.tipo,h.tamano from habitacion h,habitacion_apart hc where hc.cod_apart='"+codApart+"' and hc.cod_habitacion=h.cod_habitacion;";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		
+		while(rs.next()) {
+			codHabitacion = rs.getInt("cod_habitacion");
+			tipo = rs.getString("tipo");
+			tamano=rs.getInt("tamano");
+			Habitacion habitacion =new Habitacion();
+			habitacion.setCodHabitacion(codHabitacion);
+			habitacion.setTipo(tipo);
+			habitacion.setTamano(tamano);
+			habitaciones.add(habitacion);
+		}
+		return habitaciones;
+	}
+
  	public ArrayList<Apartamento> leerApartamentoOrden() throws SQLException{ 
     	//Declaracion e incializacion de variables
 
@@ -177,6 +201,31 @@ public class FuncionesApartamento {
 		}
 
  		return apartamentos;
+	}
+ 	public ArrayList<Dormitorio> leerDormitorios(int codApart) throws SQLException{
+		String tipo="";
+		int codHabitacion;
+		int tamano;int capacidad;int nCamas;
+		ArrayList<Dormitorio> dormitorios =new ArrayList<Dormitorio>();
+		
+		String query="select d.cod_dormitorio,d.tipo,d.ncamas,d.capacidad from dormitorio_apart d where d.cod_apart='"+codApart+"';";
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);
+		
+		while(rs.next()) {
+			codHabitacion = rs.getInt("cod_dormitorio");
+			tipo = rs.getString("tipo");
+			//tamano=rs.getInt("tamano");
+			capacidad=rs.getInt("capacidad");
+			nCamas=rs.getInt("nCamas");
+			Dormitorio dormitorio =new Dormitorio();
+			dormitorio.setCodHabitacion(codHabitacion);
+			dormitorio.setTipo(tipo);
+			//dormitorio.setTamano(tamano);
+			dormitorio.setCapacidad(capacidad);
+			dormitorio.setnCamas(nCamas);
+			dormitorios.add(dormitorio);
+		}
+		return dormitorios;
 	}
  	
 }

@@ -12,11 +12,8 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-
 import modelo.Apartamento;
 import modelo.Modelo;
 import vista.Ventana;
@@ -135,7 +132,11 @@ public class ControladorApartamento implements ActionListener {
 				miVentana.usuario.txtDatosPersonales.setText("");
 				miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
 				miVentana.usuario.txtReservasPasadas.setText("");
-				miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+				miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.setText("");
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesHotel(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesApart(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesCasa(miModelo.cliente));
 			break;
 		}
 		
@@ -149,7 +150,7 @@ public class ControladorApartamento implements ActionListener {
 		
 		@Override
 		public void itemStateChanged(ItemEvent e) {
-			// TODO Auto-generated method stub
+		
 				try {
 					
 					ArrayList<Apartamento> apartamentos =new ArrayList<Apartamento>();
@@ -161,9 +162,7 @@ public class ControladorApartamento implements ActionListener {
 								miVentana.apartamento.tableModel.addRow(aparta);
 								}
 						if(miVentana.apartamento.BoxGim.isSelected()==false && miVentana.apartamento.BoxPisc.isSelected()==false && miVentana.apartamento.BoxPark.isSelected()==false && miVentana.apartamento.BoxSpa.isSelected()==false && miVentana.apartamento.BoxWi.isSelected()==false) {
-								
-				    			
-							//miModelo.listaApartamento=miModelo.misFuncionesApartamento.leerApartamento();
+
 				    			funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
 				    			for(int i=0;i<miModelo.listaApartamento.size();i++) {
 									Object[] aparta2 = {miModelo.listaApartamento.get(i).getCod_apartamento(),miModelo.listaApartamento.get(i).getNombre(), miModelo.listaApartamento.get(i).getUbicacion(),miModelo.listaApartamento.get(i).getTamano(),miModelo.listaApartamento.get(i).getPrecio(),miModelo.listaApartamento.get(i).getPiso()}; 
@@ -173,7 +172,7 @@ public class ControladorApartamento implements ActionListener {
 				    			
 				    		}
 					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 		    		
@@ -186,11 +185,11 @@ public class ControladorApartamento implements ActionListener {
 		
 	}
 	
-	
-	
+
 	/**
 	* valida que los campos del apartamento son validos 
  	*/
+
 	private void validarCampos() {
 		if(miVentana.apartamento.tablaResultados.getSelectedRow() == -1)
 		{
@@ -201,7 +200,8 @@ public class ControladorApartamento implements ActionListener {
 			if (miVentana.apartamento.fechaEntrada.getDate()==null||miVentana.apartamento.fechaSalida.getDate()==null)
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
-			}else{
+			}
+			else{
 				 DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
 				 funciones.cambiarDePanel(miVentana.apartamento, miVentana.resumenCyA);
 				 miModelo.reserva.setApartReservado(ReservarApartamento());
@@ -218,12 +218,28 @@ public class ControladorApartamento implements ActionListener {
 				 miVentana.pago.total.setText(formatoMoneda.format(0));
 				 miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 
-			}
+
+				 try {
+						miVentana.resumenCyA.resumenReserva.append("\nHabitaciones :\n" ); 
+						miModelo.apartamento.setHabitaciones(miModelo.misFuncionesApartamento.leerHabitaciones(miModelo.reserva.getApartReservado().getCod_apartamento()));
+						for (int i = 0; i < miModelo.apartamento.getHabitaciones().size(); i++) {
+							miVentana.resumenCyA.resumenReserva.append( miModelo.apartamento.getHabitaciones().get(i).toString());
+						}
+						miVentana.resumenCyA.resumenReserva.append("\nDormitorios :\n" );
+						miModelo.apartamento.setDormitorios(miModelo.misFuncionesApartamento.leerDormitorios(miModelo.reserva.getApartReservado().getCod_apartamento()));
+						for (int i = 0; i < miModelo.apartamento.getDormitorios().size(); i++) {
+							miVentana.resumenCyA.resumenReserva.append( miModelo.apartamento.getDormitorios().get(i).toString());
+						}
+					} catch (SQLException e) {
+			
+						e.printStackTrace();
+					}
 					
 			
+				}
+			}
 		}
-	
-	}
+
 	
 
 

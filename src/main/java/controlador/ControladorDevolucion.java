@@ -49,6 +49,7 @@ public class ControladorDevolucion implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 						
 				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
+				
 					PasarDeDespedidaASaludo();
 					resetear();
 				break;
@@ -62,7 +63,7 @@ public class ControladorDevolucion implements ActionListener {
 					miVentana.usuario.txtDatosPersonales.setText("");
 					miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
 					miVentana.usuario.txtReservasPasadas.setText("");
-					miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+					miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario(miModelo.cliente));
 					
 				break;
 				
@@ -93,6 +94,7 @@ public class ControladorDevolucion implements ActionListener {
 				funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);
 				funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 				miModelo.logged = false;
+				miControlador.miControladorLogin.desactivarPerfil();
 				miModelo.reserva = new ReservaCASAoAPART();
 				miModelo.reservaHotel = new ReservaHotel();
 			

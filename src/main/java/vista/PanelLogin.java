@@ -41,14 +41,6 @@ public class PanelLogin extends JPanel {
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("LOGIN");
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
-		
 		btnCancelar = new JButton("Cancelar");
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setName("btnCancelarLogin");
@@ -63,17 +55,17 @@ public class PanelLogin extends JPanel {
 	
 		
 		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("DNI:");
-		lblNewJgoodiesLabel_3.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_3.setForeground(Color.BLACK);
 		lblNewJgoodiesLabel_3.setBounds(322, 175, 440, 33);
 		add(lblNewJgoodiesLabel_3);
-		lblNewJgoodiesLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewJgoodiesLabel_3.setFont(new Font("Dialog", Font.BOLD, 25));
 		lblNewJgoodiesLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel lblNewJgoodiesLabel2 = DefaultComponentFactory.getInstance().createLabel("PASSWORD:");
-		lblNewJgoodiesLabel2.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel2.setForeground(Color.BLACK);
 		lblNewJgoodiesLabel2.setBounds(322, 281, 440, 33);
 		add(lblNewJgoodiesLabel2);
-		lblNewJgoodiesLabel2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewJgoodiesLabel2.setFont(new Font("Dialog", Font.BOLD, 25));
 		lblNewJgoodiesLabel2.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		TextDni = new JTextField();
@@ -93,9 +85,9 @@ public class PanelLogin extends JPanel {
 
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("");
 		lblNewJgoodiesLabel_1.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		lblNewJgoodiesLabel_1.setForeground(Color.CYAN);
-		lblNewJgoodiesLabel_1.setBackground(Color.CYAN); 
-		lblNewJgoodiesLabel_1.setBounds(322, 142, 440, 360);
+		lblNewJgoodiesLabel_1.setForeground(Color.LIGHT_GRAY);
+		lblNewJgoodiesLabel_1.setBackground(Color.LIGHT_GRAY); 
+		lblNewJgoodiesLabel_1.setBounds(310, 120, 452, 382);
 		add(lblNewJgoodiesLabel_1);
 		
 		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));

@@ -144,7 +144,7 @@ public class PanelUsuario extends JPanel {
 		txtreservasFuturas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtreservasFuturas.setEditable(false);
 		txtreservasFuturas.setBorder(new TitledBorder(null, "Bonos Disponibles", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
-		txtreservasFuturas.setBounds(482, 319, 262, 187);
+		txtreservasFuturas.setBounds(482, 319, 516, 187);
 		add(txtreservasFuturas);
 		
 		

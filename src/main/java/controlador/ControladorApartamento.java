@@ -137,7 +137,11 @@ public class ControladorApartamento implements ActionListener {
 				miVentana.usuario.txtDatosPersonales.setText("");
 				miVentana.usuario.txtDatosPersonales.append("Nombre : "+miModelo.cliente.getNombre()+" "+miModelo.cliente.getApellido()+"\nFecha Nac. :"+miModelo.cliente.getFechaNacimiento());
 				miVentana.usuario.txtReservasPasadas.setText("");
-				miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario());
+				miVentana.usuario.txtReservasPasadas.append(miModelo.misFuncionesReserva.buscarReservasUsuario(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.setText("");
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesHotel(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesApart(miModelo.cliente));
+				miVentana.usuario.txtreservasFuturas.append(miModelo.misFuncionesReserva.buscarCodPromocionalesCasa(miModelo.cliente));
 			break;
 		}
 		
@@ -187,17 +191,7 @@ private class pincharServicios implements ItemListener {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 	private void validarCampos() {
@@ -233,6 +227,21 @@ private class pincharServicios implements ItemListener {
 				 miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
 				
 			//	funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+				 try {
+						miVentana.resumenCyA.resumenReserva.append("\nHabitaciones :\n" ); 
+						miModelo.apartamento.setHabitaciones(miModelo.misFuncionesApartamento.leerHabitaciones(miModelo.reserva.getApartReservado().getCod_apartamento()));
+						for (int i = 0; i < miModelo.apartamento.getHabitaciones().size(); i++) {
+							miVentana.resumenCyA.resumenReserva.append( miModelo.apartamento.getHabitaciones().get(i).toString());
+						}
+						miVentana.resumenCyA.resumenReserva.append("\nDormitorios :\n" );
+						miModelo.apartamento.setDormitorios(miModelo.misFuncionesApartamento.leerDormitorios(miModelo.reserva.getApartReservado().getCod_apartamento()));
+						for (int i = 0; i < miModelo.apartamento.getDormitorios().size(); i++) {
+							miVentana.resumenCyA.resumenReserva.append( miModelo.apartamento.getDormitorios().get(i).toString());
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			}
 					
 			

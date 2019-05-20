@@ -154,7 +154,7 @@ public class FuncionesReserva {
 			System.out.println("Reserva Realizada");
 		}
 	}
-	public String buscarReservasUsuario() {
+	public String buscarReservasUsuario(Cliente cliente) {
 		//Declaracion e inicializacion de variables:
 		StringBuilder cadenaReservas = new StringBuilder();
 		ConexionBD miConexion = new ConexionBD();
@@ -162,12 +162,11 @@ public class FuncionesReserva {
 		ConsultaBD miConsulta = new ConsultaBD();
 		String query =" SELECT R.COD_RESERVA,HH.TIPO,HH.PRECIO,H.NOMBRE,C.COD_CLIENTE,R.FECHAENTRADA,R.FECHASALIDA"+
 				" FROM HABITACION_HOTEL HH,HOTEL H,RESERVAS_HOTEL R,CLIENTES C"+
-				" WHERE R.COD_HABITACION=HH.COD_HABITACION AND R.COD_HOTEL=H.COD_HOTEL AND C.COD_CLIENTE=R.COD_CLIENTE and hh.cod_hotel=h.cod_hotel And r.cod_cliente=2"+
+				" WHERE R.COD_HABITACION=HH.COD_HABITACION AND R.COD_HOTEL=H.COD_HOTEL AND C.COD_CLIENTE=R.COD_CLIENTE and hh.cod_hotel=h.cod_hotel And r.cod_cliente="+cliente.getCodCliente()+
 				" GROUP BY R.COD_RESERVA,R.COD_HABITACION,R.COD_HOTEL"+  
 				" ORDER BY R.FECHAENTRADA ASC;";
 		System.out.println(query);
 		int codReserva=0;String tipo;String precio;String nombre;String fEntrada;String fSalida;
-		
 		
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		try {
@@ -180,6 +179,34 @@ public class FuncionesReserva {
 				cadenaReservas.append(rs.getDate("FECHAENTRADA")+" ");
 				cadenaReservas.append(rs.getDate("FECHASALIDA")+" ");
 				cadenaReservas.append("\n");
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String cReservas = cadenaReservas.toString();
+		return cReservas;
+		
+	}
+	public String buscarCodPromocionalesHotel(Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+		StringBuilder cadenaReservas = new StringBuilder();
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query =" SELECT ch.codigo,ch.porcentaje,h.nombre"+
+				" FROM codigos_HOTEL ch,HOTEL H"+
+				" WHERE ch.COD_HOTEL=H.COD_HOTEL and ch.cod_hotel=h.cod_hotel And ch.cod_cliente="+cliente.getCodCliente()+";";
+		
+		
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		try {
+			while(rs.next()) {
+				cadenaReservas.append("Nombre:");
+				cadenaReservas.append(rs.getString("codigo")+" Porcentaje: ");
+				cadenaReservas.append(rs.getFloat("porcentaje")+" Hotel: ");
+				cadenaReservas.append(rs.getString("nombre")+" ");
+				cadenaReservas.append("\n");
 
 				}
 		} catch (SQLException e) {
@@ -190,8 +217,61 @@ public class FuncionesReserva {
 		return cReservas;
 		
 	}
-	
-	
-	
-	 
+	public String buscarCodPromocionalesCasa(Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+		StringBuilder cadenaReservas = new StringBuilder();
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query =" SELECT ch.codigo,ch.porcentaje,c.nombre"+
+				" FROM codigos_casa ch,casa c"+
+				" WHERE ch.COD_casa=c.COD_casa and ch.cod_casa=c.cod_casa And ch.cod_cliente="+cliente.getCodCliente()+";";
+		
+		
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		try {
+			while(rs.next()) {
+				cadenaReservas.append("Nombre:");
+				cadenaReservas.append(rs.getString("codigo")+" Porcentaje: ");
+				cadenaReservas.append(rs.getFloat("porcentaje")+" Casa: ");
+				cadenaReservas.append(rs.getString("nombre")+" ");
+				cadenaReservas.append("\n");
+
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String cReservas = cadenaReservas.toString();
+		return cReservas;
+		
+	}
+	public String buscarCodPromocionalesApart(Cliente cliente) {
+		//Declaracion e inicializacion de variables:
+		StringBuilder cadenaReservas = new StringBuilder();
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query =" SELECT ch.codigo,ch.porcentaje,a.nombre"+
+				" FROM codigos_apartamento ch,Apartamento a"+
+				" WHERE ch.COD_apartamento=a.cod_apartamento and ch.cod_apartamento=a.cod_apartamento And ch.cod_cliente="+cliente.getCodCliente()+";";
+		
+		
+		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
+		try {
+			while(rs.next()) {
+				cadenaReservas.append("Nombre:");
+				cadenaReservas.append(rs.getString("codigo")+" Porcentaje: ");
+				cadenaReservas.append(rs.getFloat("porcentaje")+" Hotel: ");
+				cadenaReservas.append(rs.getString("nombre")+" ");
+				cadenaReservas.append("\n");
+
+				}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String cReservas = cadenaReservas.toString();
+		return cReservas;
+	}
 }

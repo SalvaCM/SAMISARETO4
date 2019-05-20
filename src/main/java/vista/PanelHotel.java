@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
@@ -96,7 +97,7 @@ public class PanelHotel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "NUMERO PERSONAS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(193, 169, 181, 68);
+		panel_1.setBounds(60, 182, 181, 68);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -250,7 +251,7 @@ public class PanelHotel extends JPanel {
 		label.setOpaque(true);
 		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
 		label.setBackground(Color.LIGHT_GRAY);
-		label.setBounds(60, 262, 131, 242);
+		label.setBounds(60, 251, 181, 253);
 		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);

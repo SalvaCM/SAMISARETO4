@@ -18,6 +18,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import javax.swing.border.TitledBorder;
 
 
 public class PanelEstanciasHotel extends JPanel {
@@ -93,7 +94,7 @@ public class PanelEstanciasHotel extends JPanel {
 		
 		scrollPane.setViewportView(tablaHabitaciones);
 		scrollPane.setBackground(new Color(230, 230, 250));
-		scrollPane.setBounds(62, 231, 913, 196);
+		scrollPane.setBounds(62, 187, 913, 252);
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");
@@ -118,6 +119,15 @@ public class PanelEstanciasHotel extends JPanel {
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 11, 89, 23);
 		add(btnLogin);
+		
+		JLabel lblHabitacionesDisponibles = new JLabel("Habitaciones Disponibles :");
+		lblHabitacionesDisponibles.setHorizontalAlignment(SwingConstants.CENTER);
+		lblHabitacionesDisponibles.setOpaque(true);
+		lblHabitacionesDisponibles.setFont(new Font("SansSerif", Font.PLAIN, 40));
+		lblHabitacionesDisponibles.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblHabitacionesDisponibles.setBackground(Color.LIGHT_GRAY);
+		lblHabitacionesDisponibles.setBounds(166, 78, 701, 78);
+		add(lblHabitacionesDisponibles);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

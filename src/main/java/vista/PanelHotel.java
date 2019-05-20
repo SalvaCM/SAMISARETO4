@@ -55,6 +55,8 @@ public class PanelHotel extends JPanel {
 	public JCheckBox Park;
 	public JCheckBox Spa;
 	public JCheckBox Wi;
+	private JLabel lblEncuentreSuHotel;
+	private JLabel label;
 
 	
 	/**
@@ -73,7 +75,7 @@ public class PanelHotel extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(780, 96, 161, 26);
+		fechaSalida.setBounds(793, 131, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -83,7 +85,7 @@ public class PanelHotel extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(615, 96, 161, 26);
+		fechaEntrada.setBounds(628, 131, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -98,7 +100,7 @@ public class PanelHotel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Camas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(253, 169, 181, 68);
+		panel_1.setBounds(60, 182, 181, 68);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -126,7 +128,7 @@ public class PanelHotel extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estrellas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(595, 169, 181, 68);
+		panel.setBounds(60, 116, 181, 68);
 		add(panel);
 		panel.setLayout(null);
 		nEstrellas = new JSlider();
@@ -159,12 +161,12 @@ public class PanelHotel extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(422, 96, 98, 26);
+		btnBuscar.setBounds(462, 131, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(240, 262, 701, 242);
+		scrollPane.setBounds(253, 189, 701, 315);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -176,13 +178,23 @@ public class PanelHotel extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setResizable(false);
-		tablaResultados.setRowHeight(25);
+		
+		tablaResultados.getColumnModel().getColumn(2).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(3).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setResizable(false);
+		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(193, 96, 209, 26);
+		comboBox.setBounds(253, 131, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
@@ -203,25 +215,20 @@ public class PanelHotel extends JPanel {
 		btnLogin.setBounds(10, 17, 89, 23);
 		add(btnLogin);
 		
-		Pisc = new JCheckBox("Piscina");
-		Pisc.setFont(new Font("Dialog", Font.BOLD, 11));
-		Pisc.setBounds(79, 264, 97, 23);
-		add(Pisc);
-		
 		
 		Gim = new JCheckBox("Gimnasio");
 		Gim.setFont(new Font("Dialog", Font.BOLD, 11));
-		Gim.setBounds(79, 305, 97, 23);
+		Gim.setBounds(79, 320, 97, 23);
 		add(Gim);
 		
 		 Park = new JCheckBox("Parking");
 		 Park.setFont(new Font("Dialog", Font.BOLD, 11));
-		 Park.setBounds(79, 345, 97, 23);
+		 Park.setBounds(79, 355, 97, 23);
 		 add(Park);
 		
 		 Spa = new JCheckBox("Spa");
 		 Spa.setFont(new Font("Dialog", Font.BOLD, 11));
-		 Spa.setBounds(79, 384, 97, 23);
+		 Spa.setBounds(79, 389, 97, 23);
 		 add(Spa);
 		
 		 Wi = new JCheckBox("Wifi");
@@ -229,9 +236,26 @@ public class PanelHotel extends JPanel {
 		 Wi.setBounds(79, 424, 97, 23);
 		 add(Wi);
 		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(63, 257, 120, 233);
-		add(panel_2);
+		Pisc = new JCheckBox("Piscina");
+		Pisc.setBounds(79, 286, 61, 18);
+		add(Pisc);
+		Pisc.setFont(new Font("Dialog", Font.BOLD, 11));
+		
+		lblEncuentreSuHotel = new JLabel("Encuentre su Hotel deseado :");
+		lblEncuentreSuHotel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEncuentreSuHotel.setOpaque(true);
+		lblEncuentreSuHotel.setBackground(Color.LIGHT_GRAY);
+		lblEncuentreSuHotel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblEncuentreSuHotel.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblEncuentreSuHotel.setBounds(253, 17, 701, 78);
+		add(lblEncuentreSuHotel);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(60, 262, 131, 242);
+		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

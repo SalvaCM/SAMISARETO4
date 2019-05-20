@@ -66,21 +66,25 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.getColumnModel().getColumn(0).setMaxWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaHabitaciones.getColumnModel().getColumn(0).setPreferredWidth(0);
-		tablaHabitaciones.setRowHeight(25);
-		tablaHabitaciones.getColumnModel().getColumn(1).setMinWidth(50);
-		tablaHabitaciones.getColumnModel().getColumn(1).setPreferredWidth(50);
-		tablaHabitaciones.getColumnModel().getColumn(2).setMinWidth(25);
-		tablaHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(25);
-		tablaHabitaciones.getColumnModel().getColumn(3).setMinWidth(25);
-		tablaHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(25);
-		tablaHabitaciones.getColumnModel().getColumn(4).setMinWidth(200);
-		tablaHabitaciones.getColumnModel().getColumn(4).setPreferredWidth(200);
+		tablaHabitaciones.getColumnModel().getColumn(0).setResizable(false);
+		
+		tablaHabitaciones.getColumnModel().getColumn(1).setMaxWidth(150);
+		tablaHabitaciones.getColumnModel().getColumn(1).setMinWidth(150);
+		tablaHabitaciones.getColumnModel().getColumn(1).setPreferredWidth(150);
 		tablaHabitaciones.getColumnModel().getColumn(1).setResizable(false);
+		
+		
+		tablaHabitaciones.getColumnModel().getColumn(2).setMaxWidth(100);
+		tablaHabitaciones.getColumnModel().getColumn(2).setMinWidth(100);
+		tablaHabitaciones.getColumnModel().getColumn(2).setPreferredWidth(100);
 		tablaHabitaciones.getColumnModel().getColumn(2).setResizable(false);
+		
+		tablaHabitaciones.getColumnModel().getColumn(3).setMaxWidth(100);
+		tablaHabitaciones.getColumnModel().getColumn(3).setMinWidth(100);
+		tablaHabitaciones.getColumnModel().getColumn(3).setPreferredWidth(100);
 		tablaHabitaciones.getColumnModel().getColumn(3).setResizable(false);
-		tablaHabitaciones.getColumnModel().getColumn(4).setResizable(false);
 		
-		
+		tablaHabitaciones.setRowHeight(35);
 		tablaHabitaciones.setDefaultEditor(Object.class, null);
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(new Color(230, 230, 250));

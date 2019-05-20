@@ -20,6 +20,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.border.TitledBorder;
+import javax.swing.SwingConstants;
 
 public class PanelApartamento extends JPanel {
 
@@ -44,6 +46,8 @@ public class PanelApartamento extends JPanel {
 	public JCheckBox BoxPark;
 	public JCheckBox BoxSpa;
 	public JCheckBox BoxWi;
+	private JLabel lblEncuentreSuApartamento;
+	private JLabel label;
 
 	/**
 	 * Create the panel.
@@ -61,7 +65,7 @@ public class PanelApartamento extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(733, 155, 161, 26);
+		fechaSalida.setBounds(749, 155, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -71,7 +75,7 @@ public class PanelApartamento extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(534, 155, 161, 26);
+		fechaEntrada.setBounds(576, 155, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -90,12 +94,12 @@ public class PanelApartamento extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(332, 155, 98, 26);
+		btnBuscar.setBounds(428, 155, 98, 26);
 		btnBuscar.setName("btnBuscarApartamentos");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(155, 278, 701, 234);
+		scrollPane.setBounds(209, 202, 701, 301);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -107,12 +111,28 @@ public class PanelApartamento extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(2).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(3).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(4).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setResizable(false);
+		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(77, 155, 209, 26);
+		comboBox.setBounds(207, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "BILBAO", "VALENCIA", "BARCELONA", "SALAMANCA", "SEVILLA","BURGOS"}));
@@ -134,29 +154,45 @@ public class PanelApartamento extends JPanel {
 		
 		BoxPisc = new JCheckBox("Piscina");
 		BoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
-		BoxPisc.setBounds(467, 228, 97, 23);
+		BoxPisc.setBounds(60, 363, 97, 23);
 		add(BoxPisc);
 		
 		
 		BoxGim = new JCheckBox("Gimnasio");
 		BoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
-		BoxGim.setBounds(293, 228, 97, 23);
+		BoxGim.setBounds(60, 262, 97, 23);
 		add(BoxGim);
 		
 		 BoxPark = new JCheckBox("Parking");
 		 BoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxPark.setBounds(552, 228, 97, 23);
+		 BoxPark.setBounds(60, 414, 97, 23);
 		 add(BoxPark);
 		
 		 BoxSpa = new JCheckBox("Spa");
 		 BoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxSpa.setBounds(389, 228, 97, 23);
+		 BoxSpa.setBounds(60, 308, 97, 23);
 		 add(BoxSpa);
 		
 		 BoxWi = new JCheckBox("Wifi");
 		 BoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxWi.setBounds(205, 228, 97, 23);
+		 BoxWi.setBounds(60, 211, 97, 23);
 		 add(BoxWi);
+		
+		lblEncuentreSuApartamento = new JLabel("Encuentre su Apartamento :");
+		lblEncuentreSuApartamento.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEncuentreSuApartamento.setOpaque(true);
+		lblEncuentreSuApartamento.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblEncuentreSuApartamento.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblEncuentreSuApartamento.setBackground(Color.LIGHT_GRAY);
+		lblEncuentreSuApartamento.setBounds(209, 23, 701, 78);
+		add(lblEncuentreSuApartamento);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label.setBounds(44, 183, 126, 320);
+		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

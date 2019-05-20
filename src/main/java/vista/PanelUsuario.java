@@ -78,7 +78,7 @@ public class PanelUsuario extends JPanel {
 		
 		passwordNueva = new JPasswordField();
 		passwordNueva.setBackground(Color.WHITE);
-		passwordNueva.setBounds(555, 157, 189, 29);
+		passwordNueva.setBounds(601, 174, 189, 29);
 		passwordNueva.setVisible(false);
 		add(passwordNueva);
 		
@@ -86,13 +86,13 @@ public class PanelUsuario extends JPanel {
 		lblNewPassword.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewPassword.setForeground(Color.BLACK);
 		lblNewPassword.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNewPassword.setBounds(408, 150, 135, 39);
+		lblNewPassword.setBounds(454, 167, 135, 39);
 		lblNewPassword.setVisible(false);
 		add(lblNewPassword);
 		
 		passwordNuevacheck = new JPasswordField();
 		passwordNuevacheck.setBackground(Color.WHITE);
-		passwordNuevacheck.setBounds(555, 197, 189, 29);
+		passwordNuevacheck.setBounds(601, 214, 189, 29);
 		passwordNuevacheck.setVisible(false);
 		add(passwordNuevacheck);
 		
@@ -100,7 +100,7 @@ public class PanelUsuario extends JPanel {
 		lblNewPasswordCheck.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewPasswordCheck.setForeground(Color.BLACK);
 		lblNewPasswordCheck.setFont(new Font("Dialog", Font.PLAIN, 12));
-		lblNewPasswordCheck.setBounds(378, 190, 165, 39);
+		lblNewPasswordCheck.setBounds(424, 207, 165, 39);
 		lblNewPasswordCheck.setVisible(false);
 		add(lblNewPasswordCheck);
 		
@@ -108,18 +108,18 @@ public class PanelUsuario extends JPanel {
 		btnCambiarPw.setName("btnCambiarPw");
 		btnCambiarPw.setForeground(new Color(0, 51, 102));
 		btnCambiarPw.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnCambiarPw.setBounds(627, 250, 117, 29);
+		btnCambiarPw.setBounds(673, 267, 117, 29);
 		btnCambiarPw.setVisible(false);
 		add(btnCambiarPw);
 		
 		lblSeguridad = new JLabel("");
-		lblSeguridad.setBounds(491, 136, 114, 16);
+		lblSeguridad.setBounds(537, 153, 114, 16);
 		add(lblSeguridad);
 		
 		lblErrContra = new JLabel("*Las contrase\u00F1as no cumplen los requisitos");
 		lblErrContra.setVisible(false);
 		lblErrContra.setForeground(Color.RED);
-		lblErrContra.setBounds(491, 230, 250, 16);
+		lblErrContra.setBounds(537, 247, 250, 16);
 		lblErrContra.setVisible(false);
 		add(lblErrContra);
 		
@@ -127,19 +127,19 @@ public class PanelUsuario extends JPanel {
 		txtDatosPersonales.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtDatosPersonales.setEditable(false);
 		txtDatosPersonales.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Datos Personales", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
-		txtDatosPersonales.setBounds(47, 109, 319, 187);
+		txtDatosPersonales.setBounds(33, 170, 333, 126);
 		add(txtDatosPersonales);
 		btnCambiarContrasena.setFont(new Font("Dialog", Font.PLAIN, 12));
 		
 		btnCambiarContrasena.setName("btnCambiarContrasena");
-		btnCambiarContrasena.setBounds(410, 109, 153, 28);
+		btnCambiarContrasena.setBounds(378, 267, 153, 28);
 		add(btnCambiarContrasena);
 		
 		
 		txtReservasPasadas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtReservasPasadas.setEditable(false);
 		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Realizadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
-		txtReservasPasadas.setBounds(47, 319, 434, 187);
+		txtReservasPasadas.setBounds(33, 319, 448, 187);
 		add(txtReservasPasadas);
 		
 		

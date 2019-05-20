@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
+import javax.swing.border.TitledBorder;
 
 public class PanelCasa extends JPanel {
 
@@ -47,6 +48,7 @@ public class PanelCasa extends JPanel {
 	public JCheckBox chckbxNewCheckBoxPark;
 	public JCheckBox chckbxNewCheckBoxSpa;
 	public JCheckBox chckbxNewCheckBoxWi;
+	private JLabel label;
 	/**
 	 * Create the panel.
 	 */
@@ -73,7 +75,7 @@ public class PanelCasa extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(534, 155, 161, 26);
+		fechaEntrada.setBounds(570, 155, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -92,12 +94,12 @@ public class PanelCasa extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(332, 155, 98, 26);
+		btnBuscar.setBounds(398, 155, 98, 26);
 		btnBuscar.setName("btnBuscarCasas");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(190, 296, 701, 187);
+		scrollPane.setBounds(190, 205, 701, 278);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -109,12 +111,28 @@ public class PanelCasa extends JPanel {
 		tablaResultados.getColumnModel().getColumn(0).setMinWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setPreferredWidth(0);
 		tablaResultados.getColumnModel().getColumn(0).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(2).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(2).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(3).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(3).setResizable(false);
+		
+		tablaResultados.getColumnModel().getColumn(4).setMaxWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setMinWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setPreferredWidth(150);
+		tablaResultados.getColumnModel().getColumn(4).setResizable(false);
+		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(77, 155, 209, 26);
+		comboBox.setBounds(190, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "BILBAO", "VALENCIA", "BARCELONA", "SALAMANCA", "SEVILLA","BURGOS"}));
@@ -125,7 +143,7 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxPisc = new JCheckBox("Piscina");
 		 chckbxNewCheckBoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxPisc.setBounds(510, 228, 97, 23);
+		chckbxNewCheckBoxPisc.setBounds(60, 341, 97, 23);
 		add(chckbxNewCheckBoxPisc);
 		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnPerfil.setEnabled(false);
@@ -136,7 +154,7 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxGim = new JCheckBox("Gimnasio");
 		 chckbxNewCheckBoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxGim.setBounds(333, 228, 97, 23);
+		chckbxNewCheckBoxGim.setBounds(60, 271, 97, 23);
 		add(chckbxNewCheckBoxGim);
 		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
@@ -146,18 +164,33 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxPark = new JCheckBox("Parking");
 		 chckbxNewCheckBoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxPark.setBounds(598, 228, 97, 23);
+		chckbxNewCheckBoxPark.setBounds(60, 376, 97, 23);
 		add(chckbxNewCheckBoxPark);
 		
 		 chckbxNewCheckBoxSpa = new JCheckBox("Spa");
 		 chckbxNewCheckBoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxSpa.setBounds(434, 228, 97, 23);
+		chckbxNewCheckBoxSpa.setBounds(60, 306, 97, 23);
 		add(chckbxNewCheckBoxSpa);
 		
 		 chckbxNewCheckBoxWi = new JCheckBox("Wifi");
 		 chckbxNewCheckBoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxWi.setBounds(249, 228, 97, 23);
+		chckbxNewCheckBoxWi.setBounds(60, 242, 97, 23);
 		add(chckbxNewCheckBoxWi);
+		
+		JLabel lblEncuentreSuCasa = new JLabel("Encuentre su Casa deseada :");
+		lblEncuentreSuCasa.setOpaque(true);
+		lblEncuentreSuCasa.setFont(new Font("SansSerif", Font.PLAIN, 40));
+		lblEncuentreSuCasa.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblEncuentreSuCasa.setBackground(Color.LIGHT_GRAY);
+		lblEncuentreSuCasa.setBounds(190, 19, 701, 78);
+		add(lblEncuentreSuCasa);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(52, 205, 126, 278);
+		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

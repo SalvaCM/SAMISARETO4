@@ -64,6 +64,7 @@ public class PanelUsuario extends JPanel {
 		lblCodVuelta.setFont(new Font("Consolas", Font.PLAIN, 20));
 		lblCodVuelta.setBounds(574, 354, 108, 29);
 		add(lblCodVuelta);
+		btnVolver.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnVolver.setName("btnVolver");
 		btnVolver.setBounds(637, 523, 153, 46);
@@ -71,7 +72,7 @@ public class PanelUsuario extends JPanel {
 		
 		lblCuentaDeUsuario = new JLabel("Cuenta de Usuario :");
 		lblCuentaDeUsuario.setForeground(Color.BLACK);
-		lblCuentaDeUsuario.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 25));
+		lblCuentaDeUsuario.setFont(new Font("Dialog", Font.BOLD, 25));
 		lblCuentaDeUsuario.setBounds(47, 66, 270, 46);
 		add(lblCuentaDeUsuario);
 		
@@ -84,7 +85,7 @@ public class PanelUsuario extends JPanel {
 		lblNewPassword = new JLabel("Contrase\u00F1a :");
 		lblNewPassword.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewPassword.setForeground(Color.BLACK);
-		lblNewPassword.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewPassword.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNewPassword.setBounds(408, 150, 135, 39);
 		lblNewPassword.setVisible(false);
 		add(lblNewPassword);
@@ -98,7 +99,7 @@ public class PanelUsuario extends JPanel {
 		lblNewPasswordCheck = new JLabel("Nueva Contrase\u00F1a :");
 		lblNewPasswordCheck.setHorizontalAlignment(SwingConstants.TRAILING);
 		lblNewPasswordCheck.setForeground(Color.BLACK);
-		lblNewPasswordCheck.setFont(new Font("Dialog", Font.PLAIN, 14));
+		lblNewPasswordCheck.setFont(new Font("Dialog", Font.PLAIN, 12));
 		lblNewPasswordCheck.setBounds(378, 190, 165, 39);
 		lblNewPasswordCheck.setVisible(false);
 		add(lblNewPasswordCheck);
@@ -106,7 +107,7 @@ public class PanelUsuario extends JPanel {
 		btnCambiarPw = new JButton("Cambiar");
 		btnCambiarPw.setName("btnCambiarPw");
 		btnCambiarPw.setForeground(new Color(0, 51, 102));
-		btnCambiarPw.setFont(new Font("Arial Rounded MT Bold", Font.PLAIN, 12));
+		btnCambiarPw.setFont(new Font("Dialog", Font.PLAIN, 12));
 		btnCambiarPw.setBounds(627, 250, 117, 29);
 		btnCambiarPw.setVisible(false);
 		add(btnCambiarPw);
@@ -128,6 +129,7 @@ public class PanelUsuario extends JPanel {
 		txtDatosPersonales.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Datos Personales", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		txtDatosPersonales.setBounds(47, 109, 319, 187);
 		add(txtDatosPersonales);
+		btnCambiarContrasena.setFont(new Font("Dialog", Font.PLAIN, 12));
 		
 		btnCambiarContrasena.setName("btnCambiarContrasena");
 		btnCambiarContrasena.setBounds(410, 109, 153, 28);

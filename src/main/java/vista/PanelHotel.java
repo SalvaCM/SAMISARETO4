@@ -73,7 +73,7 @@ public class PanelHotel extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(731, 157, 161, 26);
+		fechaSalida.setBounds(780, 96, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -83,18 +83,10 @@ public class PanelHotel extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(731, 131, 161, 26);
+		fechaEntrada.setBounds(615, 96, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
-		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE EL HOTEL");
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
 		Hashtable<Integer, JLabel> position = new Hashtable<Integer, JLabel>();
 		position.put(0, new JLabel("0"));
 		position.put(1, new JLabel("1"));
@@ -106,7 +98,7 @@ public class PanelHotel extends JPanel {
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
 		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Camas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(193, 169, 181, 68);
+		panel_1.setBounds(253, 169, 181, 68);
 		add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -134,7 +126,7 @@ public class PanelHotel extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
 		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Estrellas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel.setBounds(388, 169, 181, 68);
+		panel.setBounds(595, 169, 181, 68);
 		add(panel);
 		panel.setLayout(null);
 		nEstrellas = new JSlider();
@@ -166,12 +158,13 @@ public class PanelHotel extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
-		btnBuscar.setBounds(422, 131, 98, 26);
+		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
+		btnBuscar.setBounds(422, 96, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(193, 248, 701, 242);
+		scrollPane.setBounds(240, 262, 701, 242);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -189,7 +182,7 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setBackground(new Color(230, 230, 250));
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(193, 131, 209, 26);
+		comboBox.setBounds(193, 96, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
@@ -197,58 +190,51 @@ public class PanelHotel extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setFont(new Font("Dialog", Font.BOLD, 11));
 		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 41, 89, 23);
 		add(btnPerfil);
+		btnLogin.setFont(new Font("Dialog", Font.BOLD, 11));
 		
 		
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 17, 89, 23);
 		add(btnLogin);
 		
-		JLabel lblFechas = new JLabel("Fechas :\r\n\r\n");
-		lblFechas.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblFechas.setBounds(615, 131, 104, 38);
-		add(lblFechas);
-		
-		JLabel lblUbicacion = new JLabel("Ubicacion :");
-		lblUbicacion.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblUbicacion.setBounds(79, 125, 104, 38);
-		add(lblUbicacion);
-		
 		Pisc = new JCheckBox("Piscina");
+		Pisc.setFont(new Font("Dialog", Font.BOLD, 11));
 		Pisc.setBounds(79, 264, 97, 23);
 		add(Pisc);
 		
 		
 		Gim = new JCheckBox("Gimnasio");
+		Gim.setFont(new Font("Dialog", Font.BOLD, 11));
 		Gim.setBounds(79, 305, 97, 23);
 		add(Gim);
 		
 		 Park = new JCheckBox("Parking");
+		 Park.setFont(new Font("Dialog", Font.BOLD, 11));
 		 Park.setBounds(79, 345, 97, 23);
 		 add(Park);
 		
 		 Spa = new JCheckBox("Spa");
+		 Spa.setFont(new Font("Dialog", Font.BOLD, 11));
 		 Spa.setBounds(79, 384, 97, 23);
 		 add(Spa);
 		
 		 Wi = new JCheckBox("Wifi");
+		 Wi.setFont(new Font("Dialog", Font.BOLD, 11));
 		 Wi.setBounds(79, 424, 97, 23);
 		 add(Wi);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(63, 248, 120, 242);
+		panel_2.setBounds(63, 257, 120, 233);
 		add(panel_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(903, 207, 89, 23);
-		add(btnNewButton);
 		
 	}
 }

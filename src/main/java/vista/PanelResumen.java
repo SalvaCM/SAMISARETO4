@@ -39,20 +39,12 @@ private static final long serialVersionUID = 3L;
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
-		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("DETALLES DE LA RESERVA");
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel.setFont(new Font("Aharoni", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewJgoodiesLabel.setBounds(169, 23, 775, 48);
-		add(lblNewJgoodiesLabel);
-		btnCancelar.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnCancelar.setName("btnCancelarResumen");
 		btnCancelar.setBounds(106, 517, 151, 48);
 		add(btnCancelar);
-		btnSiguiente.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnSiguiente.setName("btnSiguienteResumen");
 		btnSiguiente.setBounds(859, 517, 156, 48);
@@ -90,12 +82,14 @@ private static final long serialVersionUID = 3L;
 		txtDetalles.setBorder(new TitledBorder(null, "Detalles Reserva", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		
 		btnPerfil = new JButton("Perfil");
+		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnPerfil.setEnabled(false);
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 41, 89, 23);
 		add(btnPerfil);
 		
 		btnLogin = new JButton("Login");
+		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 17, 89, 23);
 		add(btnLogin);

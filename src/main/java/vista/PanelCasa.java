@@ -77,14 +77,6 @@ public class PanelCasa extends JPanel {
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
-		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("SELECCIONE LA CASA");
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.ORANGE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		btnCancelar.setBounds(60, 556, 151, 48);
 		
@@ -99,6 +91,7 @@ public class PanelCasa extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
+		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnBuscar.setBounds(332, 155, 98, 26);
 		btnBuscar.setName("btnBuscarCasas");
 		add(btnBuscar);
@@ -131,8 +124,10 @@ public class PanelCasa extends JPanel {
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
 		
 		 chckbxNewCheckBoxPisc = new JCheckBox("Piscina");
-		chckbxNewCheckBoxPisc.setBounds(310, 228, 97, 23);
+		 chckbxNewCheckBoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
+		chckbxNewCheckBoxPisc.setBounds(510, 228, 97, 23);
 		add(chckbxNewCheckBoxPisc);
+		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnPerfil.setEnabled(false);
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 38, 89, 23);
@@ -140,23 +135,28 @@ public class PanelCasa extends JPanel {
 		add(btnPerfil);
 		
 		 chckbxNewCheckBoxGim = new JCheckBox("Gimnasio");
-		chckbxNewCheckBoxGim.setBounds(155, 228, 97, 23);
+		 chckbxNewCheckBoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
+		chckbxNewCheckBoxGim.setBounds(333, 228, 97, 23);
 		add(chckbxNewCheckBoxGim);
+		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 14, 89, 23);
 		
 		add(btnLogin);
 		
 		 chckbxNewCheckBoxPark = new JCheckBox("Parking");
-		chckbxNewCheckBoxPark.setBounds(390, 228, 97, 23);
+		 chckbxNewCheckBoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
+		chckbxNewCheckBoxPark.setBounds(598, 228, 97, 23);
 		add(chckbxNewCheckBoxPark);
 		
 		 chckbxNewCheckBoxSpa = new JCheckBox("Spa");
-		chckbxNewCheckBoxSpa.setBounds(245, 228, 97, 23);
+		 chckbxNewCheckBoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
+		chckbxNewCheckBoxSpa.setBounds(434, 228, 97, 23);
 		add(chckbxNewCheckBoxSpa);
 		
 		 chckbxNewCheckBoxWi = new JCheckBox("Wifi");
-		chckbxNewCheckBoxWi.setBounds(80, 228, 97, 23);
+		 chckbxNewCheckBoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
+		chckbxNewCheckBoxWi.setBounds(249, 228, 97, 23);
 		add(chckbxNewCheckBoxWi);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);

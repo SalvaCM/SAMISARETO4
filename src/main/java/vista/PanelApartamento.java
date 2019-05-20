@@ -89,12 +89,13 @@ public class PanelApartamento extends JPanel {
 		add(btnSiguiente);
 		
 		modelo=new DefaultListModel<String>();
+		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnBuscar.setBounds(332, 155, 98, 26);
 		btnBuscar.setName("btnBuscarApartamentos");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(193, 288, 701, 234);
+		scrollPane.setBounds(155, 278, 701, 234);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
@@ -119,35 +120,42 @@ public class PanelApartamento extends JPanel {
 		add(comboBox);
 		   
 		ImageIcon imagen=new ImageIcon(PanelHotel.class.getResource("/imagenes/pattern.jpg"));
+		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
 		btnPerfil.setBounds(10, 48, 89, 23);
 		add(btnPerfil);
+		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 23, 89, 23);
 		
 		add(btnLogin);
 		
 		BoxPisc = new JCheckBox("Piscina");
-		BoxPisc.setBounds(310, 228, 97, 23);
+		BoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
+		BoxPisc.setBounds(467, 228, 97, 23);
 		add(BoxPisc);
 		
 		
 		BoxGim = new JCheckBox("Gimnasio");
-		BoxGim.setBounds(155, 228, 97, 23);
+		BoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
+		BoxGim.setBounds(293, 228, 97, 23);
 		add(BoxGim);
 		
 		 BoxPark = new JCheckBox("Parking");
-		 BoxPark.setBounds(390, 228, 97, 23);
+		 BoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
+		 BoxPark.setBounds(552, 228, 97, 23);
 		 add(BoxPark);
 		
 		 BoxSpa = new JCheckBox("Spa");
-		 BoxSpa.setBounds(245, 228, 97, 23);
+		 BoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
+		 BoxSpa.setBounds(389, 228, 97, 23);
 		 add(BoxSpa);
 		
 		 BoxWi = new JCheckBox("Wifi");
-		 BoxWi.setBounds(80, 228, 97, 23);
+		 BoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
+		 BoxWi.setBounds(205, 228, 97, 23);
 		 add(BoxWi);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);

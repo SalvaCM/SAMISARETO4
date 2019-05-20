@@ -1,7 +1,7 @@
 
 package vista;
 
-import java.awt.CheckboxGroup;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
@@ -10,10 +10,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
@@ -25,8 +23,6 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 import java.awt.Cursor;
 import javax.swing.JSlider;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
@@ -99,8 +95,8 @@ public class PanelHotel extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Camas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-		panel_1.setBounds(60, 182, 181, 68);
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "NUMERO PERSONAS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBounds(193, 169, 181, 68);
 		add(panel_1);
 		panel_1.setLayout(null);
 		

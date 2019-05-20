@@ -12,12 +12,9 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
 import modelo.Casa;
-import modelo.FuncionesCasa;
 import modelo.Modelo;
 import vista.Ventana;
 
@@ -137,8 +134,9 @@ public class ControladorCasa implements ActionListener {
 		
 	}
 	
-	
-		//METODOS
+	/**
+	 * para saber que servicios adicionales se han seleccionado 
+	 */
 	private class pincharServicio implements ItemListener {
 		
 		@Override
@@ -182,7 +180,10 @@ public class ControladorCasa implements ActionListener {
 	
 	
 	
-	
+
+	/**
+	* valida que los campos del apartamento son validos 
+ 	*/
 	private void validarCampos() {
 		if(miVentana.casa.tablaResultados.getSelectedRow() == -1)
 		{
@@ -238,7 +239,10 @@ public class ControladorCasa implements ActionListener {
 	}
 	
 	
-
+	/**
+	 * Coge la casa seleccionada
+	 * @return la casa seleccionada
+	 */
 	private Casa ReservarCasa() {
 		
 		int indice = miVentana.casa.tablaResultados.getSelectedRow();
@@ -246,8 +250,10 @@ public class ControladorCasa implements ActionListener {
 		Casa casa= miModelo.listaCasas.get(indice);
 		return casa;	
 	}
+	
 	/**
-	 * FILTRA LAS CASAS POR SU UBICACION
+	 * añade a la tabla las casas con la filtracion por ubicacion
+	 * @param casas
 	 */
 	public void filtrarPorUbicacion(ArrayList<Casa> casas) {
 		
@@ -262,6 +268,10 @@ public class ControladorCasa implements ActionListener {
 		} catch (SQLException e1) {
 			e1.printStackTrace();}
 	}
+	
+	/**
+	 * resetear servicios
+	 */
 	public void resetearServicio() {
 		miVentana.casa.chckbxNewCheckBoxGim.setSelected(false);
 		miVentana.casa.chckbxNewCheckBoxPark.setSelected(false);

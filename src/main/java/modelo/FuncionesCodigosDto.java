@@ -3,11 +3,7 @@ package modelo;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import javax.swing.JOptionPane;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 import controlador.Controlador;
@@ -24,7 +20,15 @@ public class FuncionesCodigosDto {
 	public Controlador miControlador;
 	public Ventana miVentana;
 	
-	
+	/**
+	 * Muestra el precio total con el descuento de los hoteles
+	 * @param codigoCliente
+	 * @param codigoHotel
+	 * @param codigoDto
+	 * @param total
+	 * @return el precio total con el descuento incluido 
+	 * @throws SQLException
+	 */
 	public double descuentoHotelTotal (int codigoCliente, int codigoHotel, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -69,7 +73,14 @@ public class FuncionesCodigosDto {
 				return totalConDto;
 
 	}
-	
+	/**
+	* comprueba el codigo introducido de los hoteles con el de la base de datos 
+ 	* @param codigoCliente
+ 	* @param codigoHotel
+ 	* @param codigoDto
+ 	* @return valida si es correcto el codigo introducido
+ 	* @throws SQLException
+ 	*/
 	public boolean validarHotel (int codigoCliente, int codigoHotel, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables	
 		
@@ -103,7 +114,15 @@ public class FuncionesCodigosDto {
 					return validar;
 
 	}
-	
+	/**
+	 * Muestra el precio total con el descuento de las casas
+	 * @param codigoCliente
+	 * @param codigoCasa
+	 * @param codigoDto
+	 * @param total
+	 * @return el precio total con el descuento incluido 
+	 * @throws SQLException
+	 */
 	public double descuentoCasaTotal  (int codigoCliente, int codigoCasa, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -145,7 +164,14 @@ public class FuncionesCodigosDto {
 				return totalConDto;
 
 	}
-	
+	/**
+	* comprueba el codigo introducido de las casas con el de la base de datos 
+ 	* @param codigoCliente
+ 	* @param codigoCasa
+ 	* @param codigoDto
+ 	* @return valida si es correcto el codigo introducido
+ 	* @throws SQLException
+ 	*/
 	public boolean validarCasa (int codigoCliente, int codigoCasa, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables
 				
@@ -184,7 +210,15 @@ public class FuncionesCodigosDto {
 					return validar;
 
 	}
-	
+	/**
+	 * Muestra el precio total con el descuento de los apartamentos
+	 * @param codigoCliente
+	 * @param codigoApart
+	 * @param codigoDto
+	 * @param total
+	 * @return el precio total con el descuento incluido 
+	 * @throws SQLException
+	 */
 	public double descuentoApartTotal (int codigoCliente, int codigoApart, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -226,7 +260,14 @@ public class FuncionesCodigosDto {
 				return totalConDto;
 
 	}
-	
+	/**
+	* comprueba el codigo introducido de los apartamentos con el de la base de datos 
+ 	* @param codigoCliente
+ 	* @param codigoApart
+ 	* @param codigoDto
+ 	* @return valida si es correcto el codigo introducido
+ 	* @throws SQLException
+ 	*/
 	public boolean validarApart (int codigoCliente, int codigoApart, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables
 				
@@ -265,7 +306,13 @@ public class FuncionesCodigosDto {
 					return validar;
 
 	}
-	
+	/**
+	 * borra el codigo de la base de datos una vez el cliente haya pagado
+	 * @param codigoCliente
+	 * @param codigoHotel
+	 * @param codigoDto
+	 * @throws SQLException
+	 */
 	public void borrarCodigoHotel (int codigoCliente, int codigoHotel, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables	
 		
@@ -299,7 +346,13 @@ public class FuncionesCodigosDto {
 				
 
 	}
-	
+	/**
+	 * borra el codigo de la base de datos una vez el cliente haya pagado
+	 * @param codigoCliente
+	 * @param codigoCasa
+	 * @param codigoDto
+	 * @throws SQLException
+	 */
 	public void borrarCodigoCasa (int codigoCliente, int codigoCasa, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables
 				
@@ -333,7 +386,13 @@ public class FuncionesCodigosDto {
 
 
 	}
-	
+	/**
+	 * borra el codigo de la base de datos una vez el cliente haya pagado
+	 * @param codigoCliente
+	 * @param codigoApart
+	 * @param codigoDto
+	 * @throws SQLException
+	 */
 	public void borrarCodigoApart (int codigoCliente, int codigoApart, String codigoDto) throws SQLException{ 
     	//Declaracion e incializacion de variables
 				
@@ -370,6 +429,11 @@ public class FuncionesCodigosDto {
 					}
 
 	}
+	/**
+	 * crea un codigo de descuento para el hotel 
+	 * @param reservaHotel
+	 * @param cliente
+	 */
 	public void crearCodigoHotel(ReservaHotel reservaHotel,Cliente cliente) {
 		//Declaracion e inicializacion de variables:
 
@@ -384,6 +448,11 @@ public class FuncionesCodigosDto {
 			System.out.println("codigo promocional recibido !");
 		}
 	}
+	/**
+	 * crea un codigo de descuento para la casa
+	 * @param reservaCasa
+	 * @param cliente
+	 */
 	public void crearCodigoCasa(ReservaCASAoAPART reservaCasa,Cliente cliente) {
 		//Declaracion e inicializacion de variables:
 
@@ -398,6 +467,11 @@ public class FuncionesCodigosDto {
 			System.out.println("codigo promocional recibido !");
 		}
 	}
+	/**
+	 * crea un codigo de descuento para el apartamento
+	 * @param reservaApart
+	 * @param cliente
+	 */
 	public void crearCodigoApart(ReservaCASAoAPART reservaApart,Cliente cliente) {
 		//Declaracion e inicializacion de variables:
 
@@ -412,6 +486,15 @@ public class FuncionesCodigosDto {
 			System.out.println("codigo promocional recibido !");
 		}
 	}
+	/**
+	 * muestra solo el precio que se ha descontado del hotel
+	 * @param codigoCliente
+	 * @param codigoHotel
+	 * @param codigoDto
+	 * @param total
+	 * @return descuento
+	 * @throws SQLException
+	 */
 	public double descuentoHotel (int codigoCliente, int codigoHotel, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -456,7 +539,15 @@ public class FuncionesCodigosDto {
 				return dto;
 
 	}
-	
+	/**
+	 * muestra solo el precio que se ha descontado de la casa
+	 * @param codigoCliente
+	 * @param codigoCasa
+	 * @param codigoDto
+	 * @param total
+	 * @return descuento
+	 * @throws SQLException
+	 */
 	public double descuentoCasa (int codigoCliente, int codigoCasa, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -498,7 +589,15 @@ public class FuncionesCodigosDto {
 				return dto;
 
 	}
-	
+	/**
+	 * muestra solo el precio que se ha descontado del apartamento
+	 * @param codigoCliente
+	 * @param codigoApart
+	 * @param codigoDto
+	 * @param total
+	 * @return descuento
+	 * @throws SQLException
+	 */
 	public double descuentoApart (int codigoCliente, int codigoApart, String codigoDto, double total) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		

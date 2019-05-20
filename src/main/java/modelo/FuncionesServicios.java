@@ -13,7 +13,18 @@ public class FuncionesServicios {
 	ConexionBD miConexion = new ConexionBD();
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
-public ArrayList<Hotel> serviciosHotel (boolean parking, boolean piscina, boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
+	
+	/**
+	 * Muestra los hoteles que tiene ese servicio
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return ArrayList de los hoteles que tiene ese servicio
+	 * @throws SQLException
+	 */
+	public ArrayList<Hotel> serviciosHotel (boolean parking, boolean piscina, boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 		
     	//Declaracion e incializacion de variables
 		ArrayList<Hotel> hotelesF =new ArrayList<Hotel>();
@@ -22,12 +33,11 @@ public ArrayList<Hotel> serviciosHotel (boolean parking, boolean piscina, boolea
 		String cod_gimnasio=null;
 		String cod_wifi=null;
 		String cod_spa=null;
-		int codcasa ;
+		int codhotel=0;
 		String nombre ;
 		String ubicacion ;
-		int tamano ;
-		float precio ;
 		Hotel hotelF;
+		int nEstrellas=0;
 		
 		
 		// Inicio
@@ -36,30 +46,36 @@ public ArrayList<Hotel> serviciosHotel (boolean parking, boolean piscina, boolea
 				
 				cod_parking="1";
 			}
-			 if(piscina == true) {
+			
+			if(piscina == true) {
 				cod_piscina="2";
-				}
-			 if(gimnasio == true) {
+			
+			}
+			
+			if(gimnasio == true) {
 				
 				cod_gimnasio="3";
 			}
+			
 			if(wifi == true) {
 				
 				cod_wifi="4";
 			}
+			
 			if(spa == true) {
 				
 				cod_spa="5";
 			}
+			
 			String query="select DISTINCT h.cod_hotel,h.nombre,h.ubicacion, h.nestrellas from hotel h, servicios_hotel s where h.cod_hotel=s.cod_hotel and h.cod_hotel in (select  cod_hotel from servicios_hotel where cod_servicio='"+cod_parking+"' or cod_servicio='"+cod_piscina+"' or cod_servicio='"+cod_wifi+"' or cod_servicio='"+cod_gimnasio+"' or cod_servicio='"+cod_spa+"');";
 		
 			ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 			while(rs.next()) {
 								hotelF=new Hotel();
-								int codhotel = rs.getInt("cod_hotel");
+								codhotel = rs.getInt("cod_hotel");
 								nombre = rs.getString("nombre");
 								ubicacion = rs.getString("ubicacion");
-							int 	nEstrellas = rs.getInt("nestrellas");
+								nEstrellas = rs.getInt("nestrellas");
 								hotelF.setCod_hotel(codhotel);
 								hotelF.setNombre(nombre);
 								hotelF.setUbicacion(ubicacion);
@@ -71,7 +87,20 @@ public ArrayList<Hotel> serviciosHotel (boolean parking, boolean piscina, boolea
 			
 		return hotelesF; 
 	}
-public int adicionH (int codhotel,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
+	
+	/**
+	 * Suma el precio del servicio adicional seleccionado en los hoteles al precio 
+	 * @param codhotel
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return devuelve el precio total con el servicio adicional añadido
+	 * @throws SQLException
+	 */
+	
+	public int adicionH (int codhotel,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 		
     	//Declaracion e incializacion de variables
 		String cod_parking=null;
@@ -83,32 +112,35 @@ public int adicionH (int codhotel,boolean parking,boolean piscina,boolean gimnas
 		int adicion = 0; 
 		
 		if(parking == true) {
-			System.out.println("1");
+			
 			cod_parking="1";
 		}
-		 if(piscina == true) {
+		
+		if(piscina == true) {
+			 
 			cod_piscina="2";
-			System.out.println("2");
-			}
-		 if(gimnasio == true) {
+		}
+		 
+		if(gimnasio == true) {
 				
-				cod_gimnasio="3";
-			}
-			if(wifi == true) {
+			cod_gimnasio="3";
+		}
+		
+		if(wifi == true) {
 				
-				cod_wifi="4";
-			}
-			if(spa == true) {
-				
-				cod_spa="5";
-			}
+			cod_wifi="4";
+		}
+		
+		if(spa == true) {
+			
+			cod_spa="5";
+		}
 		
 			String query="select sum(precio) i from servicios_hotel sh, servicios_adicionales sa where sh.cod_servicio=sa.cod_servicio and cod_hotel='"+codhotel+"' and (sa.cod_servicio='"+cod_parking+"' or sa.cod_servicio='"+cod_piscina+"' or sa.cod_servicio='"+cod_wifi+"' or sa.cod_servicio='"+cod_gimnasio+"' or sa.cod_servicio='"+cod_spa+"');";
 			ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 			while(rs.next()) {
 								
 					adicion = rs.getInt("i");
-					System.out.println("qadicion"+adicion);
 								
 				}
 			
@@ -116,6 +148,16 @@ public int adicionH (int codhotel,boolean parking,boolean piscina,boolean gimnas
 		return adicion; 
 	}
 	
+	/**
+	 * Muestra las casas que tiene ese servicio
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return ArrayList de las casas que tiene ese servicio
+	 * @throws SQLException
+	 */
 	public ArrayList<Casa> serviciosCasa (boolean parking, boolean piscina, boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 		
     	//Declaracion e incializacion de variables
@@ -176,7 +218,19 @@ public int adicionH (int codhotel,boolean parking,boolean piscina,boolean gimnas
 		}
 		return casas; 
 	}
-public int adicionC(int codcasa,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
+	
+	/**
+	 * Suma el precio del servicio adicional seleccionado de las casas al precio 
+	 * @param codcasa
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return devuelve el precio total con el servicio adicional añadido
+	 * @throws SQLException
+	 */
+	public int adicionC(int codcasa,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 		
     	//Declaracion e incializacion de variables
 		String cod_parking=null;
@@ -220,7 +274,18 @@ public int adicionC(int codcasa,boolean parking,boolean piscina,boolean gimnasio
 			
 		return adicion; 
 	}
-public ArrayList<Apartamento> serviciosApart (boolean parking, boolean piscina, boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
+	
+	/**
+	 * Muestra los apartamentos que tiene ese servicio
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return ArrayList de los apartamentos que tiene ese servicio
+	 * @throws SQLException
+	 */
+	public ArrayList<Apartamento> serviciosApart (boolean parking, boolean piscina, boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 		
     	//Declaracion e incializacion de variables
 		ArrayList<Apartamento> apartamentos =new ArrayList<Apartamento>();
@@ -283,7 +348,19 @@ public ArrayList<Apartamento> serviciosApart (boolean parking, boolean piscina, 
 		}
 		return apartamentos; 
 	}
-public int adicionA(int codapart,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
+	
+	/**
+	 * Suma el precio del servicio adicional seleccionado del los apartamentos al precio 
+	 * @param codapart
+	 * @param parking
+	 * @param piscina
+	 * @param gimnasio
+	 * @param wifi
+	 * @param spa
+	 * @return devuelve el precio total con el servicio adicional añadido
+	 * @throws SQLException
+	 */
+	public int adicionA(int codapart,boolean parking,boolean piscina,boolean gimnasio, boolean wifi, boolean spa) throws SQLException{
 	
 	//Declaracion e incializacion de variables
 	String cod_parking=null;

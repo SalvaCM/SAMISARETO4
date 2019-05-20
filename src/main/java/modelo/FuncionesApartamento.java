@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 
@@ -17,6 +15,12 @@ public class FuncionesApartamento {
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
 
+	/**
+	 * Lee de la base de datos todos los apartamentos que no estan en la tabla reservas
+	 * @return ArrayList de apartamentos no reservados
+	 * @throws SQLException
+	 */
+	
  	public ArrayList<Apartamento> leerApartamento() throws SQLException{ 
     	//Declaracion e incializacion de variables
 
@@ -61,6 +65,14 @@ public class FuncionesApartamento {
  		return apartamentosOrden;
 
  	}
+
+ 	
+ 	/**
+ 	 * Lee de la base de datos todos los apartamentos en orden
+ 	 * @return Arraylist de todos los apartamentos
+ 	 * @throws SQLException
+ 	 */
+
  	public ArrayList<Habitacion> leerHabitaciones(int codApart) throws SQLException{
 		String tipo="";
 		int codHabitacion;
@@ -82,6 +94,7 @@ public class FuncionesApartamento {
 		}
 		return habitaciones;
 	}
+
  	public ArrayList<Apartamento> leerApartamentoOrden() throws SQLException{ 
     	//Declaracion e incializacion de variables
 
@@ -123,7 +136,11 @@ public class FuncionesApartamento {
  		return apartamentos;
 
  	}
-
+ 	/**
+ 	* Muestra todas las ubicaciones de los apartamentos
+ 	* @return Arraylist de las ubicaciones de los apartamentos
+ 	* @throws SQLException
+ 	*/
  	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
     	//Declaracion e incializacion de variables
 
@@ -140,7 +157,12 @@ public class FuncionesApartamento {
  		return ubicaciones;
 
  	}
-
+ 	/**
+ 	 * Busca en la base de datos todos los apartamentos con la ubicacion que desee
+ 	 * @param ubicacion
+ 	 * @return ArrayList de todos los apartamentos con esa ubicacion
+ 	 * @throws SQLException
+ 	 */
  	public ArrayList<Apartamento> buscarUbicacion(String ubicacion) throws SQLException{
 
  		String nombre="";	

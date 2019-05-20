@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
 
@@ -19,7 +17,11 @@ public class FuncionesCasa {
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
 
-
+	/**
+	 * Leer de la base de datos las casas que no estan en la tabla reservas
+	 * @return ArrayList de casas no reservadas
+	 * @throws SQLException
+	 */
 	public ArrayList<Casa> leerCasa() throws SQLException{ 
     	//Declaracion e incializacion de variables	    
 
@@ -61,6 +63,12 @@ public class FuncionesCasa {
  					return casasOrden;
 
  		}
+	/**
+	 * Lee de la base de datos todas habitaciones de la casa que desee, excepto los dormitorios
+	 * @param codCasa
+	 * @return ArrayList de todas las habitaciones de esa casa
+	 * @throws SQLException
+	 */
 	public ArrayList<Habitacion> leerHabitaciones(int codCasa) throws SQLException{
 		String tipo="";
 		int codHabitacion;
@@ -82,6 +90,12 @@ public class FuncionesCasa {
 		}
 		return habitaciones;
 	}
+	/**
+	 * Lee de la base de datos todos los dormitorios de la casa que desee
+	 * @param codCasa
+	 * @return ArrayList de los dormitorios de esa casa
+	 * @throws SQLException
+	 */
 	public ArrayList<Dormitorio> leerDormitorios(int codCasa) throws SQLException{
 		String tipo="";
 		int codHabitacion;
@@ -107,6 +121,11 @@ public class FuncionesCasa {
 		}
 		return dormitorios;
 	}
+	/**
+	 * Lee de la base de datos todas las casas en orden
+	 * @return ArrayList de todas las casas
+	 * @throws SQLException
+	 */
 	public ArrayList<Casa> leerCasaOrden() throws SQLException{ 
     	//Declaracion e incializacion de variables	    
 
@@ -150,7 +169,11 @@ public class FuncionesCasa {
 
 
 
-
+	/**
+ 	* Muestra todas las ubicaciones de las casas
+ 	* @return Arraylist de las ubicaciones de las casas
+ 	* @throws SQLException
+ 	*/
  	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
  			
 	    //Declaracion e incializacion de variables
@@ -170,7 +193,12 @@ public class FuncionesCasa {
 
  	}
 
-
+	/**
+ 	 * Busca en la base de datos todas las casas con la ubicacion que desee
+ 	 * @param ubicacion
+ 	 * @return ArrayList de todas las casas con esa ubicacion
+ 	 * @throws SQLException
+ 	 */
 	public ArrayList<Casa> buscarUbicacion(String ubicacion) throws SQLException{
 
 		String nombre="";	 
@@ -206,63 +234,7 @@ public class FuncionesCasa {
 						
 			return casas;
 		}
-	/*public boolean casaOcupada (int cod, Date fida,Date fvuelta) throws SQLException{ 
-    	//Declaracion e incializacion de variables
-	
-		boolean r = false;
-		Date f1 = null;
-		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservas where cod_casa='"+cod+"';";
-		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-		while(rs.next()) {
-				
-				
-				f1 = rs.getDate("fechaEntrada");
-				f2= rs.getDate("fechaSalida");
-				
-			}
 
-		//System.out.println("FECHA ENTRADA:  "+f1.getTime()+" | "+fida.getTime());
-	
-		
-	
-	 if(f2==null || f1==null) {
-			r=false;
-		}else {
-			if((fvuelta.compareTo(f1)>=0 && fida.compareTo(f2)<=0)) {
-				//JOptionPane.showMessageDialog(miVentana, "Ocupado entre fechas  "+f1+"  y  "+f2+"", "Atencion!", JOptionPane.WARNING_MESSAGE);
-				r=true;
-			}
-		}
-		
-       return r;
-	}
-	/*public ArrayList rangoFechas(int cod, Date fida,Date fvuelta) throws SQLException{ 
-    	//Declaracion e incializacion de variables
-	
-		ArrayList<String> fechas = new ArrayList<String>();
-		Date f1 = null;
-		Date f2 = null;
-		String query="select fechaEntrada,fechaSalida from reservas where cod_casa='"+cod+"';";
-		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
-		while(rs.next()) {
-				
-				
-				f1 = rs.getDate("fechaEntrada");
-				f2= rs.getDate("fechaSalida");
-				
-			}
-
-		fechas.add(f1.toString());
-		fechas.add(f2.toString());
-	
-		
-	
-	 
-		
-       return fechas;
-	}
-	*/
 
 	
 	}

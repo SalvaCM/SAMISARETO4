@@ -21,6 +21,12 @@ public class ControladorSaludo implements ActionListener{
 	Connection con = miConexion.ConectarBD();
 	FuncionesControlador funciones = new FuncionesControlador();
 	
+	/**
+	 * Constructor de la clase
+	 * @param miVentana instancia de la ventna principal
+	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+	 * @param miControlador 
+	 */
 	public ControladorSaludo(Ventana miVentana, Modelo miModelo) {
 		
 		this.miVentana = miVentana;
@@ -44,7 +50,7 @@ public class ControladorSaludo implements ActionListener{
 						  if ( con != null) {
 							  
 						  }else {
-							  JOptionPane.showMessageDialog(miVentana, "ERROR DE CONEXION", "¡Atencion!", JOptionPane.ERROR_MESSAGE);
+							  JOptionPane.showMessageDialog(miVentana, "ERROR DE CONEXION", "ï¿½Atencion!", JOptionPane.ERROR_MESSAGE);
 							  System.exit(0);
 						  }
 		

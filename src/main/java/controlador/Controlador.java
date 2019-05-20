@@ -8,9 +8,7 @@ import vista.Ventana;
 /**
  * Clase controlador. Se encarga de conectar la clase Modelo de tratamiento de la informacion con la clase Vista que interaccciona con el usuario
  * Tiene las instancias de todos los controladores de cada uno de los paneles donde se a�aden las acciones de cada boton y elemento del panel
- * 
  */
-
 public class Controlador {
  
 	//Declaracion e inicializacion de variables;
@@ -42,7 +40,7 @@ public class Controlador {
 		public Controlador(Ventana miVentana, Modelo miModelo) { 
 			this.miVentana = miVentana;
 			this.miModelo = miModelo;
-			
+	
 			this.miControladorPago = new ControladorPago(miVentana, miModelo,this);
 			this.miControladorResumen = new ControladorResumen(miVentana, miModelo,this);
 			this.miControladorDevolucion = new ControladorDevolucion(miVentana, miModelo,this);

@@ -21,7 +21,8 @@ public class FuncionesLogin {
 	private Cliente cliente;
 	private Ventana miVentana;
 
-	public Cliente LogearUser (String DNI, char[] password) throws Exception {
+	
+	public Cliente LogearUser (String DNI) throws Exception {
 
 
 		//Declaracion e inicializacion de variables
@@ -57,6 +58,13 @@ public class FuncionesLogin {
 		return cliente;
 	} 
 	
+	/**
+	 * comprueba la contraseña introducida con la de la base de datos
+	 * @param DNI
+	 * @param pass
+	 * @return true, si coincide la contraseña y false, si no coincide
+	 * @throws Exception
+	 */
 	public boolean comprobarPasword(String DNI, char[] pass) throws Exception {
 		//Declaracion e inicializacion de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -83,6 +91,12 @@ public class FuncionesLogin {
 		
 		return devuelve;
 	}
+	/**
+	 * Metodo para cambiar la contraseña
+	 * @param passwordNueva
+	 * @param cliente
+	 * @throws UnsupportedEncodingException
+	 */
 	public void cambiarContrasena(String passwordNueva, Cliente cliente) throws UnsupportedEncodingException {
 		//Declaraci�n e inicializaci�n de variables:
 
@@ -98,6 +112,12 @@ public class FuncionesLogin {
 		}
 	}
 	
+	/**
+	 * Metodo para encriptar una cadena de string
+	 * @param cadena
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	public static String encriptar(String cadena) throws UnsupportedEncodingException 
 	{
 		 	String cadenaEncriptada = Base64.getEncoder().encodeToString(cadena.toString().getBytes());
@@ -105,7 +125,11 @@ public class FuncionesLogin {
 		 	 
 		 	return cadenaEncriptada;
 	}
-	  
+	/**
+	 * Metodo para desencriptar una cadena de string encriptada
+	 * @param cadenaEncriptada
+	 * @return
+	 */
 	public static String desencriptar(String cadenaEncriptada)
 	{
 	 
@@ -117,4 +141,6 @@ public class FuncionesLogin {
 		return cadenaDesencriptada;
 		
 	  }
+
+	
 }

@@ -18,6 +18,13 @@ public class ControladorUsuario implements ActionListener{
 	private Modelo miModelo;
 	FuncionesControlador funciones = new FuncionesControlador();
 	
+	
+	/**
+	 * Constructor de la clase
+	 * @param miVentana instancia de la ventna principal
+	 * @param miModelo instancia del modelo para acceder a las funciones de los paneles
+	 * @param miControlador 
+	 */
 	public ControladorUsuario(Ventana miVentana, Modelo miModelo, Controlador miControlador)
 	{
 		this.miVentana=miVentana;
@@ -29,6 +36,12 @@ public class ControladorUsuario implements ActionListener{
 	
 	}
 		
+	
+	/**
+	 * Metodo para las llamadas a los botones de la 
+	 * ventana resumen
+	 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch (((JButton) e.getSource()).getName()) {
@@ -62,6 +75,9 @@ public class ControladorUsuario implements ActionListener{
 	
 	
 }
+	/**
+	 * muestra los campos
+	 */
 	private void mostrarCampos() {
 		miVentana.usuario.btnCambiarPw.setVisible(true);
 		miVentana.usuario.lblNewPasswordCheck.setVisible(true);
@@ -70,7 +86,9 @@ public class ControladorUsuario implements ActionListener{
 		miVentana.usuario.lblNewPassword.setVisible(true);
 		
 	}
-
+	/**
+	 * oculta los campos
+	 */
 	private void ocultarCampos() {
 		miVentana.usuario.passwordNueva.setText("");
 		miVentana.usuario.passwordNuevacheck.setText("");
@@ -82,8 +100,8 @@ public class ControladorUsuario implements ActionListener{
 		miVentana.usuario.lblNewPassword.setVisible(false);
 	}
 
-	/*
-	 *  Función que Compara que la contraseña antigua y la nueva sean iguales
+	/**
+	 *  Funcion que compara que la contraseÃ±a antigua y la nueva sean iguales
 	 */
 	public boolean ValidarContrasena() {
 		boolean resultado=true;
@@ -100,12 +118,11 @@ public class ControladorUsuario implements ActionListener{
 		}
 		return resultado;
 }
-	public void buscarReservas() {
-		// HACER LLAMADA A LOS CAMPOS DE LA TABLA RESERVAS 
-		// ANTES HAY QUE HACER UN METODO PARA INSERTAR RESERVAS EN LA BD DESPUES DEL PAGO
-		// OPCIONAL HACER UN METODO PARA RECUPERAR POR SEPARADO LOS DATOS DE LA RESERVA DE HOTEL Y HABITACIONES
-		// ASI SE ESCRIBIRIAN EN EL PANEL USUARIO EN RESERVAS PASADAS Y FUTURAS
-	}
+	
+	/**
+	 * cuando se cancela en el perfil vuelve al panel anterior
+	 * @param panelActual
+	 */
 	public void TratarPerfil(JPanel panelActual) {
 			miVentana.usuario.paneldeRetorno=panelActual;
 			funciones.cambiarDePanel(panelActual, miVentana.usuario);

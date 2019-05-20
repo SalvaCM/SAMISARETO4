@@ -101,8 +101,6 @@ public class ControladorApartamento implements ActionListener {
 	 * Metodo para las llamadas a los botones de la ventana resumen
 	 */
 	
-	
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
@@ -144,9 +142,10 @@ public class ControladorApartamento implements ActionListener {
 	}
 	
 	
-		//METODOS
-	
-private class pincharServicios implements ItemListener {
+	/**
+	 * para saber que servicios adicionales se han seleccionado 
+	 */
+	private class pincharServicios implements ItemListener {
 		
 		@Override
 		public void itemStateChanged(ItemEvent e) {
@@ -189,17 +188,9 @@ private class pincharServicios implements ItemListener {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	/**
+	* valida que los campos del apartamento son validos 
+ 	*/
 	private void validarCampos() {
 		if(miVentana.apartamento.tablaResultados.getSelectedRow() == -1)
 		{
@@ -211,28 +202,22 @@ private class pincharServicios implements ItemListener {
 			{
 				JOptionPane.showMessageDialog(miVentana, "Seleccione fechas", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			}else{
-				DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+				 DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
 				 funciones.cambiarDePanel(miVentana.apartamento, miVentana.resumenCyA);
 				 miModelo.reserva.setApartReservado(ReservarApartamento());
 				 miModelo.reserva.setFechaEntrada(miVentana.apartamento.fechaEntrada.getDate());
 				 miModelo.reserva.setFechaSalida(miVentana.apartamento.fechaSalida.getDate());
 				 String fechaE = dateF.format( miModelo.reserva.getFechaEntrada());
-					String fechaS=  dateF.format(miModelo.reserva.getFechaSalida());
+				 String fechaS=  dateF.format(miModelo.reserva.getFechaSalida());
 				 miModelo.reserva.setNoches((int) ((miVentana.apartamento.fechaSalida.getCalendar().getTimeInMillis()-miVentana.apartamento.fechaEntrada.getCalendar().getTimeInMillis())/86400000));
 				 miVentana.resumenCyA.resumenReserva.append(miModelo.reserva.getApartReservado().toString());
 				 miVentana.resumenCyA.txtDetalles.append("Fecha entrada:  "+ fechaE+"\n");
 				 miVentana.resumenCyA.txtDetalles.append("Fecha salida:  "+ fechaS+"\n");
-				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());
-				 System.out.println( "COD APARTAMENTO:"+miModelo.reserva.getApartReservado().getCod_apartamento());
-				 System.out.println( miModelo.reserva.getApartReservado().getPrecio());
-				 
+				 miVentana.resumenCyA.txtDetalles.append("Numero de noches:  "+ miModelo.reserva.getNoches());		 
 				 miControlador.miControladorPago.total = miModelo.reserva.getApartReservado().getPrecio()* miModelo.reserva.getNoches();
-				 System.out.println("Total: "+miControlador.miControladorPago.total);
-				 
 				 miVentana.pago.total.setText(formatoMoneda.format(0));
 				 miVentana.pago.total.setText(formatoMoneda.format(miControlador.miControladorPago.total));
-				
-			//	funciones.limpiarTabla(miVentana.apartamento.tablaResultados,miVentana.apartamento.tableModel);
+
 			}
 					
 			
@@ -240,10 +225,11 @@ private class pincharServicios implements ItemListener {
 	
 	}
 	
-	
+
 
 	/**
-	 * FILTRA LAS CASAS POR SU UBICACION
+	 * añade a la tabla los apartamentos con la filtracion por ubicacion
+	 * @param apartamento
 	 */
 	public void filtrarPorUbicacion(ArrayList<Apartamento> apartamento) {
 		
@@ -259,12 +245,20 @@ private class pincharServicios implements ItemListener {
 			e1.printStackTrace();}
 	}
 	
+	/**
+	 * Coge el apartamento seleccionado
+	 * @return el apartamento seleccionado
+	 */
 	private Apartamento ReservarApartamento() {
 		
 		int indice = miVentana.apartamento.tablaResultados.getSelectedRow();
 		Apartamento apartamento= miModelo.listaApartamento.get(indice);
 		return apartamento;	
 	}
+	
+	/**
+	 * resetea los servicios 
+	 */
 	public void resetearServicios() {
 		miVentana.apartamento.BoxGim.setSelected(false);
 		miVentana.apartamento.BoxPark.setSelected(false);

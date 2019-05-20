@@ -6,7 +6,12 @@ import java.util.Date;
 
 public class FuncionesPago {
 
-	
+	/**
+	 * va sumando la cantidad pagada
+	 * @param valor
+	 * @param pagado
+	 * @return la cantidad pagada
+	 */
 	public double sumarDineroPago(String valor, double pagado) {
 
 		pagado = pagado + Double.parseDouble(valor);
@@ -14,6 +19,12 @@ public class FuncionesPago {
 		return pagado;
 			
 	}
+	/**
+	 * se le añade la tasa correspondiente dependiendo de las fechas seleccionadas
+	 * @param f1
+	 * @param f2
+	 * @return la tasa
+	 */
 	public double tasa(Date f1, Date f2) {
 		Double tasa = 1d;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); //Para declarar valores en nuevos objetos date, usa el mismo formato date que usaste al crear las fechas 

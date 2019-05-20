@@ -48,7 +48,7 @@ public class ControladorEstanciasHotel  implements ActionListener{
 
 		case "btnCancelarEstancias": funciones.cambiarDePanel(miVentana.estanciasHotel, miVentana.hotel);
 			resetear();
-			todosLosHoteles();
+			miControlador.miControladorElegir.MostrarHoteles();
 			break;
 
 		case "Reservar": 
@@ -115,19 +115,12 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		}
 		
 	}
-	public void todosLosHoteles() {
-		 try {
-			miModelo.listaHoteles=miModelo.misFuncionesHotel.leerHoteles();
-			
-			for(int i=0;i<miModelo.listaHoteles.size();i++) {
-				Object[] hotel = {miModelo.listaHoteles.get(i).getCod_hotel(),miModelo.listaHoteles.get(i).getNombre(), miModelo.listaHoteles.get(i).getUbicacion(),miModelo.listaHoteles.get(i).getnEstrellas()}; 
-				miVentana.hotel.tableModel.addRow(hotel);
-				}
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} 
-	}
+	
+	
+	
+	/**
+	 * para saber que habitacion se ha elegido
+	 */
 	public void HabitacionElegida() {
 		 int row = miVentana.estanciasHotel.tablaHabitaciones.getSelectedRow();
 		 int codigoHabitacion = (int) miVentana.estanciasHotel.tableModel.getValueAt(row, 0);
@@ -140,6 +133,10 @@ public class ControladorEstanciasHotel  implements ActionListener{
 		}	
 			
 	}
+	
+	/**
+	 * resetea los campos
+	 */
 	public void resetear() {
 		funciones.limpiarTabla(miVentana.estanciasHotel.tablaHabitaciones,miVentana.estanciasHotel.tableModel);
 		funciones.limpiarTabla(miVentana.hotel.tablaResultados,miVentana.hotel.tableModel);

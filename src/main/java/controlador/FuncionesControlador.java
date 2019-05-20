@@ -40,6 +40,11 @@ public class FuncionesControlador {
 	
 	}
 
+	/**
+	 * limpia las tablas
+	 * @param table
+	 * @param tableModel
+	 */
 	public void limpiarTabla(JTable table,TableModel tableModel)
 	{
 		int rows=tableModel.getRowCount();

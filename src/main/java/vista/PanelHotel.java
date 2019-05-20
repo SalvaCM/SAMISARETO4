@@ -1,7 +1,7 @@
 
 package vista;
 
-import java.awt.CheckboxGroup;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
@@ -25,8 +25,6 @@ import javax.swing.DefaultComboBoxModel;
 import java.awt.Dimension;
 import java.awt.Cursor;
 import javax.swing.JSlider;
-import javax.swing.event.ChangeListener;
-import javax.swing.event.ChangeEvent;
 import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import javax.swing.JCheckBox;
@@ -105,7 +103,7 @@ public class PanelHotel extends JPanel {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Camas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		panel_1.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Nº PERSONAS", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel_1.setBounds(193, 169, 181, 68);
 		add(panel_1);
 		panel_1.setLayout(null);
@@ -245,10 +243,6 @@ public class PanelHotel extends JPanel {
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(903, 207, 89, 23);
-		add(btnNewButton);
 		
 	}
 }

@@ -24,7 +24,19 @@ public class FuncionesRegistro {
 	
 	private Ventana miVentana;
 
-	
+	/**
+	 * Registra un nuevo cliente 
+	 * @param DNI
+	 * @param Nombre
+	 * @param Apellido
+	 * @param date2
+	 * @param contrasena
+	 * @param fechaRegistro
+	 * @return cliente
+	 * @throws SQLException
+	 * @throws ParseException
+	 * @throws UnsupportedEncodingException
+	 */
 	public Cliente registrarNuevoCliente(String DNI, String Nombre, String Apellido, Date date2, char[] contrasena, Date fechaRegistro) throws SQLException, ParseException, UnsupportedEncodingException {
 		
 		//Declaracion e inicializacion de variables
@@ -103,7 +115,12 @@ public class FuncionesRegistro {
 		  else 
 			 return true;
 	}
-	
+	/**
+	 * Verifica si el DNI esta el base de datos
+	 * @param dni
+	 * @return
+	 * @throws SQLException
+	 */
 	public boolean verificarDNI (String dni) throws SQLException {
 		//Declaraci�n e inicializaci�n de variables
 		ConexionBD miConexion = new ConexionBD();
@@ -121,6 +138,16 @@ public class FuncionesRegistro {
 		}
 	}
 	
+	/**
+	 * Comprueba que todos los campos del registro son validos
+	 * @param dni
+	 * @param nombre
+	 * @param apellido
+	 * @param fecha
+	 * @param contrasena
+	 * @return true, si todos los campos son validos y false, si no son validos
+	 * @throws SQLException
+	 */
 	public boolean comprobarCamposRegistro(String dni, String nombre, String apellido, Date fecha, char[] contrasena) throws SQLException {
 
 		

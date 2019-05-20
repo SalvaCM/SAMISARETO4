@@ -62,7 +62,7 @@ public class ControladorLogin  implements ActionListener{
 					
 				if(miModelo.misFuncionesLogin.comprobarPasword(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword())==true) {
 					miModelo.cliente = new Cliente();
-					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText(), miVentana.login.passwordField.getPassword());
+					miModelo.cliente = miModelo.misFuncionesLogin.LogearUser(miVentana.login.TextDni.getText());
 					miModelo.logged = true;
 					activarPerfil();
 					
@@ -89,6 +89,9 @@ public class ControladorLogin  implements ActionListener{
 		}
 	}
 
+	/**
+	 * restear campos al activar el perfil
+	 */
 	public void activarPerfil() {
 		String logout="Logout";
 		miVentana.alojamiento.btnLogin.setText(logout);
@@ -111,6 +114,10 @@ public class ControladorLogin  implements ActionListener{
 		miVentana.hotel.btnPerfil.setEnabled(true);
 		
 	}
+	
+	/**
+	 * restear campos al desactivar el perfil
+	 */
 	public void desactivarPerfil() {
 		
 		String login="Login";
@@ -135,6 +142,12 @@ public class ControladorLogin  implements ActionListener{
 		
 	}	
 
+	
+	/**
+	 * para saber si el usuario esta logueado o no logueado. Cuando se loguea vuelve al panel que estaba y para desloguearse cuando el usuario quiera
+	 * @param botonLogin
+	 * @param panelActual
+	 */
 	public void tratarLogin(JButton botonLogin,JPanel panelActual) {
 		if (botonLogin.getText().equals("Login"))
 		{

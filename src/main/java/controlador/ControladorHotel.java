@@ -15,8 +15,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import modelo.Apartamento;
 import modelo.HabitacionHotel;
 import modelo.Hotel;
 import modelo.Modelo;
@@ -148,9 +146,11 @@ public class ControladorHotel implements ActionListener {
 				
 			}
 
-				//METODOS
 			
-			
+
+			/**
+			 * para saber que servicios adicionales se han seleccionado 
+			 */	
 			private class pincharServiciosH implements ItemListener {
 				
 				@Override
@@ -186,31 +186,12 @@ public class ControladorHotel implements ActionListener {
 						
 					 
 				    }
-				
-				
-				
-				
+					
 			}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			/**
+			 * restea los campos		
+			 */		
 			public void resetear() 
 			{
 				funciones.limpiarTabla(miVentana.apartamento.tablaResultados, miVentana.apartamento.tableModel);
@@ -225,6 +206,10 @@ public class ControladorHotel implements ActionListener {
 				miVentana.hotel.nEstrellas.setValue(0);
 			}
 			
+			
+			/**
+			 * valida que los campos del apartamento son validos 
+ 			*/		
 			private void validarCampos() {
 				if(miVentana.hotel.tablaResultados.getSelectedRow() == -1)
 				{
@@ -249,10 +234,12 @@ public class ControladorHotel implements ActionListener {
 							rellenarTabla();						
 						}
 				}
-				/**
-				 * 	Rellena la Tabla de Habitaciones Disponibles
-				 */
+		
 			}
+			
+			/**
+			 * 	Rellena la Tabla de Habitaciones Disponibles
+			 */
 			public void rellenarTabla() {
 				int nCamas=miVentana.hotel.nCamas.getValue();
 				StringBuilder cadena= new StringBuilder();
@@ -296,6 +283,10 @@ public class ControladorHotel implements ActionListener {
 					}
 				}
 			}
+			
+			/**
+			 * añade a la tabla los hoteles que tienen las estrellas selecionadas
+			 */
 			public void filtrarPorEstrellas() {
 				int nEstrellas=miVentana.hotel.nEstrellas.getValue();
 				resetearServiciosH();
@@ -311,6 +302,12 @@ public class ControladorHotel implements ActionListener {
 					miVentana.hotel.tableModel.addRow(hotel);
 					}
 				}
+			
+			/**
+			 * cuenta cuantas personas entran por habitacion
+			 * @param indice
+			 * @return las personas que entran por habitacion
+			 */
 			private int sumasNpersonas(int indice) {
 				int totalPersonas=0;
 				for (int i=0;i<miModelo.reservaHotel.getHotelReservado().habitacionesDisponibles.get(indice).getCamas().size();i++)
@@ -321,6 +318,10 @@ public class ControladorHotel implements ActionListener {
 				return totalPersonas;
 			}
 
+			/**
+			 * para saber que hotel se ha seleccionado
+			 * @return el hotel seleccionado
+			 */
 			private Hotel ReservarHotel() {
 				
 				int indice = miVentana.hotel.tablaResultados.getSelectedRow();
@@ -328,8 +329,10 @@ public class ControladorHotel implements ActionListener {
 				return hotel;	
 			}
 
+		
 			/**
-			 * DEVUELVE UN ARRAYLIST DE LAS HABITACIONES DE UN HOTEL DETERMINADO
+			 * calcula las habitaciones que tiene ese hotel
+			 * @return ArrayList de las habitaciones
 			 */
 			public ArrayList<HabitacionHotel> Estancias() {
 				
@@ -352,8 +355,10 @@ public class ControladorHotel implements ActionListener {
 				return habitaciones;
 			}
 
+			
 			/**
-			 * FILTRA LOS HOTELES POR SU UBICACION
+			 * muestra en la tabla los hoteles con la filtracion por ubicacion
+			 * @param hoteles
 			 */
 			public void filtrarPorUbicacion(ArrayList<Hotel> hoteles) {
 				resetearServiciosH();
@@ -372,7 +377,9 @@ public class ControladorHotel implements ActionListener {
 			
 			
 			
-			//IMAGENES
+			/**
+			 * muestra las imagenes en los paneles
+			 */
 			public void imagen() {
 				 String enlace = "";
 				 ImageIcon imagen1;

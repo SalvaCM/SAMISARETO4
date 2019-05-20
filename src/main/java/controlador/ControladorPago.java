@@ -4,19 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.text.NumberFormat;
-import java.util.ArrayList;
 import java.util.Locale;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
-
-import com.toedter.calendar.JDateChooser;
-
 import ficheros.ManejadorFicherosTexto;
-import modelo.CodigosDto;
-import modelo.FuncionesReserva;
-import modelo.HabitacionHotel;
 import modelo.Modelo;
-import modelo.ReservaHotel;
 import vista.Ventana;
 
 public class ControladorPago implements ActionListener {
@@ -336,6 +328,9 @@ public class ControladorPago implements ActionListener {
 		
 	}
 	
+	/**
+	 * Guarda la reserva del hotel
+	 */
     private void GuardarReservaH() {
     	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaHotel();
     	
@@ -345,12 +340,18 @@ public class ControladorPago implements ActionListener {
 			miModelo.reservaHotel.setCodReserva(codReserva);
 		
 	}
+    /**
+	 * Guarda la reserva de la casa
+	 */
     private void GuardarReservaC() {
     	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaCasa();
     	miModelo.misFuncionesReserva.registrarReservaCasa(codReserva, miModelo.reserva, miModelo.cliente);
     	miModelo.reserva.setCodReserva(codReserva);
     }
     
+    /**
+	 * Guarda la reserva del apartamento
+	 */
     private void GuardarReservaA() {
     	int codReserva=miModelo.misFuncionesReserva.buscarNumeroReservaApartamento();
     	miModelo.misFuncionesReserva.registrarReservaApartamento(codReserva, miModelo.reserva, miModelo.cliente);

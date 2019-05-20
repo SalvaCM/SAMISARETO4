@@ -1,15 +1,12 @@
 package modelo;
 
 import java.sql.Connection;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
-import vista.Ventana;
 
 
 public class FuncionesHotel {
@@ -17,14 +14,15 @@ public class FuncionesHotel {
 	public Hotel hotel;
 	public HabitacionHotel habitacion;
 	public Cama cama;
-	/**
-	 * Metodo para mostrar los alojamientos disponibles en el JTABLE
-	 */
+	
 	ConexionBD miConexion = new ConexionBD();
 	ConsultaBD miConsulta = new ConsultaBD();
 	Connection con = miConexion.ConectarBD();
+	
 	/**
-	 * Metodo para buscar los hoteles en la DB, devuelve un array con todos los hoteles.
+	 * Lee de la base de datos todos los hoteles que no estan en la tabla reservas
+	 * @return ArrayList de los hoteles no reservados
+	 * @throws SQLException
 	 */
 	public ArrayList<Hotel> leerHoteles() throws SQLException{ 
     	//Declaracion e incializacion de variables
@@ -58,6 +56,11 @@ public class FuncionesHotel {
 		return hotelesOrden;
 
 	}
+	/**
+ 	 * Lee de la base de datos todos los hoteles en orden
+ 	 * @return Arraylist de todos los hoteles
+ 	 * @throws SQLException
+ 	 */
 	public ArrayList<Hotel> leerHotelesOrden() throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -89,10 +92,13 @@ public class FuncionesHotel {
 		return hoteles2;
 
 	}
+	
 	/**
-	 * Metodo para buscar los hoteles  por su UBICACION en la DB, devuelve un array con todos los hoteles.
-	 */
-
+ 	 * Busca en la base de datos todos los hoteles con la ubicacion que desee
+ 	 * @param ubicacion
+ 	 * @return ArrayList de todos los hoteles con esa ubicacion
+ 	 * @throws SQLException
+ 	 */
 	public ArrayList<Hotel> buscarUbicacion(String ubicacion) throws SQLException{
 		String nombre=""; int codhotel;int nEstrellas ;
 		ArrayList<Hotel> hoteles =new ArrayList<Hotel>();
@@ -115,6 +121,12 @@ public class FuncionesHotel {
 		}
 		return hoteles;
 	}
+	/**
+	 * Muestra todos los hoteles que tienen ese numero de estrellas
+	 * @param estrellas
+	 * @return ArrayList de los hoteles con las estrellas seleccionadas
+	 * @throws SQLException
+	 */
 	public ArrayList<Hotel> filtrarPorEstrellas(int estrellas) throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -147,9 +159,11 @@ public class FuncionesHotel {
 
 	}
 	/**
-	 * Metodo para buscar los las habitaciones de un hotel determinado, devuelve un array con todos las habitaciones
+	 * Metodo para buscar los las habitaciones de un hotel determinado
+	 * @param codhotel
+	 * @return devuelve un array con todos las habitaciones
+	 * @throws SQLException
 	 */
-	
 	public ArrayList<HabitacionHotel> leerHabitaciones(int codhotel) throws SQLException{
 		String tipo="";
 		float precio=0;
@@ -174,6 +188,12 @@ public class FuncionesHotel {
 		}
 		return habitaciones;
 	}
+	/**
+	 * Lee de la base de datos los tipos de cama que tienen esa habitacion
+	 * @param codHabitacion
+	 * @return ArrayList de las camas que tiene esa habitacion
+	 * @throws SQLException
+	 */
 	public ArrayList<Cama> leerCamas(int codHabitacion) throws SQLException{
 		String tipocama="";
 		int npersonas;
@@ -191,10 +211,13 @@ public class FuncionesHotel {
 		}
 		return camas;
 	}
+		
 	/**
-	 *  BUSCA UNA HABITACION Y LA A�ADE AL ARRAY DE RESERVAS
+	 * Se mete en el array de reservas la habitacion escogida
+	 * @param cod_habitacion
+	 * @return la habitacion escogida
+	 * @throws SQLException
 	 */
-	// AQUI SOLO LEEMOS LA HABITACION DONDE ESTA ESE CODIGO, PERO NO SE RESERVA COMO TAL, SOLO A NIVEL DE PROGRAMA NO DE BASE DE DATOS
 	public HabitacionHotel reservarHabitacion(int cod_habitacion) throws SQLException{
 		String tipo="";
 		int tamano;
@@ -217,8 +240,10 @@ public class FuncionesHotel {
 		return habitacion;
 	}
 	/**
-	 *  LEE DE LA BASE DE DATOS LAS UBICACIONES DE LOS HOTELES Y LAS HACE DISPONIBLES PARA SELECCIONAR EN ESE FILTRO
-	 */
+ 	* Muestra todas las ubicaciones de los hoteles
+ 	* @return Arraylist de las ubicaciones de los hoteles
+ 	* @throws SQLException
+ 	*/
 	public ArrayList<String> mostrarUbicaciones () throws SQLException{ 
     	//Declaracion e incializacion de variables
 		
@@ -237,6 +262,14 @@ public class FuncionesHotel {
 		return ubicaciones;
 
 	}
+	/**
+	 * Compara con las fechas para saber si esa habitacion esta ya reservada en esas fechas
+	 * @param cod
+	 * @param fida
+	 * @param fvuelta
+	 * @return true, si esta ya reservada y false, si no esta reservada
+	 * @throws SQLException
+	 */
 	public boolean habitaOcupada (int cod, Date fida,Date fvuelta) throws SQLException{ 
     	//Declaracion e incializacion de variables
 	

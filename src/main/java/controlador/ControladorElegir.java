@@ -114,6 +114,10 @@ public class ControladorElegir implements ActionListener{
 	
 	
 	}
+	
+	/**
+	 * Muestra los hoteles en la tabla
+	 */
 	public void MostrarHoteles() {
 
 		 try {
@@ -130,6 +134,9 @@ public class ControladorElegir implements ActionListener{
 		
 	}	
 	
+	/**
+	 * Muestra las casas en la tabla
+	 */
 	public void MostrarCasas() {
 
 	 try {
@@ -146,6 +153,9 @@ public class ControladorElegir implements ActionListener{
 	
 	}
 	
+	/**
+	 * Muestra los apartamentos en la tabla
+	 */
 	public void MostrarApartamentos() {
 
 		 try {

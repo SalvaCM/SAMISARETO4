@@ -3,6 +3,7 @@ package vista;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -14,6 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import javax.swing.JScrollPane;
 
 /**
  * Clase PaneCambioFinal
@@ -26,7 +28,6 @@ public class PanelUsuario extends JPanel {
 	
 	public DefaultListModel<String> modelo2;
 	public JButton btnCambiarPw;
-	public JLabel lblCodVuelta;
 	public JButton btnVolver = new JButton("Volver");
 	public JPasswordField passwordNueva;
 	public JPasswordField passwordNuevacheck;
@@ -39,6 +40,7 @@ public class PanelUsuario extends JPanel {
 	public JButton btnCambiarContrasena = new JButton("Cambiar Contrasena");
 	public JTextArea txtReservasPasadas = new JTextArea();
 	public JTextArea txtreservasFuturas = new JTextArea();
+	public JLabel etiqueta;
 
 	public JPanel paneldeRetorno;
 	
@@ -57,13 +59,6 @@ public class PanelUsuario extends JPanel {
 
 		
 		modelo2=new DefaultListModel<String>();
-		
-		lblCodVuelta = new JLabel("");
-		lblCodVuelta.setForeground(Color.GRAY);
-		lblCodVuelta.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblCodVuelta.setFont(new Font("Consolas", Font.PLAIN, 20));
-		lblCodVuelta.setBounds(574, 354, 108, 29);
-		add(lblCodVuelta);
 		btnVolver.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnVolver.setName("btnVolver");
@@ -135,21 +130,29 @@ public class PanelUsuario extends JPanel {
 		btnCambiarContrasena.setBounds(378, 267, 153, 28);
 		add(btnCambiarContrasena);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(33, 319, 448, 187);
+		add(scrollPane);
+		scrollPane.setViewportView(txtReservasPasadas);
+		
 		
 		txtReservasPasadas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtReservasPasadas.setEditable(false);
 		txtReservasPasadas.setBorder(new TitledBorder(null, "Reservas Realizadas", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(178, 34, 34)));
-		txtReservasPasadas.setBounds(33, 319, 448, 187);
-		add(txtReservasPasadas);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(482, 319, 516, 187);
+		add(scrollPane_1);
+		scrollPane_1.setViewportView(txtreservasFuturas);
 		
 		
 		txtreservasFuturas.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		txtreservasFuturas.setEditable(false);
 		txtreservasFuturas.setBorder(new TitledBorder(null, "Bonos Disponibles", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
-		txtreservasFuturas.setBounds(482, 319, 516, 187);
-		add(txtreservasFuturas);
-		
-		
+		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
+		etiqueta = new JLabel(imagen);
+		etiqueta.setBounds(-20, -20, 1200, 800);
+		add(etiqueta);
 		
 		setVisible(false);
 	}

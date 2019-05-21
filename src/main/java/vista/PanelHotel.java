@@ -72,7 +72,7 @@ public class PanelHotel extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(793, 131, 161, 26);
+		fechaSalida.setBounds(766, 131, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -82,7 +82,7 @@ public class PanelHotel extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(628, 131, 161, 26);
+		fechaEntrada.setBounds(593, 131, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -158,13 +158,13 @@ public class PanelHotel extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(462, 131, 98, 26);
+		btnBuscar.setBounds(474, 131, 98, 26);
 		btnBuscar.setName("btnBuscarHoteles");
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(253, 189, 701, 315);
-		scrollPane.setBackground(new Color(230, 230, 250));
+		scrollPane.setBackground(Color.WHITE);
 		add(scrollPane);
 		
 		String col[] = {"cod","Nombre","Ubicacion","Estrellas"};
@@ -188,10 +188,10 @@ public class PanelHotel extends JPanel {
 		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
-		tablaResultados.setBackground(new Color(230, 230, 250));
+		tablaResultados.setBackground(Color.WHITE);
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(253, 131, 209, 26);
+		comboBox.setBounds(268, 131, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "ASTURIAS", "VALENCIA", "BARCELONA", "SALAMANCA"}));
@@ -203,34 +203,34 @@ public class PanelHotel extends JPanel {
 		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
-		btnPerfil.setBounds(10, 41, 89, 23);
+		btnPerfil.setBounds(60, 41, 89, 23);
 		add(btnPerfil);
 		btnLogin.setFont(new Font("Dialog", Font.BOLD, 11));
 		
 		
 		btnLogin.setName("btnLogin");
-		btnLogin.setBounds(10, 17, 89, 23);
+		btnLogin.setBounds(60, 17, 89, 23);
 		add(btnLogin);
 		
 		
 		Gim = new JCheckBox("Gimnasio");
 		Gim.setFont(new Font("Dialog", Font.BOLD, 11));
-		Gim.setBounds(79, 320, 97, 23);
+		Gim.setBounds(79, 330, 74, 18);
 		add(Gim);
 		
 		 Park = new JCheckBox("Parking");
 		 Park.setFont(new Font("Dialog", Font.BOLD, 11));
-		 Park.setBounds(79, 355, 97, 23);
+		 Park.setBounds(79, 377, 64, 18);
 		 add(Park);
 		
 		 Spa = new JCheckBox("Spa");
 		 Spa.setFont(new Font("Dialog", Font.BOLD, 11));
-		 Spa.setBounds(79, 389, 97, 23);
+		 Spa.setBounds(79, 424, 42, 18);
 		 add(Spa);
 		
 		 Wi = new JCheckBox("Wifi");
 		 Wi.setFont(new Font("Dialog", Font.BOLD, 11));
-		 Wi.setBounds(79, 424, 97, 23);
+		 Wi.setBounds(79, 469, 42, 18);
 		 add(Wi);
 		
 		Pisc = new JCheckBox("Piscina");
@@ -248,11 +248,26 @@ public class PanelHotel extends JPanel {
 		add(lblEncuentreSuHotel);
 		
 		label = new JLabel("");
+		label.setFont(new Font("Dialog", Font.BOLD, 12));
 		label.setOpaque(true);
 		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
 		label.setBackground(Color.LIGHT_GRAY);
-		label.setBounds(60, 251, 181, 253);
+		label.setBounds(60, 248, 181, 256);
 		add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setOpaque(true);
+		label_1.setBorder(new TitledBorder(null, "Ubicacion", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(253, 107, 332, 78);
+		add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setOpaque(true);
+		label_2.setBorder(new TitledBorder(null, "Fecha Entrada / Fecha Salida", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_2.setBackground(Color.LIGHT_GRAY);
+		label_2.setBounds(584, 107, 370, 77);
+		add(label_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

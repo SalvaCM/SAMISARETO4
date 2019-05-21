@@ -200,19 +200,19 @@ public class FuncionesReserva {
 		
 		String query =	" SELECT R.COD_RESERVA,HH.TIPO,HH.PRECIO,H.NOMBRE,C.COD_CLIENTE,R.FECHAENTRADA,R.FECHASALIDA"+
 						" FROM HABITACION_HOTEL HH,HOTEL H,RESERVAS_HOTEL R,CLIENTES C"+
-						" WHERE R.COD_HABITACION=HH.COD_HABITACION AND R.COD_HOTEL=H.COD_HOTEL AND C.COD_CLIENTE=R.COD_CLIENTE and hh.cod_hotel=h.cod_hotel And r.cod_cliente=2"+
+						" WHERE R.COD_HABITACION=HH.COD_HABITACION AND R.COD_HOTEL=H.COD_HOTEL AND C.COD_CLIENTE=R.COD_CLIENTE and hh.cod_hotel=h.cod_hotel And r.cod_cliente="+cliente.getCodCliente()+
 						" GROUP BY R.COD_RESERVA,R.COD_HABITACION,R.COD_HOTEL"+  
 						" ORDER BY R.FECHAENTRADA ASC;";
 		
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		try {
 			while(rs.next()) {
-				cadenaReservas.append(rs.getInt("cod_reserva")+" ");
-				cadenaReservas.append(rs.getString("TIPO")+" ");
-				cadenaReservas.append(rs.getFloat("PRECIO")+" ");
-				cadenaReservas.append(rs.getString("NOMBRE")+" ");
-				cadenaReservas.append(rs.getInt("COD_CLIENTE")+" ");
-				cadenaReservas.append(rs.getDate("FECHAENTRADA")+" ");
+				cadenaReservas.append("Hotel: ");
+				cadenaReservas.append(rs.getString("NOMBRE")+"\n\t Habitacion : ");
+				cadenaReservas.append(rs.getString("TIPO")+" Pvp : ");
+				cadenaReservas.append(rs.getFloat("PRECIO")+"\n\t Fechas : ");
+			
+				cadenaReservas.append(rs.getDate("FECHAENTRADA")+" al ");
 				cadenaReservas.append(rs.getDate("FECHASALIDA")+" ");
 				cadenaReservas.append("\n");
 				}
@@ -296,7 +296,7 @@ public class FuncionesReserva {
 		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 		try {
 			while(rs.next()) {
-				cadenaReservas.append("Nombre:");
+				cadenaReservas.append("Codigo:");
 				cadenaReservas.append(rs.getString("codigo")+" Porcentaje: ");
 				cadenaReservas.append(rs.getFloat("porcentaje")+" Hotel: ");
 				cadenaReservas.append(rs.getString("nombre")+" ");

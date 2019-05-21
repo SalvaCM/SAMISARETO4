@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -212,6 +214,10 @@ public class ControladorPago implements ActionListener {
 				break;
 										 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
+
+				
+				//Calcular cambios despues del pago
+
 			if (miControlador.miControladorElegir.elegido==1) {
 				try {	
 				
@@ -262,28 +268,35 @@ public class ControladorPago implements ActionListener {
 			    
 			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
 			    if(miControlador.miControladorElegir.elegido==1) {
-			    	
+			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    	GuardarReservaH();
 			    	for (int j = 0; j <miModelo.reservaHotel.getHabReservadas().size(); j++) {
-			    		ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
-			    		fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + " "
-						+ "Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion() + " "
-						+ "N Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " "
-						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + " " + "Tarifa: "
-						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + " " + "Habitacion: "
+			    		fichero.archivoTexto("Nombre del Hotel: " + miModelo.reservaHotel.getHotelReservado().getNombre() + "\r\n "
+						+ "Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion() + "\r\n  "
+						+ "N Estrellas: " + miModelo.reservaHotel.getHotelReservado().getnEstrellas() + " \r\n "
+						+ "Categoria: " + miModelo.reservaHotel.getHabReservadas().get(j).getTipo() + "\r\n  " + "Tarifa: "
+						+ miModelo.reservaHotel.getHabReservadas().get(j).getPrecio() + "\r\n  " + "Habitacion: "
 						+  " " + "Cliente: "
 						+ miModelo.cliente.getDni()+"\n");
 			    	}
 			    	 miModelo.misFuncionesCodigos.crearCodigoHotel(miModelo.reservaHotel, miModelo.cliente);
-			    	 
+			    	 try {
+						fichero.leerContenido();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 			    }
 			    else if(miControlador.miControladorElegir.elegido==3) {
 			    
 			    	GuardarReservaA();
 			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    	miModelo.reserva.getApartReservado();
-			    	fichero.archivoTexto("Nombre del Apartamento: " + miModelo.reserva.getApartReservado().getNombre() + " "
-							+ "Ubicacion: " + miModelo.reserva.getApartReservado().getUbicacion() + " "
+			    	fichero.archivoTexto("Nombre del Apartamento: " + miModelo.reserva.getApartReservado().getNombre() + "\r\n "
+							+ "Ubicacion: " + miModelo.reserva.getApartReservado().getUbicacion() + "\r\n "
 						
 							+  " " + "Cliente: "
 							+ miModelo.cliente.getDni());
@@ -294,7 +307,7 @@ public class ControladorPago implements ActionListener {
 			    	GuardarReservaC();
 			    	ManejadorFicherosTexto fichero = new ManejadorFicherosTexto();
 			    	miModelo.reserva.getCasaReservada();
-			    	fichero.archivoTexto("Nombre de la casa: " + miModelo.reserva.getCasaReservada().getNombre() + " "
+			    	fichero.archivoTexto("Nombre de la casa: " + miModelo.reserva.getCasaReservada().getNombre() + "\r\n "
 							+ "Ubicacion: " + miModelo.reserva.getCasaReservada().getUbicacion() + " "
 						
 							+  " " + "Cliente: "

@@ -50,6 +50,8 @@ public class PanelCasa extends JPanel {
 	public JCheckBox chckbxNewCheckBoxSpa;
 	public JCheckBox chckbxNewCheckBoxWi;
 	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 	/**
 	 * Create the panel.
 	 */
@@ -66,7 +68,7 @@ public class PanelCasa extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(733, 155, 161, 26);
+		fechaSalida.setBounds(719, 155, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -76,7 +78,7 @@ public class PanelCasa extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(570, 155, 161, 26);
+		fechaEntrada.setBounds(546, 155, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -95,7 +97,7 @@ public class PanelCasa extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(398, 155, 98, 26);
+		btnBuscar.setBounds(411, 155, 98, 26);
 		btnBuscar.setName("btnBuscarCasas");
 		add(btnBuscar);
 		
@@ -131,10 +133,10 @@ public class PanelCasa extends JPanel {
 		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
-		tablaResultados.setBackground(new Color(230, 230, 250));
+		tablaResultados.setBackground(Color.WHITE);
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(190, 155, 209, 26);
+		comboBox.setBounds(201, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "BILBAO", "VALENCIA", "BARCELONA", "SALAMANCA", "SEVILLA","BURGOS"}));
@@ -145,7 +147,7 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxPisc = new JCheckBox("Piscina");
 		 chckbxNewCheckBoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxPisc.setBounds(60, 341, 97, 23);
+		chckbxNewCheckBoxPisc.setBounds(60, 395, 97, 23);
 		add(chckbxNewCheckBoxPisc);
 		btnPerfil.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnPerfil.setEnabled(false);
@@ -156,7 +158,7 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxGim = new JCheckBox("Gimnasio");
 		 chckbxNewCheckBoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxGim.setBounds(60, 271, 97, 23);
+		chckbxNewCheckBoxGim.setBounds(60, 290, 97, 23);
 		add(chckbxNewCheckBoxGim);
 		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
@@ -166,17 +168,17 @@ public class PanelCasa extends JPanel {
 		
 		 chckbxNewCheckBoxPark = new JCheckBox("Parking");
 		 chckbxNewCheckBoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxPark.setBounds(60, 376, 97, 23);
+		chckbxNewCheckBoxPark.setBounds(60, 441, 97, 23);
 		add(chckbxNewCheckBoxPark);
 		
 		 chckbxNewCheckBoxSpa = new JCheckBox("Spa");
 		 chckbxNewCheckBoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxSpa.setBounds(60, 306, 97, 23);
+		chckbxNewCheckBoxSpa.setBounds(60, 343, 97, 23);
 		add(chckbxNewCheckBoxSpa);
 		
 		 chckbxNewCheckBoxWi = new JCheckBox("Wifi");
 		 chckbxNewCheckBoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
-		chckbxNewCheckBoxWi.setBounds(60, 242, 97, 23);
+		chckbxNewCheckBoxWi.setBounds(60, 236, 97, 23);
 		add(chckbxNewCheckBoxWi);
 		
 		JLabel lblEncuentreSuCasa = new JLabel("Encuentre su Casa deseada :");
@@ -193,6 +195,20 @@ public class PanelCasa extends JPanel {
 		label.setBackground(Color.LIGHT_GRAY);
 		label.setBounds(52, 205, 126, 278);
 		add(label);
+		
+		label_1 = new JLabel("");
+		label_1.setOpaque(true);
+		label_1.setBorder(new TitledBorder(null, "Ubicacion", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(190, 138, 336, 65);
+		add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setOpaque(true);
+		label_2.setBorder(new TitledBorder(null, "Fechas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_2.setBackground(Color.LIGHT_GRAY);
+		label_2.setBounds(526, 138, 365, 65);
+		add(label_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

@@ -89,7 +89,7 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.setRowHeight(35);
 		tablaHabitaciones.setDefaultEditor(Object.class, null);
 		tablaHabitaciones.setShowHorizontalLines(true);
-		tablaHabitaciones.setBackground(new Color(230, 230, 250));
+		tablaHabitaciones.setBackground(Color.WHITE);
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setLocale(new Locale("es", "ES"));
 		
@@ -100,11 +100,11 @@ public class PanelEstanciasHotel extends JPanel {
 		add(scrollPane);
 		
 		 btnReservar = new JButton("Reservar");
-		 btnReservar.setFont(new Font("Dialog", Font.BOLD, 11));
+		 btnReservar.setFont(new Font("Dialog", Font.BOLD, 16));
 		 btnReservar.setName("Reservar");
-		btnReservar.setForeground(Color.BLACK);
-		btnReservar.setBackground(Color.GREEN);
-		btnReservar.setBounds(482, 451, 89, 31);
+		btnReservar.setForeground(Color.WHITE);
+		btnReservar.setBackground(Color.BLUE);
+		btnReservar.setBounds(462, 440, 109, 42);
 		add(btnReservar);
 
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
@@ -125,7 +125,7 @@ public class PanelEstanciasHotel extends JPanel {
 		JLabel lblHabitacionesDisponibles = new JLabel("Habitaciones Disponibles :");
 		lblHabitacionesDisponibles.setHorizontalAlignment(SwingConstants.CENTER);
 		lblHabitacionesDisponibles.setOpaque(true);
-		lblHabitacionesDisponibles.setFont(new Font("SansSerif", Font.PLAIN, 40));
+		lblHabitacionesDisponibles.setFont(new Font("Dialog", Font.BOLD, 40));
 		lblHabitacionesDisponibles.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblHabitacionesDisponibles.setBackground(Color.LIGHT_GRAY);
 		lblHabitacionesDisponibles.setBounds(166, 78, 701, 78);

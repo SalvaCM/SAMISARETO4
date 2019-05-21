@@ -1,7 +1,7 @@
 package modelo;
 
 
-public class Alojamiento {
+public abstract class Alojamiento {
 	protected int codAlojamiento;
 	protected int habDisponibles;
 	protected int habTotales;

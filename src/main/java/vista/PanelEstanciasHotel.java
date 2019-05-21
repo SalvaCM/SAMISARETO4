@@ -19,6 +19,7 @@ import javax.swing.JTable;
 import javax.swing.JLabel;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.border.TitledBorder;
+import java.util.Locale;
 
 
 public class PanelEstanciasHotel extends JPanel {
@@ -59,7 +60,7 @@ public class PanelEstanciasHotel extends JPanel {
 		btnSiguiente.setName("btnSiguienteEstancias");
 		add(btnSiguiente);
 		
-		String col[] = {"cod","Tipo","Tamaño","Precio","Tipo de Cama"};
+		String col[] = {"cod","Tipo","TamaÃ±o","Precio","Tipo de Cama"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaHabitaciones = new JTable(tableModel);
 		tablaHabitaciones.setDragEnabled(false);
@@ -90,6 +91,7 @@ public class PanelEstanciasHotel extends JPanel {
 		tablaHabitaciones.setShowHorizontalLines(true);
 		tablaHabitaciones.setBackground(Color.WHITE);
 		tablaHabitaciones.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setLocale(new Locale("es", "ES"));
 		
 		
 		scrollPane.setViewportView(tablaHabitaciones);

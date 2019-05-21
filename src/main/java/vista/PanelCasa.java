@@ -23,6 +23,7 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.JCheckBox;
 import javax.swing.border.TitledBorder;
+import java.util.Locale;
 
 public class PanelCasa extends JPanel {
 
@@ -101,11 +102,12 @@ public class PanelCasa extends JPanel {
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setLocale(new Locale("es", "ES"));
 		scrollPane.setBounds(190, 205, 701, 278);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"cod","Nombre","Ubicacion","Tamano","Precio"};
+		String col[] = {"cod","Nombre","Ubicacion","Tamaño","Precio"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

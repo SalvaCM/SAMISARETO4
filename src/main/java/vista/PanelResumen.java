@@ -7,15 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
-
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
+<<<<<<< HEAD
 import javax.swing.UIManager;
+=======
+import java.util.Locale;
+
 
 public class PanelResumen extends JPanel {
 
@@ -44,12 +45,12 @@ private static final long serialVersionUID = 3L;
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnCancelar.setName("btnCancelarResumen");
-		btnCancelar.setBounds(106, 517, 151, 48);
+		btnCancelar.setBounds(60, 556, 151, 48);
 		add(btnCancelar);
 		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnSiguiente.setName("btnSiguienteResumen");
-		btnSiguiente.setBounds(859, 517, 156, 48);
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();
@@ -66,6 +67,7 @@ private static final long serialVersionUID = 3L;
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();
+		resumenReserva.setLocale(new Locale("es", "ES"));
 		scrollPane_1.setViewportView(resumenReserva);
 		resumenReserva.setBorder(new TitledBorder(null, "Habitacion Reservada", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		resumenReserva.setFont(new Font("Dialog", Font.BOLD, 14));

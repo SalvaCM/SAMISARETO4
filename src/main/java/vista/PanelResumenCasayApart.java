@@ -40,12 +40,12 @@ private static final long serialVersionUID = 3L;
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnCancelar.setName("btnCancelarResumen2");
-		btnCancelar.setBounds(106, 517, 151, 48);
+		btnCancelar.setBounds(60, 556, 151, 48);
 		add(btnCancelar);
 		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnSiguiente.setName("btnSiguienteResumen2");
-		btnSiguiente.setBounds(828, 517, 156, 48);
+		btnSiguiente.setBounds(874, 556, 156, 48);
 		add(btnSiguiente);
 		
 		mostrarResumen=new DefaultListModel<String>();

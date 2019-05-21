@@ -12,10 +12,16 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Apartamento;
 import modelo.Modelo;
+import vista.PanelApartamento;
+import vista.PanelCasa;
+import vista.PanelHotel;
 import vista.Ventana;
 
 public class ControladorApartamento implements ActionListener {
@@ -111,16 +117,16 @@ public class ControladorApartamento implements ActionListener {
 			miVentana.apartamento.fechaEntrada.setCalendar(null);
 			miVentana.apartamento.fechaSalida.setCalendar(null);
 			miVentana.apartamento.fechaSalida.setEnabled(false);
-			
+			reiniciarImagen();
 			break;
 			
 			case "btnSiguienteApartamento": 
 			
 			validarCampos();
-			
+			reiniciarImagen();
 			break;	
 
-			case "btnBuscarApartamentos": filtrarPorUbicacion(miModelo.listaApartamento);
+			case "btnBuscarApartamentos": filtrarPorUbicacion(miModelo.listaApartamento); imagen();
 			
 			break;	
 			case "btnLogin" : 
@@ -283,4 +289,63 @@ public class ControladorApartamento implements ActionListener {
 		miVentana.apartamento.BoxWi.setSelected(false);
 		
  }
+	
+	
+	
+	/**
+	 * muestra las imagenes en los paneles
+	 */
+	public void imagen() {
+		 String enlace = "";
+		 ImageIcon imagen1;
+	
+		 
+		
+		this.miVentana.apartamento.repaint();
+		
+
+		
+		  if(miVentana.apartamento.comboBox.getSelectedItem().toString().equals("MADRID")) {
+			 miVentana.apartamento.remove(miVentana.apartamento.etiqueta);
+		
+				enlace="/imagenes/m.jpg";	
+		  }
+		  if(miVentana.apartamento.comboBox.getSelectedItem().toString().equals("BURGOS")) {
+				 miVentana.apartamento.remove(miVentana.apartamento.etiqueta);
+			
+					enlace="/imagenes/burgos.jpg";	
+			  }
+		  if(miVentana.apartamento.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
+				 miVentana.apartamento.remove(miVentana.apartamento.etiqueta);
+			
+					enlace="/imagenes/barcelona.jpg";	
+			  }
+		  if(miVentana.apartamento.comboBox.getSelectedItem().toString().equals("SALAMANCA")) {
+				 miVentana.apartamento.remove(miVentana.apartamento.etiqueta);
+			
+					enlace="/imagenes/salamanca2.jpg";	
+			  }
+		  
+		 
+		  
+		  
+			imagen1=new ImageIcon(PanelApartamento.class.getResource(enlace));
+			
+		
+			miVentana.apartamento.etiqueta.setIcon(imagen1);
+		
+			
+
+			this.miVentana.apartamento.add(miVentana.apartamento.etiqueta);	 
+		
+	}
+	
+	public void reiniciarImagen() {
+	    miVentana.apartamento.remove(miVentana.apartamento.etiqueta);
+		ImageIcon imagen=new ImageIcon(PanelApartamento.class.getResource("/imagenes/pattern.jpg"));
+		miVentana.apartamento.etiqueta = new JLabel(imagen);
+		miVentana.apartamento.etiqueta.setBounds(-20, -20, 1200, 800);
+		this.miVentana.apartamento.add(miVentana.apartamento.etiqueta);
+		miVentana.apartamento.etiqueta.setVisible(true);
+}
 }

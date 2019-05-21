@@ -214,8 +214,10 @@ public class ControladorPago implements ActionListener {
 				break;
 										 
 			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
+
 				
 				//Calcular cambios despues del pago
+
 			if (miControlador.miControladorElegir.elegido==1) {
 				try {	
 				

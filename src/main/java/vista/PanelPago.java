@@ -50,7 +50,6 @@ public class PanelPago extends JPanel {
 	public JButton btn005;
 	public JButton btn002; 
 	public JButton btn001;
-	public JCheckBox condiciones;
 	public JButton[] arrayBtn= new JButton[15];
 	public JLabel etiqueta ;
 	public JTextField textCodigo;
@@ -259,11 +258,6 @@ public class PanelPago extends JPanel {
 		
 
 		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
-		
-		 condiciones = new JCheckBox("He le\u00EDdo y acepto los t\u00E9rminos y condiciones.");
-	
-		condiciones.setBounds(478, 594, 336, 23);
-		add(condiciones);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

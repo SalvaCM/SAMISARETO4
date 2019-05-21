@@ -117,6 +117,7 @@ public class ControladorHotel implements ActionListener {
 
 					case "btnCancelarHotel": funciones.cambiarDePanel(miVentana.hotel, miVentana.alojamiento);
 					resetear();
+					reiniciarImagen();
 					break;
 					
 					case "btnSiguienteHotel": 	
@@ -399,7 +400,7 @@ public class ControladorHotel implements ActionListener {
 				
 				 if(miVentana.hotel.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
 					 miVentana.hotel.remove(miVentana.hotel.etiqueta);
-					//miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
+					// miVentana.estanciasHotel.remove(miVentana.estanciasHotel.etiqueta);
 					// miVentana.resumen.remove(miVentana.resumen.etiqueta);
 					 //miVentana.pago.remove(miVentana.pago.etiqueta);
 					// miVentana.devolucion.remove(miVentana.devolucion.etiqueta);

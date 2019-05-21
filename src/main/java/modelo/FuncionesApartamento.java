@@ -35,7 +35,7 @@ public class FuncionesApartamento {
 
  		// Inicio
 
- 		String query="SELECT `COD_APARTAMENTO`, `NOMBRE`, `UBICACION`, `TAMANO`, `PRECIO`, `PISO` FROM apartamento where cod_apartamento NOT IN (select reserva_apartamento.cod_apart from reserva_apartamento)";
+ 		String query="SELECT `COD_APARTAMENTO`, `NOMBRE`, `UBICACION`, `TAMANO`, `PRECIO`, `PISO` FROM apartamento where cod_apartamento NOT IN (select reserva_apartamento.cod_apart from reserva_apartamento);";
 
  		ResultSet rs = miConsulta.hacerConsultaBD(con, query);	
 

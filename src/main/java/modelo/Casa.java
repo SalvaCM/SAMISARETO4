@@ -68,8 +68,8 @@ public class Casa extends Alojamiento {
 			StringBuilder builder = new StringBuilder();
 			builder.append("Casa :");
 			builder.append(nombre);
-			builder.append("\nTamano :");
-			builder.append(tamano + " m²");
+			builder.append("\nTamaño :");
+			builder.append(tamano + "m²");
 			builder.append("\nUbicacion :");
 			builder.append(ubicacion);
 			builder.append("\n");

@@ -4,6 +4,8 @@ import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -95,8 +97,15 @@ public class ControladorEstanciasHotel  implements ActionListener{
 				miVentana.resumen.mostrarResumen.addElement("Nombre: " + miModelo.reservaHotel.getHotelReservado().getNombre());
 				miVentana.resumen.mostrarResumen.addElement("Ubicacion: " + miModelo.reservaHotel.getHotelReservado().getUbicacion());
 				miVentana.resumen.mostrarResumen.addElement("N Estrellas: " +miModelo.reservaHotel.getHotelReservado().getnEstrellas());
-				miVentana.resumen.txtDetalles.append(miModelo.reservaHotel.toString());
+				DateFormat dateF = new SimpleDateFormat("yyyy-MM-dd");
+				String fechaE = dateF.format( miModelo.reservaHotel.getFechaEntrada());
+				 String fechaS=  dateF.format(miModelo.reservaHotel.getFechaSalida());
+				miVentana.resumen.txtDetalles.append("Fecha de Entrada : "+fechaE);
+				miVentana.resumen.txtDetalles.append("\nFecha de Salida : "+fechaS);
+				miVentana.resumen.txtDetalles.append(String.valueOf("\nNoches : "+miModelo.reservaHotel.getNoches()));
+				
 			}
+			
 			controladorReservas=0;
 		break;
 		case "btnLogin" : 

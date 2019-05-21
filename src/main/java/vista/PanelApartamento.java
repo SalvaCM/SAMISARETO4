@@ -48,6 +48,8 @@ public class PanelApartamento extends JPanel {
 	public JCheckBox BoxWi;
 	private JLabel lblEncuentreSuApartamento;
 	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 
 	/**
 	 * Create the panel.
@@ -65,7 +67,7 @@ public class PanelApartamento extends JPanel {
 		fechaSalida.setOpaque(false);
 		fechaSalida.setDateFormatString("yyyy-MM-dd");
 		
-		fechaSalida.setBounds(749, 155, 161, 26);
+		fechaSalida.setBounds(731, 155, 161, 26);
 		fechaSalida.setMinSelectableDate(hoy);
 		fechaSalida.setEnabled(false);
 		add(fechaSalida);
@@ -75,7 +77,7 @@ public class PanelApartamento extends JPanel {
 		fechaEntrada.setName("ida");
 		fechaEntrada.setOpaque(false);
 		fechaEntrada.setDateFormatString("yyyy-MM-dd");
-		fechaEntrada.setBounds(576, 155, 161, 26);
+		fechaEntrada.setBounds(557, 155, 161, 26);
 		fechaEntrada.setMinSelectableDate(hoy);
 		
 		add(fechaEntrada);
@@ -86,7 +88,7 @@ public class PanelApartamento extends JPanel {
 
 		add(btnCancelar);
 		btnSiguiente.setFont(new Font("Dialog", Font.PLAIN, 16));
-		btnSiguiente.setBounds(874, 556, 156, 48);
+		btnSiguiente.setBounds(875, 556, 156, 48);
 		
 		btnSiguiente.setName("btnSiguienteApartamento");
 	
@@ -94,7 +96,7 @@ public class PanelApartamento extends JPanel {
 		
 		modelo=new DefaultListModel<String>();
 		btnBuscar.setFont(new Font("Dialog", Font.PLAIN, 11));
-		btnBuscar.setBounds(428, 155, 98, 26);
+		btnBuscar.setBounds(429, 155, 98, 26);
 		btnBuscar.setName("btnBuscarApartamentos");
 		add(btnBuscar);
 		
@@ -129,10 +131,10 @@ public class PanelApartamento extends JPanel {
 		tablaResultados.setRowHeight(35);
 		tablaResultados.setShowHorizontalLines(true);
 		tablaResultados.setDefaultEditor(Object.class, null);
-		tablaResultados.setBackground(new Color(230, 230, 250));
+		tablaResultados.setBackground(Color.WHITE);
 		scrollPane.setViewportView(tablaResultados);
 		tablaResultados.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		comboBox.setBounds(207, 155, 209, 26);
+		comboBox.setBounds(221, 155, 209, 26);
 		
 		// anadir funcion para buscar provincias en la base de datos
 		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"MADRID", "BILBAO", "VALENCIA", "BARCELONA", "SALAMANCA", "SEVILLA","BURGOS"}));
@@ -144,39 +146,46 @@ public class PanelApartamento extends JPanel {
 		btnPerfil.setEnabled(false);
 		
 		btnPerfil.setName("btnPerfil");
-		btnPerfil.setBounds(10, 48, 89, 23);
+		btnPerfil.setBounds(60, 47, 89, 23);
 		add(btnPerfil);
 		btnLogin.setFont(new Font("Dialog", Font.PLAIN, 11));
 		btnLogin.setName("btnLogin");
-		btnLogin.setBounds(10, 23, 89, 23);
+		btnLogin.setBounds(60, 23, 89, 23);
 		
 		add(btnLogin);
 		
 		BoxPisc = new JCheckBox("Piscina");
 		BoxPisc.setFont(new Font("Dialog", Font.BOLD, 11));
-		BoxPisc.setBounds(60, 363, 97, 23);
+		BoxPisc.setBounds(77, 388, 97, 23);
 		add(BoxPisc);
 		
 		
 		BoxGim = new JCheckBox("Gimnasio");
 		BoxGim.setFont(new Font("Dialog", Font.BOLD, 11));
-		BoxGim.setBounds(60, 262, 97, 23);
+		BoxGim.setBounds(77, 287, 97, 23);
 		add(BoxGim);
 		
 		 BoxPark = new JCheckBox("Parking");
 		 BoxPark.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxPark.setBounds(60, 414, 97, 23);
+		 BoxPark.setBounds(77, 439, 97, 23);
 		 add(BoxPark);
 		
 		 BoxSpa = new JCheckBox("Spa");
 		 BoxSpa.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxSpa.setBounds(60, 308, 97, 23);
+		 BoxSpa.setBounds(77, 339, 97, 23);
 		 add(BoxSpa);
 		
 		 BoxWi = new JCheckBox("Wifi");
 		 BoxWi.setFont(new Font("Dialog", Font.BOLD, 11));
-		 BoxWi.setBounds(60, 211, 97, 23);
+		 BoxWi.setBounds(77, 236, 97, 23);
 		 add(BoxWi);
+		
+		label_1 = new JLabel("");
+		label_1.setOpaque(true);
+		label_1.setBorder(new TitledBorder(null, "Fechas", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(542, 132, 368, 65);
+		add(label_1);
 		
 		lblEncuentreSuApartamento = new JLabel("Encuentre su Apartamento :");
 		lblEncuentreSuApartamento.setHorizontalAlignment(SwingConstants.CENTER);
@@ -191,8 +200,15 @@ public class PanelApartamento extends JPanel {
 		label.setOpaque(true);
 		label.setBackground(Color.LIGHT_GRAY);
 		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
-		label.setBounds(44, 183, 126, 320);
+		label.setBounds(60, 202, 137, 301);
 		add(label);
+		
+		label_2 = new JLabel("");
+		label_2.setOpaque(true);
+		label_2.setBorder(new TitledBorder(null, "Ubicacion", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
+		label_2.setBackground(Color.LIGHT_GRAY);
+		label_2.setBounds(209, 132, 336, 65);
+		add(label_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

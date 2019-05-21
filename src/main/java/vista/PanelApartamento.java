@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.border.TitledBorder;
 import javax.swing.SwingConstants;
+import java.util.Locale;
 
 public class PanelApartamento extends JPanel {
 
@@ -99,11 +100,12 @@ public class PanelApartamento extends JPanel {
 		add(btnBuscar);
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setLocale(new Locale("es", "ES"));
 		scrollPane.setBounds(209, 202, 701, 301);
 		scrollPane.setBackground(new Color(230, 230, 250));
 		add(scrollPane);
 		
-		String col[] = {"cod","Nombre","Ubicacion","Tamano","Precio","Piso"};
+		String col[] = {"cod","Nombre","Ubicacion","Tamaño","Precio","Piso"};
 		tableModel = new DefaultTableModel(col, 0);
 		tablaResultados = new JTable(tableModel);
 		tablaResultados.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

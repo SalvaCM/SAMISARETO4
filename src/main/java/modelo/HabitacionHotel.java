@@ -30,7 +30,7 @@ public class HabitacionHotel extends Habitacion {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Tipo: "+tipo+"\n");
-		builder.append("Tamano: "+tamano+ " m²" +"\n");
+		builder.append("Tamaño: "+tamano+ "m²" +"\n");
 		builder.append("Precio: "+formatoMoneda.format(precio)+ "\n");
 		builder.append("\n");
 		return builder.toString();

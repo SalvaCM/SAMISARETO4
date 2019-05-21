@@ -17,6 +17,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.border.TitledBorder;
 
 
 public class PanelRegistro extends JPanel {
@@ -35,6 +36,8 @@ public class PanelRegistro extends JPanel {
 	public JPasswordField passwordField;
 	public JDateChooser fechaNac = new JDateChooser();
 	public JLabel etiqueta;
+	private JLabel lblRegistrateAhora;
+	private JLabel label;
 
 	/**
 	 * Create the panel.
@@ -45,16 +48,8 @@ public class PanelRegistro extends JPanel {
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
-		
-		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("REGISTRARSE");
-		lblNewJgoodiesLabel.setBounds(10, 72, 1065, 48);
-		lblNewJgoodiesLabel.setBackground(new Color(204, 51, 153));
-		lblNewJgoodiesLabel.setForeground(Color.BLUE);
-		lblNewJgoodiesLabel.setFont(new Font("Tahoma", Font.BOLD, 40));
-		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		add(lblNewJgoodiesLabel);
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("DNI:");
-		lblNewJgoodiesLabel_1.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_1.setForeground(new Color(0, 153, 204));
 		lblNewJgoodiesLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewJgoodiesLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_1.setBounds(110, 178, 351, 35);
@@ -74,14 +69,14 @@ public class PanelRegistro extends JPanel {
 		add(btnRegistrarse);
 		
 		JLabel lblNombre = DefaultComponentFactory.getInstance().createLabel("NOMBRE:");
-		lblNombre.setForeground(Color.ORANGE);
+		lblNombre.setForeground(new Color(0, 153, 204));
 		lblNombre.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNombre.setBounds(110, 231, 351, 29);
 		add(lblNombre);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("APELLIDO:");
-		lblNewJgoodiesLabel_2.setForeground(Color.ORANGE);
+		lblNewJgoodiesLabel_2.setForeground(new Color(0, 153, 204));
 		lblNewJgoodiesLabel_2.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblNewJgoodiesLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblNewJgoodiesLabel_2.setBounds(202, 281, 259, 29);
@@ -89,7 +84,7 @@ public class PanelRegistro extends JPanel {
 
 		
 		JLabel lblContrasea = DefaultComponentFactory.getInstance().createLabel("CONTRASE\u00D1A:");
-		lblContrasea.setForeground(Color.ORANGE);
+		lblContrasea.setForeground(new Color(0, 153, 204));
 		lblContrasea.setHorizontalAlignment(SwingConstants.RIGHT);
 		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblContrasea.setBounds(110, 387, 351, 25);
@@ -119,7 +114,7 @@ public class PanelRegistro extends JPanel {
 		add(passwordField);
 		
 		JLabel lblFechaDeNacimiento = DefaultComponentFactory.getInstance().createLabel("FECHA DE NACIMIENTO:");
-		lblFechaDeNacimiento.setForeground(Color.ORANGE);
+		lblFechaDeNacimiento.setForeground(new Color(0, 153, 204));
 		lblFechaDeNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		lblFechaDeNacimiento.setBounds(242, 335, 219, 30);
 		add(lblFechaDeNacimiento);
@@ -137,6 +132,25 @@ public class PanelRegistro extends JPanel {
 		add(fechaNac);
 	
 		ImageIcon imagen=new ImageIcon(PanelRegistro.class.getResource("/imagenes/pattern.jpg"));
+		
+		lblRegistrateAhora = new JLabel("Registrate ahora :");
+		lblRegistrateAhora.setForeground(new Color(0, 0, 0));
+		lblRegistrateAhora.setOpaque(true);
+		lblRegistrateAhora.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRegistrateAhora.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblRegistrateAhora.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblRegistrateAhora.setBackground(Color.LIGHT_GRAY);
+		lblRegistrateAhora.setBounds(188, 58, 713, 82);
+		add(lblRegistrateAhora);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 40));
+		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(188, 152, 713, 317);
+		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

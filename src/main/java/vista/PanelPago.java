@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import javax.swing.border.TitledBorder;
 
 
 /** 
@@ -53,6 +54,10 @@ public class PanelPago extends JPanel {
 	public JButton[] arrayBtn= new JButton[15];
 	public JLabel etiqueta ;
 	public JTextField textCodigo;
+	private JLabel lblPantallaDePago;
+	private JLabel label;
+	private JLabel label_1;
+	private JLabel label_2;
 		
 
 	/**
@@ -81,18 +86,18 @@ public class PanelPago extends JPanel {
 		add(descuento);
 		
 		btnCodigoDto.setName("btnCodigoDto");
-		btnCodigoDto.setBounds(934, 487, 89, 23);
+		btnCodigoDto.setBounds(923, 472, 89, 24);
 		add(btnCodigoDto);
 		
 		textCodigo = new JTextField();
-		textCodigo.setBounds(805, 487, 106, 23);
+		textCodigo.setBounds(816, 472, 106, 23);
 		textCodigo.setColumns(10);
 		add(textCodigo);
 	
 		
 		JLabel lblCodigoPromocinal = DefaultComponentFactory.getInstance().createTitle("Codigo promocinal: ");
 		lblCodigoPromocinal.setFont(new Font("Dialog", Font.PLAIN, 19));
-		lblCodigoPromocinal.setBounds(583, 484, 194, 26);
+		lblCodigoPromocinal.setBounds(646, 468, 178, 26);
 		add(lblCodigoPromocinal);
 		
 		btnCancelar.setFont(new Font("Dialog", Font.PLAIN, 16));
@@ -153,91 +158,91 @@ public class PanelPago extends JPanel {
 		btn5 = new JButton("");
 		btn5.setName("5");
 		btn5.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5euros.jpg")));
-		btn5.setBounds(60, 278, 123, 54);
+		btn5.setBounds(94, 289, 123, 54);
 		add(btn5);
 
 		btn2 = new JButton("");
 		btn2.setName("2");
 		btn2.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2euros.png")));
-		btn2.setBounds(218, 278, 123, 54);
+		btn2.setBounds(252, 289, 123, 54);
 		add(btn2);
 
 		btn10 = new JButton("");
 		btn10.setName("10");
 		btn10.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10euros.jpg")));
-		btn10.setBounds(378, 214, 123, 54);
+		btn10.setBounds(412, 225, 123, 54);
 		add(btn10);
 
 		btn200 = new JButton("");
 		btn200.setName("200");
 		btn200.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/200euros.jpg")));
-		btn200.setBounds(218, 148, 123, 54);
+		btn200.setBounds(252, 159, 123, 54);
 		add(btn200);
 
 		btn20 = new JButton("");
 		btn20.setName("20");
 		btn20.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20euros.jpg")));
-		btn20.setBounds(218, 214, 123, 54);
+		btn20.setBounds(252, 225, 123, 54);
 		add(btn20);
 
 		btn500 = new JButton("");
 		btn500.setName("500");
 		btn500.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/500euros.jpg")));
-		btn500.setBounds(58, 148, 123, 54);
+		btn500.setBounds(92, 159, 123, 54);
 		add(btn500);
 		
 		btn100 = new JButton("");
 		btn100.setName("100");
 		btn100.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/100euros.jpg")));
-		btn100.setBounds(378, 148, 123, 54);
+		btn100.setBounds(412, 159, 123, 54);
 		add(btn100);
 
 		btn50 = new JButton("");
 		btn50.setName("50");
 		btn50.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50euros.jpg")));
-		btn50.setBounds(60, 214, 123, 54);
+		btn50.setBounds(94, 225, 123, 54);
 		add(btn50);
 
 		btn1 = new JButton("");
 		btn1.setName("1");
 		btn1.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1euro.png")));
-		btn1.setBounds(378, 278, 123, 54);
+		btn1.setBounds(412, 289, 123, 54);
 		add(btn1);
 
 		btn050 = new JButton("");
 		btn050.setName("0.5");
 		btn050.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/50centimos.png")));
-		btn050.setBounds(60, 345, 123, 54);
+		btn050.setBounds(94, 356, 123, 54);
 		add(btn050);
 
 		btn020 = new JButton("");
 		btn020.setName("0.2");
 		btn020.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/20centimos.png")));
-		btn020.setBounds(218, 345, 123, 54);
+		btn020.setBounds(252, 356, 123, 54);
 		add(btn020);
 
 		btn010 = new JButton("");
 		btn010.setName("0.1");
 		btn010.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/10centimos.png")));
-		btn010.setBounds(378, 345, 123, 54);
+		btn010.setBounds(412, 356, 123, 54);
 		add(btn010);
 
 		btn005 = new JButton("");
 		btn005.setName("0.05");
 		btn005.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/5centimos.png")));
-		btn005.setBounds(60, 416, 123, 54);
+		btn005.setBounds(94, 427, 123, 54);
 		add(btn005);
 
 		btn002 = new JButton("");
 		btn002.setName("0.02");
 		btn002.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/2centimos.png")));
-		btn002.setBounds(218, 416, 123, 54);
+		btn002.setBounds(252, 427, 123, 54);
 		add(btn002);
 
 		btn001 = new JButton("");
 		btn001.setName("0.01");
 		btn001.setIcon(new ImageIcon(PanelPago.class.getResource("/imagenes/1centimo.png")));
-		btn001.setBounds(378, 416, 123, 54);
+		btn001.setBounds(412, 427, 123, 54);
 		add(btn001);
 		
 		arrayBtn[0]=btn500;
@@ -258,6 +263,42 @@ public class PanelPago extends JPanel {
 		
 
 		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
+		
+		lblPantallaDePago = new JLabel("Pantalla de Pago :");
+		lblPantallaDePago.setOpaque(true);
+		lblPantallaDePago.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPantallaDePago.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblPantallaDePago.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblPantallaDePago.setBackground(Color.LIGHT_GRAY);
+		lblPantallaDePago.setBounds(154, 20, 713, 82);
+		add(lblPantallaDePago);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 40));
+		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(628, 135, 407, 303);
+		add(label);
+		
+		label_1 = new JLabel("");
+		label_1.setOpaque(true);
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Dialog", Font.BOLD, 40));
+		label_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(628, 454, 407, 54);
+		add(label_1);
+		
+		label_2 = new JLabel("");
+		label_2.setOpaque(true);
+		label_2.setHorizontalAlignment(SwingConstants.CENTER);
+		label_2.setFont(new Font("Dialog", Font.BOLD, 40));
+		label_2.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label_2.setBackground(Color.LIGHT_GRAY);
+		label_2.setBounds(60, 135, 510, 373);
+		add(label_2);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

@@ -12,10 +12,19 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import modelo.Casa;
 import modelo.Modelo;
+import vista.PanelCasa;
+import vista.PanelDevolucion;
+import vista.PanelEstanciasHotel;
+import vista.PanelHotel;
+import vista.PanelPago;
+import vista.PanelResumen;
 import vista.Ventana;
 
 public class ControladorCasa implements ActionListener {
@@ -104,15 +113,17 @@ public class ControladorCasa implements ActionListener {
 			miVentana.casa.fechaSalida.setCalendar(null);
 			miVentana.casa.fechaSalida.setEnabled(false);
 			resetearServicio();
+			reiniciarImagen();
 			
 			break;
 			
 			case "btnSiguienteCasa":
 				validarCampos();
+				reiniciarImagen();
 				
 			break;	
 
-			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas);
+			case "btnBuscarCasas": filtrarPorUbicacion(miModelo.listaCasas); imagen();
 			
 			break;	
 			case "btnLogin" : 
@@ -279,5 +290,80 @@ public class ControladorCasa implements ActionListener {
 		miVentana.casa.chckbxNewCheckBoxSpa.setSelected(false);
 		miVentana.casa.chckbxNewCheckBoxWi.setSelected(false);
 	}
+	
+	
+	/**
+	 * muestra las imagenes en los paneles
+	 */
+	public void imagen() {
+		 String enlace = "";
+		 ImageIcon imagen1;
+	
+		 
+		
+		this.miVentana.casa.repaint();
+		
+
+		
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("MADRID")) {
+			 miVentana.casa.remove(miVentana.casa.etiqueta);
+		
+				enlace="/imagenes/m.jpg";	
+		  }
+		  
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("BARCELONA")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+			
+				  enlace="/imagenes/b.jpg";
+			}
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("BILBAO")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+			
+				  enlace="/imagenes/bilbao (1).jpg";	
+			}
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("SEVILLA")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+			
+					enlace="/imagenes/sev.jpg";
+			}
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("SALAMANCA")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+				 enlace="/imagenes/salamanca2.jpg";
+						
+			}
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("VALENCIA")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+			
+				 enlace="/imagenes/valencia.jpg";	
+			}
+		  if(miVentana.casa.comboBox.getSelectedItem().toString().equals("BURGOS")) {
+				 miVentana.casa.remove(miVentana.casa.etiqueta);
+			
+				 enlace="/imagenes/burgos.jpg";
+			}
+		  
+		  
+		  
+			imagen1=new ImageIcon(PanelCasa.class.getResource(enlace));
+			
+		
+			miVentana.casa.etiqueta.setIcon(imagen1);
+		
+			
+
+			this.miVentana.casa.add(miVentana.casa.etiqueta);	 
+		
+	}
+	
+	public void reiniciarImagen() {
+	    miVentana.casa.remove(miVentana.casa.etiqueta);
+		ImageIcon imagen=new ImageIcon(PanelCasa.class.getResource("/imagenes/pattern.jpg"));
+		miVentana.casa.etiqueta = new JLabel(imagen);
+		miVentana.casa.etiqueta.setBounds(-20, -20, 1200, 800);
+		this.miVentana.casa.add(miVentana.casa.etiqueta);
+		miVentana.casa.etiqueta.setVisible(true);
+}
+
+	
 
 }

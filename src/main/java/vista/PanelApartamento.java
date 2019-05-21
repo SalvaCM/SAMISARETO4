@@ -178,10 +178,10 @@ public class PanelApartamento extends JPanel {
 		 BoxWi.setBounds(60, 211, 97, 23);
 		 add(BoxWi);
 		
-		lblEncuentreSuApartamento = new JLabel("Encuentre su Apartamento :");
+		lblEncuentreSuApartamento = new JLabel("Encuentre su Apartamento deseado:");
 		lblEncuentreSuApartamento.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEncuentreSuApartamento.setOpaque(true);
-		lblEncuentreSuApartamento.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblEncuentreSuApartamento.setFont(new Font("Dialog", Font.BOLD, 38));
 		lblEncuentreSuApartamento.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblEncuentreSuApartamento.setBackground(Color.LIGHT_GRAY);
 		lblEncuentreSuApartamento.setBounds(209, 23, 701, 78);
@@ -193,6 +193,8 @@ public class PanelApartamento extends JPanel {
 		label.setBorder(new TitledBorder(null, "Servicios ", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(59, 59, 59)));
 		label.setBounds(44, 183, 126, 320);
 		add(label);
+		
+		
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

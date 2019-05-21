@@ -28,6 +28,8 @@ public class PanelElegirAlojamiento extends JPanel {
 	public JButton btnPerfil;
 	public JButton btnLogin;
 	public JLabel etiqueta ;
+	private JLabel label;
+	private JLabel label_1;
 	/**
 	 * Create the panel.
 	 */
@@ -41,35 +43,35 @@ public class PanelElegirAlojamiento extends JPanel {
 		 hotel.setIcon(new ImageIcon(PanelElegirAlojamiento.class.getResource("/imagenes/hotel (1).png")));
 		 hotel.setFont(new Font("Dialog", Font.BOLD, 13));
 		 hotel.setName("hotel");
-		 hotel.setBounds(142, 260, 224, 227);
+		 hotel.setBounds(142, 228, 224, 227);
 		
 		setLayout(null);
 		
-		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("ESCOGE EL ALOJAMIENTO");
+		JLabel lblNewJgoodiesLabel_3 = DefaultComponentFactory.getInstance().createLabel("ELIJA EL TIPO DE ALOJAMIENTO :");
 		lblNewJgoodiesLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel_3.setOpaque(true);
 		lblNewJgoodiesLabel_3.setBackground(Color.LIGHT_GRAY);
 		lblNewJgoodiesLabel_3.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		lblNewJgoodiesLabel_3.setFont(new Font("Dialog", Font.BOLD, 40));
-		lblNewJgoodiesLabel_3.setBounds(142, 42, 824, 78);
+		lblNewJgoodiesLabel_3.setBounds(128, 87, 851, 78);
 		add(lblNewJgoodiesLabel_3);
 		
 		JLabel lblNewJgoodiesLabel_2 = DefaultComponentFactory.getInstance().createLabel("APARTAMENTO");
 		lblNewJgoodiesLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel_2.setFont(new Font("Dialog", Font.PLAIN, 18));
-		lblNewJgoodiesLabel_2.setBounds(441, 448, 222, 21);
+		lblNewJgoodiesLabel_2.setBounds(441, 416, 222, 21);
 		add(lblNewJgoodiesLabel_2);
 		
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("CASA");
 		lblNewJgoodiesLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel_1.setFont(new Font("Dialog", Font.PLAIN, 18));
-		lblNewJgoodiesLabel_1.setBounds(742, 447, 224, 23);
+		lblNewJgoodiesLabel_1.setBounds(742, 415, 224, 23);
 		add(lblNewJgoodiesLabel_1);
 		
 		JLabel lblNewJgoodiesLabel = DefaultComponentFactory.getInstance().createLabel("HOTEL");
 		lblNewJgoodiesLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewJgoodiesLabel.setFont(new Font("Dialog", Font.PLAIN, 18));
-		lblNewJgoodiesLabel.setBounds(142, 447, 224, 23);
+		lblNewJgoodiesLabel.setBounds(142, 415, 224, 23);
 		add(lblNewJgoodiesLabel);
 		add(hotel);
 		
@@ -78,7 +80,7 @@ public class PanelElegirAlojamiento extends JPanel {
 		 apart.setFont(new Font("Dialog", Font.BOLD, 13));
 		 apart.setName("apart");
 		
-		apart.setBounds(439, 260, 224, 227);
+		apart.setBounds(439, 228, 224, 227);
 		add(apart);
 		
 		 casa = new JButton("");
@@ -89,7 +91,7 @@ public class PanelElegirAlojamiento extends JPanel {
 		 casa.setIcon(new ImageIcon(PanelElegirAlojamiento.class.getResource("/imagenes/c.png")));
 		 casa.setFont(new Font("Dialog", Font.BOLD, 13));
 		 casa.setName("casa");
-		casa.setBounds(742, 260, 224, 227);
+		casa.setBounds(742, 228, 224, 227);
 		add(casa);
 		
 		btnPerfil = new JButton("Perfil");
@@ -106,6 +108,24 @@ public class PanelElegirAlojamiento extends JPanel {
 		add(btnLogin);
 		
 		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 40));
+		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(128, 188, 851, 311);
+		add(label);
+		
+		label_1 = new JLabel("Bidai On ! Su Buscador de Alojamientos !\r\n");
+		label_1.setOpaque(true);
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Dialog", Font.BOLD, 40));
+		label_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(128, 536, 851, 78);
+		add(label_1);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

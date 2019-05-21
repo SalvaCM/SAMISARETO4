@@ -27,6 +27,7 @@ private static final long serialVersionUID = 3L;
 	public JTextArea txtDetalles;
 	public JButton btnPerfil;
 	public JButton btnLogin;
+	private JLabel label_1;
 		
 
 	/**
@@ -50,7 +51,7 @@ private static final long serialVersionUID = 3L;
 		mostrarResumen=new DefaultListModel<String>();
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(574, 109, 309, 334);
+		scrollPane_1.setBounds(554, 127, 329, 316);
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();
@@ -63,7 +64,7 @@ private static final long serialVersionUID = 3L;
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(235, 109, 273, 203);
+		scrollPane_2.setBounds(235, 127, 309, 195);
 		add(scrollPane_2);
 		
 		txtDetalles = new JTextArea();
@@ -84,6 +85,24 @@ private static final long serialVersionUID = 3L;
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 11, 89, 23);
 		add(btnLogin);
+		
+		JLabel label = new JLabel("Resumen de la compra :\r\n");
+		label.setOpaque(true);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 40));
+		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(203, 16, 713, 82);
+		add(label);
+		
+		label_1 = new JLabel("");
+		label_1.setOpaque(true);
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setFont(new Font("Dialog", Font.BOLD, 40));
+		label_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label_1.setBackground(Color.LIGHT_GRAY);
+		label_1.setBounds(203, 110, 713, 367);
+		add(label_1);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

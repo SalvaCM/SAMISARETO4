@@ -12,7 +12,11 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
+<<<<<<< HEAD
+import javax.swing.UIManager;
+=======
 import java.util.Locale;
+
 
 public class PanelResumen extends JPanel {
 
@@ -28,6 +32,7 @@ private static final long serialVersionUID = 3L;
 	public JTextArea txtDetalles;
 	public JButton btnPerfil;
 	public JButton btnLogin;
+	private JLabel label;
 		
 
 	/**
@@ -50,33 +55,34 @@ private static final long serialVersionUID = 3L;
 		
 		mostrarResumen=new DefaultListModel<String>();
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(209, 87, 269, 174);
+		scrollPane.setBounds(202, 125, 336, 177);
 		add(scrollPane);
 		resumenHotel = new JList<String>(mostrarResumen);
-		resumenHotel.setBorder(new TitledBorder(null, "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
+		resumenHotel.setFont(new Font("Dialog", Font.BOLD, 12));
+		resumenHotel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informacion del Hotel", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		scrollPane.setViewportView(resumenHotel);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(665, 95, 239, 386);
+		scrollPane_1.setBounds(537, 125, 360, 360);
 		add(scrollPane_1);
 		
 		resumenReserva = new JTextArea();
 		resumenReserva.setLocale(new Locale("es", "ES"));
 		scrollPane_1.setViewportView(resumenReserva);
 		resumenReserva.setBorder(new TitledBorder(null, "Habitacion Reservada", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
-		resumenReserva.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		resumenReserva.setFont(new Font("Dialog", Font.BOLD, 14));
 		resumenReserva.setEditable(false);
 		
 		
 		ImageIcon imagen=new ImageIcon(PanelEstanciasHotel.class.getResource("/imagenes/pattern.jpg"));
 		
 		JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setBounds(209, 280, 269, 190);
+		scrollPane_2.setBounds(202, 299, 336, 186);
 		add(scrollPane_2);
 		
 		txtDetalles = new JTextArea();
 		scrollPane_2.setViewportView(txtDetalles);
-		txtDetalles.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		txtDetalles.setFont(new Font("Dialog", Font.BOLD, 12));
 		txtDetalles.setEditable(false);
 		txtDetalles.setBorder(new TitledBorder(null, "Detalles Reserva", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(59, 59, 59)));
 		
@@ -92,6 +98,24 @@ private static final long serialVersionUID = 3L;
 		btnLogin.setName("btnLogin");
 		btnLogin.setBounds(10, 17, 89, 23);
 		add(btnLogin);
+		
+		JLabel lblResumenDeLa = new JLabel("Resumen de la compra :\r\n");
+		lblResumenDeLa.setOpaque(true);
+		lblResumenDeLa.setHorizontalAlignment(SwingConstants.CENTER);
+		lblResumenDeLa.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblResumenDeLa.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblResumenDeLa.setBackground(Color.LIGHT_GRAY);
+		lblResumenDeLa.setBounds(190, 17, 713, 82);
+		add(lblResumenDeLa);
+		
+		label = new JLabel("");
+		label.setOpaque(true);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Dialog", Font.BOLD, 40));
+		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		label.setBackground(Color.LIGHT_GRAY);
+		label.setBounds(190, 111, 713, 394);
+		add(label);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

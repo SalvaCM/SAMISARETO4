@@ -31,7 +31,6 @@ public class PanelUsuario extends JPanel {
 	public JButton btnVolver = new JButton("Volver");
 	public JPasswordField passwordNueva;
 	public JPasswordField passwordNuevacheck;
-	public JLabel lblCuentaDeUsuario;
 	public JLabel lblNewPassword ;
 	public JLabel lblNewPasswordCheck;
 	public JLabel lblSeguridad;
@@ -43,6 +42,7 @@ public class PanelUsuario extends JPanel {
 	public JLabel etiqueta;
 
 	public JPanel paneldeRetorno;
+	private JLabel lblPerfilDeUsuario;
 	
 
 	/**
@@ -54,7 +54,7 @@ public class PanelUsuario extends JPanel {
 		
 		setForeground(Color.BLACK);
 		setBackground(new Color(230, 230, 250));
-		setBounds(0, 0, 800, 600);
+		setBounds(0, 0, 1080, 643);
 		setLayout(null);
 
 		
@@ -62,14 +62,8 @@ public class PanelUsuario extends JPanel {
 		btnVolver.setFont(new Font("Dialog", Font.PLAIN, 16));
 		
 		btnVolver.setName("btnVolver");
-		btnVolver.setBounds(637, 523, 153, 46);
+		btnVolver.setBounds(845, 562, 153, 46);
 		add(btnVolver);
-		
-		lblCuentaDeUsuario = new JLabel("Cuenta de Usuario :");
-		lblCuentaDeUsuario.setForeground(Color.BLACK);
-		lblCuentaDeUsuario.setFont(new Font("Dialog", Font.BOLD, 25));
-		lblCuentaDeUsuario.setBounds(47, 66, 270, 46);
-		add(lblCuentaDeUsuario);
 		
 		passwordNueva = new JPasswordField();
 		passwordNueva.setBackground(Color.WHITE);
@@ -150,6 +144,15 @@ public class PanelUsuario extends JPanel {
 		txtreservasFuturas.setEditable(false);
 		txtreservasFuturas.setBorder(new TitledBorder(null, "Bonos Disponibles", TitledBorder.LEADING, TitledBorder.ABOVE_TOP, null, new Color(0, 128, 0)));
 		ImageIcon imagen=new ImageIcon(PanelLogin.class.getResource("/imagenes/pattern.jpg"));
+		
+		lblPerfilDeUsuario = new JLabel("Perfil de Usuario :");
+		lblPerfilDeUsuario.setOpaque(true);
+		lblPerfilDeUsuario.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPerfilDeUsuario.setFont(new Font("Dialog", Font.BOLD, 40));
+		lblPerfilDeUsuario.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		lblPerfilDeUsuario.setBackground(Color.LIGHT_GRAY);
+		lblPerfilDeUsuario.setBounds(153, 50, 701, 78);
+		add(lblPerfilDeUsuario);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(-20, -20, 1200, 800);
 		add(etiqueta);

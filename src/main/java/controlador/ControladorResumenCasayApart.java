@@ -53,7 +53,7 @@ public class ControladorResumenCasayApart implements ActionListener {
 					if (miModelo.logged==false)
 					{	
 						JOptionPane.showMessageDialog(miVentana, "�Resgistrese Para Continuar!", "�Atenci�n!", JOptionPane.INFORMATION_MESSAGE);
-						funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.login);
+						miControlador.miControladorLogin.tratarLogin(miVentana.resumenCyA.btnLogin,miVentana.resumenCyA);
 					}
 					else{				
 											funciones.cambiarDePanel(miVentana.resumenCyA, miVentana.pago);

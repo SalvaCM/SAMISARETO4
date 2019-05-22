@@ -29,7 +29,6 @@ public class PanelElegirAlojamiento extends JPanel {
 	public JButton btnLogin;
 	public JLabel etiqueta ;
 	private JLabel label;
-	private JLabel label_1;
 	/**
 	 * Create the panel.
 	 */
@@ -115,17 +114,8 @@ public class PanelElegirAlojamiento extends JPanel {
 		label.setFont(new Font("Dialog", Font.BOLD, 40));
 		label.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		label.setBackground(Color.LIGHT_GRAY);
-		label.setBounds(128, 188, 851, 311);
+		label.setBounds(128, 208, 851, 311);
 		add(label);
-		
-		label_1 = new JLabel("Bidai On ! Su Buscador de Alojamientos !\r\n");
-		label_1.setOpaque(true);
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setFont(new Font("Dialog", Font.BOLD, 40));
-		label_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		label_1.setBackground(Color.LIGHT_GRAY);
-		label_1.setBounds(128, 536, 851, 78);
-		add(label_1);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

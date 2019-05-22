@@ -10,11 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
-<<<<<<< HEAD
+
 import javax.swing.UIManager;
-=======
+
 import java.util.Locale;
 
 

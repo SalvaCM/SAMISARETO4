@@ -49,7 +49,7 @@ public class ControladorDevolucion implements ActionListener {
 				switch (((JButton) e.getSource()).getName()) {
 						
 				case "btnSiguienteDevolucion": funciones.cambiarDePanel(miVentana.devolucion, miVentana.despedida);
-				
+			     
 					PasarDeDespedidaASaludo();
 					resetear();
 				break;
@@ -97,6 +97,8 @@ public class ControladorDevolucion implements ActionListener {
 				miControlador.miControladorLogin.desactivarPerfil();
 				miModelo.reserva = new ReservaCASAoAPART();
 				miModelo.reservaHotel = new ReservaHotel();
+				miVentana.pago.chckbxNewCheckBox.setSelected(false);
+				funciones.actBotones(miVentana.pago.btnCodigoDto);
 			
 			}
 	

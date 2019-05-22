@@ -58,8 +58,7 @@ public class PanelPago extends JPanel {
 	private JLabel label;
 	private JLabel label_1;
 	private JLabel label_2;
-		
-
+	public JCheckBox chckbxNewCheckBox;
 	/**
 	 * Create the panel. 
 	 */
@@ -299,6 +298,10 @@ public class PanelPago extends JPanel {
 		label_2.setBackground(Color.LIGHT_GRAY);
 		label_2.setBounds(60, 135, 510, 373);
 		add(label_2);
+		
+		chckbxNewCheckBox = new JCheckBox("Acepto los terminos y condiciones.");
+		chckbxNewCheckBox.setBounds(466, 578, 237, 18);
+		add(chckbxNewCheckBox);
 		etiqueta = new JLabel(imagen);
 		etiqueta.setBounds(0, -58, 1075, 773);
 		add(etiqueta);

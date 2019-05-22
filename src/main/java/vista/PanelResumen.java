@@ -11,9 +11,9 @@ import javax.swing.border.LineBorder;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import javax.swing.JScrollPane;
 import javax.swing.border.TitledBorder;
-import javax.swing.UIManager;
 import java.util.Locale;
 
 

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.UnsupportedEncodingException;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -16,7 +17,7 @@ public class ControladorUsuario implements ActionListener{
 	
 	private Ventana miVentana;
 	private Modelo miModelo;
-	FuncionesControlador funciones = new FuncionesControlador();
+	private Controlador miControlador;
 	
 	
 	/**
@@ -29,9 +30,11 @@ public class ControladorUsuario implements ActionListener{
 	{
 		this.miVentana=miVentana;
 		this.miModelo=miModelo;
+		this.miControlador=miControlador;
 		this.miVentana.usuario.btnCambiarPw.addActionListener(this);
 		this.miVentana.usuario.btnCambiarContrasena.addActionListener(this);
 		this.miVentana.usuario.btnVolver.addActionListener(this);
+		this.miVentana.usuario.btnEliminar.addActionListener(this);
 		
 	
 	}
@@ -69,11 +72,24 @@ public class ControladorUsuario implements ActionListener{
 				break;
 			
 			case "btnVolver":
-				funciones.cambiarDePanel(miVentana.usuario, miVentana.usuario.paneldeRetorno);
+				miControlador.miFuncionesControlador.cambiarDePanel(miVentana.usuario, miVentana.usuario.paneldeRetorno);
+				break;
+			
+			case "btnEliminar":
+			System.out.println("LALALALALALAA");
+				
+			try {
+				miModelo.misFuncionesLogin.EliminarCuenta(miModelo.cliente);
+				miControlador.miFuncionesControlador.cambiarDePanel(miVentana.usuario, miVentana.saludo); miControlador.miControladorLogin.resetear();
+				miModelo.logged=false;
+				 miControlador.miControladorLogin.desactivarPerfil();
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+				
 				break;
 	}
-	
-	
 }
 	/**
 	 * muestra los campos
@@ -125,7 +141,7 @@ public class ControladorUsuario implements ActionListener{
 	 */
 	public void TratarPerfil(JPanel panelActual) {
 			miVentana.usuario.paneldeRetorno=panelActual;
-			funciones.cambiarDePanel(panelActual, miVentana.usuario);
+			miControlador.miFuncionesControlador.cambiarDePanel(panelActual, miVentana.usuario);
 		}
 
 

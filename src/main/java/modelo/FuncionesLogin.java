@@ -12,6 +12,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
+import testmodelo.miModelo;
 import vista.Ventana;
 
 
@@ -141,6 +142,18 @@ public class FuncionesLogin {
 		return cadenaDesencriptada;
 		
 	  }
+	public void EliminarCuenta(Cliente cliente) throws UnsupportedEncodingException {
+		//Declaraci�n e inicializaci�n de variables:
+
+		ConexionBD miConexion = new ConexionBD();
+		Connection con = miConexion.ConectarBD();
+		ConsultaBD miConsulta = new ConsultaBD();
+		String query = "CALL borrar("+cliente.getCodCliente()+");";
+		System.out.println(query);
+		if (miConsulta.insertarDatosBD(con, query)) {
+			JOptionPane.showMessageDialog(miVentana, "Usuario Eliminado Con exito", "Atencion!", JOptionPane.WARNING_MESSAGE);
+		}
+	}
 
 	
 }

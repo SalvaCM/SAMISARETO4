@@ -40,6 +40,7 @@ public class PanelUsuario extends JPanel {
 	public JTextArea txtReservasPasadas = new JTextArea();
 	public JTextArea txtreservasFuturas = new JTextArea();
 	public JLabel etiqueta;
+	public JButton btnEliminar = new JButton("Eliminar Cuenta");
 
 	public JPanel paneldeRetorno;
 	private JLabel lblPerfilDeUsuario;
@@ -97,7 +98,7 @@ public class PanelUsuario extends JPanel {
 		btnCambiarPw.setName("btnCambiarPw");
 		btnCambiarPw.setForeground(new Color(0, 51, 102));
 		btnCambiarPw.setFont(new Font("Dialog", Font.PLAIN, 12));
-		btnCambiarPw.setBounds(673, 267, 117, 29);
+		btnCambiarPw.setBounds(801, 214, 117, 29);
 		btnCambiarPw.setVisible(false);
 		add(btnCambiarPw);
 		
@@ -153,8 +154,13 @@ public class PanelUsuario extends JPanel {
 		lblPerfilDeUsuario.setBackground(Color.LIGHT_GRAY);
 		lblPerfilDeUsuario.setBounds(153, 50, 701, 78);
 		add(lblPerfilDeUsuario);
+		
+		
+		btnEliminar.setBounds(801, 279, 143, 28);
+		btnEliminar.setName("btnEliminar");
+		add(btnEliminar);
 		etiqueta = new JLabel(imagen);
-		etiqueta.setBounds(-20, -20, 1200, 800);
+		etiqueta.setBounds(0, -30, 1200, 800);
 		add(etiqueta);
 		
 		setVisible(false);

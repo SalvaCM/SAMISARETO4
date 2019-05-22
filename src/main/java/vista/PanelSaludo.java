@@ -37,7 +37,7 @@ public class PanelSaludo extends JPanel {
 		setLayout(null);
 		
 		btnSaludo.setName("btnSaludo");	
-		btnSaludo.setBounds(-14, -11, 1150, 732);
+		btnSaludo.setBounds(-14, -11, 1150, 916);
 		btnSaludo.setContentAreaFilled(false);
 		add(btnSaludo);
 		
@@ -51,7 +51,11 @@ public class PanelSaludo extends JPanel {
 		etiqueta2 = new JLabel(imagen2);
 		etiqueta2.setBounds(20, -139, 1005, 900);
 		add(etiqueta2);
+		
+		JLabel lblNewLabel = new JLabel("\r\n Bidai-on");
+		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 34));
+		lblNewLabel.setBounds(435, 405, 634, 182);
+		add(lblNewLabel);
 
 	}
-
 }

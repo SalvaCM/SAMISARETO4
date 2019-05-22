@@ -213,7 +213,12 @@ public class ControladorPago implements ActionListener {
 				
 				break;
 										 
-			case "btnSiguientePago": funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
+			case "btnSiguientePago": 
+				if(miVentana.pago.chckbxNewCheckBox.isSelected()==true) {
+					
+				JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				
+				funciones.cambiarDePanel(miVentana.pago, miVentana.devolucion); 
 
 				
 				//Calcular cambios despues del pago
@@ -264,7 +269,7 @@ public class ControladorPago implements ActionListener {
 				}
 			    mostrarCambios(arrayCambios);
 			    
-			    JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "�Atencion!", JOptionPane.WARNING_MESSAGE);
+			    //JOptionPane.showMessageDialog(miVentana, "Reserva Completada!", "Atencion!", JOptionPane.WARNING_MESSAGE);
 			    
 			    //DEPENDIENDO  si hemos elegido hotel,apartamento o casa
 			    if(miControlador.miControladorElegir.elegido==1) {
@@ -317,6 +322,10 @@ public class ControladorPago implements ActionListener {
 			    resetear();		
 			    miVentana.pago.descuento.setVisible(false);
 				miVentana.pago.lblNewJgoodiesTitle.setVisible(false);
+				}
+				else {
+					JOptionPane.showMessageDialog(miVentana, "Acepte los terminos y condiciones!", "Atencion!", JOptionPane.WARNING_MESSAGE);
+				}
 				break;
 			
 				default: 
@@ -331,6 +340,7 @@ public class ControladorPago implements ActionListener {
 			miVentana.pago.btnSiguiente.setEnabled(true);
 			funciones.actBotones(miVentana.pago.btnSiguiente);
 			funciones.desBotones(miVentana.pago.btnCancelar);
+			funciones.desBotones(miVentana.pago.btnCodigoDto);
 			
 		} else {
 			miVentana.pago.restante.setText(formatoMoneda.format(total - pagado));

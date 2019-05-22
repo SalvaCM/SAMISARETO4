@@ -6,13 +6,10 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JPasswordField;
-import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.JScrollPane;
@@ -47,7 +44,7 @@ public class PanelUsuario extends JPanel {
 	
 
 	/**
-	 * Método: PaneCambioFinal
+	 * Mï¿½todo: PaneCambioFinal
 	 * @param frame1
 	 */
 	public PanelUsuario()

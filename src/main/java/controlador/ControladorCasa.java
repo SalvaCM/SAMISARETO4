@@ -12,7 +12,6 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,11 +19,6 @@ import javax.swing.JOptionPane;
 import modelo.Casa;
 import modelo.Modelo;
 import vista.PanelCasa;
-import vista.PanelDevolucion;
-import vista.PanelEstanciasHotel;
-import vista.PanelHotel;
-import vista.PanelPago;
-import vista.PanelResumen;
 import vista.Ventana;
 
 public class ControladorCasa implements ActionListener {

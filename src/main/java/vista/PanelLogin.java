@@ -3,7 +3,6 @@ package vista;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -12,7 +11,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 public class PanelLogin extends JPanel {

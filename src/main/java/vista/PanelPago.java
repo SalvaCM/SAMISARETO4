@@ -12,8 +12,6 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Dimension;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
 import javax.swing.border.TitledBorder;
 
 

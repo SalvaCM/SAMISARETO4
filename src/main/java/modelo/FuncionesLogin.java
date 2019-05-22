@@ -5,14 +5,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.Base64;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
-
 import org.apache.commons.codec.digest.DigestUtils;
-
 import conexion.ConexionBD;
 import conexion.ConsultaBD;
-import testmodelo.miModelo;
 import vista.Ventana;
 
 

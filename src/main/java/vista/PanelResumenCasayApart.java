@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;

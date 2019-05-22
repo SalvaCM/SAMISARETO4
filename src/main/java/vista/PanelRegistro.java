@@ -18,6 +18,8 @@ import javax.swing.border.LineBorder;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import com.toedter.calendar.JDateChooser;
 import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PanelRegistro extends JPanel {
@@ -38,6 +40,7 @@ public class PanelRegistro extends JPanel {
 	public JLabel etiqueta;
 	private JLabel lblRegistrateAhora;
 	private JLabel label;
+	public 	JButton btnNewButton = new JButton("mostrar");
 
 	/**
 	 * Create the panel.
@@ -48,6 +51,31 @@ public class PanelRegistro extends JPanel {
 		setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		setBackground(new Color(245, 245, 245));
 		setLayout(null);
+		
+		
+		btnNewButton.setIcon(new ImageIcon(PanelRegistro.class.getResource("/imagenes/ver.png")));
+		btnNewButton.setContentAreaFilled(false);
+		btnNewButton.setName("mostrar");
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				if(btnNewButton.getText().equals("mostrar")) {					
+					passwordField.setEchoChar((char)0);
+					btnNewButton.setText("ocultar");
+					btnNewButton.setIcon(new ImageIcon(PanelRegistro.class.getResource("/imagenes/ocultar.png")));
+				}
+				
+				else if(btnNewButton.getText().equals("ocultar")){
+					passwordField.setEchoChar('*');
+					btnNewButton.setText("mostrar");
+					btnNewButton.setIcon(new ImageIcon(PanelRegistro.class.getResource("/imagenes/ver.png")));
+					
+				}
+			}
+		});
+		btnNewButton.setBounds(733, 387, 122, 25);
+		add(btnNewButton);
 		JLabel lblNewJgoodiesLabel_1 = DefaultComponentFactory.getInstance().createLabel("DNI:");
 		lblNewJgoodiesLabel_1.setForeground(new Color(0, 153, 204));
 		lblNewJgoodiesLabel_1.setHorizontalAlignment(SwingConstants.RIGHT);

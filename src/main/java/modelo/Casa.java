@@ -15,7 +15,7 @@ public class Casa extends Alojamiento {
 		private ArrayList<Dormitorio> dormitorios = new ArrayList<Dormitorio>();
 
 	 	public Casa(int codAlojamiento, int habDisponibles, int habTotales, String nombre, String ubicacion, float tarifa, int cod_casa, int tamano, float precio) {
-			super(codAlojamiento, habDisponibles, habTotales, nombre, ubicacion, tarifa);
+			super(codAlojamiento, nombre, ubicacion, tarifa);
 			this.cod_casa = cod_casa;
 			this.tamano = tamano;
 			this.precio = precio;

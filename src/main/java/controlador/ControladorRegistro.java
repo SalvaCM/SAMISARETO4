@@ -47,10 +47,7 @@ public class ControladorRegistro implements ActionListener {
 		
 		switch (((JButton) e.getSource()).getName()) {
 		case "btnRegistro": 
-		miVentana.registro.textFieldDni.setText("");
-		miVentana.registro.textFieldNombre.setText("");
-		miVentana.registro.textFieldApellido.setText("");
-		miVentana.registro.passwordField.setText("");
+	
 			try {
 				JTextArea textArea = new JTextArea(25, 50);
 			      textArea.setText( "CONDICIONES DE USO\r\n" + 
@@ -169,6 +166,12 @@ public class ControladorRegistro implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
+			miVentana.registro.textFieldDni.setText("");
+			miVentana.registro.textFieldNombre.setText("");
+			miVentana.registro.textFieldApellido.setText("");
+			miVentana.registro.passwordField.setText("");
+		
 				break;
 
 			    
